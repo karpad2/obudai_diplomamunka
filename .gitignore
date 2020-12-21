@@ -1,23 +1,23 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
-escape_room/node_modules
-escape_room/.pnp
-escape_room/.pnp.js
+escape-room/node_modules
+escape-room/.pnp
+escape-room/.pnp.js
 
 # testing
-escape_room/coverage
+escape-room/coverage
 
 # production
-escape_room/build
+escape-room/build
 
 # misc
-escape_room/.DS_Store
-escape_room/.env.local
-escape_room/.env.development.local
-escape_room/.env.test.local
-escape_room/.env.production.local
+escape-room/.DS_Store
+escape-room/.env.local
+escape-room/.env.development.local
+escape-room/.env.test.local
+escape-room/.env.production.local
 
-escape_room/npm-debug.log*
-escape_room/yarn-debug.log*
-escape_room/yarn-error.log*
+escape-room/npm-debug.log*
+escape-room/yarn-debug.log*
+escape-room/yarn-error.log*
