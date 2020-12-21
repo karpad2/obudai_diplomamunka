@@ -12,8 +12,8 @@ import 'package:wifi/wifi.dart';
 class Network_Route extends StatelessWidget {
 //  final WifiInfo _wifiInfo = await WifiInfo();
   //final Connectivity _connectivity = Connectivity();
-  void  net() {
-    final String ip = (String) Wifi.ip;
+  void net() {
+    final String ip = await Wifi.ip;
     final String subnet = ip.substring(0, ip.lastIndexOf('.'));
     final int port = 80;
 
@@ -32,10 +32,7 @@ class Network_Route extends StatelessWidget {
         title: Text('Network Route'),
       ),
       body: ListView(
-        children: <Widget>[
-          Text("IP address:"),
-          SizedBox()
-        ],
+        children: <Widget>[Text("IP address:"), SizedBox()],
       ),
     );
   }
