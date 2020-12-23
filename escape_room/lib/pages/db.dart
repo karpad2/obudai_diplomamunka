@@ -2,7 +2,7 @@ import 'package:sqflite/sqflite.dart';
 import 'dart:async';
 import 'dart:io';
 import 'package:path_provider/path_provider.dart';
-import 'package:escape_room/models/users.dart';
+import 'package:escape_room/models/Users.dart';
 
 class DatabaseHelper {
   static DatabaseHelper _databaseHelper; // Singleton DatabaseHelper
@@ -39,22 +39,22 @@ class DatabaseHelper {
   Future<Database> initializeDatabase() async {
     // Get the directory path for both Android and iOS to store database.
     Directory directory = await getApplicationDocumentsDirectory();
-    String path = directory.path + 'todos.db';
+    String path = directory.path + 'database.db';
 
     // Open/create the database at a given path
-    var todosDatabase =
+    var escaperoomDatabase =
         await openDatabase(path, version: 1, onCreate: _createDb);
-    return todosDatabase;
+    return escaperoomDatabase;
   }
-
+/*
   void _createDb(Database db, int newVersion) async {
     await db.execute(
-        'CREATE TABLE $userstable($userId INTEGER PRIMARY KEY AUTOINCREMENT, $username TEXT, '
+        'CREATE TABLE $userstable ($userId INTEGER PRIMARY KEY AUTOINCREMENT, $username TEXT, '
         '$password TEXT, $admin int)');
-  }
+  }*/
 
   // Fetch Operation: Get all todo objects from database
-  Future<List<Map<String, dynamic>>> getTodoMapList() async {
+  Future<List<Map<String, dynamic>>> getUsersMapList() async {
     Database db = await this.database;
 
 //		var result = await db.rawQuery('SELECT * FROM $todoTable order by $colTitle ASC');
@@ -70,21 +70,21 @@ class DatabaseHelper {
   }
 
   // Update Operation: Update a todo object and save it to database
-  Future<int> updateTodo(Todo todo) async {
+  Future<int> updateTodo(User user) async {
     var db = await this.database;
-    var result = await db.update(todoTable, todo.toMap(),
-        where: '$colId = ?', whereArgs: [todo.id]);
+    var result = await db.update(userstable, user.toMap(),
+        where: '$userId = ?', whereArgs: [user.userId]);
     return result;
   }
 
   // Delete Operation: Delete a todo object from database
-  Future<int> deleteTodo(int id) async {
+  Future<int> usersTodo(int id) async {
     var db = await this.database;
     int result =
-        await db.rawDelete('DELETE FROM $todoTable WHERE $colId = $id');
+        await db.rawDelete('DELETE FROM $userstable WHERE $userId = $id');
     return result;
   }
-
+/*
   // Get number of todo objects in database
   Future<int> getCount() async {
     Database db = await this.database;
@@ -106,5 +106,5 @@ class DatabaseHelper {
       todoList.add(Todo.fromMapObject(todoMapList[i]));
     }
     return todoList;
-  }
+  }*/
 }

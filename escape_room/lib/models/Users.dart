@@ -4,4 +4,6 @@ class User {
   String username = 'username';
   String password = 'password';
   int admin = 0;
+
+  Map<String, dynamic> toMap() {}
 }

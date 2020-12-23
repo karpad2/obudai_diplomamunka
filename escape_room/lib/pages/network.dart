@@ -1,39 +1,82 @@
 import 'package:flutter/cupertino.dart';
 import 'dart:async';
 import 'dart:io';
+import 'dart:developer';
 import 'package:ping_discover_network/ping_discover_network.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
-import 'package:connectivity/connectivity.dart';
-import 'package:wifi_info_flutter/wifi_info_flutter.dart';
+
 import 'package:flutter/material.dart';
-import 'package:wifi/wifi.dart';
+//import 'package:wifi/wifi.dart';
+
+
 
 class Network_Route extends StatelessWidget {
-//  final WifiInfo _wifiInfo = await WifiInfo();
-  //final Connectivity _connectivity = Connectivity();
-  void net() {
-    final String ip = await Wifi.ip;
-    final String subnet = ip.substring(0, ip.lastIndexOf('.'));
-    final int port = 80;
+  void main() async {
+    const port = 80;
+    final stream = NetworkAnalyzer.discover2(
+      '192.168.1',
+      port,
+      timeout: Duration(milliseconds: 2000),
+    );
 
-    final stream = NetworkAnalyzer.discover(subnet, port);
+    int found = 0;
     stream.listen((NetworkAddress addr) {
+      // print('${addr.ip}:$port');
       if (addr.exists) {
-        print('Found device: ${addr.ip}');
+        found++;
+        print('Found device: ${addr.ip}:$port');
       }
-    });
+    }).onDone(() => print('Finish. Found $found device(s)'));
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Network Route'),
-      ),
-      body: ListView(
-        children: <Widget>[Text("IP address:"), SizedBox()],
-      ),
+        appBar: AppBar(
+          title: Text('Network'),
+        ),
+        body: Center(
+            child:  ListView(
+              // Important: Remove any padding from the ListView.
+              padding: EdgeInsets.zero,
+              children: <Widget>[
+                DrawerHeader(
+                  child: Text('Finding Devices'),
+                  decoration: BoxDecoration(
+                    color: Colors.blue,
+                  ),
+                ),
+                ListTile(
+                  title: Text('Item 1'),
+                  onTap: () {
+                    // Update the state of the app
+                    // ...
+                    // Then close the drawer
+
+                    Navigator.pop(context);
+                  },
+                ),
+                ListTile(
+                  leading: Icon(Icons.wifi),
+                  title: Text('Network'),
+                  onTap: () {
+                    //Navigator.pop(context);
+                    //Navigator.push(context,
+                        //MaterialPageRoute(builder: (context) => Network_Route()));
+                  },
+                ),
+                ListTile(
+                  title: Text('About'),
+                  onTap: () {
+                    Navigator.pop(context);
+                    //Navigator.push(context,
+                       // MaterialPageRoute(builder: (context) => About_us()));
+                  },
+                ),
+              ],
+            ),
+        ),
     );
   }
 }

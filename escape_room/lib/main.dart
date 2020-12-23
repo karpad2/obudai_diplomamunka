@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'pages/about.dart';
-import 'pages/network.dart';
+import 'package:escape_room/pages/about.dart';
+import 'package:escape_room/pages/network.dart';
 
 void main() => runApp(MyApp());
 
@@ -18,6 +18,7 @@ class MyApp extends StatelessWidget {
 
 class MyHomePage extends StatelessWidget {
   final String title;
+  //PackageInfo packageInfo = await PackageInfo.fromPlatform();
 
   MyHomePage({Key key, this.title}) : super(key: key);
 
@@ -25,7 +26,7 @@ class MyHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text(title)),
-      body: Center(child: Text('My Page!')),
+      body: Center(child: Text('My Main page!')),
       drawer: Drawer(
         // Add a ListView to the drawer. This ensures the user can scroll
         // through the options in the drawer if there isn't enough vertical
@@ -51,7 +52,8 @@ class MyHomePage extends StatelessWidget {
               },
             ),
             ListTile(
-              title: Text('Network'),
+              leading: Icon(Icons.wifi),
+              title: Text('Networks'),
               onTap: () {
                 //Navigator.pop(context);
                 Navigator.push(context,
@@ -61,10 +63,13 @@ class MyHomePage extends StatelessWidget {
             ListTile(
               title: Text('About'),
               onTap: () {
-                //Navigator.pop(context);
+                Navigator.pop(context);
                 Navigator.push(context,
                     MaterialPageRoute(builder: (context) => About_us()));
               },
+            ),
+            SizedBox(
+              height: 80,
             ),
           ],
         ),
