@@ -1,30 +1,39 @@
 import 'package:flutter/material.dart';
 import 'package:escape_room/pages/about.dart';
 import 'package:escape_room/pages/network.dart';
+import 'package:escape_room/pages/users.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(MyApplication());
 
-class MyApp extends StatelessWidget {
+class MyApplication extends StatelessWidget {
   final appTitle = 'Escape Room';
-
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return new MaterialApp(
       title: appTitle,
-      home: MyHomePage(title: appTitle),
+      theme: new ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: new MyApp(),
     );
   }
 }
 
-class MyHomePage extends StatelessWidget {
-  final String title;
-  //PackageInfo packageInfo = await PackageInfo.fromPlatform();
+class MyApp extends StatefulWidget {
+  @override
+  _MyApp createState() => _MyApp();
+}
 
-  MyHomePage({Key key, this.title}) : super(key: key);
+class _MyApp extends State<MyApp> {
+  String title = "Escape Room";
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return new Scaffold(
       appBar: AppBar(title: Text(title)),
       body: Center(child: Text('My Main page!')),
       drawer: Drawer(
@@ -42,14 +51,14 @@ class MyHomePage extends StatelessWidget {
               ),
             ),
             ListTile(
-              title: Text('Item 1'),
+              leading: Icon(Icons.account_box),
+              title: Text('Users'),
               onTap: () {
-                // Update the state of the app
-                // ...
-                // Then close the drawer
-
-                Navigator.pop(context);
+                Navigator.push(
+                    context, MaterialPageRoute(builder: (context) => Users()));
               },
+              //Navigator.pop(context);
+              //},
             ),
             ListTile(
               leading: Icon(Icons.wifi),

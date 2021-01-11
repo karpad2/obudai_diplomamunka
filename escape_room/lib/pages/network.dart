@@ -5,13 +5,36 @@ import 'dart:developer';
 import 'package:ping_discover_network/ping_discover_network.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
-
 import 'package:flutter/material.dart';
 //import 'package:wifi/wifi.dart';
 
+class Network_Route extends StatefulWidget {
+  Network_Route({Key key}) : super(key: key);
 
+  @override
+  _Network_Route createState() => _Network_Route();
+}
 
-class Network_Route extends StatelessWidget {
+class _Network_Route extends State<Network_Route> {
+  //Future<Album> futureAlbum;
+  bool loading = false;
+
+  @override
+  void initState() {
+    super.initState();
+    getDataFromUi();
+    //futureAlbum = fetchAlbum();
+  }
+
+  getDataFromUi() async {
+    loading = false;
+    //await ApiData.getData();
+    setState(() {
+      loading = true;
+      main();
+    });
+  }
+
   void main() async {
     const port = 80;
     final stream = NetworkAnalyzer.discover2(
@@ -34,49 +57,10 @@ class Network_Route extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('Network'),
+          title: Text("Hálózat"),
         ),
         body: Center(
-            child:  ListView(
-              // Important: Remove any padding from the ListView.
-              padding: EdgeInsets.zero,
-              children: <Widget>[
-                DrawerHeader(
-                  child: Text('Finding Devices'),
-                  decoration: BoxDecoration(
-                    color: Colors.blue,
-                  ),
-                ),
-                ListTile(
-                  title: Text('Item 1'),
-                  onTap: () {
-                    // Update the state of the app
-                    // ...
-                    // Then close the drawer
-
-                    Navigator.pop(context);
-                  },
-                ),
-                ListTile(
-                  leading: Icon(Icons.wifi),
-                  title: Text('Network'),
-                  onTap: () {
-                    //Navigator.pop(context);
-                    //Navigator.push(context,
-                        //MaterialPageRoute(builder: (context) => Network_Route()));
-                  },
-                ),
-                ListTile(
-                  title: Text('About'),
-                  onTap: () {
-                    Navigator.pop(context);
-                    //Navigator.push(context,
-                       // MaterialPageRoute(builder: (context) => About_us()));
-                  },
-                ),
-              ],
-            ),
-        ),
-    );
+          child: Text('Hálózat'),
+        ));
   }
 }
