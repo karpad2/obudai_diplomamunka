@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="07098684-3b2d-4877-80a0-61eaec99b5b6" name="Default Changelist" comment="" />
+    <list default="true" id="07098684-3b2d-4877-80a0-61eaec99b5b6" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/server/routes/command.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/routes/database.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/routes/detect_network.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -30,7 +36,7 @@
     <property name="DatabaseDriversLRU" value="mongo" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/escape-room/package.json" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -52,6 +58,8 @@
       <option name="presentableId" value="Default" />
       <updated>1608057240889</updated>
       <workItem from="1608057241969" duration="1587000" />
+      <workItem from="1610734576482" duration="31000" />
+      <workItem from="1610789085494" duration="1683000" />
     </task>
     <servers />
   </component>

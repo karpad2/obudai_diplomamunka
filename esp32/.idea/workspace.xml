@@ -28,19 +28,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="904ed95d-bab2-4bdc-8b42-514d49f74a80" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/esp32.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/esp32_software/Filesystem.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/esp32_software/config.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/esp32_software/networking.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/esp32_software/server_config.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/esp32_software/spiffs/log.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/esp32_software/spiffs/settings.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../escape_room/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../escape_room/lib/main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../escape_room/lib/pages/network.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../escape_room/lib/pages/network.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../escape_room/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../escape_room/pubspec.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../escape_room/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/../escape_room/pubspec.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../server/routes/command.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../server/routes/database.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../server/routes/detect_network.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/esp32_software/Filesystem.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/esp32_software/config.h" beforeDir="false" afterPath="$PROJECT_DIR$/esp32_software/config.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/esp32_software/esp32_software.ino" beforeDir="false" afterPath="$PROJECT_DIR$/esp32_software/esp32_software.ino" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/esp32_software/networking.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/esp32_software/server_config.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/esp32_software/spiffs/log.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/esp32_software/spiffs/settings.json" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,14 +73,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="cf.first.check.clang-format" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
-  </component>
-  <component name="RunManager">
-    <configuration default="true" type="GradleAppRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="com.jetbrains.cidr.cpp.gradle.execution.GradleNativeBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -91,6 +84,9 @@
       <option name="presentableId" value="Default" />
       <updated>1610185825149</updated>
       <workItem from="1610185826280" duration="4767000" />
+      <workItem from="1611047268321" duration="100000" />
+      <workItem from="1611047388878" duration="545000" />
+      <workItem from="1611047975939" duration="56000" />
     </task>
     <servers />
   </component>
@@ -107,28 +103,31 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="589" y="349" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1610186054392">
+    <state x="589" y="349" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1611048012737">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state x="589" y="349" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040/1920.0.1280.984@0.0.1920.1040" timestamp="1611048012737" />
     <state x="589" y="349" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1610186054392" />
     <state x="690" y="266" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1610198864793">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="266" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040/1920.0.1280.984@0.0.1920.1040" timestamp="1610198864793" />
-    <state x="915" y="455" key="FileChooserDialogImpl" timestamp="1610197754414">
+    <state x="915" y="455" key="FileChooserDialogImpl" timestamp="1611047903280">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="915" y="455" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1280.984@0.0.1920.1040" timestamp="1610197754414" />
+    <state x="915" y="455" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1280.984@0.0.1920.1040" timestamp="1611047903280" />
     <state x="915" y="455" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1610185851931" />
     <state x="540" y="254" key="IDE.errors.dialog" timestamp="1610186118439">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="540" y="254" key="IDE.errors.dialog/0.0.1920.1040@0.0.1920.1040" timestamp="1610186118439" />
-    <state x="636" y="329" key="SettingsEditor" timestamp="1610186044054">
+    <state x="636" y="329" key="SettingsEditor" timestamp="1611047368459">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state x="636" y="329" key="SettingsEditor/0.0.1920.1040/1920.0.1280.984@0.0.1920.1040" timestamp="1611047368459" />
     <state x="636" y="329" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1610186044054" />
     <state x="632" y="333" key="com.vladsch.clionarduinoplugin.settings.ProjectSettingsDialog" timestamp="1610197743392">
       <screen x="0" y="0" width="1920" height="1040" />
