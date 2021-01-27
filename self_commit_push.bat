@@ -1,5 +1,7 @@
+echo "self commit & push"
+
+mysqldump --opt -u root esp32project > ./db/esp32project.sql
+
 git add -A
 git commit -a -m "Auto commit"
 git push
-
-mysqldump --opt -u root esp32project > esp32project.sql
