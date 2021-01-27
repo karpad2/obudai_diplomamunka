@@ -1,0 +1,13 @@
+
+
+{
+  "factory": {
+    "mode": ["RFID","Reset","Relay"],
+    "status": true
+  },
+  "mode": [],
+  "status": true
+
+
+
+}
