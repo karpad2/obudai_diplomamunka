@@ -1,6 +1,9 @@
 <?php
 session_start();
 const SALT=123456789;
+const GET_RESULT=0;
+const GET_INSERT_ID=1;
+
 define("website_name","ESP32-project");
 $conn = new mysqli("localhost","root","","esp32project");
 
@@ -28,10 +31,8 @@ function login_in($username,$password)
         $_SESSION["user"]=$res_acc;
         $sql="update users set ip_address=".get_ipaddress()." where user_id=".$_SESSION["user"]["user_id"].";";
         $res=e_sql($sql);
-        if(mysqli_affected_rows($conn)>0)
-        {
         header("index.php?mod=dashboard");
-        }
+
 
     }
 
@@ -70,7 +71,7 @@ function logout()
     header("index.php");
 }
 
-function e_sql($sql)
+function e_sql($sql,$mod=GET_RESULT)
 {
     $conn = new mysqli("localhost","root","","esp32project");
 
@@ -82,11 +83,26 @@ function e_sql($sql)
     else{
         $uid=1;
     }
-    $sql2="insert into log (user_id,logtext) values ('$uid','".mysqli_escape_string($conn,$sql)."')";
-    $_res=mysqli_query($conn,$sql2);
+    if (!str_contains($sql,"config"))
+        {
+            $sql2="insert into log (user_id,logtext) values ('$uid','".mysqli_escape_string($conn,$sql)."')";
+            $_res=mysqli_query($conn,$sql2);
+        }
     //echo "im here:".$sql;
     $var= mysqli_query($conn,$sql)  or die(mysqli_error($conn));
+    if($mod==GET_RESULT)
+    {
+
+    }
+    else if($mod==GET_INSERT_ID)
+    {
+        $var= mysqli_insert_id($conn);
+
+    }
+    $conn->close();
     return $var;
+
+
 }
 function get_config_text($name)
 {
