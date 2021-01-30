@@ -20,6 +20,9 @@ else {
         case "programs":
             include("parts/programs.php");
             break;
+        case "devices":
+            include("parts/devices.php");
+            break;
         case "programing_interface":
             include("parts/programing_ui.php");
             break;

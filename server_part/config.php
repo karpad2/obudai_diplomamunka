@@ -95,6 +95,8 @@ function e_sql($sql,$mod=GET_RESULT)
     //echo "im here:".$sql;
     $var= mysqli_query($conn,$sql)  or die(mysqli_error($conn));
     if($mod==GET_INSERT_ID)  $var= mysqli_insert_id($conn);
+   // var_dump($var);
+    //die("");
     $conn->close();
     return $var;
 }
