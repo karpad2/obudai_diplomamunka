@@ -2,19 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f7e0d64a-fc7b-4c34-b905-d07ec62df082" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../self_commit_push.bat" beforeDir="false" afterPath="$PROJECT_DIR$/../self_commit_push.bat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/js/script.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/parts/config_editor.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/parts/devices.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/parts/escape_rooms.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/parts/programing_ui.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/parts/programs.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../index.docx" beforeDir="false" afterPath="$PROJECT_DIR$/../index.docx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/1c57877e-7a98-42b5-9b8f-f4c4da6b5101.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/1c57877e-7a98-42b5-9b8f-f4c4da6b5101/storage_v2/_src_/schema/information_schema.FNRwLQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/esp32project.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config.php" beforeDir="false" afterPath="$PROJECT_DIR$/config.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/parts/ajax.php" beforeDir="false" afterPath="$PROJECT_DIR$/parts/ajax.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parts/dashboard.php" beforeDir="false" afterPath="$PROJECT_DIR$/parts/dashboard.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parts/footer.php" beforeDir="false" afterPath="$PROJECT_DIR$/parts/footer.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/parts/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/parts/header.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parts/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/parts/login.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parts/welcome.php" beforeDir="false" afterPath="$PROJECT_DIR$/parts/welcome.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,11 +27,20 @@
   <component name="ComposerSettings">
     <execution />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="ProjectId" id="1nhBNpJ1W2xzayAQIaqRN7I6t81" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -37,7 +49,7 @@
   <component name="PropertiesComponent">
     <property name="DatabaseDriversLRU" value="mariadb" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.highlight.mappings" value="true" />
     <property name="WebServerToolWindowPanel.toolwindow.highlight.symlinks" value="true" />
     <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
@@ -55,7 +67,10 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1611832405135</updated>
-      <workItem from="1611832406217" duration="5835000" />
+      <workItem from="1611832406217" duration="6537000" />
+      <workItem from="1611862855047" duration="596000" />
+      <workItem from="1611923302840" duration="4138000" />
+      <workItem from="1611994434073" duration="8567000" />
     </task>
     <servers />
   </component>
@@ -67,18 +82,38 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="552" y="178" key="#Deployment/0.0.1920.1040/1920.0.1280.984@0.0.1920.1040" timestamp="1611832425082" />
-    <state x="552" y="178" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1611832451833">
+    <state x="337" y="361" key="#SQL_Dialects" timestamp="1611862408097">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="178" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040/1920.0.1280.984@0.0.1920.1040" timestamp="1611832451833" />
-    <state x="461" y="164" key="SettingsEditor" timestamp="1611852671751">
+    <state x="337" y="361" key="#SQL_Dialects/0.0.1920.1040/1920.0.1280.984@0.0.1920.1040" timestamp="1611862408097" />
+    <state x="678" y="178" key="#Servers" timestamp="1611923471283">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="461" y="164" key="SettingsEditor/0.0.1920.1040/1920.0.1280.984@0.0.1920.1040" timestamp="1611852671751" />
-    <state x="803" y="292" width="915" height="455" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog" timestamp="1611835585918">
+    <state x="678" y="178" key="#Servers/0.0.1920.1040/1920.0.1280.984@0.0.1920.1040" timestamp="1611923471283" />
+    <state x="726" y="386" key="#Updates" timestamp="1611999594052">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="803" y="292" width="915" height="455" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/0.0.1920.1040/1920.0.1280.984@0.0.1920.1040" timestamp="1611835585918" />
+    <state x="726" y="386" key="#Updates/0.0.1920.1040/1920.0.1280.984@0.0.1920.1040" timestamp="1611999594052" />
+    <state x="552" y="178" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1611923482678">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="552" y="178" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040/1920.0.1280.984@0.0.1920.1040" timestamp="1611923482678" />
+    <state x="795" y="443" key="NewPhpFileDialog" timestamp="1612000238220">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="795" y="443" key="NewPhpFileDialog/0.0.1920.1040/1920.0.1280.984@0.0.1920.1040" timestamp="1612000238220" />
+    <state x="461" y="164" key="SettingsEditor" timestamp="1611923829301">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="461" y="164" key="SettingsEditor/0.0.1920.1040/1920.0.1280.984@0.0.1920.1040" timestamp="1611923829301" />
+    <state x="832" y="364" key="cloudConfig.SelfSettingsDialog" timestamp="1611923790354">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="832" y="364" key="cloudConfig.SelfSettingsDialog/0.0.1920.1040/1920.0.1280.984@0.0.1920.1040" timestamp="1611923790354" />
+    <state x="803" y="292" width="915" height="455" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog" timestamp="1612002003598">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="803" y="292" width="915" height="455" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/0.0.1920.1040/1920.0.1280.984@0.0.1920.1040" timestamp="1612002003598" />
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1611834152316">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

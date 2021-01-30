@@ -1,8 +1,8 @@
--- MariaDB dump 10.17  Distrib 10.4.14-MariaDB, for Win64 (AMD64)
+-- MariaDB dump 10.18  Distrib 10.4.17-MariaDB, for Win64 (AMD64)
 --
 -- Host: localhost    Database: esp32project
 -- ------------------------------------------------------
--- Server version	10.4.14-MariaDB
+-- Server version	10.4.17-MariaDB
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -67,6 +67,32 @@ INSERT INTO `devices` VALUES (1,'ESP32','relay','192.168.1.1',NULL),(2,'ESP32','
 UNLOCK TABLES;
 
 --
+-- Table structure for table `escape_rooms`
+--
+
+DROP TABLE IF EXISTS `escape_rooms`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `escape_rooms` (
+  `room_id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `room_name` varchar(255) COLLATE utf8_general_nopad_ci NOT NULL DEFAULT 'Room',
+  PRIMARY KEY (`room_id`),
+  KEY `escape_rooms_users_user_id_fk` (`user_id`),
+  CONSTRAINT `escape_rooms_users_user_id_fk` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_nopad_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `escape_rooms`
+--
+
+LOCK TABLES `escape_rooms` WRITE;
+/*!40000 ALTER TABLE `escape_rooms` DISABLE KEYS */;
+/*!40000 ALTER TABLE `escape_rooms` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `log`
 --
 
@@ -80,7 +106,7 @@ CREATE TABLE `log` (
   PRIMARY KEY (`log_id`),
   KEY `log_user__fk` (`user_id`),
   CONSTRAINT `log_user__fk` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=64 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=73 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -89,7 +115,7 @@ CREATE TABLE `log` (
 
 LOCK TABLES `log` WRITE;
 /*!40000 ALTER TABLE `log` DISABLE KEYS */;
-INSERT INTO `log` VALUES (1,'',1),(2,'',1),(3,'insert into devices (device_name,device_mode,ip_address) values(\'ESP32\',\'relay\',\'192.168.1.1\')',1),(4,'insert into devices (device_name,device_mode,ip_address) values(\'ESP32\',\'relay\',\'192.168.1.1\')',1),(5,'insert into devices (device_name,device_mode,ip_address) values(\'ESP32\',\'relay\',\'192.168.1.1\')',1),(6,'select config_text from config where config_name=\'welcome_text\'',1),(7,'select config_text from config where config_name=\'welcome_text\'',1),(8,'select config_text from config where config_name=\'welcome_text\'',1),(9,'select config_text from config where config_name=\'welcome_text\'',1),(10,'select config_text from config where config_name=\'welcome_text\'',1),(11,'select config_text from config where config_name=\'welcome_text\'',1),(12,'select config_text from config where config_name=\'welcome_text\'',1),(13,'select config_text from config where config_name=\'welcome_text\'',1),(14,'select config_text from config where config_name=\'welcome_text\'',1),(15,'select config_text from config where config_name=\'welcome_text\'',1),(16,'select config_text from config where config_name=\'welcome_text\'',1),(17,'select config_text from config where config_name=\'welcome_text\'',1),(18,'select config_text from config where config_name=\'welcome_text\'',1),(19,'select config_text from config where config_name=\'welcome_text\'',1),(20,'select config_text from config where config_name=\'welcome_text\'',1),(21,'select config_text from config where config_name=\'welcome_text\'',1),(22,'select config_text from config where config_name=\'welcome_text\'',1),(23,'select config_text from config where config_name=\'welcome_text\'',1),(24,'select config_text from config where config_name=\'welcome_text\'',1),(25,'select config_text from config where config_name=\'welcome_text\'',1),(26,'select config_text from config where config_name=\'welcome_text\'',1),(27,'select config_text from config where config_name=\'welcome_text\'',1),(28,'select config_text from config where config_name=\'welcome_text\'',1),(29,'select config_text from config where config_name=\'welcome_text\'',1),(30,'select config_text from config where config_name=\'welcome_text\'',1),(31,'select config_text from config where config_name=\'welcome_text\'',1),(32,'select config_text from config where config_name=\'welcome_text\'',1),(33,'select config_text from config where config_name=\'welcome_text\'',1),(34,'select config_text from config where config_name=\'welcome_text\'',1),(35,'select config_text from config where config_name=\'welcome_text\'',1),(36,'select config_text from config where config_name=\'welcome_text\'',1),(37,'select config_text from config where config_name=\'welcome_text\'',1),(38,'select config_text from config where config_name=\'welcome_text\'',1),(39,'select config_text from config where config_name=\'welcome_text\'',1),(40,'select config_text from config where config_name=\'welcome_text\'',1),(41,'select config_text from config where config_name=\'welcome_text\'',1),(42,'select config_text from config where config_name=\'welcome_text\'',1),(43,'select config_text from config where config_name=\'welcome_text\'',1),(44,'select config_text from config where config_name=\'welcome_text\'',1),(45,'select config_text from config where config_name=\'welcome_text\'',1),(46,'select config_text from config where config_name=\'welcome_text\'',1),(47,'select config_text from config where config_name=\'welcome_text\'',1),(48,'select config_text from config where config_name=\'welcome_text\'',1),(49,'select config_text from config where config_name=\'welcome_text\'',1),(50,'select config_text from config where config_name=\'welcome_text\'',1),(51,'select config_text from config where config_name=\'welcome_text\'',1),(52,'select config_text from config where config_name=\'welcome_text\'',1),(53,'select config_text from config where config_name=\'welcome_text\'',1),(54,'select config_text from config where config_name=\'welcome_text\'',1),(55,'select config_text from config where config_name=\'about_us\'',1),(56,'select config_text from config where config_name=\'welcome_text\'',1),(57,'select config_text from config where config_name=\'welcome_text\'',1),(58,'select config_text from config where config_name=\'welcome_text\'',1),(59,'select config_text from config where config_name=\'welcome_text\'',1),(60,'insert into devices (device_name,device_mode,ip_address) values(\'ESP32\',\'relay\',\'::1\')',1),(61,'insert into devices (device_name,device_mode,ip_address) values(\'ESP32\',\'relay\',\'::1\')',1),(62,'select config_text from config where config_name=\'website-name\'',1),(63,'select config_text from config where config_name=\'website-name\'',1);
+INSERT INTO `log` VALUES (1,'Select username from users where username=\'karpad2\';',1),(2,'insert into users (username,password) values (\'karpad2\',\'md5(\'123456789asdfghjkl123456789\')\')',1),(3,'Select username from users where username=\'karpad2\';',1),(4,'insert into users (username,password) values (\'karpad2\',md5(\'123456789asdfghjkl123456789\'))',1),(5,'Select username from users where username=\'karpad2\';',1),(6,'Select username from users where username=\'karpad2\';',1),(7,'Select username from users where username=\'karpad2\';',1),(8,'Select username from users where username=\'karpad2\';',1),(9,'Select username from users where username=\'karpad2\';',1),(10,'Select username from users where username=\'karpad2\';',1),(11,'select * from users where username=\'karpad2\' and password=md5(\'123456789asdfghjkl123456789\');',1),(12,'select * from users where username=\'karpad2\' and password=md5(\'123456789asdfghjkl123456789\');',1),(13,'select * from users where username=\'karpad2\' and password=md5(\'123456789asdfghjkl123456789\');',1),(14,'select * from users where username=\'karpad2\' and password=md5(\'123456789asdfghjkl123456789\');',1),(15,'select * from users where username=\'karpad2\' and password=md5(\'123456789asdfghjkl123456789\');',1),(16,'select * from users where username=\'karpad2\' and password=md5(\'123456789asdfghjkl123456789\');',1),(17,'select * from users where username=\'karpad2\' and password=md5(\'123456789asdfghjkl123456789\');',1),(18,'select * from users where username=\'karpad2\' and password=md5(\'123456789asdfghjkl123456789\');',1),(19,'select * from users where username=\'karpad2\' and password=md5(\'123456789asdfghjkl123456789\');',1),(20,'select * from users where username=\'karpad2\' and password=md5(\'123456789asdfghjkl123456789\');',1),(21,'select * from users where username=\'karpad2\' and password=md5(\'123456789asdfghjkl123456789\');',1),(22,'select * from users where username=\'karpad2\' and password=md5(\'123456789asdfghjkl123456789\');',1),(23,'select * from users where username=\'karpad2\' and password=md5(\'123456789asdfghjkl123456789\');',1),(24,'select * from users where username=\'karpad2\' and password=md5(\'123456789asdfghjkl123456789\');',1),(25,'select * from users where username=\'karpad2\' and password=md5(\'123456789asdfghjkl123456789\');',1),(26,'select * from users where username=\'karpad2\' and password=md5(\'123456789asdfghjkl123456789\');',1),(27,'update users set ip_address=::1 where user_id=;',1),(28,'select * from users where username=\'karpad2\' and password=md5(\'123456789asdfghjkl123456789\');',1),(29,'update users set ip_address=::1 where user_id=;',1),(30,'select * from users where username=\'karpad2\' and password=md5(\'123456789asdfghjkl123456789\');',1),(31,'update users set ip_address=::1 where user_id=;',1),(32,'select * from users where username=\'karpad2\' and password=md5(\'123456789asdfghjkl123456789\');',1),(33,'update users set ip_address=::1 where user_id=;',1),(34,'select * from users where username=\'karpad2\' and password=md5(\'123456789asdfghjkl123456789\');',1),(35,'update users set ip_address=::1 where user_id=;',1),(36,'select * from users where username=\'karpad2\' and password=md5(\'123456789asdfghjkl123456789\');',1),(37,'update users set ip_address=\'::1\' where user_id=\'\';',1),(38,'select * from users where username=\'karpad2\' and password=md5(\'123456789asdfghjkl123456789\');',1),(39,'update users set ip_address=\'::1\' where user_id=\'\';',1),(40,'select * from users where username=\'karpad2\' and password=md5(\'123456789asdfghjkl123456789\');',1),(41,'update users set ip_address=\'::1\' where user_id=\'\';',1),(42,'select * from users where username=\'karpad2\' and password=md5(\'123456789asdfghjkl123456789\');',1),(43,'update users set ip_address=\'::1\' where user_id=\'\';',1),(44,'select * from users where username=\'karpad2\' and password=md5(\'123456789asdfghjkl123456789\');',1),(45,'update users set ip_address=\'::1\' where user_id=\'\';',1),(46,'select * from users where username=\'karpad2\' and password=md5(\'123456789asdfghjkl123456789\');',1),(47,'update users set ip_address=\'::1\' where user_id=\'\';',1),(48,'select * from users where username=\'karpad2\' and password=md5(\'123456789asdfghjkl123456789\');',1),(49,'update users set ip_address=\'::1\' where user_id=\'\';',1),(50,'select * from users where username=\'karpad2\' and password=md5(\'123456789asdfghjkl123456789\');',1),(51,'update users set ip_address=\'192.168.1.1\' where user_id=\'\';',1),(52,'select * from users where username=\'karpad2\' and password=md5(\'123456789asdfghjkl123456789\');',1),(53,'update users set ip_address=\'192.168.1.1\' where user_id=\'\';',1),(54,'select * from users where username=\'karpad2\' and password=md5(\'123456789asdfghjkl123456789\');',1),(55,'update users set ip_address=\'192.168.1.1\' where user_id=\'3\';',3),(56,'select * from users where username=\'karpad2\' and password=md5(\'123456789asdfghjkl123456789\');',3),(57,'update users set ip_address=\'192.168.1.1\' where user_id=\'3\';',3),(58,'select * from users where username=\'karpad2\' and password=md5(\'123456789asdfghjkl123456789\');',3),(59,'update users set ip_address=\'192.168.1.1\' where user_id=\'3\';',3),(60,'select * from programs where user_id=\'3\'',3),(61,'select * from programs where user_id=\'3\'',3),(62,'select * from programs where user_id=\'3\'',3),(63,'select * from programs where user_id=\'3\'',3),(64,'select * from programs where user_id=\'3\'',3),(65,'select * from programs where user_id=\'3\'',3),(66,'select * from programs where user_id=\'3\'',3),(67,'select * from users where username=\'karpad2\' and password=md5(\'123456789asdfghjkl123456789\');',1),(68,'update users set ip_address=\'192.168.1.1\' where user_id=\'3\';',3),(69,'select * from users where username=\'karpad2\' and password=md5(\'123456789asdfghjkl123456789\');',1),(70,'update users set ip_address=\'192.168.1.1\' where user_id=\'3\';',3),(71,'select * from users where username=\'karpad2\' and password=md5(\'123456789asdfghjkl123456789\');',1),(72,'update users set ip_address=\'192.168.1.1\' where user_id=\'3\';',3);
 /*!40000 ALTER TABLE `log` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -134,8 +160,11 @@ CREATE TABLE `programs` (
   `program_id` int(11) NOT NULL AUTO_INCREMENT,
   `program_name` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'Program',
   `user_id` int(11) NOT NULL,
+  `room_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`program_id`),
   KEY `programs_users_user_id_fk` (`user_id`),
+  KEY `programs_escape_rooms_room_id_fk` (`room_id`),
+  CONSTRAINT `programs_escape_rooms_room_id_fk` FOREIGN KEY (`room_id`) REFERENCES `escape_rooms` (`room_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `programs_users_user_id_fk` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -190,8 +219,9 @@ DROP TABLE IF EXISTS `tasks`;
 CREATE TABLE `tasks` (
   `task_id` int(11) NOT NULL AUTO_INCREMENT,
   `task_name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `active` int(11) DEFAULT NULL,
   PRIMARY KEY (`task_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -200,6 +230,7 @@ CREATE TABLE `tasks` (
 
 LOCK TABLES `tasks` WRITE;
 /*!40000 ALTER TABLE `tasks` DISABLE KEYS */;
+INSERT INTO `tasks` VALUES (1,'relay_on',1),(2,'relay_off',0),(3,'rfid_on',1),(4,'rfid_off',0);
 /*!40000 ALTER TABLE `tasks` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -239,8 +270,9 @@ CREATE TABLE `users` (
   `password` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `date` timestamp NOT NULL DEFAULT current_timestamp(),
   `ip_address` varchar(45) COLLATE utf8_unicode_ci DEFAULT '127.0.0.1',
+  `admin_mod` int(11) DEFAULT 0,
   PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -249,7 +281,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'root',' ','2021-01-23 19:21:51','127.0.0.1'),(2,'esp32',' ','2021-01-24 14:53:29','127.0.0.1');
+INSERT INTO `users` VALUES (1,'root',' ','2021-01-23 19:21:51','127.0.0.1',0),(2,'esp32',' ','2021-01-24 14:53:29','127.0.0.1',0),(3,'karpad2','f961d8d0e488e133589c139716c8885e','2021-01-30 08:16:49','192.168.1.1',0);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -290,4 +322,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-01-28 18:01:19
+-- Dump completed on 2021-01-30 12:30:44

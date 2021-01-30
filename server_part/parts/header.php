@@ -12,16 +12,23 @@
 </head>
 <body>
 
-<header class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
-    <p class="h5 my-0 me-md-auto fw-normal"><?php echo get_config_text("website-name");  ?></p>
+<header class="d-flex text-dark flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+    <a class="h5 my-0 me-md-auto fw-normal" href="index.php"><?php echo get_config_text("website_name");  ?></a>
     <nav class="my-2 my-md-0 me-md-3">
-        <a class="p-2 text-dark" href="#">Features</a>
-        <a class="p-2 text-dark" href="#">Enterprise</a>
-        <a class="p-2 text-dark" href="#">Support</a>
-        <a class="p-2 text-dark" href="#">About us</a>
+        <?php if($_SESSION["logged_in"])
+            echo '<a class="p-2 text-dark" href="index.php?mod=programs">Programs</a><a class="p-2 text-dark" href="#">Enterprise</a>';
+            else
+                echo '<a class="p-2 text-dark" href="#">Features</a>
+            <a class="p-2 text-dark" href="#">Enterprise</a>
+        <a class="p-2 text-dark" href="#">Support</a>';
 
-    <a class="p-2 btn btn-outline-primary" href="index.php?mod=login">Sign in</a>
-    <a class="p-2 btn btn-outline-primary" href="index.php?mod=register">Sign up</a>
+        ?>
+        <a class="p-2 text-dark" href="index.php?mod=about_us">About us</a>
+        <?php if(!$_SESSION["logged_in"])
+            echo '<a class="p-2 btn btn-outline-primary" href="index.php?mod=login">Sign in</a>
+                   <a class="p-2 btn btn-outline-primary" href="index.php?mod=register">Sign up</a>';
+        else  echo '<a class="p-2 btn btn-outline-primary" href="index.php?mod=logout">Sign out</a>';
+        ?>
     </nav>
 </header>
 <main class="container">

@@ -1,5 +1,6 @@
 <?php
 include "config.php";
+//register("karpad2","asdfghjkl","asdfghjkl");
 if(isset($_GET["ajax"]))
 {
 include "parts/ajax.php";
@@ -16,8 +17,15 @@ else {
         case "register":
             include("parts/login.php");
             break;
+        case "programs":
+            include("parts/programs.php");
+            break;
+        case "programing_interface":
+            include("parts/programing_ui.php");
+            break;
             default:
-            include("parts/welcome.php");
+            if($_SESSION["logged_in"])  include("parts/dashboard.php");
+            else include("parts/welcome.php");
     } else {
         include("parts/welcome.php");
     }

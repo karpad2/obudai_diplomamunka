@@ -243,6 +243,20 @@ A szövegben az összefüggésre (3.2) történő hivatkozás, hasonlóan az
 ábrára, táblázatra való hivatkozáshoz történjen. A számozást
 fejezetenként újra kell kezdeni.
 
++------------------------------------------------------------------+
+| Alias /escape_room \"E:/Github/obudai_diplomamunka/server_part\" |
+|                                                                  |
+| \<Directory \"E:/Github/obudai_diplomamunka/server_part\"\>      |
+|                                                                  |
+| AllowOverride AuthConfig                                         |
+|                                                                  |
+| Require local                                                    |
+|                                                                  |
+| ErrorDocument 403 /error/XAMPP_FORBIDDEN.html.var                |
+|                                                                  |
+| \</Directory\>                                                   |
++------------------------------------------------------------------+
+
 Felsorolás
 ----------
 
