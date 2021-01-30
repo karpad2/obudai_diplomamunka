@@ -34,6 +34,7 @@ function login_in($username,$password)
         $res_acc=mysqli_fetch_all($res,MYSQLI_ASSOC);
         $_SESSION["user"]=$res_acc[0];
         $_SESSION["logged_in"]=true;
+        $_SESSION["user"]["admin"]= $_SESSION["user"]["admin_mod"]=="1";
        // var_dump($_SESSION);
         if($_SESSION["user"]["user_id"]=="1") $_SESSION["admin"]=true;
         $sql="update users set ip_address='".get_ipaddress()."' where user_id='".$_SESSION["user"]["user_id"]."';";

@@ -16,7 +16,8 @@
     <a class="h5 my-0 me-md-auto fw-normal" href="index.php"><?php echo get_config_text("website_name");  ?></a>
     <nav class="my-2 my-md-0 me-md-3">
         <?php if($_SESSION["logged_in"])
-            echo '<a class="p-2 text-dark" href="index.php?mod=programs">Programs</a><a class="p-2 text-dark" href="#">Enterprise</a>';
+            echo '<a class="p-2 text-dark" href="index.php?mod=programs">Programs</a><a class="p-2 text-dark" href="#">Enterprise</a>
+                    <a class="p-2 text-dark" href="index.php?mod=devices">Devices</a>';
             else
                 echo '<a class="p-2 text-dark" href="#">Features</a>
             <a class="p-2 text-dark" href="#">Enterprise</a>

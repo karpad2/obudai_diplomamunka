@@ -1,4 +1,5 @@
-![](media/image1.jpeg){width="0.6375in" height="1.2416666666666667in"}
+![](./wiki/images/media/image1.jpeg){width="0.6375in"
+height="1.2416666666666667in"}
 
 **Szabaduló szoba vezérlő szoftver tervezése**
 
@@ -6,7 +7,8 @@
 >
 > **2020.** Hallgató törzskönyvi száma: **/KVI**
 
-![](media/image1.jpeg){width="0.6375in" height="1.2416666666666667in"}
+![](./wiki/images/media/image1.jpeg){width="0.6375in"
+height="1.2416666666666667in"}
 
 > **HALLGATÓI NYILATKOZAT**
 

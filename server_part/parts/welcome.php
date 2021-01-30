@@ -1,7 +1,4 @@
 <?php
-echo "<h1>Welcome on our website</h1>";
-
-
 if(isset($_GET["mod"]))
 {
     switch ($_GET["mod"])

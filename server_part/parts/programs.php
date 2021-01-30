@@ -26,9 +26,9 @@ if($result->num_rows>0)
 }
 else
 {
-    echo "<a href=\"#\" class=\"list-group-item list-group-item-action\">You don't have any program yet.</a>";
+    //echo "<a href=\"#\" class=\"list-group-item list-group-item-action\">You don't have any program yet.</a>";
 }
-echo "</ul>";
+echo "</table>";
 ?>
 
 

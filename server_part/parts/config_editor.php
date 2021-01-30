@@ -1,7 +1,7 @@
 <?php
 include "../config.php";
 
-if(!isset($_SESSION["admin"])) die("");
+if(!$_SESSION["user"][""]) die("");
 
 echo '<div id="editor"></div>';
 ?>

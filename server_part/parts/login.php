@@ -1,6 +1,7 @@
 <?php
+//TODO Yolo
 $login_form='<main class="form-signin">
-<form action="index.php?mod=login" method="post">
+<form action="index.php?mod=login" method="post"> 
 <div class="simple-login-container">
 
     <h2>Login Form</h2>
@@ -24,7 +25,7 @@ $login_form='<main class="form-signin">
 </form></main>';
 
 
-$login_form2='<main class="form-signin">
+$login_form2='<main class="form-signin text-center">
   <form action="index.php?mod=login" method="POST">
     <input type="hidden" name="login">
     <img class="mb-4" src="/docs/5.0/assets/brand/bootstrap-logo.svg" alt="" width="72" height="57">
@@ -33,12 +34,17 @@ $login_form2='<main class="form-signin">
     <input type="text" id="inputUsername" class="form-control" placeholder="Username" name="username" required autofocus>
     <label for="inputPassword" class="visually-hidden">Password</label>
     <input type="password" id="inputPassword" class="form-control" name="password" placeholder="Password" required>
+    <div class="checkbox mb-3">
+      <label>
+        <input type="hidden" value="remember-me">
+      </label>
+    </div>
     <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
     </form>
 </main>';
 
 $register_form='
-<main class="form-signin">
+<main class="form-signin text-center">
 <form action="index.php?mod=register" method="post">
 <div class="simple-login-container">
     <h2>Register Form</h2>
