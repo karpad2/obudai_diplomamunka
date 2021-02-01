@@ -3,7 +3,7 @@
     <?php
     echo '<table class="table">
     <thead>
-    <tr>
+    <tr> 
       <th scope="col">#</th>
       
     </tr>

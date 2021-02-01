@@ -112,8 +112,20 @@ A fejezetek címeit a kiírt témának megfelelően (konzulensekkel
 egyeztetve) kell megválasztani a 2. és a 3. fejezetben, nem úgy, ahogy
 ebben a mintában szerepelnek!
 
+![ESP32 Hardware Specifications - ESP-WROOM-32
+Chip](./wiki/images/media/image2.jpeg){width="3.65625in"
+height="3.0104166666666665in"}
+
 Hivatkozások
 ------------
+
+![ESP32 Hardware Specifications - Reset Boot Buttons & LED
+Indicators](./wiki/images/media/image3.jpeg){width="4.1875in"
+height="3.15625in"}
+
+![ESP32 Development Board
+Pinout](./wiki/images/media/image4.png){width="5.904861111111111in"
+height="3.6458333333333335in"}
 
 A szakdolgozat a hallgatók önálló munkájaként készül, forrásmunkák, a
 tárgyhoz kapcsolódó szakirodalom természetesen felhasználható. A
@@ -121,11 +133,21 @@ dolgozatból mindenképpen ki kell tűnnie, hogy melyek azok a részek,
 amelyek forrásmunkák felhasználásán alapultak. Ezért minden olyan
 esetben utalni kell a forrásmunkára, amikor a dolgozatban szereplő
 megállapítások, adatok nem a hallgatók önálló megállapításai,
-felmérései, adatgyűjtései alapján keletkeztek. Szó szerint átvett
-anyagrészeket idézőjelben, a forrás megjelölésével kell szerepeltetni. A
-szakirodalomra való hivatkozás úgy történik, hogy a dolgozat végén a
-felhasznált forrásmunkákat sorszámozva közlik, és a szövegben csak a
-vonatkozó irodalom sorszámot jelzik, szögletes zárójelben. Pl. A kérdés
+felmérései, adatgyűjtései
+
+![1KB 128x64 OLED Display RAM Memory
+Map](./wiki/images/media/image5.png){width="5.904861111111111in"
+height="2.9069444444444446in"}
+
+![128x64 Blue I2C OLED
+Display](./wiki/images/media/image6.jpeg){width="2.1770833333333335in"
+height="2.1770833333333335in"}
+
+alapján keletkeztek. Szó szerint átvett anyagrészeket idézőjelben, a
+forrás megjelölésével kell szerepeltetni. A szakirodalomra való
+hivatkozás úgy történik, hogy a dolgozat végén a felhasznált
+forrásmunkákat sorszámozva közlik, és a szövegben csak a vonatkozó
+irodalom sorszámot jelzik, szögletes zárójelben. Pl. A kérdés
 megközelítése \[1\] szerint \.... A fejezetcímhez szakirodalmi
 hivatkozást tenni nem szabad.
 
@@ -238,6 +260,10 @@ Az elméleti érdesség értéke a Brammertz-féle formula szerint \[13\]:
 *v~c~:* forgácsolósebesség \[m/min\],
 
 *r~n~:* éllekerekedés \[μm\].
+
+![Wiring Connections for OLED Display Module with
+ESP32](./wiki/images/media/image11.png){width="5.416666666666667in"
+height="2.2604166666666665in"}
 
 A szerkesztéshez Egyenletszerkesztő alkalmazását javasoljuk.
 
@@ -384,3 +410,7 @@ szakdolgozat szövegi részében hivatkozni kell (1. sz. melléklet).
 2\. sz. melléklet: A termékvisszahívás folyamata.
 
 https://medium.com/\@fmacedoo/standalone-application-with-electron-react-and-sqlite-stack-9536a8b5a7b9
+
+https://lastminuteengineers.com/oled-display-esp32-tutorial/
+
+https://lastminuteengineers.com/multiple-ds18b20-esp32-web-server-tutorial/
