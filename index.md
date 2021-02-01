@@ -1,15 +1,18 @@
 ![](./wiki/images/media/image1.jpeg){width="0.6375in"
 height="1.2416666666666667in"}
 
+**Óbudai Egyetem**
+
+\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+
+**Bánki Donát Gépész és Biztonságtechnikai Mérnöki Kar**
+
 **Szabaduló szoba vezérlő szoftver tervezése**
 
 > **OE-BGK** Hallgató neve: **Kovács Árpád**
 >
 > **2020.** Hallgató törzskönyvi száma: **/KVI**
-
-![](./wiki/images/media/image1.jpeg){width="0.6375in"
-height="1.2416666666666667in"}
-
+>
 > **HALLGATÓI NYILATKOZAT**
 
 Alulírott hallgató kijelentem, hogy a szakdolgozat saját munkám
