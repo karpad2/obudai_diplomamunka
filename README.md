@@ -1,16 +1,26 @@
-![](./wiki/images/media/image1.jpeg){width="0.6375in"
+![](./docs/images/media/image1.jpeg){width="0.6375in"
 height="1.2416666666666667in"}
+
+**Óbudai Egyetem**
+
+\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+
+**Bánki Donát Gépész és Biztonságtechnikai Mérnöki Kar**
 
 **Szabaduló szoba vezérlő szoftver tervezése**
 
 > **OE-BGK** Hallgató neve: **Kovács Árpád**
 >
-> **2020.** Hallgató törzskönyvi száma: **/KVI**
+> **2021.** Hallgató törzskönyvi száma: **/KVI**
 
-![](./wiki/images/media/image1.jpeg){width="0.6375in"
-height="1.2416666666666667in"}
+![](./docs/images/media/image1.jpeg){width="0.6375in"
+height="1.2416666666666667in"} **Óbudai Egyetem**
 
-> **HALLGATÓI NYILATKOZAT**
+\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+
+**Bánki Donát Gépész és Biztonságtechnikai Mérnöki Kar**
+
+**HALLGATÓI NYILATKOZAT**
 
 Alulírott hallgató kijelentem, hogy a szakdolgozat saját munkám
 eredménye, a felhasznált szakirodalmat és eszközöket azonosíthatóan
@@ -53,78 +63,25 @@ Budapest, 2020.
 
 [7. Mellékletek 15](#mellékletek)
 
-A Tartalomjegyzékben a fő- és alfejezetek kerülnek megjelenítésre
-decimális számozással, az oldalszám feltűntetésével. Összeállításakor
-ügyelni kell arra, hogy a fejezetek címe és oldalszáma pontosan
-megegyezzen a dolgozatban szereplő címmel és oldalszámmal. A
-Tartalomjegyzék szerkesztésekor alkalmazható a „Tartalomjegyzék
-beszúrása", amivel a fejezetek és oldalszámok változása aktualizálható
-(„Mezőfrissítés"). Ehhez szükséges a fő- és alfejezetek (Címsor 1,
-Címsor 2, Címsor 3) stílusának beállítása minta szerint.
-
 Bevezetés
 =========
-
-Az anyag legelső része a bevezetés, mely minimum egy oldal legyen,
-terjedelemben az egész Szakdolgozat maximum 10%-a lehet. Tartalmazza a
-téma jelentőségét, aktualitását, a szakdolgozat célkitűzéseit, a
-problémafelvetést valamint a megoldandó probléma megfogalmazását.
-
-Ezen kívül kitérhet a cég, vállalkozás, munkahely rövid bemutatására.
-
-A szöveg szerkesztése legyen A4-es méretű oldalon: fent 4 cm, lent 2,5
-cm, bal és jobb 2,5 cm, 1 cm kötésmargóval, Times New Roman
-betűtípussal, 12 pontméretű betűvel, 1,5-es sortávolsággal. A szöveg
-igazítása sorkizárt. Célszerű a szöveg szerkesztése során minden lap
-alján az 'oldaltörés' beszúrása, mert így kezelhetővé válik a szöveg és
-nyomtatásnál sem csúsznak el az oldalak.
-
-A főfejezetek formázása (Címsor 1): Times New Roman 14 félkövér
-betűtípus, középre zárt bekezdéssel, előtte és utána 6 pt térközzel.
-Minden főfejezetet külön oldalon kell kezdeni. Az alfejezetekhez (Címsor
-2, Címsor 3) alkalmazott betűméret 12 félkövér. A dolgozat fejezetei és
-alfejezetei decimális számrendszerrel jelöltek legyenek, legfeljebb
-három szám mélységig számozódhatnak, előtte és utána 1-1 sor
-kihagyással. Egy alfejezet minimális hossza 1 oldal legyen.
-
-Oldalszám elhelyezése: felül, lapközépen, lapszéltől 20 mm-re, melyet az
-első oldalon (Tartalomjegyzéknél) nem kell feltüntetni.
 
  Szakirodalom elemző feldolgozása
 ================================
 
-Ebben a részben a témával kapcsolatos szakirodalom feldolgozása kerül,
-melynek célja a feladat, téma elméleti hátterének részletes bemutatása.
-Ez terjedelemben az egész szakdolgozat legfeljebb 25-30%-át adhatja ki.
-A hallgatónak a témával kapcsolatos lehető legtöbb irodalmat (de
-legalább 5-8 db.) fel kell használnia: könyv, jegyzet, szakcikk,
-internetes portál, stb. A publikáció hivatkozását az előírásoknak
-megfelelően kell jelölni és megnevezni.
-
-A szöveg szerkesztése legyen A4-es méretű oldalon: fent 4 cm, lent 2,5
-cm, bal és jobb 2,5 mm, 1 cm kötésmargóval, Times New Roman
-betűtípussal, 12 pontméretű betűvel, 1,5-es sortávolsággal. A szöveg
-igazítása sorkizárt. Ez a rész akár több fejezetből és alfejezetből is
-állhat, de a 3-as szintű címsorszámozást lehetőleg kerülni kell. Egy
-alfejezet minimális hossza 1 oldal legyen.
-
-A fejezetek címeit a kiírt témának megfelelően (konzulensekkel
-egyeztetve) kell megválasztani a 2. és a 3. fejezetben, nem úgy, ahogy
-ebben a mintában szerepelnek!
-
 ![ESP32 Hardware Specifications - ESP-WROOM-32
-Chip](./wiki/images/media/image2.jpeg){width="3.65625in"
-height="3.0104166666666665in"}
+Chip](./docs/images/media/image2.jpeg){width="2.8333333333333335in"
+height="2.3328587051618546in"}
 
 Hivatkozások
 ------------
 
 ![ESP32 Hardware Specifications - Reset Boot Buttons & LED
-Indicators](./wiki/images/media/image3.jpeg){width="4.1875in"
-height="3.15625in"}
+Indicators](./docs/images/media/image3.jpeg){width="2.6979166666666665in"
+height="2.033503937007874in"}
 
 ![ESP32 Development Board
-Pinout](./wiki/images/media/image4.png){width="5.904861111111111in"
+Pinout](./docs/images/media/image4.png){width="5.904861111111111in"
 height="3.6458333333333335in"}
 
 A szakdolgozat a hallgatók önálló munkájaként készül, forrásmunkák, a
@@ -136,11 +93,11 @@ megállapítások, adatok nem a hallgatók önálló megállapításai,
 felmérései, adatgyűjtései
 
 ![1KB 128x64 OLED Display RAM Memory
-Map](./wiki/images/media/image5.png){width="5.904861111111111in"
+Map](./docs/images/media/image5.png){width="5.904861111111111in"
 height="2.9069444444444446in"}
 
 ![128x64 Blue I2C OLED
-Display](./wiki/images/media/image6.jpeg){width="2.1770833333333335in"
+Display](./docs/images/media/image6.jpeg){width="2.1770833333333335in"
 height="2.1770833333333335in"}
 
 alapján keletkeztek. Szó szerint átvett anyagrészeket idézőjelben, a
@@ -262,7 +219,7 @@ Az elméleti érdesség értéke a Brammertz-féle formula szerint \[13\]:
 *r~n~:* éllekerekedés \[μm\].
 
 ![Wiring Connections for OLED Display Module with
-ESP32](./wiki/images/media/image11.png){width="5.416666666666667in"
+ESP32](./docs/images/media/image11.png){width="5.416666666666667in"
 height="2.2604166666666665in"}
 
 A szerkesztéshez Egyenletszerkesztő alkalmazását javasoljuk.
@@ -356,6 +313,10 @@ alkalmazhatóságra.
 
  Idegen nyelvű tartalmi összefoglaló
 ===================================
+
+Escape room management software which is based on ESP32, contains admin
+user interface, and multiple features for easier setup, reset, and for
+measuring time.
 
 A magyar nyelvű összefoglalás idegen nyelven történő közlését
 tartalmazza. Az idegen nyelvű tartalmi összefoglaló elkészítése
