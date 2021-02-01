@@ -11,7 +11,7 @@ height="1.2416666666666667in"}
 
 > **OE-BGK** Hallgató neve: **Kovács Árpád**
 >
-> **2020.** Hallgató törzskönyvi száma: **/KVI**
+> **2021.** Hallgató törzskönyvi száma: **/KVI**
 
 **ÓBUDAI EGYETEM**
 
@@ -120,15 +120,15 @@ egyeztetve) kell megválasztani a 2. és a 3. fejezetben, nem úgy, ahogy
 ebben a mintában szerepelnek!
 
 ![ESP32 Hardware Specifications - ESP-WROOM-32
-Chip](./wiki/images/media/image2.jpeg){width="3.65625in"
-height="3.0104166666666665in"}
+Chip](./wiki/images/media/image2.jpeg){width="2.8333333333333335in"
+height="2.3328587051618546in"}
 
 Hivatkozások
 ------------
 
 ![ESP32 Hardware Specifications - Reset Boot Buttons & LED
-Indicators](./wiki/images/media/image3.jpeg){width="4.1875in"
-height="3.15625in"}
+Indicators](./wiki/images/media/image3.jpeg){width="2.6979166666666665in"
+height="2.033503937007874in"}
 
 ![ESP32 Development Board
 Pinout](./wiki/images/media/image4.png){width="5.904861111111111in"
@@ -363,6 +363,10 @@ alkalmazhatóságra.
 
  Idegen nyelvű tartalmi összefoglaló
 ===================================
+
+Escape room management software which is based on ESP32, contains admin
+user interface, and multiple features for easier setup, reset, and for
+measuring time.
 
 A magyar nyelvű összefoglalás idegen nyelven történő közlését
 tartalmazza. Az idegen nyelvű tartalmi összefoglaló elkészítése
