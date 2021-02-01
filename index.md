@@ -13,7 +13,10 @@ height="1.2416666666666667in"}
 >
 > **2021.** Hallgató törzskönyvi száma: **/KVI**
 
-**ÓBUDAI EGYETEM**
+![](./wiki/images/media/image1.jpeg){width="0.6375in"
+height="1.2416666666666667in"} **Óbudai Egyetem**
+
+\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
 
 **Bánki Donát Gépész és Biztonságtechnikai Mérnöki Kar**
 
@@ -60,64 +63,11 @@ Budapest, 2020.
 
 [7. Mellékletek 15](#mellékletek)
 
-A Tartalomjegyzékben a fő- és alfejezetek kerülnek megjelenítésre
-decimális számozással, az oldalszám feltűntetésével. Összeállításakor
-ügyelni kell arra, hogy a fejezetek címe és oldalszáma pontosan
-megegyezzen a dolgozatban szereplő címmel és oldalszámmal. A
-Tartalomjegyzék szerkesztésekor alkalmazható a „Tartalomjegyzék
-beszúrása", amivel a fejezetek és oldalszámok változása aktualizálható
-(„Mezőfrissítés"). Ehhez szükséges a fő- és alfejezetek (Címsor 1,
-Címsor 2, Címsor 3) stílusának beállítása minta szerint.
-
 Bevezetés
 =========
 
-Az anyag legelső része a bevezetés, mely minimum egy oldal legyen,
-terjedelemben az egész Szakdolgozat maximum 10%-a lehet. Tartalmazza a
-téma jelentőségét, aktualitását, a szakdolgozat célkitűzéseit, a
-problémafelvetést valamint a megoldandó probléma megfogalmazását.
-
-Ezen kívül kitérhet a cég, vállalkozás, munkahely rövid bemutatására.
-
-A szöveg szerkesztése legyen A4-es méretű oldalon: fent 4 cm, lent 2,5
-cm, bal és jobb 2,5 cm, 1 cm kötésmargóval, Times New Roman
-betűtípussal, 12 pontméretű betűvel, 1,5-es sortávolsággal. A szöveg
-igazítása sorkizárt. Célszerű a szöveg szerkesztése során minden lap
-alján az 'oldaltörés' beszúrása, mert így kezelhetővé válik a szöveg és
-nyomtatásnál sem csúsznak el az oldalak.
-
-A főfejezetek formázása (Címsor 1): Times New Roman 14 félkövér
-betűtípus, középre zárt bekezdéssel, előtte és utána 6 pt térközzel.
-Minden főfejezetet külön oldalon kell kezdeni. Az alfejezetekhez (Címsor
-2, Címsor 3) alkalmazott betűméret 12 félkövér. A dolgozat fejezetei és
-alfejezetei decimális számrendszerrel jelöltek legyenek, legfeljebb
-három szám mélységig számozódhatnak, előtte és utána 1-1 sor
-kihagyással. Egy alfejezet minimális hossza 1 oldal legyen.
-
-Oldalszám elhelyezése: felül, lapközépen, lapszéltől 20 mm-re, melyet az
-első oldalon (Tartalomjegyzéknél) nem kell feltüntetni.
-
  Szakirodalom elemző feldolgozása
 ================================
-
-Ebben a részben a témával kapcsolatos szakirodalom feldolgozása kerül,
-melynek célja a feladat, téma elméleti hátterének részletes bemutatása.
-Ez terjedelemben az egész szakdolgozat legfeljebb 25-30%-át adhatja ki.
-A hallgatónak a témával kapcsolatos lehető legtöbb irodalmat (de
-legalább 5-8 db.) fel kell használnia: könyv, jegyzet, szakcikk,
-internetes portál, stb. A publikáció hivatkozását az előírásoknak
-megfelelően kell jelölni és megnevezni.
-
-A szöveg szerkesztése legyen A4-es méretű oldalon: fent 4 cm, lent 2,5
-cm, bal és jobb 2,5 mm, 1 cm kötésmargóval, Times New Roman
-betűtípussal, 12 pontméretű betűvel, 1,5-es sortávolsággal. A szöveg
-igazítása sorkizárt. Ez a rész akár több fejezetből és alfejezetből is
-állhat, de a 3-as szintű címsorszámozást lehetőleg kerülni kell. Egy
-alfejezet minimális hossza 1 oldal legyen.
-
-A fejezetek címeit a kiírt témának megfelelően (konzulensekkel
-egyeztetve) kell megválasztani a 2. és a 3. fejezetben, nem úgy, ahogy
-ebben a mintában szerepelnek!
 
 ![ESP32 Hardware Specifications - ESP-WROOM-32
 Chip](./wiki/images/media/image2.jpeg){width="2.8333333333333335in"
