@@ -12,8 +12,12 @@ height="1.2416666666666667in"}
 > **OE-BGK** Hallgató neve: **Kovács Árpád**
 >
 > **2020.** Hallgató törzskönyvi száma: **/KVI**
->
-> **HALLGATÓI NYILATKOZAT**
+
+**ÓBUDAI EGYETEM**
+
+**Bánki Donát Gépész és Biztonságtechnikai Mérnöki Kar**
+
+**HALLGATÓI NYILATKOZAT**
 
 Alulírott hallgató kijelentem, hogy a szakdolgozat saját munkám
 eredménye, a felhasznált szakirodalmat és eszközöket azonosíthatóan
