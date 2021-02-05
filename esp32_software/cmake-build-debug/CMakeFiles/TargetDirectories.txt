@@ -1,0 +1,2 @@
+/home/karpad2/Documents/obudai_diplomamunka/esp32_software/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/karpad2/Documents/obudai_diplomamunka/esp32_software/cmake-build-debug/CMakeFiles/edit_cache.dir

@@ -18,13 +18,27 @@ if(isset($_GET["esp32_welcome"]))
    }
 
 }
-else if(isset($_GET["esp32_status"]) and isset($_GET["device_pass"]))
+else if(isset($_GET["esp32_status"]))
 {
     $assoc=array("esp32id"=>"0","esp32name"=>"Name","Status"=>false);
-    $sql="insert into devices (device_name,device_mode,ip_address) values('ESP32','relay','".get_ipaddress()."')";
+    $sql= "select device_mode,status,io  from devices where device_password='{$_GET["esp32_status"]}'";
     $res=e_sql($sql);
-    echo json_encode($assoc);
+    if($res->num_rows==0) die("hmm missing device");
+    $resi=mysqli_fetch_all($res,MYSQLI_ASSOC)[0];
+
+    if($resi["io"]=="0")
+    {
+
+    }
+    else
+    {
+        $next_status=($resi["status"]=="1" xor 1);
+        $sql="update devices set status='{$next_status}' where device_password='{$_GET["esp32_status"]}';";
+        $res2=e_sql($sql);
+    }
+    echo json_encode($resi);
 }
+/*
 else if(isset($_GET["esp32_status"]))
 {
     $sql="select * from devices where device_password='{$_GET["esp32_status"]}'";
@@ -48,10 +62,10 @@ else if(isset($_GET["esp32_status"]))
 
     }
 
-    $sql="insert into devices (device_name,device_mode,ip_address) values('ESP32','relay','".get_ipaddress()."')";
-    $res=e_sql($sql);
-    echo json_encode($assoc);
-}
+    //$sql="insert into devices (device_name,device_mode,ip_address) values('ESP32','relay','".get_ipaddress()."')";
+    //$res=e_sql($sql);
+    //echo json_encode($assoc);
+}*/
 
 else {}
 
