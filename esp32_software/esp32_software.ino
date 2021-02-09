@@ -3,7 +3,7 @@
 #include <HTTPClient.h>
 #include <ESPmDNS.h>
 #include <WiFi.h>
-#include <String.h>
+
 #include "SPIFFS.h"
 #include <SPI.h>
 //#include <ArduinoJson.h>

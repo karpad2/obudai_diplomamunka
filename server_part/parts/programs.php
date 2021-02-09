@@ -26,7 +26,12 @@ if($result->num_rows>0)
 }
 else
 {
-    //echo "<a href=\"#\" class=\"list-group-item list-group-item-action\">You don't have any program yet.</a>";
+    echo "<tr><td colspan='4'>You don't have any program yet.</td></tr>";
+    echo "<tfoot>
+<tr>
+<td colspan='4'><a href=\"index.php?mod=program&pr_mod=new\">Add program</a></td>
+</tr>
+        </tfoot>";
 }
 echo "</table>";
 ?>

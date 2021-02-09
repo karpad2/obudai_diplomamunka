@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title>Diplomamunka</title>
+  <title>Diplomamunka</title>
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
@@ -12,15 +12,11 @@
     div.column{display: inline-block; vertical-align: top; width: 50%;}
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     ul.task-list{list-style: none;}
-    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
   </style>
-  <!--[if lt IE 9]>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
-  <![endif]-->
 </head>
 <body>
 <header id="title-block-header">
-<h1 class="title">Diplomamunka</h1>
+<h1 class="title">Diplomamunka </h1>
 </header>
 <p><img src="./docs/images/media/image1.jpeg" style="width:0.6375in;height:1.24167in" /></p>
 <p><strong>Óbudai Egyetem</strong></p>
@@ -65,6 +61,27 @@ Szakirodalom elemző feldolgozása</h1>
 <p><img src="./docs/images/media/image5.png" style="width:5.90486in;height:2.90694in" alt="1KB 128x64 OLED Display RAM Memory Map" /></p>
 <p><img src="./docs/images/media/image6.jpeg" style="width:2.17708in;height:2.17708in" alt="128x64 Blue I2C OLED Display" /></p>
 <p>alapján keletkeztek. Szó szerint átvett anyagrészeket idézőjelben, a forrás megjelölésével kell szerepeltetni. A szakirodalomra való hivatkozás úgy történik, hogy a dolgozat végén a felhasznált forrásmunkákat sorszámozva közlik, és a szövegben csak a vonatkozó irodalom sorszámot jelzik, szögletes zárójelben. Pl. A kérdés megközelítése [1] szerint .... A fejezetcímhez szakirodalmi hivatkozást tenni nem szabad.</p>
+<p>Eszköz regisztráció</p>
+<p>Az eszközön lévő kód</p>
+<table>
+<tbody>
+<tr class="odd">
+<td><p>if(esp32_pass=="")</p>
+<p>{</p>
+<p>JSONVar tmp1;</p>
+<p>tmpaddress=web_server+"?ajax&amp;esp32_welcome=reg";</p>
+<p>Serial.println(tmpaddress);</p>
+<p>res=http_sys(tmpaddress);</p>
+<p>tmp1=JSON.parse(res);</p>
+<p>Serial.println(JSON.stringify(tmp1));</p>
+<p>configobj["esp32pass"]=tmp1["pass"];</p>
+<p>Serial.println(JSON.stringify(configobj));</p>
+<p>save_config();</p>
+<p>ESP.restart();}</p>
+<p>}</p></td>
+</tr>
+</tbody>
+</table>
 <h3 id="hivatkozások-sorrendje">Hivatkozások sorrendje</h3>
 <p>A Felhasznált irodalomban szereplő publikációkat nem betűrendi sorrendbe, nem a megjelenés dátumának sorrendjében kell felsorolni, hanem a szövegben történő hivatkozás sorrendje szerint. Tehát a szövegben az első hivatkozás száma [1] és a dolgozat további részeiben egymás után, ahogy következnek. Természetesen, ha a későbbiekben ismét hivatkozni kell egy már számozott publikációra, megtehető.</p>
 <h1 id="saját-munka"><br />
@@ -173,15 +190,15 @@ Idegen nyelvű tartalmi összefoglaló</h1>
 <h1 id="felhasznált-irodalom-vagy-irodalomjegyzék"><br />
 Felhasznált irodalom vagy Irodalomjegyzék</h1>
 <p>Példák az egyes publikációk megnevezésére.</p>
-<p><u>Könyv esetében: Szerző (vagy Szerkesztő): Cím. Kiadó. Hely, Évszám. Oldalszám.</u></p>
+<p><span class="underline">Könyv esetében: Szerző (vagy Szerkesztő): Cím. Kiadó. Hely, Évszám. Oldalszám.</span></p>
 <p>[1] M. Csizmadia Béla: Modell-alkotás. Nemzeti Tankönyvkiadó. Budapest, 2003. p. 21-24.</p>
-<p><u>Szakcikk esetében: Szerző(k): Cím. Folyóirat megnevezése. Megjelenés száma/dátuma. Oldalszám.</u></p>
+<p><span class="underline">Szakcikk esetében: Szerző(k): Cím. Folyóirat megnevezése. Megjelenés száma/dátuma. Oldalszám.</span></p>
 <p>[2] Hervay Péter – Csesznok Sándor: Marási környezet szimulációjának alkalmazása az oktatásban. Gépgyártás XLVII. évfolyam, 2007. 2-3. szám p. 15-17.</p>
-<p><u>Jegyzet esetében: Szerző (vagy Szerkesztő): Cím. Oktatási Intézmény. Hely, Évszám. Oldalszám.</u></p>
+<p><span class="underline">Jegyzet esetében: Szerző (vagy Szerkesztő): Cím. Oktatási Intézmény. Hely, Évszám. Oldalszám.</span></p>
 <p>[3] Ambrusné dr. Alady Márta – Galla Jánosné – dr. Sipos Sándor: A Gépgyártástechnológia alapjai. BMF jegyzet. Budapest, 1995. p. 50-55.</p>
-<p><u>CD-n megjelent publikáció esetében: Szerző (vagy Szerkesztő): Cím. Publikáció (Konferencia) neve. Hely, Évszám. CD. ISBN szám.</u></p>
+<p><span class="underline">CD-n megjelent publikáció esetében: Szerző (vagy Szerkesztő): Cím. Publikáció (Konferencia) neve. Hely, Évszám. CD. ISBN szám.</span></p>
 <p>[4] Miko, B.: Hybrid inteligence system for mold cost estination. VI. International tools conference (ITC) 2007. Zlin, May 22-23, 2007. CD. ISBN-978-80-7318-572-5</p>
-<p><u>Internetes publikáció esetében: Szerző (vagy Szerkesztő): Cím. Hely. Évszám. Honlap elérhetősége. </u></p>
+<p><span class="underline">Internetes publikáció esetében: Szerző (vagy Szerkesztő): Cím. Hely. Évszám. Honlap elérhetősége.</span></p>
 <p>[5] Dr. Szabó László: Forgácsolás, hegesztés. Miskolc 2000.</p>
 <p><a href="http://mek.oszk.hu/01200/01200/html/html">http://mek.oszk.hu/01200/01200/html/html</a></p>
 <h1 id="mellékletek"><br />

@@ -1,28 +1,19 @@
 <?php
 session_start();
 if(!isset($_SESSION["logged_in"])) $_SESSION["logged_in"]=false;
+const DEBUG=1;
 const SALT=123456789;
 const GET_RESULT=0;
 const GET_INSERT_ID=1;
+const GET_ASSOC=2;
+const SUCCESS=1;
+const FAIL=2;
 
 define("website_name","ESP32-project");
 $conn = new mysqli("localhost","root","","esp32project");
-
-if ($conn -> connect_errno) {
-    echo "Failed to connect to MySQL: " . $conn -> connect_error;
-    exit();
-}
-
-
-function get_ipaddress()
-{
-    return $_SERVER['REMOTE_ADDR'];
-}
-
-function get_title_name()
-{
-   echo "".website_name;
-}
+if($conn->connect_errno) {echo "Failed to connect to MySQL:".$conn->connect_error;exit();}
+function get_ipaddress(){return $_SERVER['REMOTE_ADDR'];}
+function get_title_name(){echo "".website_name;}
 function login_in($username,$password)
 {
     $user=array("user_id"=>0,"username"=>"John Doe","admin");
@@ -43,6 +34,12 @@ function login_in($username,$password)
       //  die("alma");
     }
     else session_destroy();
+}
+function var_string($ret)
+{
+    ob_start();
+    var_dump($ret);
+    return("<pre>".ob_get_clean()."</pre>");
 }
 
 function register($username,$password,$password2)
@@ -95,6 +92,7 @@ function e_sql($sql,$mod=GET_RESULT)
     //echo "im here:".$sql;
     $var= mysqli_query($conn,$sql)  or die(mysqli_error($conn));
     if($mod==GET_INSERT_ID)  $var= mysqli_insert_id($conn);
+    if($mod==GET_ASSOC)  $var= mysqli_fetch_all($var,MYSQLI_ASSOC);
    // var_dump($var);
     //die("");
     $conn->close();
@@ -107,6 +105,13 @@ function get_config_text($name)
     $resi = mysqli_fetch_assoc($res);
     //var_dump($resi);
     return $resi["config_text"];
+}
+function set_status($message,$mod=SUCCESS)
+{
+    if($mod==SUCCESS)
+    $_SESSION["successmessage"]=$message;
+    else
+    $_SESSION["errormessage"]=$message;
 }
 
 

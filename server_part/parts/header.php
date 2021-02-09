@@ -15,7 +15,17 @@
 <header class="d-flex text-dark flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
     <a class="h5 my-0 me-md-auto fw-normal" href="index.php"><?php echo get_config_text("website_name");  ?></a>
     <nav class="my-2 my-md-0 me-md-3">
-        <?php if($_SESSION["logged_in"])
+
+        <?php
+        if(isset($_SESSION["user"]["admin_mod"]))
+        {
+            if($_SESSION["user"]["admin_mod"]=="1")
+            {
+                echo '<a class="p-2 text-dark" href="index.php?mod=admin">Configure website</a>';
+            }
+        }
+
+        if($_SESSION["logged_in"])
             echo '<a class="p-2 text-dark" href="index.php?mod=programs">Programs</a><a class="p-2 text-dark" href="#">Enterprise</a>
                     <a class="p-2 text-dark" href="index.php?mod=devices">Devices</a>';
             else
@@ -32,11 +42,13 @@
         ?>
     </nav>
 </header>
+<?php if(DEBUG==1) $_SESSION["successmessage"]=$_SESSION["successmessage"].var_string($_SESSION); ?>
 <main class="container">
 <?php if(isset($_SESSION["errormessage"]))
-{echo '<div class="alert alert-danger" role="alert">'.$_SESSION["errormessage"].'</div>';unset($_SESSION["errormessage"]);
+{echo "<div class=\"alert alert-danger\" role=\"alert\">{$_SESSION["errormessage"]}<button type=\"button\" class=\"btn-close\" data-bs-dismiss=\"alert\" aria-label=\"Close\"></button> </div>";unset($_SESSION["errormessage"]);
 }?>
 <?php if(isset($_SESSION["successmessage"]))
-{echo '<div class="alert alert-success" role="alert">'.$_SESSION["successmessage"].'</div>';unset($_SESSION["successmessage"]);
-}?>
+{echo "<div class=\"alert alert-success\" role=\"alert\">{$_SESSION["successmessage"]} <button type=\"button\" class=\"btn-close\" data-bs-dismiss=\"alert\" aria-label=\"Close\"></button> </div>";unset($_SESSION["successmessage"]);
+}
+;?>
 
