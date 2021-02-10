@@ -34,7 +34,7 @@ else {
             include("parts/programing_ui.php");
             break;
             default:
-            if($_SESSION["logged_in"])  include("parts/dashboard.php");
+            if($_SESSION["logged_in"]==true)  include("parts/dashboard.php");
             else include("parts/welcome.php");
     } else {
         include("parts/welcome.php");

@@ -2,4 +2,5 @@
 
 .idea
 ./server_part/.idea
+./server_part/config.php
 ~$index.docx

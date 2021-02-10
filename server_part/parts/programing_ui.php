@@ -1,22 +1,26 @@
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/blockly/4.20201217.0/blockly.min.js"></script>
 
 <?php
-echo '<div id="toolbar"></div>';
-echo '<ul class="list-group">';
- /* <li class="list-group-item d-flex justify-content-between align-items-center">
-Cras justo odio
-<span class="badge bg-primary rounded-pill">14</span>
-  </li>
-  <li class="list-group-item d-flex justify-content-between align-items-center">
-Dapibus ac facilisis in
-<span class="badge bg-primary rounded-pill">2</span>
-  </li>
-  <li class="list-group-item d-flex justify-content-between align-items-center">
-Morbi leo risus
-<span class="badge bg-primary rounded-pill">1</span>
-  </li>*/
-echo "</ul>";
+echo ' <div id="blocklyDiv" style="height: 480px; width: 600px;"></div>';
 
+//A grafikus felületet blockly segítsével oldottam meg
 
+echo '<xml xmlns="https://developers.google.com/blockly/xml" id="toolbox" style="display: none">
+    <block type="controls_if"></block>
+    <block type="logic_compare"></block>
+    <block type="controls_repeat_ext"></block>
+    <block type="math_number">
+      <field name="NUM">123</field>
+    </block>
+    <block type="math_arithmetic"></block>
+    <block type="text"></block>
+    <block type="text_print"></block>
+  </xml>';
+
+echo '<script>
+    var programmingWorkspace = Blockly.inject("blocklyDiv",
+        {media: "parts/media/",
+         toolbox: document.getElementById("toolbox")});
+  </script>';
 
 ?>
