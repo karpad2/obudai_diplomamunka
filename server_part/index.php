@@ -8,7 +8,8 @@ include "parts/ajax.php";
 if(get_config_text("debug")=="1") include("parts/debug.html");
 else {
     include("parts/header.php");
-    if (isset($_GET["mod"])) switch ($_GET["mod"]) {
+    if (isset($_GET["mod"]))
+        switch ($_GET["mod"]) {
         case "login":
             include("parts/login.php");
             break;
@@ -37,6 +38,8 @@ else {
             if($_SESSION["logged_in"]==true)  include("parts/dashboard.php");
             else include("parts/welcome.php");
     } else {
+        if($_SESSION["logged_in"]==true)  include("parts/dashboard.php");
+        else
         include("parts/welcome.php");
     }
 
