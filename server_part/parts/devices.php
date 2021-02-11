@@ -21,7 +21,7 @@ if($result->num_rows>0)
     {
         echo "<tr></tr>
         {$re["room_name"]}
-    <span class=\"badge bg-primary rounded-pill\">14</span></li>";
+    <span class=\"badge bg-primary rounded-pill\">14</span> <i class=\"bi bi-pencil-square\"></i> </li>";
     }
 }
 else
@@ -30,7 +30,7 @@ else
 }
 echo '
 </tbody>
-<tfoot><form method="post" action="index.php?ajax=register_devices"><td>Add device code:</td><td><input type="text" name="esp32pass"></td>
+<tfoot><form method="post" action="index.php?ajax=register_devices"><td>Add device code:</td><td><input type="text"  class="form-control" name="esp32pass"></td>
 <td><input type="submit"></td></form></tfoot>
 </table>';
 

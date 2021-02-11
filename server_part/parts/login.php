@@ -28,7 +28,7 @@ $login_form='<main class="form-signin">
 $login_form2='<main class="form-signin text-center">
   <form action="index.php?mod=login" method="POST">
     <input type="hidden" name="login">
-    <img class="mb-4" src="/docs/5.0/assets/brand/bootstrap-logo.svg" alt="" width="72" height="57">
+    <img class="mb-4" src="media/logo.svg" alt="" width="72" height="57">
     <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
     <label for="inputEmail" class="visually-hidden">Email address</label>
     <input type="text" id="inputUsername" class="form-control" placeholder="Username" name="username" required autofocus>

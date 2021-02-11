@@ -1,6 +1,5 @@
 <?php
 include "config.php";
-//register("karpad2","asdfghjkl","asdfghjkl");
 if(isset($_GET["ajax"]))
 {
 include "parts/ajax.php";
@@ -42,7 +41,6 @@ else {
         else
         include("parts/welcome.php");
     }
-
     include("parts/footer.php");
 }
 ?>
