@@ -42,13 +42,22 @@
         ?>
     </nav>
 </header>
-<?php if(DEBUG==1) $_SESSION["successmessage"]=$_SESSION["successmessage"].var_string($_SESSION); ?>
+<?php if(DEBUG==1) {
+    $_SESSION["successmessage"]["text"]=$_SESSION["successmessage"].var_string($_SESSION);
+    $_SESSION["successmessage"]["title"]="User Datas:";} ?>
+
 <main class="container">
 <?php if(isset($_SESSION["errormessage"]))
 {echo "<div class=\"alert alert-danger\" role=\"alert\">{$_SESSION["errormessage"]}<button type=\"button\" class=\"btn-close\" data-bs-dismiss=\"alert\" aria-label=\"Close\"></button> </div>";unset($_SESSION["errormessage"]);
 }?>
-<?php if(isset($_SESSION["successmessage"]))
+<?php if(isset($_SESSION["successmessage"])){
+if(is_array($_SESSION["successmessage"]))
+{echo "<div class=\"alert alert-success\" role=\"alert\"> <h4 class=\"alert-heading\">{$_SESSION["successmessage"]["title"]}</h4><hr/><p>{$_SESSION["successmessage"]["text"]}<p> <button type=\"button\" class=\"btn-close\" data-bs-dismiss=\"alert\" aria-label=\"Close\"></button> </div>";unset($_SESSION["successmessage"]);
+}
+else
 {echo "<div class=\"alert alert-success\" role=\"alert\">{$_SESSION["successmessage"]} <button type=\"button\" class=\"btn-close\" data-bs-dismiss=\"alert\" aria-label=\"Close\"></button> </div>";unset($_SESSION["successmessage"]);
 }
+}
+
 ;?>
 

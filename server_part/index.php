@@ -30,6 +30,9 @@ else {
         case "admin":
             include("parts/admin.php");
             break;
+        case "run":
+                include("parts/run.php");
+                break;
         case "programing_interface":
             include("parts/programing_ui.php");
             break;
