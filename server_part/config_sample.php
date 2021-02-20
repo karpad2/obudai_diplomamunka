@@ -1,5 +1,4 @@
 <?php
-
 session_start();
 if(!isset($_SESSION["logged_in"])) $_SESSION["logged_in"]=false;
 const DEBUG=1;
@@ -18,7 +17,7 @@ function get_title_name(){echo "".website_name;}
 function login_in($username,$password)
 {
     $user=array("user_id"=>0,"username"=>"John Doe","admin");
-    $sql="select * from users where username='$username' and password=md5('".SALT.$password.SALT."');";
+    $sql="select user_id,username,ip_address,admin_mod from users where username='$username' and password=md5('".SALT.$password.SALT."');";
     $res=e_sql($sql);
     //var_dump(mysqli_fetch_all($res,MYSQLI_ASSOC));
 
