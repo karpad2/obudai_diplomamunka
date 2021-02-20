@@ -6,7 +6,7 @@ if(isset($_GET["room_id"])) {
 
 echo '<script src="js/blockly.min.js"></script>';
 echo '<div class="row">';
-echo ' <div id="blocklyDiv" style="height: 480px;" class="col-lg-2"></div>';
+echo ' <div id="blocklyDiv" style="height: 480px;" class="col-lg"></div>';
 
 //A grafikus felületet blockly segítsével oldottam meg
 
@@ -53,7 +53,7 @@ echo '</xml>';
 
 echo '<script>
     var programmingWorkspace = Blockly.inject("blocklyDiv",
-        {media: "/media",
+        {media: "media/",
          toolbox: document.getElementById("toolbox")});
   </script>';
 echo '</div>';

@@ -14,7 +14,6 @@
 #define relaypin 23
 #define interruptpin 25
 
-
 #include <SPI.h>
 #include "SPIFFS.h"
 #include <Arduino_JSON.h>
@@ -72,9 +71,6 @@ void pinouts()
       attachInterrupt(interruptpin, isr, FALLING); 
     }
 }
-
-
-
 void blinking(int _i)
 {
     currentMillis=millis();

@@ -1,10 +1,17 @@
 <?php
 include_once "config.php";
+
+if(isset($_GET["search"]) and isset($_GET["mod"]))
+{
+
+
+}
+
 if(isset($_GET["esp32_welcome"]))
 {
    if($_GET["esp32_welcome"]=="reg") {
        $esp32 = array("pass" => "");
-       $sql = "insert into devices (device_name,device_mode,ip_address) values('ESP32','relay','" . get_ipaddress() . "')";
+       $sql = "insert into devices (device_name,device_mode,ip_address) values('ESP32','relay','".get_ipaddress()."')";
        $res = e_sql($sql, GET_INSERT_ID);
        $dev_pass = md5(SALT.$res.SALT);
        $esp32["pass"] = $dev_pass;
@@ -16,12 +23,11 @@ if(isset($_GET["esp32_welcome"]))
    {
 
    }
-
 }
 else if(isset($_GET["esp32_status"]))
 {
     $assoc=array("esp32id"=>"0","esp32name"=>"Name","Status"=>false);
-    $sql= "select device_mode,status,io  from devices where device_password='{$_GET["esp32_status"]}'";
+    $sql= "select device_mode,status  from devices where device_password='{$_GET["esp32_status"]}'";
     $res=e_sql($sql);
     if($res->num_rows==0) die("hmm missing device");
     $resi=mysqli_fetch_all($res,MYSQLI_ASSOC)[0];

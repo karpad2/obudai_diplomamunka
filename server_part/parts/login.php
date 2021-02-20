@@ -53,7 +53,7 @@ $register_form='
             <input type="hidden" class="form-control" name="register" placeholder="Username">
         </div>
         <div class="col-md-12 form-group">
-            <input type="text" class="form-control" name="username" placeholder="Felhasználó">
+            <input type="text" class="form-control" name="username" placeholder="Please write username">
         </div>
     </div>
     <div class="row">

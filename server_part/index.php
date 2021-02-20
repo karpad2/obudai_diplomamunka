@@ -27,11 +27,17 @@ else {
         case "devices":
             include("parts/devices.php");
             break;
+            case "teams":
+                include("parts/teams.php");
+                break;
         case "admin":
             include("parts/admin.php");
             break;
         case "run":
                 include("parts/run.php");
+                break;
+        case "room":
+                include("parts/rooms.php");
                 break;
         case "programing_interface":
             include("parts/programing_ui.php");
