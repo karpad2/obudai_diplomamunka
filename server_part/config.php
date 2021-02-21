@@ -1,8 +1,6 @@
 <?php 
 
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
+
 
 
 session_start();
@@ -14,6 +12,14 @@ const GET_INSERT_ID=1;
 const GET_ASSOC=2;
 const SUCCESS=1;
 const FAIL=2;
+
+if(DEBUG==1)
+{
+    ini_set('display_errors', 1);
+    ini_set('display_startup_errors', 1);
+    error_reporting(E_ALL);
+}
+
 
 define("website_name","ESP32-project");
 $conn = new mysqli("localhost","root",'asdfghjkl',"esp32project");
