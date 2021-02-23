@@ -36,9 +36,9 @@
         ?>
         <a class="p-2 text-dark" href="index.php?mod=about_us">About us</a>
         <?php if(!$_SESSION["logged_in"])
-            echo '<a class="p-2 btn btn-outline-primary" href="index.php?mod=login">Sign in</a>
+            echo '<a class="p-2 btn btn-outline-success" href="index.php?mod=login">Sign in</a>
                    <a class="p-2 btn btn-outline-primary" href="index.php?mod=register">Sign up</a>';
-        else  echo '<a class="p-2 btn btn-outline-primary" href="index.php?mod=logout">Sign out</a>';
+        else  echo '<a class="p-2 btn btn-outline-danger" href="index.php?mod=logout">Sign out</a>';
         ?>
     </nav>
 </header>
