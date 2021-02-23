@@ -25,8 +25,8 @@ if(isset($_GET["mod"]))
                     echo"<li>";
                     echo  $re["escape_room"]=="9999"?"<img class=\"mb-2\" src=\"media/infinite.svg\" alt=\"infinite\" width=\"24\" height=\"19\">":$re["escape_room"];
                     echo " escape room supported</li>";
-              echo"      <li>{$re["extra"]}</li>
-                </ul>
+              if(isset($re["extra"])) echo"<li>{$re["extra"]}</li>";
+                 echo "</ul>
                 <button type=\"button\" class=\"w-100 btn btn-lg btn-outline-primary\">Sign up for {$re["tier"]}</button>
             </div>
         </div>
