@@ -8,7 +8,7 @@ if(isset($_GET["mod"]))
                 echo '<div class="row row-cols-1 row-cols-md-3 mb-3 text-center">';
                 $sql="select UPPER(tier) as 'tier', escape_room, devices, price from tiers order by price asc";
                 $res=e_sql($sql,GET_ASSOC);
-                var_dump($res);
+               // var_dump($res);
                 foreach ($res as $re)
                 {
            echo "<div class=\"col\">
