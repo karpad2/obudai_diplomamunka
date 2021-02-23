@@ -28,15 +28,17 @@ function defa()
 }
 function start()
 {
+    echo "<a href=\"index.php?mod=run&run_mod=start&room_id={$_GET["room_id"]}}\" class=\"w-100 btn btn-lg btn-outline-primary\">Start!</a>";
 
 }
 function edit()
 {
-echo "<a href=\"index.php?mod=run&run_mod=edit&room_id={$_GET["room_id"]}}\" class=\"w-100 btn btn-lg btn-outline-primary\">Start!</a>";
+echo "<a href=\"index.php?mod=run&run_mod=start&room_id={$_GET["room_id"]}}\" class=\"w-100 btn btn-lg btn-outline-primary btn-success\">Start!</a>";
 
 
 }
 function stop()
 {
+    echo "<a href=\"index.php?mod=run&run_mod=start&room_id={$_GET["room_id"]}}\" class=\"w-100 btn btn-lg btn-outline-primary btn-danger\">Start!</a>";
 
 }
