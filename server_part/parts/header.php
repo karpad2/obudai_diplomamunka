@@ -41,7 +41,7 @@
         else  echo '<a class="p-2 btn btn-outline-primary" href="index.php?mod=logout">Sign out</a>';
         ?>
     </nav>
-</header>
+</header>git p
 <?php if(DEBUG==1) {
     if (empty($_SESSION["successmessage"]))$_SESSION["successmessage"]=array();
     $_SESSION["successmessage"]["text"]=$_SESSION["successmessage"].var_string($_SESSION);
