@@ -20,8 +20,8 @@ if (isset($_GET["run_mod"]))
     echo "<div class=\"col-md-4\">";
     echo "<h5 class=\"my-0 font-weight-normal\">Status:</h5>";
     echo "<div class=\"card-body\">
-            <h1 class=\"card-title pricing-card-title\"> 15 <small class="text-muted">/ Devices</small></h1>
-            <h1 class=\"card-title pricing-card-title\"> 15 <small class="text-muted">/ Program status</small></h1>
+            <h1 class=\"card-title pricing-card-title\"> 15 <small class=\"text-muted\">/ Devices</small></h1>
+            <h1 class=\"card-title pricing-card-title\"> 15 <small class=\"text-muted\">/ Program status</small></h1>
         </div>";
         /*    <ul class="list-unstyled mt-3 mb-4">
               <li>20 users included</li>
