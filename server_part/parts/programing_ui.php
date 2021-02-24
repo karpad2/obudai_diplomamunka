@@ -48,7 +48,12 @@ echo '
 
 ';
 
-foreach ($res as $re) echo "<block type='{$re["bl_pr_id"]}'>{$re["bl_pr_text"]}</block>";
+foreach ($res as $re) 
+{
+if(empty($re["bl_pr_text"])) echo "<block type='{$re["bl_pr_id"]}'></block>";
+else  
+echo "<block type='{$re["bl_pr_id"]}'>{$re["bl_pr_text"]}</block>";
+}
 echo '</xml>';
 
 echo '<script>
