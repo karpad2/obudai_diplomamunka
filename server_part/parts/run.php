@@ -53,6 +53,15 @@ function start()
 function edit()
 {
 echo "<a href=\"index.php?mod=run&run_mod=start&room_id={$_GET["room_id"]}\" class=\"w-100 btn btn-lg btn-outline-success\">Start!</a>";
+$sql="select * from programs where room_id='{$_GET["room_id"]}'";
+$res=e_sql($sql,GET_ASSOC);
+echo "<form method=\"post\" action='#'>";
+echo "<select name=\"current_program\">";
+foreach ($res as $re)
+    echo "<option value=\"{$re["program_id"]}\">{$re["program_name"]}</option>";
+    echo "<option value=\"new\">Add new program</option>";
+echo"</select>";
+echo" </form>";
 
 
 }
