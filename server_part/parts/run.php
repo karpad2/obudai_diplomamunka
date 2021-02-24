@@ -56,12 +56,14 @@ echo "<a href=\"index.php?mod=run&run_mod=start&room_id={$_GET["room_id"]}\" cla
 $sql="select * from programs where room_id='{$_GET["room_id"]}'";
 $res=e_sql($sql,GET_ASSOC);
 echo "<form method=\"post\" action='#'>";
-echo "<select name=\"current_program\">";
+echo"<label for=\"cur_program\">Choose program:</label>"
+echo "<select id=\"cur_program\" class=\"form-control\" name=\"current_program\">";
 foreach ($res as $re)
     echo "<option value=\"{$re["program_id"]}\">{$re["program_name"]}</option>";
     echo "<option value=\"new\">Add new program</option>";
-echo"</select>";
-echo" </form>";
+echo"</select>
+<input type=\"submit\" class=\"btn-info\"/>
+ </form>";
 
 
 }
