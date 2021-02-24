@@ -12,7 +12,7 @@ echo '<table class="table">
     </thead>
     <tbody>';
 //include "../config.php";
-$sql = "select * from devices join users_devices ud on devices.device_id = ud.device_id where user_id='{$_SESSION["user"]["user_id"]}'";
+$sql = "select * from devices where user_id='{$_SESSION["user"]["user_id"]}'";
 $result=e_sql($sql);
 if($result->num_rows>0)
 {
