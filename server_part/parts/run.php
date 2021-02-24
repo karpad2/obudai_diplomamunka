@@ -15,21 +15,16 @@ if (isset($_GET["run_mod"]))
         default: defa();
     }
 }
-if(isset($_GET["start"]))
-{
-    echo '<form method="POST" action="#">';
 
-
-    echo '</form>';
-}
 function defa()
 {
 
 }
 function start()
 {
-    
+
     echo "<a href=\"index.php?mod=run&run_mod=start&room_id={$_GET["room_id"]}}\" class=\"w-100 btn btn-lg btn-outline-danger\">Start!</a>";
+    echo "<a href=\"index.php?mod=run&run_mod=edit&room_id={$_GET["room_id"]}}\" class=\"w-100 btn btn-lg btn-outline-warn\">Edit!</a>";
 
 }
 function edit()

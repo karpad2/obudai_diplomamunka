@@ -25,7 +25,7 @@
           <li>Email support</li>
           <li>Help center access</li>
           </ul>
-        <a href=\"index.php?mod=run&run_mod=edit&room_id={$re["room_id"]}\" class=\"w-100 btn btn-lg btn-outline-primary\">Enter into room</a>
+        <a href=\"index.php?mod=run&run_mod=start&room_id={$re["room_id"]}\" class=\"w-100 btn btn-lg btn-outline-primary\">Enter into room</a>
         
       </div>
     </div>
