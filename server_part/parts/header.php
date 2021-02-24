@@ -1,8 +1,8 @@
 <!document html>
-<html>
+<html lang="en">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title><?php get_title_name()?></title>
+    <title><?php get_title_name();?></title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link rel="icon" type="image/png" href="favicon.png">
     <script src="js/bootstrap.bundle.min.js"></script>
@@ -67,5 +67,5 @@ else
 }
 }
 
-;?>
+?>
 
