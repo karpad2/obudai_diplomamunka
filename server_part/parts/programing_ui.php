@@ -47,13 +47,31 @@ echo '
   </xml>
 
 ';*/
-
+echo "<category name=\"Logic & Arithmetic\" colour=\"%{BKY_LOGIC_HUE}\">";
 foreach ($res as $re) 
 {
 if(empty($re["bl_pr_text"])) echo "<block type='{$re["bl_pr_id"]}'></block>";
 else  
 echo "<block type='{$re["bl_pr_id"]}'>{$re["bl_pr_text"]}</block>";
 }
+echo "</category>";
+$sql="select * from rfid_cards where user_id='{$_SESSION["user"]["user_id"]}'";
+$res=e_sql($sql,GET_ASSOC);
+echo "<category name=\"RFID tags\" colour=\"%{BKY_TEXTS_HUE}\">";
+foreach ($res as $re) 
+{
+echo "<block type=\"text\">{$re["rfid-code"]}</block>";
+}
+echo "</category>";
+
+$sql="select * from devices d join users_devices us on d.device_id=us.device_id where us.user_id='{$_SESSION["user"]["user_id"]}'";
+$res=e_sql($sql,GET_ASSOC);
+echo "<category name=\"RFID tags\" colour=\"%{BKY_TEXTS_HUE}\">";
+foreach ($res as $re) 
+{
+echo "<block type=\"text\">{$re["rfid-code"]}</block>";
+}
+echo "</category>";
 echo '</xml>';
 
 echo '<script>
