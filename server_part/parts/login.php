@@ -1,6 +1,6 @@
 <?php
 //TODO Yolo
-$login_form2='<div class="row align-items-lg-center">
+$login_form2='<div class="row text-center">
 <main class="form-signin text-center col-md-6">
   <form action="index.php?mod=login" method="POST">
     <input type="hidden" name="login">
