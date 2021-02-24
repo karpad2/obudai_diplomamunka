@@ -56,7 +56,7 @@ echo "<a href=\"index.php?mod=run&run_mod=start&room_id={$_GET["room_id"]}\" cla
 $sql="select * from programs where room_id='{$_GET["room_id"]}'";
 $res=e_sql($sql,GET_ASSOC);
 echo "<form method=\"post\" action='#'>";
-echo"<label for=\"cur_program\">Choose program:</label>"
+echo"<label for=\"cur_program\">Choose program:</label>";
 echo "<select id=\"cur_program\" class=\"form-control\" name=\"current_program\">";
 foreach ($res as $re)
     echo "<option value=\"{$re["program_id"]}\">{$re["program_name"]}</option>";
