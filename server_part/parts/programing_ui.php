@@ -13,7 +13,7 @@ echo ' <div id="blocklyDiv" style="height: 480px;" class="col-lg"></div>';
 echo '<xml xmlns="https://developers.google.com/blockly/xml" id="toolbox" style="display: block">';
 $sql="select * from blocks";
 $res=e_sql($sql,GET_ASSOC);
-
+/*
 echo '
 <category name="Logic" colour="%{BKY_LOGIC_HUE}">
       <block type="controls_if"></block>
@@ -46,7 +46,7 @@ echo '
     </category>
   </xml>
 
-';
+';*/
 
 foreach ($res as $re) 
 {
