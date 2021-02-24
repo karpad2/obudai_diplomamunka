@@ -1,32 +1,7 @@
 <?php
 //TODO Yolo
-$login_form='
-<div class="row align-items-lg-center"><main class="form-signin col-md-6">
-<form action="index.php?mod=login" method="post"> 
-<div class="simple-login-container">
-
-    <h2>Login Form</h2>
-    <div class="row">
-        <div class="col-md-12 form-group">
-            <input type="text" name="username" class="form-control" placeholder="Username">
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-12 form-group">
-            <input type="password" name="password" placeholder="Enter your Password" class="form-control">
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-12 form-group">
-            <input type="submit" class="btn btn-block btn-login" placeholder="Enter your Password" >
-        </div>
-    </div>
-    
-</div>
-</form></main></div>';
-
-
-$login_form2='<main class="form-signin text-center col-md-6">
+$login_form2='<div class="row align-items-lg-center">
+<main class="form-signin text-center col-md-6">
   <form action="index.php?mod=login" method="POST">
     <input type="hidden" name="login">
     <img class="mb-4" src="media/logo.svg" alt="" width="72" height="57">
@@ -42,7 +17,7 @@ $login_form2='<main class="form-signin text-center col-md-6">
     </div>
     <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
     </form>
-</main>';
+</main></div>';
 
 $register_form='
 <main class="form-signin text-center">
