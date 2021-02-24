@@ -1,4 +1,26 @@
 <?php
+if(isset($_POST["current_program"])and isset($_GET["room_id"]))
+{
+    if($_POST["current_program"]=="new")
+    {
+        header("Location:index.php?mod=programming_interface&room_id={$_GET["room_id"]}");
+    }
+    $sql="update programs set active='0' where room_id='{$_GET["room_id"]}'";
+    e_sql($sql);
+    $sql="update programs set active='1' where room_id='{$_GET["room_id"]}' and program_id='{$_POST["current_program"]}'";
+    e_sql($sql);
+}
+
+if(isset($_POST["add_new_device"])and isset($_GET["room_id"]))
+{
+    if($_POST["add_new_device"]=="new")
+    {
+        header("Location:index.php?mod=devices");
+    }
+    $sql="update devices set room_id='{$_GET["room_id"]}' where device_id='{$_POST["add_new_device"]}'";
+}
+
+
 echo '<div class="row"><h3>Run</h3></div>';
 if (isset($_GET["run_mod"]))
 {
@@ -63,6 +85,19 @@ foreach ($res as $re)
     echo "<option value=\"new\">Add new program</option>";
 echo"</select>
 <input type=\"submit\" class=\"btn btn-outline-warning w-100\" value=\"Choose:\"/>
+ </form>";
+
+
+    $sql="select * from programs where room_id='{$_GET["room_id"]}'";
+    $res=e_sql($sql,GET_ASSOC);
+    echo "<form method=\"post\" action='#'>";
+    echo"<label for=\"add_new_devices\">Add new device:</label>";
+    echo "<select id=\"add_new_devices\" class=\"form-control\" name=\"add_new_device\">";
+    foreach ($res as $re)
+        echo "<option value=\"{$re["program_id"]}\">{$re["program_name"]}</option>";
+    echo "<option value=\"new\">Add new device:</option>";
+    echo"</select>
+<input type=\"submit\" class=\"btn btn-outline-warning w-100\" value=\"Add new device\"/>
  </form>";
 
 
