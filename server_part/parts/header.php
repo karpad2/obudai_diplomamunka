@@ -43,10 +43,17 @@
     </nav>
 </header>
 <?php if(DEBUG==1) {
-    if (empty($_SESSION["successmessage"]))$_SESSION["successmessage"]=array("text"=>"","title"=>"");
-    $_SESSION["successmessage"]["text"]=$_SESSION["successmessage"].var_string($_SESSION);
-    $_SESSION["successmessage"]["title"]="User Datas:";} ?>
-
+    if (empty($_SESSION["successmessage"]))
+    {   $_SESSION["successmessage"]=array("text"=>"","title"=>"");
+        $_SESSION["successmessage"]["text"]= var_string($_SESSION);
+        $_SESSION["successmessage"]["title"]="User Datas:";
+    }
+    else {
+        $var=$_SESSION["successmessage"];
+        $_SESSION["successmessage"]=array("text"=>$var,"title"=>"");
+        $_SESSION["successmessage"]["text"]= ["successmessage"]["text"].var_string($_SESSION);
+        $_SESSION["successmessage"]["title"]="User Datas:";
+    }} ?>
 <main class="container">
 <?php if(isset($_SESSION["errormessage"]))
 {echo "<div class=\"alert alert-danger\" role=\"alert\">{$_SESSION["errormessage"]}<button type=\"button\" class=\"btn-close\" data-bs-dismiss=\"alert\" aria-label=\"Close\"></button> </div>";unset($_SESSION["errormessage"]);
