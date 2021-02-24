@@ -62,7 +62,7 @@ foreach ($res as $re)
     echo "<option value=\"{$re["program_id"]}\">{$re["program_name"]}</option>";
     echo "<option value=\"new\">Add new program</option>";
 echo"</select>
-<input type=\"submit\" class=\"btn btn-info\"/>
+<input type=\"submit\" class=\"btn btn-outline-warning w-100\" value=\"Choose:\"/>
  </form>";
 
 
