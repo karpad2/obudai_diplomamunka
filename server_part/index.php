@@ -10,11 +10,7 @@ else {
     if (isset($_GET["mod"]))
         switch ($_GET["mod"]) {
         case "login":
-            include("parts/login.php");
-            break;
         case "logout":
-            include("parts/login.php");
-            break;
         case "register":
             include("parts/login.php");
             break;

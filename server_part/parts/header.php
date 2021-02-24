@@ -65,7 +65,5 @@ if(is_array($_SESSION["successmessage"]))
 else
 {echo "<div class=\"alert alert-success\" role=\"alert\">{$_SESSION["successmessage"]} <button type=\"button\" class=\"btn-close\" data-bs-dismiss=\"alert\" aria-label=\"Close\"></button> </div>";unset($_SESSION["successmessage"]);
 }
-}
-
-?>
+}?>
 
