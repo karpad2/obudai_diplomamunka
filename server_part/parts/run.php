@@ -88,13 +88,13 @@ echo"</select>
  </form>";
 
 
-    $sql="select * from programs where room_id='{$_GET["room_id"]}'";
+    $sql="select * from devices where user_id='{$_SESSION["user"]["user_id"]}'";
     $res=e_sql($sql,GET_ASSOC);
     echo "<form method=\"post\" action='#'>";
     echo"<label for=\"add_new_devices\">Add new device:</label>";
     echo "<select id=\"add_new_devices\" class=\"form-control\" name=\"add_new_device\">";
     foreach ($res as $re)
-        echo "<option value=\"{$re["program_id"]}\">{$re["program_name"]}</option>";
+        echo "<option value=\"{$re["device_id"]}\">{$re["device_name"]}</option>";
     echo "<option value=\"new\">Add new device:</option>";
     echo"</select>
 <input type=\"submit\" class=\"btn btn-outline-warning w-100\" value=\"Add new device\"/>
