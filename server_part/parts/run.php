@@ -23,7 +23,9 @@ if (isset($_GET["run_mod"]))
     echo "<div class=\"card-body\">
             <h1 class=\"card-title pricing-card-title\"> 15 <small class=\"text-muted\">/ Devices</small></h1>
             <h1 class=\"card-title pricing-card-title\"> 15 <small class=\"text-muted\">/ Program status</small></h1>
-        </div>";
+            <h1 class=\"card-title pricing-card-title\"> 15 <small class=\"text-muted\">/ Program status</small></h1>";
+
+
         /*    <ul class="list-unstyled mt-3 mb-4">
               <li>20 users included</li>
               <li>10 GB of storage</li>
@@ -32,7 +34,7 @@ if (isset($_GET["run_mod"]))
             </ul>
             <button type="button" class="btn btn-lg btn-block btn-primary">Get started</button>
           */
-
+    echo"</div>";
     echo"</div>";
     echo"</div>";
 }

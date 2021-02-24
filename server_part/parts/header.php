@@ -43,7 +43,7 @@
     </nav>
 </header>
 <?php if(DEBUG==1) {
-    //if (empty($_SESSION["successmessage"]))$_SESSION["successmessage"]=array("text"=>"","title"=>"");
+    if (empty($_SESSION["successmessage"]))$_SESSION["successmessage"]=array("text"=>"","title"=>"");
     $_SESSION["successmessage"]["text"]=$_SESSION["successmessage"].var_string($_SESSION);
     $_SESSION["successmessage"]["title"]="User Datas:";} ?>
 
