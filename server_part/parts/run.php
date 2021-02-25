@@ -28,7 +28,8 @@ if(isset($_POST["camera_url"])and isset($_GET["room_id"]))
 {
     $sql="update cameras set camera_url='{$_POST["camera_url"]}' where camera_id='{$_POST["camera_id"]}'";
 }
-
+var_dump($_GET);
+var_dump($_POST);
 
 
 echo '<div class="row"><h3>Run</h3></div>';
