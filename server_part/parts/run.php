@@ -124,9 +124,9 @@ echo"</select>
         $i++;
     echo "<form method=\"post\" action=\"#\">
 <tr><td>$i<input type=\"hidden\" name=\"camera_id\" value=\"{$re["camera_id"]}\"/></td>
-<td><input name=\"camera_name\" value=\"{$re["camera_name"]}\"/></td>
-<td><input name=\"camera_url\" value=\"{$re["camera_url"]}\"/></td>
-<td><input value=\"Save\" type=\"submit\"/></td>
+<td><input name=\"camera_name\" class=\"form-control\" value=\"{$re["camera_name"]}\"/></td>
+<td><input name=\"camera_url\" class=\"form-control\" value=\"{$re["camera_url"]}\"/></td>
+<td><input value=\"Save\" class='btn w-100 btn-outline-success' type=\"submit\"/></td>
 </tr></form>";
     }
 
