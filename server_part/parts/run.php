@@ -115,6 +115,7 @@ echo"</select>
       <th scope="col">#</th>
       <th scope="col">Camera Name</th>
       <th scope="col">Camera url</th>
+      <th scope="col"></th>
     </tr>
     </thead>
     <tbody>';
@@ -124,10 +125,11 @@ echo"</select>
     foreach ($res as $re)
     {
         $i++;
-    echo "<tr><td>$i</td>
-<td><form method=\"post\" action=\"#\"><input name=\"camera_name\" value=\"{$re["camera_name"]}\"/><input type=\"hidden\" name=\"camera_id\" value=\"{$re["camera_id"]}\"/><input value=\"Save\"  type=\"submit\"/><form></td>
-<td><form method=\"post\" action=\"#\"><input name=\"camera_url\" value=\"{$re["camera_url"]}\"/><input type=\"hidden\" name=\"camera_id\"  value=\"{$re["camera_id"]}\"/><input value=\"Save\" type=\"submit\"/><form></td>
-</tr>";
+    echo "<form method=\"post\" action=\"#\">
+<tr><td>$i<input type=\"hidden\" name=\"camera_id\" value=\"{$re["camera_id"]}\"/></td>
+<td><input name=\"camera_name\" value=\"{$re["camera_name"]}\"/></td>
+<td><input name=\"camera_url\" value=\"{$re["camera_url"]}\"/><input value=\"Save\" type=\"submit\"/></td>
+</tr></form>";
     }
 
     echo "</tbody>";
