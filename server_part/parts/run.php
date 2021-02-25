@@ -20,14 +20,11 @@ if(isset($_POST["add_new_device"])and isset($_GET["room_id"]))
     $sql="update devices set room_id='{$_GET["room_id"]}' where device_id='{$_POST["add_new_device"]}'";
 }
 
-if(isset($_POST["camera_name"])and isset($_GET["room_id"]))
+if(isset($_POST["camera_name"]) and isset($_POST["camera_url"])  and isset($_GET["room_id"]))
 {
-    $sql="update cameras set camera_name='{$_POST["camera_name"]}' where camera_id='{$_POST["camera_id"]}'";
+    $sql="update cameras set camera_name='{$_POST["camera_name"]}',camera_url='{$_POST["camera_url"]}' where camera_id='{$_POST["camera_id"]}'";
 }
-if(isset($_POST["camera_url"])and isset($_GET["room_id"]))
-{
-    $sql="update cameras set camera_url='{$_POST["camera_url"]}' where camera_id='{$_POST["camera_id"]}'";
-}
+
 var_dump($_GET);
 var_dump($_POST);
 
