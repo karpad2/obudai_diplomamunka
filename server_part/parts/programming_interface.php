@@ -5,9 +5,10 @@ if(isset($_GET["room_id"])) {
     $devs = e_sql($sql, GET_ASSOC);
 }
 
-echo '<script src="js/blockly.min.js"></script>';
+echo '<script src="js/blockly_compressed.js"></script>';
 echo '<script src="js/blocks_compressed.js"></script>';
 echo '<script src="js/javascript_compressed.js"></script>';
+echo '<script src="js/en.js"></script>';
 echo '<div class="row">';
 echo ' <div id="blocklyDiv" style="height: 480px;" class="col-lg"></div>';
 
