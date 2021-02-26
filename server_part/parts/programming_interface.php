@@ -58,7 +58,7 @@ echo "<block type='{$re["bl_pr_id"]}'>{$re["bl_pr_text"]}</block>";
 echo "</category>";
 $sql="select * from rfid_cards where user_id='{$_SESSION["user"]["user_id"]}'";
 $res=e_sql($sql,GET_ASSOC);
-echo "<category name=\"RFID tags\" colour=\"%{BKY_TEXTS_HUE}\">";
+echo "<category name=\"Device tags\" colour=\"%{BKY_TEXTS_HUE}\">";
 foreach ($res as $re) 
 {
 echo "<block type=\"text\">{$re["rfid-code"]}</block>";
