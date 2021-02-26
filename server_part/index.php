@@ -35,8 +35,8 @@ else {
         case "room":
                 include("parts/rooms.php");
                 break;
-        case "programing_interface":
-            include("parts/programing_ui.php");
+        case "programming_interface":
+            include("parts/programming_interface.php");
             break;
             default:
             if($_SESSION["logged_in"]==true)  include("parts/dashboard.php");
