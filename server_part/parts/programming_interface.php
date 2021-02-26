@@ -1,7 +1,7 @@
 <?php
 include ("blocks.php");
 if(isset($_GET["room_id"])) {
-    $sql = "select * from devices join users_devices ud on devices.device_id = ud.device_id where room_id='{$_GET["room_id"]}' and user_id='{$_SESSION["user"]["user_id"]}'";
+    $sql = "select * from devices where room_id='{$_GET["room_id"]}'";
     $devs = e_sql($sql, GET_ASSOC);
 }
 
