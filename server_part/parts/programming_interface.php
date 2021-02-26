@@ -74,17 +74,20 @@ echo "<block type=\"text\">{$re["rfid-code"]}</block>";
 }
 echo "</category>";
 echo '</xml>';
+echo  '<xml xmlns="https://developers.google.com/blockly/xml" id="startBlocks" style="display: none">';
+echo '</xml>';
 
 echo '<script>
     var programmingWorkspace = Blockly.inject("blocklyDiv",
         {media: "media/",
          toolbox: document.getElementById("toolbox")});
+    Blockly.Xml.domToWorkspace(document.getElementById("startBlocks"),programmingWorkspace);
   </script>';
 echo '</div>';
 
 echo '<div class="row">
 <form method="post" action="#" id="f-submit">
-<input type="hidden" name="program">
+<input type="hidden" name="program" id="program_block">
 <input type="submit" class="btn btn-primary" >
 </form>
 <script>
@@ -92,9 +95,7 @@ function a(l)
 {
     return document.getElementById(l);
 }
-a("f-submit").onsubmit=(e)=>{
-    
-}
+
 </script>
 </div>';
 
