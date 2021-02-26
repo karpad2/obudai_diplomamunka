@@ -6,6 +6,8 @@ if(isset($_GET["room_id"])) {
 }
 
 echo '<script src="js/blockly.min.js"></script>';
+echo '<script src="js/blocks_compressed.js"></script>';
+echo '<script src="js/javascript_compressed.js"></script>';
 echo '<div class="row">';
 echo ' <div id="blocklyDiv" style="height: 480px;" class="col-lg"></div>';
 
@@ -58,7 +60,7 @@ echo "<block type='{$re["bl_pr_id"]}'>{$re["bl_pr_text"]}</block>";
 echo "</category>";
 $sql="select * from rfid_cards where user_id='{$_SESSION["user"]["user_id"]}'";
 $res=e_sql($sql,GET_ASSOC);
-echo "<category name=\"Device tags\" colour=\"%{BKY_TEXTS_HUE}\">";
+echo "<category name=\"Device tags\" colour=\"%{BKY_MATH_HUE}\">";
 foreach ($res as $re) 
 {
 echo "<block type=\"text\">{$re["rfid-code"]}</block>";
