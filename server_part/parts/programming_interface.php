@@ -65,7 +65,7 @@ echo "<block type=\"text\">{$re["rfid-code"]}</block>";
 }
 echo "</category>";
 
-$sql="select * from devices d join users_devices us on d.device_id=us.device_id where us.user_id='{$_SESSION["user"]["user_id"]}'";
+$sql = "select * from rfid_cards where room_id='{$_SESSION["user_id"]}'";
 $res=e_sql($sql,GET_ASSOC);
 echo "<category name=\"RFID tags\" colour=\"%{BKY_TEXTS_HUE}\">";
 foreach ($res as $re) 
