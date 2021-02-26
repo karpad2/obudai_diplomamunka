@@ -83,10 +83,18 @@ echo '<script>
 echo '</div>';
 
 echo '<div class="row">
-<form method="post" action="#">
+<form method="post" action="#" id="f-submit">
 <input type="hidden" name="program">
-<input type="submit" class="btn btn-primary" id="f-submit">
+<input type="submit" class="btn btn-primary" >
 </form>
-
+<script>
+function a(l)
+{
+    return document.getElementById(l);
+}
+a("f-submit").onsubmit=(e)=>{
+    
+}
+</script>
 </div>';
 
