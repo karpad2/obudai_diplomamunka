@@ -76,6 +76,12 @@ foreach ($res as $re)
 echo "<block type=\"text\">{$re["rfid-code"]}</block>";
 }
 echo "</category>";
+echo "<category name=\"Variables\" custom=\"VARIABLE\" colour=\"%{BKY_VARIABLES_HUE}\">";
+
+echo "</category>";
+echo "<category name=\"Functions\" custom=\"PROCEDURE\" colour=\"%{BKY_PROCEDURES_HUE}\">";
+
+echo "</category>";
 echo '</xml>';
 echo  '<xml xmlns="https://developers.google.com/blockly/xml" id="startBlocks" style="display: none">';
 echo '</xml>';
