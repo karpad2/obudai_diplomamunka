@@ -71,7 +71,7 @@ function w_head()
     <script src="js/bootstrap.bundle.min.js"></script>
     <meta charset="utf-8">
     <meta name="description" content="">
-    <meta name="author" content="'. get_config_text("author").'">
+    <meta name="author" content="'.get_config_text("author").'">
 </head><body>';
 }
 function w_footer()
