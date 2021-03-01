@@ -114,11 +114,11 @@ a("f-submit").onsubmit=(e)=>
 var Workspace = Blockly.inject("blocklyDiv",
         {media: "media/",
          toolbox: document.getElementById("toolbox")});
-    Blockly.Xml.domToWorkspace(document.getElementById("startBlocks"),Workspace);
-     Blockly.JavaScript.addReservedWords("code");
+    Blockly.Xml.domToWorkspace(a("startBlocks"),Workspace);
+    Blockly.JavaScript.addReservedWords("code");
      
     var code = Blockly.JavaScript.workspaceToCode(Workspace);
-    a("generate").onclick=()
+    a("generate").onclick=()=>
     {
        var code = Blockly.JavaScript.workspaceToCode(Workspace);
        alert(code);
