@@ -1,5 +1,6 @@
-<?php
+<?php //TODO 1 more cell to xml dom, and save that too, xml for visual javascript for running
 include ("blocks.php");
+if(empty($_SESSION["user"]["user_id"])) die("err 403");
 if(isset($_GET["room_id"])) {
     $sql = "select * from devices where room_id='{$_GET["room_id"]}'";
     $devs = e_sql($sql, GET_ASSOC);
