@@ -98,8 +98,8 @@ echo '<div class="row">
 <form method="post" action="#" id="f-submit">
 <input type="hidden" name="program" id="program_block">
 <input type="submit" class="btn btn-primary" value="Save">
-</form>
-<input type="button" id="generate" value="generate" />';
+</form>';
+//<input type="button" id="generate" value="generate" />';
 echo '
 <script>
 function a(l)
