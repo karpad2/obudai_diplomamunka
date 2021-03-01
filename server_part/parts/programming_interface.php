@@ -108,7 +108,9 @@ function a(l)
 }
 a("f-submit").onsubmit=(e)=>
 {
-    e.preventDefault();
+    var code = Blockly.JavaScript.workspaceToCode(Workspace);
+    a("program_block").value=code;
+    //e.preventDefault();
 }
 
 var Workspace = Blockly.inject("blocklyDiv",
@@ -118,11 +120,11 @@ var Workspace = Blockly.inject("blocklyDiv",
     Blockly.JavaScript.addReservedWords("code");
      
     var code = Blockly.JavaScript.workspaceToCode(Workspace);
-    a("generate").onclick=()=>
+   /* a("generate").onclick=()=>
     {
        var code = Blockly.JavaScript.workspaceToCode(Workspace);
-       alert(code);
-    }
+     
+    }*/
 </script>
 </div>';
 
