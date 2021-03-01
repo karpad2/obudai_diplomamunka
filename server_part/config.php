@@ -24,7 +24,7 @@ define("website_name","ESP32-project");
 $conn = new mysqli("localhost","root",'asdfghjkl',"esp32project");
 if($conn->connect_errno) {echo "Failed to connect to MySQL:".$conn->connect_error;exit();}
 function get_ipaddress(){return $_SERVER['REMOTE_ADDR'];}
-function get_title_name(){echo "".website_name;}
+function get_title_name(){ return website_name;}
 
 function login_in($username,$password)
 {

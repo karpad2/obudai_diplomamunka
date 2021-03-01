@@ -4,11 +4,29 @@ if(isset($_GET["ajax"]))
 {
 include "parts/ajax.php";
 }
+
 if(get_config_text("debug")=="1") include("parts/debug.html");
+else if(isset($_GET["window"]))
+{
+w_head();
+sa();
+w_footer();
+}
 else {
     include("parts/header.php");
     if (isset($_GET["mod"]))
-        switch ($_GET["mod"]) {
+        sa();
+     else {
+        if($_SESSION["logged_in"]==true)  include("parts/dashboard.php");
+        else
+        include("parts/welcome.php");
+    }
+    include("parts/footer.php");
+}
+
+function sa()
+{
+    switch ($_GET["mod"]) {
         case "login":
         case "logout":
         case "register":
@@ -41,11 +59,24 @@ else {
             default:
             if($_SESSION["logged_in"]==true)  include("parts/dashboard.php");
             else include("parts/welcome.php");
-    } else {
-        if($_SESSION["logged_in"]==true)  include("parts/dashboard.php");
-        else
-        include("parts/welcome.php");
-    }
-    include("parts/footer.php");
+             }
 }
+function w_head()
+{
+    echo'<!doctype html><html lang="en"><head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>'.get_title_name().'</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="author" content="'. get_config_text("author").'">
+</head><body>';
+}
+function w_footer()
+{
+    echo'</body></html>';
+}
+
 ?>
