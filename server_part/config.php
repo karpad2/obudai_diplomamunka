@@ -7,6 +7,7 @@ const SALT=123456789;
 const GET_RESULT=0;
 const GET_INSERT_ID=1;
 const GET_ASSOC=2;
+const GET_ROWS_NUMBER=3;
 const SUCCESS=1;
 const FAIL=2;
 
@@ -104,6 +105,7 @@ function e_sql($sql,$mod=GET_RESULT)
     $var= mysqli_query($conn,$sql)  or die(mysqli_error($conn));
     if($mod==GET_INSERT_ID)  $var= mysqli_insert_id($conn);
     if($mod==GET_ASSOC)  $var= mysqli_fetch_all($var,MYSQLI_ASSOC);
+    if($mod==GET_ROWS_NUMBER)  $var= $conn->affected_rows;
    // var_dump($var);
     //die("");
     $conn->close();

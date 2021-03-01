@@ -99,7 +99,8 @@ echo '<div class="row">
 <input type="hidden" name="program" id="program_block">
 <input type="submit" class="btn btn-primary" value="Save">
 </form>
-<input type="button" id="stepButton" />
+<input type="button" id="stepButton" />';
+echo '
 <script>
 function a(l)
 {
@@ -113,8 +114,7 @@ a("f-submit").onsubmit=(e)=>
 var demoWorkspace = Blockly.inject("blocklyDiv",
         {media: "media/",
          toolbox: document.getElementById("toolbox")});
-    Blockly.Xml.domToWorkspace(document.getElementById("startBlocks"),
-        demoWorkspace);
+    Blockly.Xml.domToWorkspace(document.getElementById("startBlocks"),demoWorkspace);
 
     var outputArea = document.getElementById("output");
     var stepButton = document.getElementById("stepButton");
