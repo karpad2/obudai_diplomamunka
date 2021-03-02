@@ -21,7 +21,7 @@ echo '<table class="table">
     </tr>
     </thead>
     <tbody>';
-$sql = "select program_id,program_name,room_name,room_id from programs p join escape_rooms e  on p.room_id=e.room_id where user_id='{$_SESSION["user"]["user_id"]}'";
+$sql = "select program_id,program_name,room_name,p.room_id from programs p left join escape_rooms e on p.room_id=e.room_id where user_id='{$_SESSION["user"]["user_id"]}'";
 $result=e_sql($sql);
 if($result->num_rows>0)
 {
