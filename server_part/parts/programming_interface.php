@@ -36,7 +36,7 @@ if(isset($_GET["room_id"])) {
     $sql = "select * from devices where room_id='{$_GET["room_id"]}'";
     $devs = e_sql($sql, GET_ASSOC);
 }
-var_dump($pr);
+if(DEBUG==1)var_dump($pr);
 echo '<script src="js/blockly_compressed.js"></script>';
 echo '<script src="js/blocks_compressed.js"></script>';
 echo '<script src="js/javascript_compressed.js"></script>';
