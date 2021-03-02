@@ -14,6 +14,8 @@ if(isset($_GET["program_id"])) {
         {
             $sql="insert into programs (program_name,user_id,room_id,active,program_xml_block,program_javascript_block)".
             "values('{$_POST["program_name"]}','{$_SESSION["user"]["user_id"]}','{$_GET["room_id"]}','1','{$_POST["program_xml_block"]}','{$_POST["program_javascript_block"]}')";
+            $id=e_sql($sql,GET_INSERT_ID);
+            header("Location:index.php?mod=programming_interface?program_id={$id}&room_id={$_GET["room_id"]}");
         }
 
     }
@@ -104,8 +106,8 @@ a("f-submit").onsubmit=(e)=>
     var xmldowm = Blockly.Xml.workspaceToDom(Workspace);
     var xmltext = Blockly.Xml.domToPrettyText(xmldowm);
     a("program_xml_block").value=xmltext;
-    alert(xmltext);
-    e.preventDefault();
+    //alert(xmltext);
+    //e.preventDefault();
 }
 
 var Workspace = Blockly.inject("blocklyDiv",
