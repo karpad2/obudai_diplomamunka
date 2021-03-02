@@ -4,13 +4,7 @@ if(isset($_GET["delete"]) and isset($_GET["program_id"]))
     $sql="delete from programs where program_id='{$_GET["program_id"]}' and user_id='{$_SESSION["user"]["user_id"]}'";
     e_sql($sql);
 }
-?>
-
-
-<h3>Programs:</h3>
-
-<?php
-
+echo"<h3>Programs:</h3>";
 echo '<table class="table">
     <thead>
     <tr>

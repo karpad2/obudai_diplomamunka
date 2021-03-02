@@ -25,6 +25,16 @@ if(isset($_POST["camera_name"]) and isset($_POST["camera_url"]) and isset($_GET[
     $sql="update cameras set camera_name='{$_POST["camera_name"]}',camera_url='{$_POST["camera_url"]}' where camera_id='{$_POST["camera_id"]}'";
     e_sql($sql);
 }
+if(isset($_GET["camera_id"]) and isset($_GET["delete"]))
+{
+    $sql=" delete from cameras where camera_id='{$_POST["camera_id"]}' and user_id='{$_SESSION["user"]["user_id"]}'";
+    e_sql($sql);
+}
+if(isset($_POST["add-cam-name"]) and isset($_POST["add-cam-url"]) and isset($_GET["room_id"]))
+{
+    $sql="insert into cameras (camera_name,camera_url,room_id,user_id) values('{$_POST["camera_name"]}','{$_POST["camera_url"]}','{$_GET["room_id"]}','{$_SESSION["user"]["user_id"]}')";
+    e_sql($sql);
+}
 /*
 var_dump($_GET);
 var_dump($_POST);*/
@@ -94,6 +104,7 @@ foreach ($res as $re)
     echo "<option value=\"new\">Add new program</option>";
 echo"</select>
 <input type=\"submit\" class=\"btn btn-outline-warning w-100\" value=\"Choose:\"/>
+<a href=\"index.php?mod=run&\"></a>
  </form>";
     $sql="select * from devices where user_id='{$_SESSION["user"]["user_id"]}'";
     $res=e_sql($sql,GET_ASSOC);
@@ -132,7 +143,11 @@ echo"</select>
     }
 
     echo "</tbody>";
-    
+    echo "<tfoot><form method=\"post\" action=\"#\"><tr>
+<td><label for=\"add-cam-name\">Camera Name:</label><input id=\"add-cam-name\" name='add-camera-name'/></td>
+<td><label for=\"add-cam-url\">Camera Name:</label><input id=\"add-cam-url\" name='add-camera-url'/></td>
+<td><input id=\"add-cam-btn\" class=\"btn btn-outline-success\" value=\"Add camera\"/></td></tr>
+</form></tfoot>";
     echo "</table>";
 
 
