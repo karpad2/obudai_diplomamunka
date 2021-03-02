@@ -13,7 +13,7 @@
 <body>
 
 <header class="d-flex text-dark flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
-    <a class="h5 my-0 me-md-auto" href="index.php"><?php echo get_config_text("website_name");  ?></a>
+    <a class="h5 my-0 me-md-auto text-dark" href="index.php"><?php echo get_config_text("website_name");  ?></a>
     <nav class="my-2 my-md-0 me-md-3">
 
         <?php
