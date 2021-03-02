@@ -7,16 +7,15 @@ if(isset($_GET["program_id"])) {
     if($_GET["program_id"]!="new") {
         if(isset($_POST["program_name"]) and isset($_POST["program_xml_block"]) and isset($_POST["program_javascript_block"]))
         {
-          //  $sql="insert into programs (program_name,user_id,room_id,active,program_xml_block,program_javascript_block)".
-             //   "values('{$_POST["program_name"]}','{$_SESSION["user"]["user_id"]}','{$_GET["room_id"]}','1','{$_POST["program_xml_block"]}','{$_POST["program_javascript_block"]}')";
-            $sql="update programs ".
+         $sql="update programs ".
                 "set program_name='{$_POST["program_name"]}',program_xml_block='{$_POST["program_xml_block"]}',program_javascript_block='{$_POST["program_javascript_block"]}'".
                 " where program_id='{$_GET["program_id"]}' and user_id='{$_SESSION["user"]["user_id"]}'";
             e_sql($sql);
         }
         $edit=true;
         $sql = "select * from programs where program_id='{$_GET["room_id"]}'";
-        $devs = e_sql($sql, GET_ASSOC)[0];
+        $devs = e_sql($sql, GET_ASSOC);
+        var_dump($devs);
     }
     else
     {
