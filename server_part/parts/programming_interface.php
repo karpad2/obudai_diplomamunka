@@ -14,7 +14,7 @@ if(isset($_GET["program_id"])) {
         }
         $edit=true;
         $sql = "select * from programs where program_id='{$_GET["room_id"]}'";
-        $devs = e_sql($sql, GET_ASSOC);
+        $devs = e_sql($sql, GET_ASSOC)[0];
         var_dump($devs);
     }
     else
