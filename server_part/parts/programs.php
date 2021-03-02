@@ -30,7 +30,7 @@ $i=0;
     echo "<tr><td>$i</td><td>{$re["program_name"]}</td><td>{$re["room_name"]}</td>".
         "<td>".
         "<a class=\"btn w-50 btn-outline-warning form-control\" href=\"index.php?mod=programming_interface&room_id={$re["room_id"]}&program_id={$re["program_id"]}\">Edit</a>".
-        "<a class=\"btn w-50 btn-outline-danger form-control\" href=\"index.php?programs&delete&program_id={$re["program_id"]}\">Delete</a>".
+        "<a class=\"btn w-50 btn-outline-danger form-control\" href=\"index.php?mod=programs&delete&program_id={$re["program_id"]}\">Delete</a>".
         "</td></tr>";
     }
 
