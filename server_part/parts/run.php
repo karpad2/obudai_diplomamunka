@@ -144,8 +144,8 @@ echo"</select>
 
     echo "</tbody>";
     echo "<tfoot><form method=\"post\" action=\"#\"><tr>
-<td><label for=\"add-cam-name\">Camera Name:</label><input id=\"add-cam-name\" class=\"form-control\" name='add-camera-name'/></td>
-<td><label for=\"add-cam-url\">Camera Name:</label><input id=\"add-cam-url\" class=\"form-control\" name='add-camera-url'/></td>
+<td><label for=\"add-cam-name\">Camera Name:</label><input id=\"add-cam-name\" class=\"form-control w-100\" name='add-camera-name'/></td>
+<td><label for=\"add-cam-url\">Camera Name:</label><input id=\"add-cam-url\" class=\"form-control w-100\" name='add-camera-url'/></td>
 <td><input id=\"add-cam-btn\" class=\"btn btn-outline-success\" value=\"Add camera\"/></td></tr>
 </form></tfoot>";
     echo "</table>";
