@@ -2,6 +2,7 @@
 //include ("blocks.php");
 $edit=false;
 $devs=null;
+$pr=null;
 if(empty($_SESSION["user"]["user_id"])) die("err 403");
 //var_dump($_POST);
 if(isset($_GET["program_id"])) {
@@ -35,7 +36,7 @@ if(isset($_GET["room_id"])) {
     $sql = "select * from devices where room_id='{$_GET["room_id"]}'";
     $devs = e_sql($sql, GET_ASSOC);
 }
-var_dump($devs);
+var_dump($pr);
 echo '<script src="js/blockly_compressed.js"></script>';
 echo '<script src="js/blocks_compressed.js"></script>';
 echo '<script src="js/javascript_compressed.js"></script>';
