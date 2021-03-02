@@ -44,7 +44,7 @@ echo '<div class="row"><h3>Run</h3></div>';
 if (isset($_GET["run_mod"]))
 {
     echo "<div class=\"row\">";
-    echo "<div class=\"col-md-4\">";
+    echo "<div class=\"col-lg-1\">";
     echo "<h5 class=\"my-0 font-weight-normal\">Room management</h5>";
     //var_dump($_GET);
     switch ($_GET["run_mod"])
