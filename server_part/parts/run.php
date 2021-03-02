@@ -138,7 +138,9 @@ echo"</select>
 <tr><td>$i<input type=\"hidden\" name=\"camera_id\" value=\"{$re["camera_id"]}\"/></td>
 <td><input name=\"camera_name\" class=\"form-control\" value=\"{$re["camera_name"]}\"/></td>
 <td><input name=\"camera_url\" class=\"form-control\" value=\"{$re["camera_url"]}\"/></td>
-<td><input value=\"Save\" class='btn w-100 btn-outline-success' type=\"submit\"/></td>
+<td><input value=\"Save\" class='btn w-100 btn-outline-success' type=\"submit\"/>
+<a class=\"btn w-100 btn-outline-danger\" href=\"index.php?mod=run&run_mod=edit&delete&room_id={$_GET["room_id"]}&camera_id={$_GET["camera_id"]}\">Delete</a>
+</td>
 </tr>
 </form>";
     }
