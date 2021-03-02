@@ -15,12 +15,11 @@ if(isset($_GET["program_id"])) {
             $sql="insert into programs (program_name,user_id,room_id,active,program_xml_block,program_javascript_block)".
             "values('{$_POST["program_name"]}','{$_SESSION["user"]["user_id"]}','{$_GET["room_id"]}','1','{$_POST["program_xml_block"]}','{$_POST["program_javascript_block"]}')";
             $id=e_sql($sql,GET_INSERT_ID);
-            header("Location:index.php?mod=programming_interface?program_id={$id}&room_id={$_GET["room_id"]}");
+            header("Location: index.php?mod=programming_interface?program_id={$id}&room_id={$_GET["room_id"]}");
         }
 
     }
 }
-
 if(isset($_GET["room_id"])) {
     $sql = "select * from devices where room_id='{$_GET["room_id"]}'";
     $devs = e_sql($sql, GET_ASSOC);
@@ -87,14 +86,12 @@ echo '<script>
 //echo '</div>';
 
 echo '<div class="row">
-
-<input type="hidden" name="program_js_block" id="program_js_block">
+<input type="hidden" name="program_javascript_block" id="program_javascript_block">
 <input type="hidden" name="program_xml_block" id="program_xml_block">
 <input type="submit" class="btn btn-primary" value="Save">
-';
+</div>';
 //<input type="button" id="generate" value="generate" />';
-echo '
-<script>
+echo '<script>
 function a(l)
 {
     return document.getElementById(l);
@@ -102,7 +99,7 @@ function a(l)
 a("f-submit").onsubmit=(e)=>
 {
     var code = Blockly.JavaScript.workspaceToCode(Workspace);
-    a("program_js_block").value=code;
+    a("program_javascript_block").value=code;
     var xmldowm = Blockly.Xml.workspaceToDom(Workspace);
     var xmltext = Blockly.Xml.domToPrettyText(xmldowm);
     a("program_xml_block").value=xmltext;
@@ -123,7 +120,7 @@ var Workspace = Blockly.inject("blocklyDiv",
      
     }*/
 </script>
-</div> </form>';
+ </form>';
 
 
 /*
