@@ -1,16 +1,26 @@
 <?php //TODO 1 more cell to xml dom, and save that too, xml for visual javascript for running
 //include ("blocks.php");
-
+$edit=false;
 if(empty($_SESSION["user"]["user_id"])) die("err 403");
 var_dump($_POST);
 if(isset($_GET["program_id"])) {
     if($_GET["program_id"]!="new") {
-
+        if(isset($_POST["program_name"]) and isset($_POST["program_xml_block"]) and isset($_POST["program_javascript_block"]))
+        {
+          //  $sql="insert into programs (program_name,user_id,room_id,active,program_xml_block,program_javascript_block)".
+             //   "values('{$_POST["program_name"]}','{$_SESSION["user"]["user_id"]}','{$_GET["room_id"]}','1','{$_POST["program_xml_block"]}','{$_POST["program_javascript_block"]}')";
+            $sql="update programs ".
+                "set program_name='{$_POST["program_name"]}',program_xml_block='{$_POST["program_xml_block"]}',program_javascript_block='{$_POST["program_javascript_block"]}'".
+                " where program_id='{$_GET["program_id"]}' and user_id='{$_SESSION["user"]["user_id"]}'";
+            e_sql($sql);
+           }
+        $edit=true;
         $sql = "select * from programs where program_id='{$_GET["room_id"]}'";
         $devs = e_sql($sql, GET_ASSOC);
     }
     else
     {
+        $edit=false;
         if(isset($_POST["program_name"]) and isset($_POST["program_xml_block"]) and isset($_POST["program_javascript_block"]))
         {
             $sql="insert into programs (program_name,user_id,room_id,active,program_xml_block,program_javascript_block)".
@@ -74,9 +84,10 @@ echo "<category name=\"Functions\" custom=\"PROCEDURE\" colour=\"%{BKY_PROCEDURE
 
 echo "</category>";
 echo '</xml>';
-echo  '<xml xmlns="https://developers.google.com/blockly/xml" id="startBlocks" style="display: none">';
-    if(isset($devs["program_xml_block"])) echo $devs["program_xml_block"];
-echo '</xml>';
+if($edit){
+echo  '<div id="implementing_block" style="display: none">';
+        echo $devs["program_xml_block"];
+echo '</div>';}
 /*
 echo '<script>
     var programmingWorkspace = Blockly.inject("blocklyDiv",
