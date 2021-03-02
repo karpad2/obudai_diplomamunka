@@ -125,7 +125,7 @@ var Workspace = Blockly.inject("blocklyDiv",
     if($edit)
     {
         echo 'var l=a("implementing_block");
-        console.log(l)';
+        console.log(l);';
     }
 
 
