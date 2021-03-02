@@ -146,7 +146,7 @@ echo"</select>
     echo "</tbody><tfoot><form method=\"post\" action=\"#\"><tr>
 <td><label for=\"add-cam-name\">Camera Name:</label><input id=\"add-cam-name\" class=\"form-control w-100\" name='add-camera-name'/></td>
 <td><label for=\"add-cam-url\">Camera Url:</label><input id=\"add-cam-url\" class=\"form-control w-100\" name='add-camera-url'/></td>
-<td><input id=\"add-cam-btn\" class=\"btn btn-outline-success\" value=\"Add camera\"/></td></tr></form></tfoot></table>";
+<td><input id=\"add-cam-btn\" class=\"btn btn-outline-success\" type=\"submit\" value=\"Add camera\"/></td></tr></form></tfoot></table>";
 
 
 
@@ -154,5 +154,4 @@ echo"</select>
 function stop()
 {
     echo "<a href=\"index.php?mod=run&run_mod=start&room_id={$_GET["room_id"]}\" class=\"w-100 btn btn-lg btn-outline-danger\">Start!</a>";
-
 }
