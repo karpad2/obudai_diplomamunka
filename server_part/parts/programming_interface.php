@@ -2,7 +2,7 @@
 //include ("blocks.php");
 $edit=false;
 if(empty($_SESSION["user"]["user_id"])) die("err 403");
-var_dump($_POST);
+//var_dump($_POST);
 if(isset($_GET["program_id"])) {
     if($_GET["program_id"]!="new") {
         if(isset($_POST["program_name"]) and isset($_POST["program_xml_block"]) and isset($_POST["program_javascript_block"]))
@@ -16,7 +16,7 @@ if(isset($_GET["program_id"])) {
         }
         $edit=true;
         $sql = "select * from programs where program_id='{$_GET["room_id"]}'";
-        $devs = e_sql($sql, GET_ASSOC);
+        $devs = e_sql($sql, GET_ASSOC)[0];
     }
     else
     {
@@ -43,7 +43,7 @@ echo '<script src="js/en.js"></script>';
 echo '<form method="post" action="#" id="f-submit">';
 echo '<div class="row">';
 
-echo '<label for="program_name">Program name:</label> <input type="text" name="program_name" class="form-control" id="program_name"/>';
+echo '<label for="program_name">Program name:</label> <input type="text" name="program_name" class="form-control" id="program_name" value=\"'.$devs["program_name"].'\"/>';
 echo ' <div id="blocklyDiv" style="height: 480px;" class="col-lg"></div>';
 //echo '<input name="program_id" type="hidden" value=".."/>';
 //A grafikus felületet blockly segítsével oldottam meg
