@@ -22,11 +22,8 @@ echo '<table class="table">
     </thead>
     <tbody>';
 $sql = "select program_id,program_name,room_name,p.room_id from programs p left join escape_rooms e on p.room_id=e.room_id where p.user_id='{$_SESSION["user"]["user_id"]}'";
-$result=e_sql($sql,GET_ASSOC);
-if($result->num_rows>0)
-{
-    $i=0;
-    $res=mysqli_fetch_all($result,0);
+$res=e_sql($sql,GET_ASSOC);
+$i=0;
     foreach ($res as $re)
     {
         $i++;
@@ -36,17 +33,15 @@ if($result->num_rows>0)
         "<a class=\"btn w-50 btn-outline-danger\" href=\"index.php?programs&delete&program_id={$re["program_id"]}\">Delete</a>".
         "</td></tr>";
     }
-}
-else
-{
-    echo "<tr><td colspan='4'>You don't have any program yet.</td></tr>";
-    echo "</tbody>
+
+
+echo "</tbody>
 <tfoot>
 <tr>
 <td colspan='4'><a href=\"index.php?mod=program&pr_mod=new\">Add program</a></td>
 </tr>
         </tfoot>";
-}
+
 echo "</table>";
 ?>
 
