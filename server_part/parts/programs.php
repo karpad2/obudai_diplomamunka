@@ -22,7 +22,7 @@ echo '<table class="table">
     </thead>
     <tbody>';
 $sql = "select program_id,program_name,room_name,p.room_id from programs p left join escape_rooms e on p.room_id=e.room_id where p.user_id='{$_SESSION["user"]["user_id"]}'";
-$result=e_sql($sql);
+$result=e_sql($sql,GET_ASSOC);
 if($result->num_rows>0)
 {
     $i=0;
