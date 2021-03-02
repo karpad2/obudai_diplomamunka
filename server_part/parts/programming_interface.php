@@ -133,9 +133,10 @@ a("f-submit").onsubmit=(e)=>
 {
     var code = Blockly.JavaScript.workspaceToCode(Workspace);
     a("program_js_block").value=code;
-    var codexml = Blockly.Xml.workspaceToCode(Workspace);
+    var codexml = Blockly.Xml.workspaceToDom(Workspace);
     a("program_xml_block").value=code;
-    //e.preventDefault();
+    alert(code);
+    e.preventDefault();
 }
 
 var Workspace = Blockly.inject("blocklyDiv",
