@@ -1,7 +1,8 @@
 <?php //TODO 1 more cell to xml dom, and save that too, xml for visual javascript for running
-include ("blocks.php");
+//include ("blocks.php");
 
 if(empty($_SESSION["user"]["user_id"])) die("err 403");
+var_dump($_POST);
 if(isset($_GET["program_id"])) {
     if($_GET["program_id"]!="new") {
 
