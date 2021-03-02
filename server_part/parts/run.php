@@ -49,7 +49,9 @@ if (isset($_GET["run_mod"]))
     //var_dump($_GET);
     switch ($_GET["run_mod"])
     {
-        case "start": start();
+        case "start":
+        break;
+        case "lobby": lobby();
         break;
         case "edit" : edit();
         break;
@@ -85,6 +87,11 @@ function defa()
 
 }
 function start()
+{
+
+}
+
+function lobby()
 {
     //echo "<div class=\"col-md-4\">";
     echo "<a href=\"index.php?mod=run&run_mod=start&room_id={$_GET["room_id"]}\" class=\"w-100 btn btn-lg btn-outline-success\">Start!</a>";
