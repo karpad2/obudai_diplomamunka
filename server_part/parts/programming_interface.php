@@ -13,7 +13,7 @@ if(isset($_GET["program_id"])) {
                 "set program_name='{$_POST["program_name"]}',program_xml_block='{$_POST["program_xml_block"]}',program_javascript_block='{$_POST["program_javascript_block"]}'".
                 " where program_id='{$_GET["program_id"]}' and user_id='{$_SESSION["user"]["user_id"]}'";
             e_sql($sql);
-           }
+        }
         $edit=true;
         $sql = "select * from programs where program_id='{$_GET["room_id"]}'";
         $devs = e_sql($sql, GET_ASSOC);
@@ -121,9 +121,15 @@ a("f-submit").onsubmit=(e)=>
 
 var Workspace = Blockly.inject("blocklyDiv",
         {media: "media/",
-         toolbox: document.getElementById("toolbox")});
-    Blockly.Xml.domToWorkspace(a("startBlocks"),Workspace);
-    Blockly.JavaScript.addReservedWords("code");
+         toolbox: document.getElementById("toolbox")});';
+    if($edit)
+    {
+        echo 'var l=a("implementing_block");
+        console.log(l)';
+    }
+
+
+echo 'Blockly.JavaScript.addReservedWords("code");
      
     var code = Blockly.JavaScript.workspaceToCode(Workspace);
    /* a("generate").onclick=()=>
