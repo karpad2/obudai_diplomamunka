@@ -29,8 +29,8 @@ $i=0;
         $i++;
     echo "<tr><td>$i</td><td>{$re["program_name"]}</td><td>{$re["room_name"]}</td>".
         "<td>".
-        "<a class=\"btn w-50 btn-outline-warning\" href=\"index.php?programming_interface&program_id={$re["program_id"]}\">Edit</a>".
-        "<a class=\"btn w-50 btn-outline-danger\" href=\"index.php?programs&delete&program_id={$re["program_id"]}\">Delete</a>".
+        "<a class=\"btn w-50 btn-outline-warning form-control\" href=\"index.php?mod=programming_interface&program_id={$re["program_id"]}\">Edit</a>".
+        "<a class=\"btn w-50 btn-outline-danger form-control\" href=\"index.php?programs&delete&program_id={$re["program_id"]}\">Delete</a>".
         "</td></tr>";
     }
 
