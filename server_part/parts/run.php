@@ -49,7 +49,7 @@ if (isset($_GET["run_mod"]))
     //var_dump($_GET);
     switch ($_GET["run_mod"])
     {
-        case "start":
+        case "start": start();
         break;
         case "lobby": lobby();
         break;
@@ -88,15 +88,23 @@ function defa()
 }
 function start()
 {
+    echo "<a href=\"index.php?mod=run&run_mod=start&room_id={$_GET["room_id"]}\" class=\"w-100 btn btn-lg btn-outline-success\">Start!</a>";
+    echo "<a href=\"index.php?mod=run&run_mod=edit&room_id={$_GET["room_id"]}\" class=\"w-100 btn btn-lg btn-outline-warning\">Edit!</a>";
+
 
 }
 
 function lobby()
 {
     //echo "<div class=\"col-md-4\">";
-    echo "<a href=\"index.php?mod=run&run_mod=start&room_id={$_GET["room_id"]}\" class=\"w-100 btn btn-lg btn-outline-success\">Start!</a>";
+    echo "<form action=\"index.php?mod=run&run_mod=run&room_id={$_GET["room_id"]}\" method=\"post\">";
+    echo "<label for=\"teamname\">Team Name:</label><input id=\"teamname\" class=\"form-control\" name=\"team_name\" />
+    <input class=\"w-100 btn btn-lg btn-outline-success\" type=\"submit\" value=\"Start!\"/>";
+    echo"</form>";
     echo "<a href=\"index.php?mod=run&run_mod=edit&room_id={$_GET["room_id"]}\" class=\"w-100 btn btn-lg btn-outline-warning\">Edit!</a>";
     
+    echo"<script></script>";
+
 }
 function edit()
 {
