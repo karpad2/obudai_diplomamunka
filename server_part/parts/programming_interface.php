@@ -1,6 +1,24 @@
 <?php //TODO 1 more cell to xml dom, and save that too, xml for visual javascript for running
 include ("blocks.php");
+
 if(empty($_SESSION["user"]["user_id"])) die("err 403");
+if(isset($_GET["program_id"])) {
+    if($_GET["program_id"]!="new") {
+
+        $sql = "select * from programs where program_id='{$_GET["room_id"]}'";
+        $devs = e_sql($sql, GET_ASSOC);
+    }
+    else
+    {
+        if(isset($_POST["program_name"]) and isset($_POST["program_xml_block"]) and isset($_POST["program_javascript_block"]))
+        {
+            $sql="insert into programs (program_name,user_id,room_id,active,program_xml_block,program_javascript_block)".
+            "values('{$_POST["program_name"]}','{$_SESSION["user"]["user_id"]}','{$_GET["room_id"]}','1','{$_POST["program_xml_block"]}','{$_POST["program_javascript_block"]}')";
+        }
+
+    }
+}
+
 if(isset($_GET["room_id"])) {
     $sql = "select * from devices where room_id='{$_GET["room_id"]}'";
     $devs = e_sql($sql, GET_ASSOC);
@@ -11,10 +29,11 @@ echo '<script src="js/blocks_compressed.js"></script>';
 echo '<script src="js/javascript_compressed.js"></script>';
 echo '<script src="js/en.js"></script>';
 echo '<div class="row">';
+echo '<form method="post" action="#" id="f-submit">';
 echo ' <div id="blocklyDiv" style="height: 480px;" class="col-lg"></div>';
-
+//echo '<input name="program_id" type="hidden" value=".."/>';
 //A grafikus felületet blockly segítsével oldottam meg
-
+echo '<label for="program_name">Program name:</label> <input type="text" name="program_name" class="form-control" id="program_name"/>'
 echo '<xml xmlns="https://developers.google.com/blockly/xml" id="toolbox" style="display: block">';
 $sql="select * from blocks";
 $res=e_sql($sql,GET_ASSOC);
@@ -60,12 +79,12 @@ else
 echo "<block type='{$re["bl_pr_id"]}'>{$re["bl_pr_text"]}</block>";
 }
 echo "</category>";
-$sql="select * from rfid_cards where user_id='{$_SESSION["user"]["user_id"]}'";
+$sql="select * from devices where user_id='{$_SESSION["user"]["user_id"]}'";
 $res=e_sql($sql,GET_ASSOC);
 echo "<category name=\"Device tags\" colour=\"%{BKY_MATH_HUE}\">";
 foreach ($res as $re) 
 {
-echo "<block type=\"text\">{$re["rfid-code"]}</block>";
+echo "<block type=\"text\">{$re["device_name"]}</block>";
 }
 echo "</category>";
 
@@ -85,6 +104,7 @@ echo "<category name=\"Functions\" custom=\"PROCEDURE\" colour=\"%{BKY_PROCEDURE
 echo "</category>";
 echo '</xml>';
 echo  '<xml xmlns="https://developers.google.com/blockly/xml" id="startBlocks" style="display: none">';
+    if(isset($devs["program_xml_block"])) echo $devs["program_xml_block"];
 echo '</xml>';
 /*
 echo '<script>
@@ -96,10 +116,11 @@ echo '<script>
 echo '</div>';
 
 echo '<div class="row">
-<form method="post" action="#" id="f-submit">
-<input type="hidden" name="program" id="program_block">
+
+<input type="hidden" name="program_js_block" id="program_js_block">
+<input type="hidden" name="program_xml_block" id="program_xml_block">
 <input type="submit" class="btn btn-primary" value="Save">
-</form>';
+';
 //<input type="button" id="generate" value="generate" />';
 echo '
 <script>
@@ -110,7 +131,9 @@ function a(l)
 a("f-submit").onsubmit=(e)=>
 {
     var code = Blockly.JavaScript.workspaceToCode(Workspace);
-    a("program_block").value=code;
+    a("program_js_block").value=code;
+    var codexml = Blockly.Xml.workspaceToCode(Workspace);
+    a("program_xml_block").value=code;
     //e.preventDefault();
 }
 
@@ -127,5 +150,5 @@ var Workspace = Blockly.inject("blocklyDiv",
      
     }*/
 </script>
-</div>';
+</div> </form>';
 

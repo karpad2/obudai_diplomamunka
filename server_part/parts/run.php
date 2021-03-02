@@ -3,7 +3,7 @@ if(isset($_POST["current_program"])and isset($_GET["room_id"]))
 {
     if($_POST["current_program"]=="new")
     {
-        header("Location:index.php?mod=programming_interface&room_id={$_GET["room_id"]}");
+        header("Location:index.php?mod=programming_interface&program_id=new&room_id={$_GET["room_id"]}");
     }
     $sql="update programs set active='0' where room_id='{$_GET["room_id"]}'";
     e_sql($sql);
