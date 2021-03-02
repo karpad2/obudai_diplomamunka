@@ -30,10 +30,11 @@ echo '<script src="js/javascript_compressed.js"></script>';
 echo '<script src="js/en.js"></script>';
 echo '<div class="row">';
 echo '<form method="post" action="#" id="f-submit">';
+echo '<label for="program_name">Program name:</label> <input type="text" name="program_name" class="form-control" id="program_name"/>';
 echo ' <div id="blocklyDiv" style="height: 480px;" class="col-lg"></div>';
 //echo '<input name="program_id" type="hidden" value=".."/>';
 //A grafikus felületet blockly segítsével oldottam meg
-echo '<label for="program_name">Program name:</label> <input type="text" name="program_name" class="form-control" id="program_name"/>';
+
 echo '<xml xmlns="https://developers.google.com/blockly/xml" id="toolbox" style="display: block">';
 $sql="select * from blocks";
 $res=e_sql($sql,GET_ASSOC);
