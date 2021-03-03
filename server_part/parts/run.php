@@ -53,6 +53,7 @@ if (isset($_GET["run_mod"]))
         break;
         case "lobby": lobby();
         break;
+        case "run": run();break;
         case "edit" : edit();
         break;
         case "stop" : stop();
@@ -90,9 +91,27 @@ function start()
 {
     echo "<a href=\"index.php?mod=run&run_mod=start&room_id={$_GET["room_id"]}\" class=\"w-100 btn btn-lg btn-outline-success\">Start!</a>";
     echo "<a href=\"index.php?mod=run&run_mod=edit&room_id={$_GET["room_id"]}\" class=\"w-100 btn btn-lg btn-outline-warning\">Edit!</a>";
-
+}
+function run()
+{
+    if(isset($_POST["team_name"])) $team_name=$_POST["team_name"];
+    else $team_name="Default";
+    $sql="select * from teams where teams_name='$team_name'";
+    $team=e_sql($sql,GET_ASSOC);
+    if(count($team)==0)
+    {
+        $sql="insert into teams (teams_name) values('{$team_name}')";
+        e_sql($sql);
+        $sql="select * from teams where teams_name='$team_name'";
+        $team=e_sql($sql,GET_ASSOC);
+    }
+    //echo "array of elements".count($res);
+    $sql="select program_id,program_javascript_block from programs where room_id='{$_GET["room_id"]}' and active=1";
+    $pr=e_sql($sql,GET_ASSOC)[0];
+    $sql="insert into runs (program_id, team_id) values('{$pr["program_id"]}','{$team["team_id"]}')";
 
 }
+
 
 function lobby()
 {
@@ -168,5 +187,11 @@ echo"</select>
 }
 function stop()
 {
-    echo "<a href=\"index.php?mod=run&run_mod=start&room_id={$_GET["room_id"]}\" class=\"w-100 btn btn-lg btn-outline-danger\">Start!</a>";
+    $sql="select run_id from runs left join programs p on p.program_id = runs.program_id where runs.finishing_time  is null and p.room_id='{$_GET["room_id"]}'";
+    $r_id=e_sql($sql)[0];
+    $sql="update runs set finishing_time=CURRENT_TIME() where run_id='{$r_id["run_id"]}'";
+    e_sql($sql);
+
+
+
 }
