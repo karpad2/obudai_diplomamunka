@@ -68,7 +68,7 @@ if (isset($_GET["run_mod"]))
     $sql="select count(device_id) as 'device_number',sum(active) as 'active_number' from active_devices where room_id='{$_GET["room_id"]}' group by room_id";
     $devis=e_sql($sql,GET_ASSOC)[0];
     echo "<h5 class=\"card-title pricing-card-title\">{$devis["active_number"]} <small class=\"text-muted\"> / {$devis["device_number"]} active devices";
-    if($devis["active_number"]==$devis["device_number"]) echo"<img class=\"mb-2\" src=\"media/Approve.svg\" alt=\"\" width=\"24\" height=\"19\"> All device online"
+    if($devis["active_number"]==$devis["device_number"]) echo"<img class=\"mb-2\" src=\"media/Approve.svg\" alt=\"\" width=\"24\" height=\"19\"> All device online";
     echo " </small></h5>
             <h5 class=\"card-title pricing-card-title\"> 15 <small class=\"text-muted\">/ Program status</small></h5>
             <h5 class=\"card-title pricing-card-title\"> 15 <small class=\"text-muted\">/ Program status</small></h5>";
