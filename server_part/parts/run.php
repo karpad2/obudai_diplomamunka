@@ -66,7 +66,7 @@ if (isset($_GET["run_mod"]))
     echo "<h5 class=\"my-0 font-weight-normal\">Status:</h5>";
     echo "<div class=\"card-body\">";
     $sql="select count(device_id) as 'device_number',sum(active) as 'active_number' from active_devices where room_id='{$_GET["room_id"]}' group by room_id";
-    $devis=e_sql($sql,GET_ASSOC);
+    $devis=e_sql($sql,GET_ASSOC)[0];
     echo "<h5 class=\"card-title pricing-card-title\">{$devis["active_number"]} <small class=\"text-muted\"> / {$devis["device_number"]} active devices </small></h5>
             <h5 class=\"card-title pricing-card-title\"> 15 <small class=\"text-muted\">/ Program status</small></h5>
             <h5 class=\"card-title pricing-card-title\"> 15 <small class=\"text-muted\">/ Program status</small></h5>";
