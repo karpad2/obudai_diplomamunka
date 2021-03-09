@@ -114,7 +114,7 @@ function run()
         $team=e_sql($sql,GET_ASSOC);
     }
     //echo "array of elements".count($res);
-    $sql="select program_id,program_javascript_block from programs where room_id='{$_GET["room_id"]}' and active=1";
+    $sql="select program_id,program_javascript_block from programs where room_id='{$_GET["room_id"]}' and active='1'";
     $pr=e_sql($sql,GET_ASSOC)[0];
     $sql="insert into runs (program_id, team_id) values('{$pr["program_id"]}','{$team["team_id"]}')";
     $id=e_sql($sql,GET_INSERT_ID);
