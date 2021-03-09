@@ -121,7 +121,7 @@ function lobby()
 {
     //echo "<div class=\"col-md-4\">";
     echo "<form action=\"index.php?mod=run&run_mod=run&room_id={$_GET["room_id"]}\" method=\"post\">";
-    echo "<label for=\"teamname\">Team Name:</label><input id=\"teamname\" class=\"form-control\" name=\"team_name\" />
+    echo "<label for=\"teamname\">Team Name:</label><input id=\"teamname\" class=\"form-control\" name=\"team_name\" placeholder=\"Default\"/>
     <input class=\"w-100 btn btn-lg btn-outline-success\" type=\"submit\" value=\"Start!\"/>";
     echo"</form>";
     echo "<a href=\"index.php?mod=run&run_mod=edit&room_id={$_GET["room_id"]}\" class=\"w-100 btn btn-lg btn-outline-warning\">Edit!</a>";
