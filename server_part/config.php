@@ -2,7 +2,7 @@
 
 session_start();
 if(!isset($_SESSION["logged_in"])) $_SESSION["logged_in"]=false;
-const DEBUG=0;
+const DEBUG=1;
 const SALT=123456789;
 const GET_RESULT=0;
 const GET_INSERT_ID=1;
