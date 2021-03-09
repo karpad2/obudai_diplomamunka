@@ -119,7 +119,7 @@ function run()
     $sql="select program_id,program_javascript_block from programs where room_id='{$_GET["room_id"]}' and active='1'";
     $pr=e_sql($sql,GET_ASSOC)[0];
 
-    $sql="insert into runs (program_id,team_id) values('{$pr["program_id"]}','{$team["team_id"]}')";
+    $sql="insert into runs (program_id,team_id) values('{$pr["program_id"]}','{$team["teams_id"]}')";
     $id=e_sql($sql,GET_INSERT_ID);
 
     $sql="select * from runs where run_id='$id'";
