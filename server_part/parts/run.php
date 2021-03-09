@@ -120,7 +120,7 @@ function run()
     $id=e_sql($sql,GET_INSERT_ID);
 
     $sql="select * from runs where run_id='$id'";
-    $res=e_sql($sql,GET_ASSOC)[0];
+    $res=e_sql($sql,GET_ASSOC);
     echo "<form method=\"post\" action=\"#\"><input class=\"btn btn-outline-danger w-100\" type=\"submit\" name=\"run-stop\" value=\"Stop\"/><input type=\"hidden\" value=\"$id\"/></form>";
     echo "<h3 id=\"time-counter\"></h3>";
     echo '<script>
