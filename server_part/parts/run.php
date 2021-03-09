@@ -35,6 +35,10 @@ if(isset($_POST["add-cam-name"]) and isset($_POST["add-cam-url"]) and isset($_GE
     $sql="insert into cameras (camera_name,camera_url,room_id,user_id) values('{$_POST["camera_name"]}','{$_POST["camera_url"]}','{$_GET["room_id"]}','{$_SESSION["user"]["user_id"]}')";
     e_sql($sql);
 }
+if(isset($_POST["start-run"]))
+{
+    run();
+}
 /*
 var_dump($_GET);
 var_dump($_POST);*/
@@ -100,7 +104,7 @@ function run()
 {
     if(isset($_POST["team_name"])) $team_name=$_POST["team_name"];
     else $team_name="Default";
-    $sql="select * from teams where teams_name='$team_name'";
+    $sql="select teams_id from teams where teams_name='$team_name'";
     $team=e_sql($sql,GET_ASSOC);
     if(count($team)==0)
     {
@@ -113,6 +117,29 @@ function run()
     $sql="select program_id,program_javascript_block from programs where room_id='{$_GET["room_id"]}' and active=1";
     $pr=e_sql($sql,GET_ASSOC)[0];
     $sql="insert into runs (program_id, team_id) values('{$pr["program_id"]}','{$team["team_id"]}')";
+    $id=e_sql($sql,GET_INSERT_ID);
+
+    $sql="select * from runs where run_id='$id'";
+    $res=e_sql($sql,GET_ASSOC)[0];
+    echo "<form method=\"post\" action=\"#\"><input class=\"btn btn-outline-danger w-100\" type=\"submit\" name=\"run-stop\" value=\"Stop\"/><input type=\"hidden\" value=\"$id\"/></form>";
+    echo "<h3 id=\"time-counter\"></h3>";
+    echo '<script>
+function a(id){return  document.getElementById(id);}
+window.addEventListener("load",()=>{
+    
+    var starttimestamp=new Date("'.$res["starting_time"].'");
+    var diff_time;
+    var current_time=  new Date();
+    setInterval(()=>{
+        current_time=new Date();
+        diff_time=current_time-starttimestamp;
+        console.log(Date(diff_time));
+        a("time-counter").innerText="";
+    },1000);
+    
+    
+});
+    </script>';
 
 }
 
@@ -121,11 +148,11 @@ function lobby()
 {
     //echo "<div class=\"col-md-4\">";
     echo "<form action=\"index.php?mod=run&run_mod=run&room_id={$_GET["room_id"]}\" method=\"post\">";
-    echo "<label for=\"teamname\">Team Name:</label><input id=\"teamname\" class=\"form-control\" name=\"team_name\" placeholder=\"Default\"/>
-    <input class=\"w-100 btn btn-lg btn-outline-success\" type=\"submit\" value=\"Start!\"/>";
+    echo "<label for=\"teamname\">Team Name:</label><input id=\"teamname\" class=\"form-control\" name=\"team_name\" value=\"Default\"/>
+    <input class=\"w-100 btn btn-lg btn-outline-success\" name=\"start-run\" type=\"submit\" value=\"Start!\"/>";
     echo"</form>";
+
     echo "<a href=\"index.php?mod=run&run_mod=edit&room_id={$_GET["room_id"]}\" class=\"w-100 btn btn-lg btn-outline-warning\">Edit!</a>";
-    
     echo"<script></script>";
 
 }
