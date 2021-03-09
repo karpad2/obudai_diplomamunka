@@ -111,12 +111,12 @@ function run()
         $sql="insert into teams (teams_name) values('{$team_name}')";
         e_sql($sql);
         $sql="select * from teams where teams_name='$team_name'";
-        $team=e_sql($sql,GET_ASSOC);
+        $team=e_sql($sql,GET_ASSOC)[0];
     }
     //echo "array of elements".count($res);
     $sql="select program_id,program_javascript_block from programs where room_id='{$_GET["room_id"]}' and active='1'";
     $pr=e_sql($sql,GET_ASSOC)[0];
-    $sql="insert into runs (program_id, team_id) values('{$pr["program_id"]}','{$team["team_id"]}')";
+    $sql="insert into runs (program_id,team_id) values('{$pr["program_id"]}','{$team["team_id"]}')";
     $id=e_sql($sql,GET_INSERT_ID);
 
     $sql="select * from runs where run_id='$id'";
