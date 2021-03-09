@@ -113,7 +113,7 @@ function run()
         $sql="select * from teams where teams_name='$team_name'";
         $team=e_sql($sql,GET_ASSOC)[0];
     }
-    else $team=e_sql($sql,GET_ASSOC)[0];
+    else $team=$team[0];
     //echo "array of elements".count($res);
     $sql="select program_id,program_javascript_block from programs where room_id='{$_GET["room_id"]}' and active='1'";
     $pr=e_sql($sql,GET_ASSOC)[0];
