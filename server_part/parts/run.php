@@ -37,7 +37,7 @@ if(isset($_POST["add-cam-name"]) and isset($_POST["add-cam-url"]) and isset($_GE
 }
 if(isset($_POST["start-run"]))
 {
-    run();
+    run("start");
 }
 /*
 var_dump($_GET);
@@ -100,36 +100,35 @@ function start()
     echo "<a href=\"index.php?mod=run&run_mod=start&room_id={$_GET["room_id"]}\" class=\"w-100 btn btn-lg btn-outline-success\">Start!</a>";
     echo "<a href=\"index.php?mod=run&run_mod=edit&room_id={$_GET["room_id"]}\" class=\"w-100 btn btn-lg btn-outline-warning\">Edit!</a>";
 }
-function run()
+function run($let="run")
 {
-    if(isset($_POST["team_name"])) $team_name=$_POST["team_name"];
-    else $team_name="Default";
-    $sql="select teams_id from teams where teams_name='$team_name'";
-    $team=e_sql($sql,GET_ASSOC);
-    if(count($team)==0)
-    {
-        $sql="insert into teams (teams_name) values('{$team_name}')";
-        e_sql($sql);
-        $sql="select * from teams where teams_name='$team_name'";
-        $team=e_sql($sql,GET_ASSOC)[0];
+    if($let=="start") {
+        if (isset($_POST["team_name"])) $team_name = $_POST["team_name"];
+        else $team_name = "Default";
+        $sql = "select teams_id from teams where teams_name='$team_name'";
+        $team = e_sql($sql, GET_ASSOC);
+        if (count($team) == 0) {
+            $sql = "insert into teams (teams_name) values('{$team_name}')";
+            e_sql($sql);
+            $sql = "select * from teams where teams_name='$team_name'";
+            $team = e_sql($sql, GET_ASSOC)[0];
+        } else $team = $team[0];
+        var_dump($team);
+        //echo "array of elements".count($res);
+        $sql = "select program_id,program_javascript_block from programs where room_id='{$_GET["room_id"]}' and active='1'";
+        $pr = e_sql($sql, GET_ASSOC)[0];
+
+        $sql = "insert into runs (program_id,team_id) values('{$pr["program_id"]}','{$team["teams_id"]}')";
+        $id = e_sql($sql, GET_INSERT_ID);
+        header("Location: index.php?mod=run&run_mod=run&room_id={$_GET["room_id"]}&run_id=$id");
     }
-    else $team=$team[0];
-    var_dump($team);
-    //echo "array of elements".count($res);
-    $sql="select program_id,program_javascript_block from programs where room_id='{$_GET["room_id"]}' and active='1'";
-    $pr=e_sql($sql,GET_ASSOC)[0];
-
-    $sql="insert into runs (program_id,team_id) values('{$pr["program_id"]}','{$team["teams_id"]}')";
-    $id=e_sql($sql,GET_INSERT_ID);
-
-    $sql="select * from runs where run_id='$id'";
+    $sql="select * from runs where run_id='{$_GET["run_id"]}'";
     $res=e_sql($sql,GET_ASSOC);
     echo "<form method=\"post\" action=\"#\"><input class=\"btn btn-outline-danger w-100\" type=\"submit\" name=\"run-stop\" value=\"Stop\"/><input type=\"hidden\" value=\"$id\"/></form>";
     echo "<h3 id=\"time-counter\"></h3>";
     echo '<script>
 function a(id){return  document.getElementById(id);}
 window.addEventListener("load",()=>{
-    
     var starttimestamp=new Date("'.$res["starting_time"].'");
     var diff_time;
     var current_time=  new Date();
@@ -150,6 +149,7 @@ window.addEventListener("load",()=>{
 function lobby()
 {
     //echo "<div class=\"col-md-4\">";
+    $sql="select run_id from runs join programs p on runs.program_id = p.program_id where finishing_time is null and p.room_id='{$}' "
     echo "<form action=\"index.php?mod=run&run_mod=run&room_id={$_GET["room_id"]}\" method=\"post\">";
     echo "<label for=\"teamname\">Team Name:</label><input id=\"teamname\" class=\"form-control\" name=\"team_name\" value=\"Default\"/>
     <input class=\"w-100 btn btn-lg btn-outline-success\" name=\"start-run\" type=\"submit\" value=\"Start!\"/>";
