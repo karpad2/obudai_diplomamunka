@@ -15,6 +15,14 @@ class CreateRunsTable extends Migration
     {
         Schema::create('runs', function (Blueprint $table) {
             $table->id();
+            $table->bigInteger('room_id')->unsigned()->index();
+            $table->foreign('room_id')->references('id')->on('rooms');
+            $table->bigInteger('program_id')->unsigned()->index();
+            $table->foreign('program_id')->references('id')->on('programs');
+            $table->bigInteger('team_id')->unsigned()->index();
+            $table->foreign('team_id')->references('id')->on('teams');
+            $table->timestamp('start_time')->default(now());
+            $table->timestamp('finish_time')->nullable();
             $table->timestamps();
         });
     }

@@ -23,6 +23,8 @@ class CameraFactory extends Factory
     {
         return [
             //
+            'name' => 'Camera',
+            'url' => 'http://localhost'
         ];
     }
 }

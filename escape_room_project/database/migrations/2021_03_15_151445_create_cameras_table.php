@@ -15,6 +15,10 @@ class CreateCamerasTable extends Migration
     {
         Schema::create('cameras', function (Blueprint $table) {
             $table->id();
+            $table->string('name')->default('Camera');
+            $table->string('url')->default('http://localhost');
+            $table->bigInteger('room_id')->unsigned()->index()->default('1');
+            $table->foreign('room_id')->references('id')->on('rooms');
             $table->timestamps();
         });
     }
