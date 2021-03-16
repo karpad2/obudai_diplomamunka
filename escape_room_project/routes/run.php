@@ -14,20 +14,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
+Route::middleware('auth:api')->get('/run', function (Request $request) {
     return $request->user();
 });
 
 
-Route::middleware('auth:api')->get('/device', function (Request $request) {
+Route::middleware('auth:api')->get('/run-start', function (Request $request) {
     return $request->user();
 });
 
-Route::middleware('auth:api')->get('/device-status', function (Request $request) {
+Route::middleware('auth:api')->get('/run-stop', function (Request $request) {
     return $request->user();
 });
 
-Route::middleware('auth:api')->get('/device-register', function (Request $request) {
+Route::middleware('auth:api')->get('/run-lobby', function (Request $request) {
     return $request->user();
 });
 

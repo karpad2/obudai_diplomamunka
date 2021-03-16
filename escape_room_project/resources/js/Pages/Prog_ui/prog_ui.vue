@@ -35,7 +35,6 @@
             blocklyblocks
         },
     }
-    let workspace = Blockly.inject('blocklyDiv',
-      {toolbox: document.getElementById('toolbox')});
+    let workspace = Blockly.inject('blocklyDiv',{toolbox: document.getElementById('toolbox')});
     let defaultBlocks = document.getElementById('blocklyDefault');
 </script>
