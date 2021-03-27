@@ -3,6 +3,12 @@
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+use App\Http\Controllers\DevicesController;
+use App\Http\Controllers\CamerasController;
+use App\Http\Controllers\EteamsController;
+use App\Http\Controllers\ProgramsController;
+use App\Http\Controllers\RoomController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -29,3 +35,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 })->name('dashboard');
 
 Route::resource('rooms', RoomController::class);
+Route::resource('devices', DevicesController::class);
+Route::resource('teams', ETeamsController::class);
+Route::resource('cameras', CamerasController::class);
+Route::resource('programs', ProgramsController::class);
