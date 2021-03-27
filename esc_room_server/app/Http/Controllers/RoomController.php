@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Room;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
+use Illuminate\Support\Facades\Validator;
 
 class RoomController extends Controller
 {
@@ -15,6 +17,8 @@ class RoomController extends Controller
     public function index()
     {
         //
+        $data = Room::all();
+        return Inertia::render('rooms', ['data' => $data]);
     }
 
     /**
@@ -36,6 +40,15 @@ class RoomController extends Controller
     public function store(Request $request)
     {
         //
+        Validator::make($request->all(), [
+            'name' => ['required'],
+            'user_id' => ['required'],
+        ])->validate();
+  
+        Room::create($request->all());
+  
+        return redirect()->back()
+                    ->with('message', 'Post Created Successfully.');
     }
 
     /**
@@ -67,9 +80,20 @@ class RoomController extends Controller
      * @param  \App\Models\Room  $room
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Room $room)
+    public function update(Request $request)
     {
         //
+        Validator::make($request->all(), [
+            'name' => ['required'],
+            'user_id' => ['required'],
+        ])->validate();
+  
+        if ($request->has('id')) {
+            Room::find($request->input('id'))->update($request->all());
+            return redirect()->back()
+                    ->with('message', 'Room Updated Successfully.');
+        }
+
     }
 
     /**
@@ -78,8 +102,12 @@ class RoomController extends Controller
      * @param  \App\Models\Room  $room
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Room $room)
+    public function destroy(Request $request)
     {
         //
+        if ($request->has('id')) {
+            Room::find($request->input('id'))->delete();
+            return redirect()->back();
+        }
     }
 }
