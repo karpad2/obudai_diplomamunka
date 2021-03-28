@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Run;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
 
 class RunController extends Controller
 {

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Room;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
+
 use Illuminate\Support\Facades\Validator;
 
 class RoomController extends Controller
@@ -48,7 +49,7 @@ class RoomController extends Controller
         Room::create($request->all());
   
         return redirect()->back()
-                    ->with('message', 'Post Created Successfully.');
+                    ->with('message', 'Room Created Successfully.');
     }
 
     /**

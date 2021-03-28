@@ -34,8 +34,23 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->name('dashboard');
 
+Route::middleware(['auth:sanctum', 'verified'])->get('/rooms', function () {
+    return Inertia::render('rooms');
+})->name('rooms');
+Route::middleware(['auth:sanctum', 'verified'])->get('/devices', function () {
+    return Inertia::render('devices');
+})->name('devices');
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/programs', function () {
+    return Inertia::render('programs');
+})->name('programs');
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/cameras', function () {
+    return Inertia::render('cameras');
+})->name('cameras');
+/*
 Route::resource('rooms', RoomController::class);
 Route::resource('devices', DevicesController::class);
 Route::resource('teams', ETeamsController::class);
 Route::resource('cameras', CamerasController::class);
-Route::resource('programs', ProgramsController::class);
+Route::resource('programs', ProgramsController::class);*/
