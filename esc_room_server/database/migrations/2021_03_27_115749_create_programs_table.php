@@ -22,7 +22,6 @@ class CreateProgramsTable extends Migration
             $table->bigInteger('room_id')->unsigned()->index()->default('1');
             $table->foreign('room_id')->references('id')->on('rooms');
             $table->timestamps();
-
         });
     }
 
