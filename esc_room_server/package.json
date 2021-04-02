@@ -27,6 +27,8 @@
     },
     "dependencies": {
         "blockly": "^5.20210325.0",
+        "bootstrap-icons": "^1.4.1",
+        "bootstrap-icons-vue": "^0.6.0",
         "inertia-table": "^1.0.8"
     }
 }
