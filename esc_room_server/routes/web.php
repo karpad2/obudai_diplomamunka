@@ -25,8 +25,7 @@ Route::get('/', function () {
     return Inertia::render('Welcome', [
         'canLogin' => Route::has('login'),
         'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
+        'laravelVersion' => Application::VERSION
     ]);
 });
 
@@ -35,22 +34,30 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 })->name('dashboard');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/rooms', function () {
-    return Inertia::render('rooms');
+    return Inertia::render('rooms',[]);
 })->name('rooms');
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/room/{room_id}', function ($room_id) {
+    return Inertia::render('room',[]);
+})->name('room');
+
 Route::middleware(['auth:sanctum', 'verified'])->get('/devices', function () {
-    return Inertia::render('devices');
+    return Inertia::render('devices',[]);
 })->name('devices');
 
+Route::middleware(['auth:sanctum', 'verified'])->get('/device/{device_id}', function ($device_id) {
+    return Inertia::render('device',[]);
+})->name('device');
+
 Route::middleware(['auth:sanctum', 'verified'])->get('/programs', function () {
-    return Inertia::render('programs');
+    return Inertia::render('programs',[]);
 })->name('programs');
 
+Route::middleware(['auth:sanctum', 'verified'])->get('/program/{program_id}', function ($device_password) {
+    return Inertia::render('program',[]);
+})->name('program');
+
 Route::middleware(['auth:sanctum', 'verified'])->get('/cameras', function () {
-    return Inertia::render('cameras');
+    return Inertia::render('cameras',[]);
 })->name('cameras');
-/*
-Route::resource('rooms', RoomController::class);
-Route::resource('devices', DevicesController::class);
-Route::resource('teams', ETeamsController::class);
-Route::resource('cameras', CamerasController::class);
-Route::resource('programs', ProgramsController::class);*/
+
