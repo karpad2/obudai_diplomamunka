@@ -12,10 +12,11 @@ class Devices extends Model
         'name',
         'mode',
         'status',
-        'room_id'
-    ];
-    protected $hidden=[
+        'room_id',
         'ip_address',
         'password'
+    ];
+    protected $hidden=[
+        
     ];
 }

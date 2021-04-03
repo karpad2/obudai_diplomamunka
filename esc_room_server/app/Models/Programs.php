@@ -12,10 +12,11 @@ class Programs extends Model
         'name',
         'active',
         'javascript_block',
+        'xml_block',
         'room_id'
     ];
     protected $hidden=[
-        'xml_block',
+        
     ];
  
 }
