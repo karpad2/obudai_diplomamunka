@@ -2,7 +2,11 @@
 
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
+use App\Models\Devices;
+use App\Models\Room;
+
 use App\Http\Controllers\DevicesController;
 use App\Http\Controllers\CamerasController;
 use App\Http\Controllers\EteamsController;
@@ -20,6 +24,14 @@ use App\Http\Controllers\RoomController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+
+Route::get('test',function()
+{
+    return 'k';
+
+});
+
 
 Route::get('/', function () {
     return Inertia::render('Welcome', [
@@ -61,3 +73,18 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/cameras', function () {
     return Inertia::render('cameras',[]);
 })->name('cameras');
 
+Route::middleware(['auth:sanctum', 'verified'])->get('add-user-device/{device_password}',function ($device_password){
+    $id=Auth::id();
+    Devices::where('password',$device_password)->where('user_id',1)->update(['user_id',$id]);
+    return 'ok';
+});
+
+Route::middleware(['auth:sanctum', 'verified'])->get('assign-device/{dev_id}/{room_id}',function ($dev_id,$room_id){
+    Devices::findorFail($dev_id)->update(['room_id',$room_id]);
+    return 'ok';
+});
+
+Route::middleware(['auth:sanctum', 'verified'])->get('assign-device/{dev_id}/{room_id}',function ($dev_id,$room_id){
+    Devices::findorFail($dev_id)->update(['room_id',$room_id]);
+    return 'ok';
+});

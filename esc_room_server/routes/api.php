@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use App\Models\Devices;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,9 +28,22 @@ Route::get('device/status/{device_password}',function ($device_password){
         Devices::findOrFail($device[0]->id)->update(['last_online'=>now()]);
         return $device[0];
  });
-Route::get('device/store',function (Request $request){
-        return Devices::latest()->orderBy('created_at','desc')->get();
+
+ Route::get('device/store/dev-api/{device_password}/{status}',function ($device_password,$status){
+    $device= Devices::where('password',$device_password)->get();
+    Devices::findOrFail($device[0]->id)->update(['status'=>'1']);
+    return 'ok';
+});  
+
+Route::get('device/store/js-api/{id}/{mode}/{status}',function ($id,$mode,$status){
+        $device= Devices::findOrFail($id)->get();
+        Devices::findOrFail($device[0]->id)->update(['mode'=>$mode,'status'=>$status]);
+        return 'ok';
 });   
+
+ 
+
+
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
