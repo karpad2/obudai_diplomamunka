@@ -30,13 +30,15 @@ use App\Models\Programs;
 */
 
 $id=Auth::id();
-
+/*Tests*/
 Route::get('test',function()
 {
     return 'k';
 
 });
+/*End Tests*/
 
+/*Inertia pages*/
 Route::get('/', function () {
     return Inertia::render('Welcome', [
         'canLogin' => Route::has('login'),
@@ -90,7 +92,9 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/cameras', function () {
         'cameras'=>Cameras::where(['user_id',Auth::id()])
     ]);
 })->name('cameras');
+/*End Inertia pages*/
 
+/* Devices*/
 Route::middleware(['auth:sanctum', 'verified'])->get('add-user-device/{device_password}',function ($device_password){
     $id=Auth::id();
     Devices::where('password',$device_password)->where('user_id',1)->update(['user_id',$id]);
@@ -106,17 +110,42 @@ Route::middleware(['auth:sanctum', 'verified'])->get('assign-device/{dev_id}/{ro
     Devices::findorFail($dev_id)->update(['room_id',$room_id]);
     return 'ok';
 });
-
+/*End Devices*/
+/*Rooms*/
 Route::middleware(['auth:sanctum', 'verified'])->post('create-room',function (Request $request,$room_id){
     
     Room::create(["name"=>$request->name,"user_id"=>Auth::id()]);
     return 'ok';
 });
 
+Route::middleware(['auth:sanctum', 'verified'])->post('update-room',function (Request $request,$room_id){
+    
+    Room::create(["name"=>$request->name,"user_id"=>Auth::id()]);
+    return 'ok';
+});
+/*End programs*/
 
-Route::middleware(['auth:sanctum', 'verified'])->post('program/{room_id}',function (Request $request,$room_id){
-    //Programs::create([]);
+/*Programs*/
+Route::middleware(['auth:sanctum', 'verified'])->post('create-program/{room_id}',function (Request $request,$room_id){
+    Programs::where(['room_id',$room_id])->update(['active'=>0]);
+    Programs::create(['name'=>$request->name,'active'=>1,'javascript_block'=>$request->javascript_block,'xml_block'=>$request->xml_block,'room_id'=>$room_id]);
     return 'ok';
 });
 
+Route::middleware(['auth:sanctum', 'verified'])->post('update-program/{program_id}',function (Request $request,$program_id){
+    Programs::where(['program_id',$program_id])->update(['name'=>$request->name,'active'=>1,'javascript_block'=>$request->javascript_block,'xml_block'=>$request->xml_block]);
+    return 'ok';
+});
+/*End Programs*/
 
+/*Cams*/
+Route::middleware(['auth:sanctum', 'verified'])->post('create-cam/{room_id}',function (Request $request,$room_id){
+    Cameras::create(['name'=>$request->name,'url'=>$request->camera_url,'room_id'=>$room_id]);
+    return 'ok';
+});
+Route::middleware(['auth:sanctum', 'verified'])->post('update-cam/{camera_id}',function (Request $request,$camera_id){
+    Cameras::findorFail($camera_id)->update(['name'=>$request->name,'url'=>$request->camera_url]);
+    return 'ok';
+});
+
+/*End Cams*/
