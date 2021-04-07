@@ -14,6 +14,7 @@ use App\Http\Controllers\EteamsController;
 use App\Http\Controllers\ProgramsController;
 use App\Http\Controllers\RoomController;
 use App\Models\Cameras;
+use App\Models\ETeams;
 use App\Models\Programs;
 
 //use GuzzleHttp\Psr7\Request;
@@ -92,12 +93,18 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/cameras', function () {
         'cameras'=>Cameras::where(['user_id',Auth::id()])
     ]);
 })->name('cameras');
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/rteams', function () {
+    return Inertia::render('teams',[
+        'teams'=>ETeams::all()
+    ]);
+})->name('teams');
 /*End Inertia pages*/
 
 /* Devices*/
-Route::middleware(['auth:sanctum', 'verified'])->get('add-user-device/{device_password}',function ($device_password){
+Route::middleware(['auth:sanctum', 'verified'])->post('add-user-device',function (Request $request){
     $id=Auth::id();
-    Devices::where('password',$device_password)->where('user_id',1)->update(['user_id',$id]);
+    Devices::where('password',$request->device_id)->where('user_id',1)->update(['user_id',$id]);
     return 'ok';
 });
 
@@ -112,8 +119,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('assign-device/{dev_id}/{ro
 });
 /*End Devices*/
 /*Rooms*/
-Route::middleware(['auth:sanctum', 'verified'])->post('create-room',function (Request $request,$room_id){
-    
+Route::middleware(['auth:sanctum', 'verified'])->post('create-room',function (Request $request){
     Room::create(["name"=>$request->name,"user_id"=>Auth::id()]);
     return 'ok';
 });
@@ -149,3 +155,15 @@ Route::middleware(['auth:sanctum', 'verified'])->post('update-cam/{camera_id}',f
 });
 
 /*End Cams*/
+
+/*Teams*/
+Route::middleware(['auth:sanctum', 'verified'])->get('create-rteam',function (Request $request){
+    ETeams::create(['name'=>$request->name]);
+    return 'ok';
+});
+Route::middleware(['auth:sanctum', 'verified'])->post('update-rteams/{teams_id}',function (Request $request,$teams_id){
+    Cameras::findorFail($teams_id)->update(['name'=>$request->name]);
+    return 'ok';
+});
+
+/*End Teams*/

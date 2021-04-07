@@ -33,6 +33,12 @@
             Welcome,
             InertiaTable,
         },
+        props: {
+            cameras:{ 
+                type:Array,
+                required: true
+            }
+        },
         data() {
         return {
         columns: ["name:", "url:"],

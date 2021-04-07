@@ -2,6 +2,7 @@ require('./bootstrap');
 
 // Import modules...
 import { createApp, h } from 'vue';
+import { BootstrapVue, IconsPlugin } from 'bootstrap-vue';
 import { App as InertiaApp, plugin as InertiaPlugin } from '@inertiajs/inertia-vue3';
 import { InertiaProgress } from '@inertiajs/progress';
 
@@ -16,6 +17,9 @@ createApp({
 })
     .mixin({ methods: { route } })
     .use(InertiaPlugin)
+    //.use(BootstrapVue)
+    //.use(IconsPlugin)
+   // .config.devtools = true
     .mount(el);
 
 InertiaProgress.init({ color: '#043343' });

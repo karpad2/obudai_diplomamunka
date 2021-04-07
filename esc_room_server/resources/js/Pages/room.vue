@@ -25,5 +25,11 @@
             AppLayout,
             Welcome,
         },
+        props: {
+            room:{ 
+                type:Array,
+                required: true
+            }
+        }
     }
 </script>

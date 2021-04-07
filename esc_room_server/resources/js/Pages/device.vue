@@ -25,5 +25,11 @@
             AppLayout,
             Welcome,
         },
+        props: {
+            device:{ 
+                type:Array,
+                required: true
+            }
+        }
     }
 </script>

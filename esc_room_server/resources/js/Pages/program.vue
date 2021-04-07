@@ -74,6 +74,12 @@
                 )
             }
         },
+        props: {
+            program:{ 
+                type:Array,
+                required: true
+            }
+        },
         methods:{
             onPrograms()
             {
