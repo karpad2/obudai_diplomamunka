@@ -23,7 +23,7 @@
       <tr v-for="row in devices" :key="row.id">
        <td>{{ row.id }}</td>
        <td>{{ row.name }}</td>
-       <td><inertia-linkd :href="'/device/'+row.id">Manage your device</inertia-link></td>
+       <td><inertia-link :href="'/device/'+row.id">Manage your device</inertia-link></td>
      </tr>
    </tbody>
 <tfoot>
