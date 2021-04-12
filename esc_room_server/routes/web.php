@@ -54,13 +54,13 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/rooms', function () {
     return Inertia::render('rooms',[
-     'rooms'=> Room::where('user_id',Auth::id())->get()   
+     'rooms'=> Room::where('user_id',Auth::id())->get()
     ]);
 })->name('rooms');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/room/{room_id}', function ($room_id) {
     return Inertia::render('room',[
-        'room'=>Room::findorFail($room_id)
+        'room'=>Room::where('id',$room_id)->get()
     ]);
 })->name('room');
 
@@ -79,9 +79,9 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/device/{device_id}', func
 Route::middleware(['auth:sanctum', 'verified'])->get('/programs', function () {
     return Inertia::render('programs',[
         'rooms'=> Room::where('user_id',Auth::id())->get(),
-        'programs'=>DB::select('select * from programs pr join device de pr.room_id on de.id where user_id = ?', [Auth::id()])->get()
+        'programs'=>DB::select('select * from programs join rooms r on programs.room_id = r.id where r.user_id = ?', [Auth::id()])->get()
         //join('rooms','programs.room_id','=','room.id')->where(['user_id',Auth::id()])->
-        
+
     ]);
 })->name('programs');
 
@@ -128,7 +128,7 @@ Route::middleware(['auth:sanctum', 'verified'])->post('create-room',function (Re
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->post('update-room',function (Request $request,$room_id){
-    
+
     Room::create(["name"=>$request->name,"user_id"=>Auth::id()]);
     return 'ok';
 });

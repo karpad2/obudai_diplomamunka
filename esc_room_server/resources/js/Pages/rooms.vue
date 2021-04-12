@@ -23,7 +23,7 @@
       <tr v-for="row in rooms" :key="row.id">
        <td>{{ row.id }}</td>
        <td>{{ row.name }}</td>
-       <td><inertia-link :href="'/room/'+row.id">Enter into room</inertia-link></td>
+       <td><inertia-link :href="'/room/'+row.id">Enter into room</inertia-link> <span v-on:click="delete"><i class="bi bi-trash"></i> </span> </td>
      </tr>
    </tbody>
 <tfoot>
@@ -34,16 +34,16 @@
                 <jet-label for="name" value="Name of room" />
                 <jet-input aria-placeholder="Enter room name..." id="name" type="name" class="mt-1 block w-full" v-model="add_name" required autofocus />
       </div>
-      
+
       </td>
-      
+
       <td class="w-1/5 ...">
       <jet-button class="ml-4" v-on:click="submit">
                     Add Room
        </jet-button>
       </td>
       </tr>
-</tfoot></table>   
+</tfoot></table>
 
 
                     </div>
@@ -62,11 +62,12 @@ import { Inertia } from '@inertiajs/inertia'
     import JetLabel from '@/Jetstream/Label'
     import JetButton from '@/Jetstream/Button'
     import JetInput from '@/Jetstream/Input'
+import Button from "../Jetstream/Button";
 
     export default {
-        
+
         props: {
-            rooms:{ 
+            rooms:{
                 type:Array,
                 required: true
             }
@@ -75,18 +76,19 @@ import { Inertia } from '@inertiajs/inertia'
             return {
                 add_name:""
                 }
-            
+
         },
         mounted: ()=>
         {
             //console.log(rows);
         },
         components: {
+            Button,
             AppLayout,
             JetButton,
             JetInput,
             JetLabel
-            
+
         },
         methods: {
             submit() {
@@ -96,5 +98,5 @@ import { Inertia } from '@inertiajs/inertia'
         }
     }
 
-    
+
 </script>

@@ -9,8 +9,10 @@
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-                    
-                </div>
+               <p>Last online: {{el.last_online}}</p>
+               <p>Mode: {{el.mode}}</p>
+               <p>Status: {{el.status}}</p>
+               </div>
             </div>
         </div>
     </app-layout>
@@ -18,18 +20,20 @@
 
 <script>
     import AppLayout from '@/Layouts/AppLayout'
-    import Welcome from '@/Jetstream/Welcome'
-
     export default {
         components: {
             AppLayout,
-            Welcome,
+            
         },
         props: {
-            device:{ 
+            device:{
                 type:Array,
                 required: true
-            }
+            },
+            el:this.device[0]
         }
+
+
+
     }
 </script>
