@@ -23,7 +23,7 @@
       <tr v-for="row in rooms" :key="row.id">
        <td>{{ row.id }}</td>
        <td>{{ row.name }}</td>
-       <td><inertia-link :href="'/room/'+row.id">Enter into room</inertia-link> <span v-on:click="delete"><i class="bi bi-trash"></i> </span> </td>
+       <td><inertia-link :href="'/room/'+row.id">Enter into room <BIconArrowRightSquareFill class="bg-green-500"/></inertia-link> <span v-on:click="delete"><i class="bi bi-trash"></i> </span> </td>
      </tr>
    </tbody>
 <tfoot>
@@ -62,6 +62,8 @@ import { Inertia } from '@inertiajs/inertia'
     import JetLabel from '@/Jetstream/Label'
     import JetButton from '@/Jetstream/Button'
     import JetInput from '@/Jetstream/Input'
+    import {BIconArrowRightSquareFill} from 'bootstrap-icons-vue';
+
 import Button from "../Jetstream/Button";
 
     export default {
@@ -87,7 +89,8 @@ import Button from "../Jetstream/Button";
             AppLayout,
             JetButton,
             JetInput,
-            JetLabel
+            JetLabel,
+            BIconArrowRightSquareFill
 
         },
         methods: {

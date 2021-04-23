@@ -34,7 +34,6 @@
         "bootstrap-icons": "^1.4.1",
         "bootstrap-icons-vue": "^0.6.0",
         "bootstrap-vue": "^2.21.2",
-        "inertia-table": "^0.1.6",
         "laravel-vue-datatable": "^0.6.0",
         "vue-image-markup": "^3.2.0",
         "vue3-table-lite": "^1.0.3"
