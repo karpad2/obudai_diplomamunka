@@ -28,6 +28,17 @@ Route::get('device/status/{device_password}',function ($device_password){
         Devices::findOrFail($device[0]->id)->update(['last_online'=>now()]);
         return $device[0];
  });
+ Route::get('device/input/{device_password}/{status}',function ($device_password,$status){
+    $device=Devices::where('password',$device_password)->update(['status'=>$status]);
+    Devices::findOrFail($device[0]->id)->update(['last_online'=>now()]);
+    return $device[0];
+});
+
+Route::get('device/rfid/{device_password}/{code}',function ($device_password,$code){
+    $device=Devices::where('password',$device_password)->update(['status'=>1]);
+    Devices::findOrFail($device[0]->id)->update(['last_online'=>now()]);
+    return $device[0];
+});
 
  Route::get('device/store/dev-api/{device_password}/{status}',function ($device_password,$status){
     $device= Devices::where('password',$device_password)->get();
@@ -41,10 +52,11 @@ Route::get('device/store/js-api/{id}/{mode}/{status}',function ($id,$mode,$statu
         return 'ok';
 });   
 
+
+Route::get('device/all',function ($id,$mode,$status){
+    return Devices::all();
+}); 
  
-
-
-
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });

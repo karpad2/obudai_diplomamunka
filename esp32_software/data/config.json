@@ -1,8 +1,8 @@
 {
-  "Wifi-name":"TP-Link",
-  "Wifi-pass":"asdfghjkl123#",
+  "Wifi-name":"Escape Room",
+  "Wifi-pass":"escape_room",
   "esp32pass":"",
-  "webserveraddress":"http://46-40-46-94.sslip.io/escape_room/index.php",
+  "webserveraddress":"http://192.168.0.101",
   "factory": {
     "mode": ["RFID","Reset","Relay"],
     "status": true

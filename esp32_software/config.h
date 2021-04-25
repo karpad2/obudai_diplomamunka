@@ -31,9 +31,9 @@ JSONVar tmp1;
 char char_array[512];
 String configtext="";
 String filename = "/config.json";
-String web_server="http://46-40-46-94.sslip.io/escape_room/index.php";
-String ssid =  "TP-Link";
-String pass =  "asdfghjkl123#";
+String web_server="http://192.168.0.101/api/";
+String ssid =  "Escape Room";
+String pass =  "escape_room";
 String esp32_pass="";
 String espstatus="";
 unsigned long previousMillis = 0;
@@ -169,13 +169,12 @@ void fs_setup()
         String tmpaddress="";
         if(esp32_pass=="")
         {
-          
-           tmpaddress=web_server+"?ajax&esp32_welcome=reg";
+          tmpaddress=web_server+"/api/device/add-device";
            Serial.println(tmpaddress);  
            res=http_sys(tmpaddress);
            tmp1=JSON.parse(res);
            String tmp2="";
-           tmp2=tmp1["pass"];
+           tmp2=tmp1["password"];
            //Serial.println(JSON.stringify(tmp1));
            configobj["esp32pass"]=tmp2;
            Serial.println(JSON.stringify(configobj));
@@ -185,30 +184,37 @@ void fs_setup()
  
         else 
         {
-         tmpaddress=web_server+"?ajax&esp32_status="+esp32_pass;
+         tmpaddress=web_server+"/api/device/status/"+esp32_pass;
          res=http_sys(tmpaddress);
          tmp1=JSON.parse(res);
          String cucc="";
          cucc=tmp1["status"];
-         cucc=tmp1["device_mode"];
+         cucc=tmp1["mode"];
          if(espstatus!=cucc)
          {
-          configobj["device_mode"]=cucc;
+          configobj["mode"]=cucc;
           save_config();
           ESP.restart();
          }
          if(cucc=="relay")
          {
           cucc=tmp1["status"];
-         
-         if(cucc=="1")
+          Serial.print("status:");
+          cucc=""+tmp1["status"];
+          int stat=tmp1["status"];
+          Serial.println(cucc);
+          
+         if(stat==1)
          {
           digitalWrite(relaypin, 1);
+          
           blinking(1);
+          Serial.println("Relay ON");
          }
          else
          {
           digitalWrite(relaypin, 0);
+          Serial.println("Relay OFF");
          }
         }
         else if(cucc=="input")
@@ -237,12 +243,9 @@ void fs_setup()
     {
         s_rfid+=String(rfid.uid.uidByte[i],HEX);
     }
-
-    tmpaddress=web_server+"?ajax&esp32_status="+esp32_pass+"&rfid="+s_rfid;
+tmpaddress=web_server+"/api/device/rfid/"+esp32_pass+"/"+s_rfid;
     res=http_sys(tmpaddress);
-    
-           
-        }
+    }
         else
         {
           
@@ -252,10 +255,10 @@ void fs_setup()
  }
 
  void IRAM_ATTR isr() {
-        tmpaddress =web_server+"?ajax&esp32_status="+esp32_pass+"&io=true";
+       tmpaddress =web_server+"/api/device/input/"+esp32_pass+"/"+1;
        String res=http_sys(tmpaddress);
-        blinking(3);
-         tmp1=JSON.parse(res);
+       blinking(3);
+       tmp1=JSON.parse(res);
   }
 
 
