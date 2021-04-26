@@ -11,7 +11,7 @@
                     <div class="col-span-full md:col-span-4">
                     <h1 class=" inline text-xl text-white bg-purple-800 p-2 capitalize">Management Room</h1>
                     <div class="flex flex-col items-start justify-center bg-purple-100 p-6" >
-                    <inertia-link class="w-30 flex items-center justify-center rounded-md bg-black text-white" :href="'run/'+room[0].id">Start</inertia-link>
+                    <inertia-link class="w-30 flex items-center justify-center rounded-md bg-black text-white" :href="'/run/'+room[0].id">Start</inertia-link>
                     </div>
                     </div>
                     <div class="col-span-full md:col-span-8">

@@ -170,3 +170,13 @@ Route::middleware(['auth:sanctum', 'verified'])->post('update-rteams/{teams_id}'
 });
 
 /*End Teams*/
+
+Route::middleware(['auth:sanctum', 'verified'])->get('run/{room_id}',function ($room_id){
+    $room=Room::findorFail($room_id)->get();
+    $program=Programs::where([['room_id',$room_id],['active',1]])->get();
+    return Inertia::render('run',[
+        'room'=>$room,
+        'program'=>$program
+    ]);
+
+})->name('run');
