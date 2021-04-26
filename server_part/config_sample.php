@@ -1,4 +1,5 @@
-<?php
+<?php 
+
 session_start();
 if(!isset($_SESSION["logged_in"])) $_SESSION["logged_in"]=false;
 const DEBUG=1;
@@ -6,14 +7,25 @@ const SALT=123456789;
 const GET_RESULT=0;
 const GET_INSERT_ID=1;
 const GET_ASSOC=2;
+const GET_ROWS_NUMBER=3;
 const SUCCESS=1;
 const FAIL=2;
 
+
+if(DEBUG==1)
+{
+    ini_set('display_errors', 1);
+    ini_set('display_startup_errors', 1);
+    error_reporting(E_ALL);
+}
+
+
 define("website_name","ESP32-project");
-$conn = new mysqli("localhost","root","","esp32project");
+$conn = new mysqli("localhost","root",'asdfghjkl',"esp32project");
 if($conn->connect_errno) {echo "Failed to connect to MySQL:".$conn->connect_error;exit();}
 function get_ipaddress(){return $_SERVER['REMOTE_ADDR'];}
-function get_title_name(){echo "".website_name;}
+function get_title_name(){ return website_name;}
+
 function login_in($username,$password)
 {
     $user=array("user_id"=>0,"username"=>"John Doe","admin");
@@ -78,7 +90,7 @@ function logout()
 
 function e_sql($sql,$mod=GET_RESULT)
 {
-    $conn = new mysqli("localhost","root","","esp32project");
+    $conn = new mysqli("localhost","root","asdfghjkl","esp32project");
     $uid=0;
     if(isset($_SESSION["user"]["user_id"])) $uid=$_SESSION["user"]["user_id"];
 
@@ -93,6 +105,7 @@ function e_sql($sql,$mod=GET_RESULT)
     $var= mysqli_query($conn,$sql)  or die(mysqli_error($conn));
     if($mod==GET_INSERT_ID)  $var= mysqli_insert_id($conn);
     if($mod==GET_ASSOC)  $var= mysqli_fetch_all($var,MYSQLI_ASSOC);
+    if($mod==GET_ROWS_NUMBER)  $var= $conn->affected_rows;
    // var_dump($var);
     //die("");
     $conn->close();
