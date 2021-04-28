@@ -27,7 +27,7 @@
                         <p>{{log}}</p>
                      </div>
                     <input type="text" v-model="console_in"/>
-                     <jet-button class="ml-4"  @click="add_to_console">
+                     <jet-button class="ml-4" v-on:click="add_to_console">
                     Send
                     </jet-button>
 
@@ -42,6 +42,7 @@
     import AppLayout from '@/Layouts/AppLayout'
     //import Welcome from '@/Jetstream/Welcome'
     import Blockly, { isNumber } from 'blockly';
+    import JetButton from '@/Jetstream/Button'
     import axios from 'axios';
     import acorn from 'acorn';
  
@@ -50,14 +51,17 @@
     
 
     export default {
-        data:
+        data()
         {
+        return {
         console_log:[],
         log:""
+        }
         },
         components: {
             AppLayout,
-            Blockly
+            Blockly,
+            JetButton
         },
         props: {
             run:{ 

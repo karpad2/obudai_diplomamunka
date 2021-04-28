@@ -36,7 +36,7 @@
                     <jet-label for="camera_url" value="Camera Url:" />
                     <jet-input id="camera_url" type="text" class="mt-1 block w-full" v-model="camera_url"/>
                     </div>    
-                    <jet-button class="ml-4" :click="add_camera" >
+                    <jet-button class="ml-4" v-on:click="add_camera" >
                         Add Camera
                     </jet-button>
 

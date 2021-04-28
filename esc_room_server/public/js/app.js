@@ -21339,8 +21339,8 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     add_camera: function add_camera() {
       axios__WEBPACK_IMPORTED_MODULE_1___default().post("/add-camera-room/" + room[0].id, {
-        "camera_name": camera_name,
-        "camera_url": camera_url
+        camera_name: this.camera_name,
+        camera_url: this.camera_url
       });
     }
   }
@@ -21427,13 +21427,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/Layouts/AppLayout */ "./resources/js/Layouts/AppLayout.vue");
 /* harmony import */ var blockly__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! blockly */ "./node_modules/blockly/index.js");
 /* harmony import */ var blockly__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(blockly__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var acorn__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! acorn */ "./node_modules/acorn/dist/acorn.mjs");
-/* harmony import */ var blockly_msg_en__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! blockly/msg/en */ "./node_modules/blockly/msg/en.js");
-/* harmony import */ var blockly_msg_en__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(blockly_msg_en__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var blockly_javascript__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! blockly/javascript */ "./node_modules/blockly/javascript.js");
-/* harmony import */ var blockly_javascript__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(blockly_javascript__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _Jetstream_Button__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/Jetstream/Button */ "./resources/js/Jetstream/Button.vue");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var acorn__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! acorn */ "./node_modules/acorn/dist/acorn.mjs");
+/* harmony import */ var blockly_msg_en__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! blockly/msg/en */ "./node_modules/blockly/msg/en.js");
+/* harmony import */ var blockly_msg_en__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(blockly_msg_en__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var blockly_javascript__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! blockly/javascript */ "./node_modules/blockly/javascript.js");
+/* harmony import */ var blockly_javascript__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(blockly_javascript__WEBPACK_IMPORTED_MODULE_6__);
 var _props;
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -21445,14 +21446,18 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  data: {
-    console_log: [],
-    log: ""
+  data: function data() {
+    return {
+      console_log: [],
+      log: ""
+    };
   },
   components: {
     AppLayout: _Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_0__.default,
-    Blockly: (blockly__WEBPACK_IMPORTED_MODULE_1___default())
+    Blockly: (blockly__WEBPACK_IMPORTED_MODULE_1___default()),
+    JetButton: _Jetstream_Button__WEBPACK_IMPORTED_MODULE_2__.default
   },
   props: (_props = {
     run: {
@@ -21496,7 +21501,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       }
     },
     send_data: function send_data(id, mode, status) {
-      axios__WEBPACK_IMPORTED_MODULE_2___default().get('/api/device/js-api/' + id + '/' + mode + '/' + status);
+      axios__WEBPACK_IMPORTED_MODULE_3___default().get('/api/device/js-api/' + id + '/' + mode + '/' + status);
     },
     executeBlockCode: function executeBlockCode() {
       //let code = Blockly.JavaScript.workspaceToCode(workspace);
@@ -29718,7 +29723,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       }, null, 8
       /* PROPS */
       , ["v-model"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_button, {
-        click: $options.save()
+        onClick: $options.save
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
           return [_hoisted_7];
@@ -29728,7 +29733,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
       }, 8
       /* PROPS */
-      , ["click"])])])];
+      , ["onClick"])])])];
     }),
     _: 1
     /* STABLE */
@@ -30050,7 +30055,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       /* PROPS */
       , ["modelValue"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_button, {
         "class": "ml-4",
-        click: $options.add_camera
+        onClick: $options.add_camera
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
           return [_hoisted_14];
@@ -30060,7 +30065,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
       }, 8
       /* PROPS */
-      , ["click"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_inertia_link, {
+      , ["onClick"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_inertia_link, {
         href: '/lobby/' + $props.room[0].id
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
@@ -30305,8 +30310,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       }, null, 8
       /* PROPS */
       , ["src", "alt"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
-        "v-for": _ctx.log in _ctx.console_log
-      }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.log), 1
+        "v-for": $data.log in $data.console_log
+      }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.log), 1
       /* TEXT */
       )], 8
       /* PROPS */

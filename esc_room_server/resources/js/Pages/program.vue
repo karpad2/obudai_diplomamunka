@@ -21,7 +21,7 @@
             <textarea id="program_javascript" :v-model="program_javascript" name="program_javascript" style="display:none"></textarea>
             <textarea id="program_xml" :v-model="program_xml" name="program_xml" style="display:none"></textarea>
             </div>
-            <jet-button :click=save()>
+            <jet-button v-on:click="save">
                 Save
             </jet-button>
             </div>
