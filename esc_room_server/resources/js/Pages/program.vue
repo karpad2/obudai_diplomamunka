@@ -54,10 +54,11 @@
             JetInputError,
             JetLabel
         },
-        data:
-        {   program_name:'',
+        data()
+        {  return{
+             program_name:'',
             program_xml:'',
-            program_javascript:''
+            program_javascript:''}
         },
         props: {
             program:{ 

@@ -66,10 +66,11 @@
             JetInput,
             JetButton
         },
-        data:
+        data()
         {
+            return{
             camera_name:"",
-            camera_url:""
+            camera_url:""}
         },
         props: {
             room:{ 

@@ -21188,10 +21188,12 @@ __webpack_require__.r(__webpack_exports__);
     JetInputError: _Jetstream_InputError__WEBPACK_IMPORTED_MODULE_7__.default,
     JetLabel: _Jetstream_Label__WEBPACK_IMPORTED_MODULE_8__.default
   },
-  data: {
-    program_name: '',
-    program_xml: '',
-    program_javascript: ''
+  data: function data() {
+    return {
+      program_name: '',
+      program_xml: '',
+      program_javascript: ''
+    };
   },
   props: {
     program: {
@@ -21322,9 +21324,11 @@ __webpack_require__.r(__webpack_exports__);
     JetInput: _Jetstream_Input__WEBPACK_IMPORTED_MODULE_3__.default,
     JetButton: _Jetstream_Button__WEBPACK_IMPORTED_MODULE_4__.default
   },
-  data: {
-    camera_name: "",
-    camera_url: ""
+  data: function data() {
+    return {
+      camera_name: "",
+      camera_url: ""
+    };
   },
   props: {
     room: {
@@ -29682,22 +29686,22 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         id: "program_name",
         type: "text",
         "class": "mt-1 block w-full",
-        modelValue: _ctx.program_name,
+        modelValue: $data.program_name,
         "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
-          return _ctx.program_name = $event;
+          return $data.program_name = $event;
         }),
         ref: "program_name",
         autocomplete: "program_name"
       }, null, 8
       /* PROPS */
       , ["modelValue"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input_error, {
-        message: _ctx.program_name,
+        message: $data.program_name,
         "class": "mt-2"
       }, null, 8
       /* PROPS */
       , ["message"])]), _hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_block_vue), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("textarea", {
         id: "program_javascript",
-        "v-model": _ctx.program_javascript,
+        "v-model": $data.program_javascript,
         name: "program_javascript",
         style: {
           "display": "none"
@@ -29706,7 +29710,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       /* PROPS */
       , ["v-model"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("textarea", {
         id: "program_xml",
-        "v-model": _ctx.program_xml,
+        "v-model": $data.program_xml,
         name: "program_xml",
         style: {
           "display": "none"
@@ -30025,9 +30029,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         id: "camera_name",
         type: "text",
         "class": "mt-1 block w-full",
-        modelValue: _ctx.camera_name,
+        modelValue: $data.camera_name,
         "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
-          return _ctx.camera_name = $event;
+          return $data.camera_name = $event;
         })
       }, null, 8
       /* PROPS */
@@ -30038,9 +30042,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         id: "camera_url",
         type: "text",
         "class": "mt-1 block w-full",
-        modelValue: _ctx.camera_url,
+        modelValue: $data.camera_url,
         "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
-          return _ctx.camera_url = $event;
+          return $data.camera_url = $event;
         })
       }, null, 8
       /* PROPS */
