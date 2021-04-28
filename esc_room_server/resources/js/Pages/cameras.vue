@@ -91,7 +91,7 @@ import Button from "../Jetstream/Button";
         methods: {
             open_camera(url)
             {
-                window.open(url);
+                window.open(this.url);
             }
            
         }

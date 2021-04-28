@@ -20951,7 +20951,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     open_camera: function open_camera(url) {
-      window.open(url);
+      window.open(this.url);
     }
   }
 });
