@@ -17,9 +17,9 @@
             </div>
             <div id="blocklyDiv" class="mt-1 block w-full" style="height: 480px;"></div>
             <block_vue />
-            <xml id="blocklyDefault" :v-model="a_program_xml" style="display: none"></xml>
-            <textarea id="program_javascript" :v-model="program_javascript" name="program_javascript" style="display:none"></textarea>
-            <textarea id="program_xml" :v-model="program_xml" name="program_xml" style="display:none"></textarea>
+            <xml id="blocklyDefault" v-model="a_program_xml" style="display: none"></xml>
+            <textarea id="program_javascript" v-model="program_javascript" name="program_javascript" style="display:none"></textarea>
+            <textarea id="program_xml" v-model="program_xml" name="program_xml" style="display:none"></textarea>
             </div>
             <jet-button v-on:click="save">
                 Save
@@ -66,19 +66,17 @@
                 required: true
             },
         },
-        methods:{
+    methods:{
             myUpdateFunction(event) {
                 a_program_javascript=Blockly.Javascript.workspaceToCode(Workspace);
-                a_program_xml=Blockly.Xml.workspaceToCode(Workspace);
-       
+                a_program_xml=Blockly.Xml.workspaceToCode(Workspace);       
             },
-  save(){ 
-      axios.post("update-programs/save/"+rooms[0].id,{program_name:this.a_program_name,program_xml:this.a_program_xml,program_javascript:this.a_program_javascript});}
-    },
-mounted()
-{
+            save(){ 
+                    axios.post("update-programs/save/"+rooms[0].id,{program_name:this.a_program_name,program_xml:this.a_program_xml,program_javascript:this.a_program_javascript});
+                    }
+            },
+mounted: ()=>{
     let defaultBlocks = document.getElementById('blocklyDefault');
-    
         Blockly.setLocale(En);
         let Workspace = Blockly.inject('blocklyDiv',{
          media: '/media/',
