@@ -92,7 +92,7 @@ import Button from "../Jetstream/Button";
             open_camera(url)
             {
                 console.log("Opening popup");
-                window.open(this.url);
+                window.open(url);
             }
            
         }

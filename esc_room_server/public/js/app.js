@@ -20952,7 +20952,7 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     open_camera: function open_camera(url) {
       console.log("Opening popup");
-      window.open(this.url);
+      window.open(url);
     }
   }
 });
