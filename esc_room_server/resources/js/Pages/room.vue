@@ -81,7 +81,7 @@
         methods:{
             add_camera()
             {
-                axios.post("/add-camera-room/"+room[0].id,{
+                axios.post("/add-camera-room/"+this.room[0].id,{
                 camera_name:this.camera_name,
                 camera_url: this.camera_url
                 })
