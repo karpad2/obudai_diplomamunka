@@ -20954,7 +20954,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       var tmp = 0;
-      cameras.array.forEach(function (element) {
+      this.cameras.array.forEach(function (element) {
         if (element.id == id) tmp = _this.cameras[id];
       });
       console.log(tmp);
