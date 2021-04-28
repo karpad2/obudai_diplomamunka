@@ -91,9 +91,11 @@ import Button from "../Jetstream/Button";
         methods: {
             open_camera(id)
             {
-                let tmp=0;
+                let tmp=0,l=0;
+                
                 this.cameras.forEach(element => {
-                    if(element.id==id) tmp= this.cameras[id];
+                    if(element.id==id) tmp= this.cameras[l];
+                    l++;
                 });
 
                 console.log(tmp);

@@ -20953,9 +20953,11 @@ __webpack_require__.r(__webpack_exports__);
     open_camera: function open_camera(id) {
       var _this = this;
 
-      var tmp = 0;
+      var tmp = 0,
+          l = 0;
       this.cameras.forEach(function (element) {
-        if (element.id == id) tmp = _this.cameras[id];
+        if (element.id == id) tmp = _this.cameras[l];
+        l++;
       });
       console.log(tmp);
       var url = tmp.url;
