@@ -20951,10 +20951,16 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     open_camera: function open_camera(id) {
-      console.log(this.cameras[id]);
-      var url = this.cameras[id].url;
+      var _this = this;
+
+      var tmp = 0;
+      cameras.array.forEach(function (element) {
+        if (element.id == id) tmp = _this.cameras[id];
+      });
+      console.log(tmp);
+      var url = tmp.url;
       console.log("Opening popup");
-      var new_window = window.open("about:blank", this.cameras[id].name, 'width=300,height=300');
+      var new_window = window.open("about:blank", tmp.name, 'width=300,height=300');
       new_window.document.write("<img src=\"" + url + "\" alt=\"Camera\"/>");
     }
   }
