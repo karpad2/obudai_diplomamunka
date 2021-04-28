@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use App\Models\Devices;
 use App\Models\Room;
+use App\Models\Cameras;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
