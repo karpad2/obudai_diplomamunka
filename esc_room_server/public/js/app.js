@@ -21311,7 +21311,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
     AppLayout: _Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_0__.default,
-    Welcome: Welcome,
     BIconArrowRightSquareFill: bootstrap_icons_vue__WEBPACK_IMPORTED_MODULE_2__.BIconArrowRightSquareFill
   },
   data: {
