@@ -42,8 +42,7 @@
     import AppLayout from '@/Layouts/AppLayout'
     //import Welcome from '@/Jetstream/Welcome'
     import Blockly, { isNumber } from 'blockly';
-    import 'blockly/javascript';
-import axios from 'axios';
+    import axios from 'axios';
  
     import * as En from 'blockly/msg/en';
     import 'blockly/javascript';
@@ -128,7 +127,7 @@ import axios from 'axios';
       throw EvalError('Infinite loop.');
     }
   }
-        },
+           },
         mounted()
         {
             executeBlockCode();
@@ -137,16 +136,8 @@ import axios from 'axios';
         }
         
     }
-    if (!stepsAllowed) {
-      throw EvalError('Infinite loop.');
-    }
-  }
-},
-mounted()
-{
-executeBlockCode();
-}        
-}
+    
+
 
     
 </script>
