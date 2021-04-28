@@ -93,7 +93,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/program/{program_id}', fu
 })->name('program');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/cameras', function () {
-    $rooms=Room::join('cameras','rooms.id','=','cameras.room_id')->where(['user_id',Auth::id()])->get();
+    $rooms=Room::join('cameras','rooms.id','=','cameras.room_id')->where(['user_id',Auth::id()]);
     return Inertia::render('cameras',[
         'cameras'=>$rooms
     ]);
