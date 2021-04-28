@@ -43,7 +43,10 @@
     //import Welcome from '@/Jetstream/Welcome'
     import Blockly, { isNumber } from 'blockly';
     import 'blockly/javascript';
-    import axios from 'axios';
+import axios from 'axios';
+ 
+    import * as En from 'blockly/msg/en';
+    import 'blockly/javascript';
     
 
     export default {
@@ -65,11 +68,11 @@
                 type:Array,
                 required: true
             },
-             program:{
+            run:{
                 type:Array,
                 required: true
             },
-             room:{
+            cameras:{
                 type:Array,
                 required: true
             },
@@ -100,34 +103,39 @@
             {
             axios.get('/api/device/js-api/'+id+'/'+mode+'/'+status);
             },
-            measuring_time()
-            {
-                let current=Date();
-                let diff = current - run[0].start_time;
-
-                elapsed_time=diff
-            },
-    executeBlockCode() {
-    //var code = Blockly.JavaScript.workspaceToCode(workspace);
-    let code = program[0].;
+   executeBlockCode() {
+    var code = Blockly.JavaScript.workspaceToCode(workspace);
     var initFunc = function(interpreter, scope) {
-      let alertWrapper = function(text) {
+      var alertWrapper = function(text) {
         text = text ? text.toString() : '';
         return interpreter.createPrimitive(alert(text));
       };
       interpreter.setProperty(scope, 'alert',
           interpreter.createNativeFunction(alertWrapper));
-      let promptWrapper = function(text) {
+      var promptWrapper = function(text) {
         text = text ? text.toString() : '';
         return interpreter.createPrimitive(prompt(text));
       };
       interpreter.setProperty(scope, 'prompt',
           interpreter.createNativeFunction(promptWrapper));
     };
-    let myInterpreter = new Interpreter(code, initFunc);
-    let stepsAllowed = 10000;
+    var myInterpreter = new Interpreter(code, initFunc);
+    var stepsAllowed = 10000;
     while (myInterpreter.step() && stepsAllowed) {
       stepsAllowed--;
+    }
+    if (!stepsAllowed) {
+      throw EvalError('Infinite loop.');
+    }
+  }
+        },
+        mounted()
+        {
+            executeBlockCode();
+
+
+        }
+        
     }
     if (!stepsAllowed) {
       throw EvalError('Infinite loop.');
