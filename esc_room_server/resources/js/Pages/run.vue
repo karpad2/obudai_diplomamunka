@@ -10,18 +10,20 @@
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg col-span-full md:col-span-4">
                    
-                    <p>Status:{{status}}/{{room_max}}</p>
+                    <h3>Status:{{status}}/{{room_max}}</h3>
+                     <h3>Timer:{{elapsed_time}}</h3>
                     <div>
-                    <button>Stop</button>
+                    <intertia-link>Stop</intertia-link>
                     </div>
                     <div>
-                    <button>Unlock doors</button>
+                    <intertia-link></intertia-link>
                     </div>
                     <div class="bg-indigo-300 ...">
                      <img class="object-contain h-48 w-full" :src="getImgUrl(pic)" v-bind:alt="pic">
                     </div>
                      
-                     <div v-for="log in console_log">
+
+                     <div :v-for="log in console_log">
                         <p>{{log}}</p>
                      </div>
                     <input type="text" v-model="console_in"/>
@@ -38,10 +40,10 @@
 
 <script>
     import AppLayout from '@/Layouts/AppLayout'
-    import Welcome from '@/Jetstream/Welcome'
+    //import Welcome from '@/Jetstream/Welcome'
     import Blockly, { isNumber } from 'blockly';
     import 'blockly/javascript';
-import axios from 'axios';
+    import axios from 'axios';
     
 
     export default {
@@ -52,7 +54,6 @@ import axios from 'axios';
         },
         components: {
             AppLayout,
-            Welcome,
             Blockly
         },
         props: {
@@ -63,7 +64,15 @@ import axios from 'axios';
             cameras:{
                 type:Array,
                 required: true
-            }
+            },
+             program:{
+                type:Array,
+                required: true
+            },
+             room:{
+                type:Array,
+                required: true
+            },
         },
            methods: {
                syntaxerror()
@@ -90,10 +99,46 @@ import axios from 'axios';
             send_data(id,mode,status)
             {
             axios.get('/api/device/js-api/'+id+'/'+mode+'/'+status);
-            }
-        }
-        
+            },
+            measuring_time()
+            {
+                let current=Date();
+                let diff = current - run[0].start_time;
+
+                elapsed_time=diff
+            },
+    executeBlockCode() {
+    //var code = Blockly.JavaScript.workspaceToCode(workspace);
+    let code = program[0].;
+    var initFunc = function(interpreter, scope) {
+      let alertWrapper = function(text) {
+        text = text ? text.toString() : '';
+        return interpreter.createPrimitive(alert(text));
+      };
+      interpreter.setProperty(scope, 'alert',
+          interpreter.createNativeFunction(alertWrapper));
+      let promptWrapper = function(text) {
+        text = text ? text.toString() : '';
+        return interpreter.createPrimitive(prompt(text));
+      };
+      interpreter.setProperty(scope, 'prompt',
+          interpreter.createNativeFunction(promptWrapper));
+    };
+    let myInterpreter = new Interpreter(code, initFunc);
+    let stepsAllowed = 10000;
+    while (myInterpreter.step() && stepsAllowed) {
+      stepsAllowed--;
     }
+    if (!stepsAllowed) {
+      throw EvalError('Infinite loop.');
+    }
+  }
+},
+mounted()
+{
+executeBlockCode();
+}        
+}
 
     
 </script>

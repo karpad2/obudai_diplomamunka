@@ -15910,14 +15910,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/Layouts/AppLayout */ "./resources/js/Layouts/AppLayout.vue");
-/* harmony import */ var _Jetstream_Welcome__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/Jetstream/Welcome */ "./resources/js/Jetstream/Welcome.vue");
-/* harmony import */ var blockly__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! blockly */ "./node_modules/blockly/index.js");
-/* harmony import */ var blockly__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(blockly__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var blockly_javascript__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! blockly/javascript */ "./node_modules/blockly/javascript.js");
-/* harmony import */ var blockly_javascript__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(blockly_javascript__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_4__);
-
+/* harmony import */ var blockly__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! blockly */ "./node_modules/blockly/index.js");
+/* harmony import */ var blockly__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(blockly__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var blockly_javascript__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! blockly/javascript */ "./node_modules/blockly/javascript.js");
+/* harmony import */ var blockly_javascript__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(blockly_javascript__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_3__);
+ //import Welcome from '@/Jetstream/Welcome'
 
 
 
@@ -15929,8 +15928,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   components: {
     AppLayout: _Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_0__.default,
-    Welcome: _Jetstream_Welcome__WEBPACK_IMPORTED_MODULE_1__.default,
-    Blockly: (blockly__WEBPACK_IMPORTED_MODULE_2___default())
+    Blockly: (blockly__WEBPACK_IMPORTED_MODULE_1___default())
   },
   props: {
     run: {
@@ -15938,6 +15936,14 @@ __webpack_require__.r(__webpack_exports__);
       required: true
     },
     cameras: {
+      type: Array,
+      required: true
+    },
+    program: {
+      type: Array,
+      required: true
+    },
+    room: {
       type: Array,
       required: true
     }
@@ -15958,7 +15964,7 @@ __webpack_require__.r(__webpack_exports__);
       var texts = text.split(",");
       var device_id = texts[0];
 
-      if (!(0,blockly__WEBPACK_IMPORTED_MODULE_2__.isNumber)(device_id)) {
+      if (!(0,blockly__WEBPACK_IMPORTED_MODULE_1__.isNumber)(device_id)) {
         this.syntaxerror();
         return 0;
       }
@@ -15968,8 +15974,47 @@ __webpack_require__.r(__webpack_exports__);
       }
     },
     send_data: function send_data(id, mode, status) {
-      axios__WEBPACK_IMPORTED_MODULE_4___default().get('/api/device/js-api/' + id + '/' + mode + '/' + status);
+      axios__WEBPACK_IMPORTED_MODULE_3___default().get('/api/device/js-api/' + id + '/' + mode + '/' + status);
+    },
+    measuring_time: function measuring_time() {
+      var current = Date();
+      var diff = current - run[0].start_time;
+      elapsed_time = diff;
+    },
+    executeBlockCode: function executeBlockCode() {
+      //var code = Blockly.JavaScript.workspaceToCode(workspace);
+      var code = program[0];
+
+      var initFunc = function initFunc(interpreter, scope) {
+        var alertWrapper = function alertWrapper(text) {
+          text = text ? text.toString() : '';
+          return interpreter.createPrimitive(alert(text));
+        };
+
+        interpreter.setProperty(scope, 'alert', interpreter.createNativeFunction(alertWrapper));
+
+        var promptWrapper = function promptWrapper(text) {
+          text = text ? text.toString() : '';
+          return interpreter.createPrimitive(prompt(text));
+        };
+
+        interpreter.setProperty(scope, 'prompt', interpreter.createNativeFunction(promptWrapper));
+      };
+
+      var myInterpreter = new Interpreter(code, initFunc);
+      var stepsAllowed = 10000;
+
+      while (myInterpreter.step() && stepsAllowed) {
+        stepsAllowed--;
+      }
+
+      if (!stepsAllowed) {
+        throw EvalError('Infinite loop.');
+      }
     }
+  },
+  mounted: function mounted() {
+    executeBlockCode();
   }
 });
 
@@ -24667,21 +24712,17 @@ var _hoisted_4 = {
   "class": "bg-white overflow-hidden shadow-xl sm:rounded-lg col-span-full md:col-span-4"
 };
 
-var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("button", null, "Stop")], -1
-/* HOISTED */
-);
+var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Stop");
 
-var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("button", null, "Unlock doors")], -1
-/* HOISTED */
-);
-
-var _hoisted_7 = {
+var _hoisted_6 = {
   "class": "bg-indigo-300 ..."
 };
 
-var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Send ");
+var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Send ");
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
+  var _component_intertia_link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("intertia-link");
+
   var _component_jet_button = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("jet-button");
 
   var _component_app_layout = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("app-layout");
@@ -24691,21 +24732,30 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return [_hoisted_1];
     }),
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", null, "Status:" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.status) + "/" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.room_max), 1
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("h3", null, "Status:" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.status) + "/" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.room_max), 1
       /* TEXT */
-      ), _hoisted_5, _hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("img", {
+      ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("h3", null, "Timer:" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.elapsed_time), 1
+      /* TEXT */
+      ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_intertia_link, null, {
+        "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+          return [_hoisted_5];
+        }),
+        _: 1
+        /* STABLE */
+
+      })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_intertia_link)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("img", {
         "class": "object-contain h-48 w-full",
         src: _ctx.getImgUrl(_ctx.pic),
         alt: _ctx.pic
       }, null, 8
       /* PROPS */
-      , ["src", "alt"])]), ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(_ctx.console_log, function (log) {
-        return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(log), 1
-        /* TEXT */
-        )]);
-      }), 256
-      /* UNKEYED_FRAGMENT */
-      )), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+      , ["src", "alt"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+        "v-for": _ctx.log in _ctx.console_log
+      }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.log), 1
+      /* TEXT */
+      )], 8
+      /* PROPS */
+      , ["v-for"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
         type: "text",
         "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
           return _ctx.console_in = $event;
@@ -24717,7 +24767,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         onClick: $options.add_to_console
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-          return [_hoisted_8];
+          return [_hoisted_7];
         }),
         _: 1
         /* STABLE */
