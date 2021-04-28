@@ -102,7 +102,7 @@ import Button from "../Jetstream/Button";
                 let url= tmp.url;
                 console.log("Opening popup");
                 let new_window = window.open("about:blank",tmp.name,'width=300,height=300');
-                new_window.document.write("<img src=\""+url+"\" alt=\"Camera\"/>");
+                new_window.document.write("<img src=\""+url+"\" alt=\"Camera\" />");
             }
            
         }

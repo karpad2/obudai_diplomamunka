@@ -67,7 +67,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/room/{room_id}', function
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/devices', function () {
     return Inertia::render('devices',[
-        'devices'=>Devices::where(['user_id',Auth::id()])
+        'devices'=>Devices::join('rooms','devices.room_id','=','rooms.id')->where(['user_id',Auth::id()])
     ]);
 })->name('devices');
 
