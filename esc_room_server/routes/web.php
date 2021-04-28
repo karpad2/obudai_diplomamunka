@@ -16,6 +16,7 @@ use App\Http\Controllers\RoomController;
 use App\Models\Cameras;
 use App\Models\ETeams;
 use App\Models\Programs;
+use App\Models\Run;
 
 //use GuzzleHttp\Psr7\Request;
 
@@ -174,9 +175,32 @@ Route::middleware(['auth:sanctum', 'verified'])->post('update-rteams/{teams_id}'
 Route::middleware(['auth:sanctum', 'verified'])->get('run/{room_id}',function ($room_id){
     $room=Room::findorFail($room_id)->get();
     $program=Programs::where([['room_id',$room_id],['active',1]])->get();
+    
+    $active_run = Run::where([["room_id",$room_id],["finish_time",NULL]])->get();
+    if($active_run->isEmpty())
+    {
+        $active_run=Run::create(["room_id"=>$room_id,"program_id"=>$program->id,"team_id"=>1,"start_time"=>now(),"finish_time"=>null])->get();
+    }
+
     return Inertia::render('run',[
         'room'=>$room,
-        'program'=>$program
+        'program'=>$program,
+        'run'=>$active_run
+    ]);
+
+})->name('run');
+
+Route::middleware(['auth:sanctum', 'verified'])->get('run/{room_id}/stop',function ($room_id){
+    $room=Room::findorFail($room_id)->get();
+    $program=Programs::where([['room_id',$room_id],['active',1]])->get();
+    
+    $active_run = Run::where([["room_id",$room_id],["finish_time",NULL]])->update(["finish_time",now()]);
+    
+
+    return Inertia::render('run',[
+        'room'=>$room,
+        'program'=>$program,
+        'run'=>$active_run
     ]);
 
 })->name('run');

@@ -42,6 +42,9 @@
     import Blockly, { isNumber } from 'blockly';
     import 'blockly/javascript';
 import axios from 'axios';
+ 
+    import * as En from 'blockly/msg/en';
+    import 'blockly/javascript';
     
 
     export default {
@@ -63,7 +66,15 @@ import axios from 'axios';
             cameras:{
                 type:Array,
                 required: true
-            }
+            },
+            run:{
+                type:Array,
+                required: true
+            },
+            cameras:{
+                type:Array,
+                required: true
+            },
         },
            methods: {
                syntaxerror()
@@ -90,7 +101,38 @@ import axios from 'axios';
             send_data(id,mode,status)
             {
             axios.get('/api/device/js-api/'+id+'/'+mode+'/'+status);
-            }
+            },
+   executeBlockCode() {
+    var code = Blockly.JavaScript.workspaceToCode(workspace);
+    var initFunc = function(interpreter, scope) {
+      var alertWrapper = function(text) {
+        text = text ? text.toString() : '';
+        return interpreter.createPrimitive(alert(text));
+      };
+      interpreter.setProperty(scope, 'alert',
+          interpreter.createNativeFunction(alertWrapper));
+      var promptWrapper = function(text) {
+        text = text ? text.toString() : '';
+        return interpreter.createPrimitive(prompt(text));
+      };
+      interpreter.setProperty(scope, 'prompt',
+          interpreter.createNativeFunction(promptWrapper));
+    };
+    var myInterpreter = new Interpreter(code, initFunc);
+    var stepsAllowed = 10000;
+    while (myInterpreter.step() && stepsAllowed) {
+      stepsAllowed--;
+    }
+    if (!stepsAllowed) {
+      throw EvalError('Infinite loop.');
+    }
+  }
+        },
+        mounted()
+        {
+            executeBlockCode();
+
+
         }
         
     }
