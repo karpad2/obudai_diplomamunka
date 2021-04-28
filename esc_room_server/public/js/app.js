@@ -20952,7 +20952,8 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     open_camera: function open_camera(url) {
       console.log("Opening popup");
-      window.open(url);
+      var new_window = window.open("about:blank", "camera", 'width=300,height=300');
+      new_window.document.write("<img src=\"" + url + "\ alt=\"Camera\"/>");
     }
   }
 });
