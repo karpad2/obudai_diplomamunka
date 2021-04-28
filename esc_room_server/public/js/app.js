@@ -29475,7 +29475,7 @@ var _hoisted_3 = {
   "class": "max-w-7xl mx-auto sm:px-6 lg:px-8"
 };
 var _hoisted_4 = {
-  "class": "inline text-xl text-white bg-purple-800 p-2 capitalize overflow-hidden shadow-xl sm:rounded-lg"
+  "class": "overflow-hidden shadow-xl sm:rounded-lg"
 };
 var _hoisted_5 = {
   "class": "bg-white shadow-md rounded my-6"
