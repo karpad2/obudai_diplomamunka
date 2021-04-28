@@ -54,12 +54,17 @@
     //import Welcome from '@/Jetstream/Welcome'
     import {BIconArrowRightSquareFill} from 'bootstrap-icons-vue';
     import axios from 'axios';
+    import JetLabel from '@/Jetstream/Label'
+    import JetInput from '@/Jetstream/Input'
+    import JetButton from '@/Jetstream/Button'
 
     export default {
         components: {
             AppLayout,
-            BIconArrowRightSquareFill
-            
+            BIconArrowRightSquareFill,
+            JetLabel,
+            JetInput,
+            JetButton
         },
         data:
         {
