@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
 Route::get('/',function (Request $request){
-    return 'test ok';
+    return Room::join('cameras','rooms.id','=','cameras.room_id');
 });
 Route::get('device/add-device',function (Request $request){
          $id=Devices::create(['name'=>'Default','ip_address'=>$request->getClientIp(),'mode'=>'relay','status'=>'0','last_online'=>now(),'room_id'=>1,'password'=>'asdfghjkl'])->id;
