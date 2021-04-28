@@ -20951,6 +20951,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     open_camera: function open_camera(url) {
+      console.log("Opening popup");
       window.open(this.url);
     }
   }
@@ -29201,7 +29202,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(row.name), 1
         /* TEXT */
         ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_button, {
-          "v-on:click": $options.open_camera(row.camera_url)
+          onClick: function onClick($event) {
+            return $options.open_camera(row.camera_url);
+          }
         }, {
           "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
             return [_hoisted_8, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_BIconArrowRightSquareFill, {
@@ -29213,7 +29216,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
         }, 1032
         /* PROPS, DYNAMIC_SLOTS */
-        , ["v-on:click"]), _hoisted_9, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+        , ["onClick"]), _hoisted_9, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
           onClick: _cache[1] || (_cache[1] = function () {
             return _ctx["delete"] && _ctx["delete"].apply(_ctx, arguments);
           })

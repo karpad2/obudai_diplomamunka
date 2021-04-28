@@ -23,7 +23,7 @@
       <tr v-for="row in cameras" :key="row.id">
        <td>{{ row.id }}</td>
        <td>{{ row.name }}</td>
-       <td><jet-button :v-on:click="open_camera(row.camera_url)">Show camera<BIconArrowRightSquareFill class="bg-green-500"/></jet-button> <span v-on:click="delete"><i class="bi bi-trash"></i> </span> </td>
+       <td><jet-button v-on:click="open_camera(row.camera_url)">Show camera<BIconArrowRightSquareFill class="bg-green-500"/></jet-button> <span v-on:click="delete"><i class="bi bi-trash"></i> </span> </td>
      </tr>
    </tbody>
 <tfoot>
@@ -91,6 +91,7 @@ import Button from "../Jetstream/Button";
         methods: {
             open_camera(url)
             {
+                console.log("Opening popup");
                 window.open(this.url);
             }
            
