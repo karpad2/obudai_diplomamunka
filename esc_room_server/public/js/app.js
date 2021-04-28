@@ -21246,10 +21246,7 @@ var _this = undefined;
     }
   },
   methods: {
-    myUpdateFunction: function myUpdateFunction(event) {
-      a_program_javascript = blockly__WEBPACK_IMPORTED_MODULE_10___default().Javascript.workspaceToCode(blockly__WEBPACK_IMPORTED_MODULE_10__.Workspace);
-      a_program_xml = blockly__WEBPACK_IMPORTED_MODULE_10___default().Xml.workspaceToCode(blockly__WEBPACK_IMPORTED_MODULE_10__.Workspace);
-    },
+    myUpdateFunction: function myUpdateFunction(event) {},
     save: function save() {
       axios__WEBPACK_IMPORTED_MODULE_9___default().post("update-programs/save/" + rooms[0].id, {
         program_name: this.a_program_name,
@@ -21265,7 +21262,10 @@ var _this = undefined;
       media: '/media/',
       toolbox: document.getElementById('toolbox')
     });
-    Workspace.addChangeListener(myUpdateFunction);
+    Workspace.addChangeListener(function () {
+      a_program_javascript = blockly__WEBPACK_IMPORTED_MODULE_10___default().Javascript.workspaceToCode(Workspace);
+      a_program_xml = blockly__WEBPACK_IMPORTED_MODULE_10___default().Xml.workspaceToCode(Workspace);
+    });
 
     if (_this.program == {}) {} else {
       a_program_xml = _this.program[0].program_xml;

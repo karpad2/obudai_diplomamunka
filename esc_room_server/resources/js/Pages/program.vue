@@ -68,9 +68,7 @@
         },
     methods:{
             myUpdateFunction(event) {
-                a_program_javascript=Blockly.Javascript.workspaceToCode(Workspace);
-                a_program_xml=Blockly.Xml.workspaceToCode(Workspace);       
-            },
+           },
             save(){ 
                     axios.post("update-programs/save/"+rooms[0].id,{program_name:this.a_program_name,program_xml:this.a_program_xml,program_javascript:this.a_program_javascript});
                     }
@@ -81,7 +79,12 @@ mounted: ()=>{
         let Workspace = Blockly.inject('blocklyDiv',{
          media: '/media/',
          toolbox: document.getElementById('toolbox')});
-        Workspace.addChangeListener(myUpdateFunction);
+        Workspace.addChangeListener(()=>
+        {
+                a_program_javascript=Blockly.Javascript.workspaceToCode(Workspace);
+                a_program_xml=Blockly.Xml.workspaceToCode(Workspace);       
+            
+        });
     
     if(this.program =={})
     {
