@@ -91,6 +91,7 @@ import Button from "../Jetstream/Button";
         methods: {
             open_camera(id)
             {
+                console.log(this.cameras[id]);
                 let url= this.cameras[id].url;
                 console.log("Opening popup");
                 let new_window = window.open("about:blank",this.cameras[id].name,'width=300,height=300');
