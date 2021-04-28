@@ -21232,9 +21232,9 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      program_name: '',
-      program_xml: '',
-      program_javascript: ''
+      a_program_name: '',
+      a_program_xml: '',
+      a_program_javascript: ''
     };
   },
   props: {
@@ -21245,23 +21245,31 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     myUpdateFunction: function myUpdateFunction(event) {
-      program_javascript = blockly__WEBPACK_IMPORTED_MODULE_10___default().Javascript.workspaceToCode(blockly__WEBPACK_IMPORTED_MODULE_10__.Workspace);
+      a_program_javascript = blockly__WEBPACK_IMPORTED_MODULE_10___default().Javascript.workspaceToCode(blockly__WEBPACK_IMPORTED_MODULE_10__.Workspace);
+      a_program_xml = blockly__WEBPACK_IMPORTED_MODULE_10___default().Xml.workspaceToCode(blockly__WEBPACK_IMPORTED_MODULE_10__.Workspace);
     },
     save: function save() {
       axios__WEBPACK_IMPORTED_MODULE_9___default().post("update-programs/save/" + rooms[0].id, {
-        "program_name": program_name,
-        "program_xml": program_xml,
-        "program_javascript": program_javascript
+        program_name: this.a_program_name,
+        program_xml: this.a_program_xml,
+        program_javascript: this.a_program_javascript
       });
     }
   },
   mounted: function mounted() {
+    var defaultBlocks = document.getElementById('blocklyDefault');
     blockly__WEBPACK_IMPORTED_MODULE_10___default().setLocale(blockly_msg_en__WEBPACK_IMPORTED_MODULE_11__);
     var Workspace = blockly__WEBPACK_IMPORTED_MODULE_10___default().inject('blocklyDiv', {
       media: '/media/',
       toolbox: document.getElementById('toolbox')
     });
     Workspace.addChangeListener(myUpdateFunction);
+
+    if (this.program == {}) {} else {
+      a_program_xml = this.program[0].program_xml;
+      a_program_javascript = this.program[0].program_javascript;
+      blockly__WEBPACK_IMPORTED_MODULE_10___default().Xml.domToWorkspace(defaultBlocks, Workspace);
+    }
   }
 });
 
@@ -29649,13 +29657,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
-
-var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("h2", {
+var _hoisted_1 = {
   "class": "font-semibold text-xl text-gray-800 leading-tight"
-}, " Programming Interface ", -1
-/* HOISTED */
-);
-
+};
 var _hoisted_2 = {
   "class": "py-12"
 };
@@ -29690,13 +29694,17 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   var _component_block_vue = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("block_vue");
 
+  var _component_xml = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("xml");
+
   var _component_jet_button = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("jet-button");
 
   var _component_app_layout = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("app-layout");
 
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_app_layout, null, {
     header: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_1];
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("h2", _hoisted_1, " Programming Interface " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.a_program_name), 1
+      /* TEXT */
+      )];
     }),
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
       return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
@@ -29706,22 +29714,30 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         id: "program_name",
         type: "text",
         "class": "mt-1 block w-full",
-        modelValue: $data.program_name,
+        modelValue: $data.a_program_name,
         "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
-          return $data.program_name = $event;
+          return $data.a_program_name = $event;
         }),
         ref: "program_name",
         autocomplete: "program_name"
       }, null, 8
       /* PROPS */
       , ["modelValue"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input_error, {
-        message: $data.program_name,
+        message: _ctx.program_name,
         "class": "mt-2"
       }, null, 8
       /* PROPS */
-      , ["message"])]), _hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_block_vue), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("textarea", {
+      , ["message"])]), _hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_block_vue), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_xml, {
+        id: "blocklyDefault",
+        "v-model": $data.a_program_xml,
+        style: {
+          "display": "none"
+        }
+      }, null, 8
+      /* PROPS */
+      , ["v-model"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("textarea", {
         id: "program_javascript",
-        "v-model": $data.program_javascript,
+        "v-model": _ctx.program_javascript,
         name: "program_javascript",
         style: {
           "display": "none"
@@ -29730,7 +29746,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       /* PROPS */
       , ["v-model"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("textarea", {
         id: "program_xml",
-        "v-model": $data.program_xml,
+        "v-model": _ctx.program_xml,
         name: "program_xml",
         style: {
           "display": "none"
