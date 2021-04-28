@@ -151,8 +151,8 @@ Route::middleware(['auth:sanctum', 'verified'])->post('update-program/save/{prog
 /*End Programs*/
 
 /*Cams*/
-Route::middleware(['auth:sanctum', 'verified'])->post('create-cam/{room_id}',function (Request $request,$room_id){
-    Cameras::create(['name'=>$request->name,'url'=>$request->camera_url,'room_id'=>$room_id]);
+Route::middleware(['auth:sanctum', 'verified'])->post('add-camera-room/{room_id}',function (Request $request,$room_id){
+    Cameras::create(['name'=>$request->camera_name,'url'=>$request->camera_url,'room_id'=>$room_id]);
     return 'ok';
 });
 Route::middleware(['auth:sanctum', 'verified'])->post('update-cam/{camera_id}',function (Request $request,$camera_id){

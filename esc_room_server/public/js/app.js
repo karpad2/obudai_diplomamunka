@@ -21338,7 +21338,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     add_camera: function add_camera() {
-      axios__WEBPACK_IMPORTED_MODULE_1___default().post("add-camera-room/" + room[0].id, {
+      axios__WEBPACK_IMPORTED_MODULE_1___default().post("/add-camera-room/" + room[0].id, {
         "camera_name": camera_name,
         "camera_url": camera_url
       });
