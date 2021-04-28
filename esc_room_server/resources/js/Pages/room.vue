@@ -36,6 +36,9 @@
                     <jet-label for="camera_url" value="Camera Url:" />
                     <jet-input id="camera_url" type="text" class="mt-1 block w-full" v-model="camera_url"/>
                     </div>    
+                    <jet-button class="ml-4" :click="add_camera" >
+                        Add Camera
+                    </jet-button>
 
                     </div>
                     <inertia-link :href="'/lobby/'+room[0].id"> Enter into lobby <BIconArrowRightSquareFill class="bg-green-500"/></inertia-link>
@@ -63,17 +66,20 @@
         {
             camera_name:"",
             camera_url:""
-        }
+        },
         props: {
             room:{ 
                 type:Array,
                 required: true
             }
-        }
+        },
         methods:{
             add_camera()
             {
-
+                axios.post("add-camera-room/"+room[0].id,{
+                "camera_name":camera_name,
+                "camera_url": camera_url
+                })
             }
 
         }
