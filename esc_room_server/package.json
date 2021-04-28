@@ -29,6 +29,7 @@
         "@revolist/revogrid": "^3.0.4",
         "@revolist/vue-datagrid": "github:revolist/vue-datagrid",
         "@revolist/vue3-datagrid": "^3.0.2",
+        "acorn": "^8.2.1",
         "blockly": "^5.20210325.0",
         "bootstrap": "^4.6.0",
         "bootstrap-icons": "^1.4.1",

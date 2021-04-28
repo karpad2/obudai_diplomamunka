@@ -28,11 +28,17 @@
                     <h1 class=" inline text-xl text-white bg-purple-800 p-2 capitalize">Cameras</h1>
                     <div class="flex flex-col items-start justify-center bg-purple-100 p-6 ">
                         <h2>Assign cameras to room</h2>
-                        <select name="add-device">
-                        </select>
+                    <div>
+                    <jet-label for="camera_name" value="Camera Name:" />
+                    <jet-input id="camera_name" type="text" class="mt-1 block w-full" v-model="camera_name"/>
                     </div>
-                    Enter into lobby:
-                    <inertia-link :href="'/lobby/'+room.id">Enter into lobby <BIconArrowRightSquareFill class="bg-green-500"/></inertia-link>
+                    <div>
+                    <jet-label for="camera_url" value="Camera Url:" />
+                    <jet-input id="camera_url" type="text" class="mt-1 block w-full" v-model="camera_url"/>
+                    </div>    
+
+                    </div>
+                    <inertia-link :href="'/lobby/'+room[0].id"> Enter into lobby <BIconArrowRightSquareFill class="bg-green-500"/></inertia-link>
 
                 </div>
         </div>
@@ -42,8 +48,9 @@
 
 <script>
     import AppLayout from '@/Layouts/AppLayout'
-    import Welcome from '@/Jetstream/Welcome'
+    //import Welcome from '@/Jetstream/Welcome'
     import {BIconArrowRightSquareFill} from 'bootstrap-icons-vue';
+    import axios from 'axios';
 
     export default {
         components: {
@@ -52,11 +59,23 @@
             BIconArrowRightSquareFill
             
         },
+        data:
+        {
+            camera_name:"",
+            camera_url:""
+        }
         props: {
             room:{ 
                 type:Array,
                 required: true
             }
+        }
+        methods:{
+            add_camera()
+            {
+
+            }
+
         }
     }
 </script>

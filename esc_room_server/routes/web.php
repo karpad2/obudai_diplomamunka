@@ -129,7 +129,6 @@ Route::middleware(['auth:sanctum', 'verified'])->post('create-room',function (Re
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->post('update-room',function (Request $request,$room_id){
-
     Room::create(["name"=>$request->name,"user_id"=>Auth::id()]);
     return 'ok';
 });
@@ -141,8 +140,11 @@ Route::middleware(['auth:sanctum', 'verified'])->post('create-program/{room_id}'
     Programs::create(['name'=>$request->name,'active'=>1,'javascript_block'=>$request->javascript_block,'xml_block'=>$request->xml_block,'room_id'=>$room_id]);
     return 'ok';
 });
-
 Route::middleware(['auth:sanctum', 'verified'])->post('update-program/{program_id}',function (Request $request,$program_id){
+    return Programs::where(['program_id',$program_id])->get();
+});
+
+Route::middleware(['auth:sanctum', 'verified'])->post('update-program/save/{program_id}',function (Request $request,$program_id){
     Programs::where(['program_id',$program_id])->update(['name'=>$request->name,'active'=>1,'javascript_block'=>$request->javascript_block,'xml_block'=>$request->xml_block]);
     return 'ok';
 });
@@ -195,8 +197,6 @@ Route::middleware(['auth:sanctum', 'verified'])->get('run/{room_id}/stop',functi
     $program=Programs::where([['room_id',$room_id],['active',1]])->get();
     
     $active_run = Run::where([["room_id",$room_id],["finish_time",NULL]])->update(["finish_time",now()]);
-    
-
     return Inertia::render('run',[
         'room'=>$room,
         'program'=>$program,
