@@ -136,7 +136,7 @@ Route::middleware(['auth:sanctum', 'verified'])->post('update-room',function (Re
 
 /*Programs*/
 Route::middleware(['auth:sanctum', 'verified'])->get('create-program/{room_id}',function (Request $request,$room_id){
-    return Inertia::render('program',[]);
+    return Inertia::render('program',["program"=>null]);
 })->name('program');
 
 
