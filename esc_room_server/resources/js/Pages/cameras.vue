@@ -23,7 +23,7 @@
       <tr v-for="row in cameras" :key="row.id">
        <td>{{ row.id }}</td>
        <td>{{ row.name }}</td>
-       <td><jet-button v-on:click="open_camera(row.id)">Show camera<BIconArrowRightSquareFill class="bg-green-500"/></jet-button> <span v-on:click="delete"><i class="bi bi-trash"></i> </span> </td>
+       <td><jet-button v-on:click="open_camera(row.id)">Show camera<BIconArrowRightSquareFill class=""/></jet-button> <span v-on:click="delete"><i class="bi bi-trash"></i> </span> </td>
      </tr>
    </tbody>
 <tfoot>
