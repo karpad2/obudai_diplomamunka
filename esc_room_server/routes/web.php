@@ -135,6 +135,14 @@ Route::middleware(['auth:sanctum', 'verified'])->post('update-room',function (Re
 /*End programs*/
 
 /*Programs*/
+Route::middleware(['auth:sanctum', 'verified'])->get('create-program/{room_id}',function (Request $request,$room_id){
+    
+    return Inertia::render('program',[
+        
+    ]);
+})->name('program');
+
+
 Route::middleware(['auth:sanctum', 'verified'])->post('create-program/{room_id}',function (Request $request,$room_id){
     Programs::where(['room_id',$room_id])->update(['active'=>0]);
     Programs::create(['name'=>$request->name,'active'=>1,'javascript_block'=>$request->javascript_block,'xml_block'=>$request->xml_block,'room_id'=>$room_id]);
