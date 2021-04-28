@@ -20950,10 +20950,11 @@ __webpack_require__.r(__webpack_exports__);
     BIconArrowRightSquareFill: bootstrap_icons_vue__WEBPACK_IMPORTED_MODULE_7__.BIconArrowRightSquareFill
   },
   methods: {
-    open_camera: function open_camera(url) {
+    open_camera: function open_camera(id) {
+      var url = this.cameras[id].camera_url;
       console.log("Opening popup");
       var new_window = window.open("about:blank", "camera", 'width=300,height=300');
-      new_window.document.write("<img src=\"" + url + "\ alt=\"Camera\"/>");
+      new_window.document.write("<img src=\"" + this.url + "\" alt=\"Camera\"/>");
     }
   }
 });
@@ -29204,7 +29205,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         /* TEXT */
         ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_button, {
           onClick: function onClick($event) {
-            return $options.open_camera(row.camera_url);
+            return $options.open_camera(row.id);
           }
         }, {
           "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
