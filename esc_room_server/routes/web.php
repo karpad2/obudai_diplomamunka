@@ -94,7 +94,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/program/{program_id}', fu
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/cameras', function () {
     return Inertia::render('cameras',[
-        'cameras'=>Cameras::where(['user_id',Auth::id()])
+        'cameras'=>Cameras::where(['user_id',Auth::id()])->get()
     ]);
 })->name('cameras');
 
