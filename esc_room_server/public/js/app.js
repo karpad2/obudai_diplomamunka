@@ -21230,7 +21230,8 @@ var _this = undefined;
     JetButton: _Jetstream_Button__WEBPACK_IMPORTED_MODULE_4__.default,
     JetInput: _Jetstream_Input__WEBPACK_IMPORTED_MODULE_6__.default,
     JetInputError: _Jetstream_InputError__WEBPACK_IMPORTED_MODULE_7__.default,
-    JetLabel: _Jetstream_Label__WEBPACK_IMPORTED_MODULE_8__.default
+    JetLabel: _Jetstream_Label__WEBPACK_IMPORTED_MODULE_8__.default,
+    Blockly: (blockly__WEBPACK_IMPORTED_MODULE_10___default())
   },
   data: function data() {
     return {
@@ -21267,7 +21268,7 @@ var _this = undefined;
       a_program_xml = blockly__WEBPACK_IMPORTED_MODULE_10___default().Xml.workspaceToCode(Workspace);
     });
 
-    if (_this.program == {}) {} else {
+    if (program == null) {} else {
       a_program_xml = _this.program[0].program_xml;
       a_program_javascript = _this.program[0].program_javascript;
       blockly__WEBPACK_IMPORTED_MODULE_10___default().Xml.domToWorkspace(defaultBlocks, Workspace);

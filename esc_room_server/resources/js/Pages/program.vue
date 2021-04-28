@@ -52,7 +52,8 @@
             JetButton,
             JetInput,
             JetInputError,
-            JetLabel
+            JetLabel,
+            Blockly
         },
         data()
         {  return{
@@ -86,7 +87,7 @@ mounted: ()=>{
             
         });
     
-    if(this.program =={})
+    if(program ==null)
     {
 
     }
