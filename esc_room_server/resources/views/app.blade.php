@@ -14,8 +14,7 @@
         <link rel="stylesheet" href="{{ mix('css/app.css') }}">
         
 
-<link rel="apple-touch-icon" sizes="72x72" href="favicon.png" />
-<link rel="icon" type="image/png" sizes="192x192" href="favicon.png"  />
+        
 
         <!-- Scripts -->
         @routes
