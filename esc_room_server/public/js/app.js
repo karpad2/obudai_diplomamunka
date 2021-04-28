@@ -20951,7 +20951,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     open_camera: function open_camera(id) {
-      var url = this.cameras[id].camera_url;
+      var url = this.cameras[id].url;
       console.log("Opening popup");
       var new_window = window.open("about:blank", this.cameras[id].name, 'width=300,height=300');
       new_window.document.write("<img src=\"" + url + "\" alt=\"Camera\"/>");
