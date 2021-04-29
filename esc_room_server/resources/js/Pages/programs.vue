@@ -22,10 +22,10 @@
     </tr>
   </thead>
   <tbody>
-      <tr v-for="row in devices" :key="row.id">
+      <tr v-for="row in programs" :key="row.id">
        <td>{{ row.id }}</td>
        <td>{{ row.name }}</td>
-       <td><inertia-link :href="'/program/'+row.id">Manage your Program</inertia-link></td>
+       <td><inertia-link :href="'/update-program/'+row.id">Manage your Program <BIconGearFill /></inertia-link></td>
      </tr>
    </tbody>
 <tfoot>
@@ -74,7 +74,7 @@ import { Inertia } from '@inertiajs/inertia'
     import JetLabel from '@/Jetstream/Label'
     import JetButton from '@/Jetstream/Button'
     import JetInput from '@/Jetstream/Input'
-
+    import {BIconGearFill} from 'bootstrap-icons-vue';
     export default {
         
         props: {
@@ -102,7 +102,8 @@ import { Inertia } from '@inertiajs/inertia'
             AppLayout,
             JetButton,
             JetInput,
-            JetLabel
+            JetLabel,
+            BIconGearFill
             
         },
         methods: {
