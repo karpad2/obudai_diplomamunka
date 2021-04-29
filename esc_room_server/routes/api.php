@@ -38,7 +38,7 @@ Route::get('device/rfid/{device_password}/{code}',function ($device_password,$co
     return 'ok';
 });  
 
-Route::get('device/store/js-api/{id}/{mode}/{status}',function ($id,$mode,$status){
+Route::get('device/js-api/{id}/{mode}/{status}',function ($id,$mode,$status){
         $device= Devices::findOrFail($id)->get();
         Devices::findOrFail($device[0]->id)->update(['mode'=>$mode,'status'=>$status]);
         return 'ok';

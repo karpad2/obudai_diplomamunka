@@ -67,20 +67,20 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/room/{room_id}', function
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/devices', function () {
     return Inertia::render('devices',[
-        'devices'=>Devices::join('rooms','devices.room_id','=','rooms.id')->where(['user_id',Auth::id()])
+        'devices'=>Room::join('devices','rooms.id','=','devices.room_id')->where('user_id',Auth::id())->get()
     ]);
 })->name('devices');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/device/{device_id}', function ($device_id) {
     return Inertia::render('device',[
-        'device'=> Devices::findorFail($device_id)
+        'device'=> Devices::findorFail($device_id)->get()
     ]);
 })->name('device');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/programs', function () {
     return Inertia::render('programs',[
         'rooms'=> Room::where('user_id',Auth::id())->get(),
-        'programs'=>DB::select('select * from programs join rooms r on programs.room_id = r.id where r.user_id = ?', [Auth::id()])
+        'programs'=>Programs::join('rooms','programs.room_id','=','rooms.id')->where(['user_id',Auth::id()])
         //join('rooms','programs.room_id','=','room.id')->where(['user_id',Auth::id()])->
 
     ]);
