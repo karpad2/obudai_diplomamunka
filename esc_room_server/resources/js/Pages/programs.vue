@@ -26,7 +26,7 @@
        <td class="w-1/5 ...">{{ row.id }}</td>
        <td class="w-1/5 ...">{{ row.name }}</td>
        <td class="w-1/5 ...">{{ row.room_id }}</td>
-       <td class="w-1/5 ..."> <span v-if="row.active=='1'"> <BIconCheck2Square class="" /></span></td>
+       <td class="w-1/5 ..."> <span v-if="row.active=='1'"> <BIconCheck2Square class="green-600" /></span></td>
        <td class="w-1/5 ..."><inertia-link :href="'/update-program/'+row.id">Manage your Program <BIconGearFill /></inertia-link></td>
      </tr>
    </tbody>
