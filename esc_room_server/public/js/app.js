@@ -29848,6 +29848,10 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "onUpdate:modelValue": _cache[3] || (_cache[3] = function ($event) {
           return $props.program[0].javascript_block = $event;
         }),
+        "class": "mt-1 block w-full",
+        style: {
+          "display": "block"
+        },
         name: "program_javascript"
       }, null, 512
       /* NEED_PATCH */
