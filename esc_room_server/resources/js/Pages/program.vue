@@ -75,11 +75,11 @@
                     xml_block:this.program[0].xml_block,
                     javascript_block:this.program[0].javascript_block});
                     },
-             auto_compile()
+             auto_compile(workspace)
              {
                 console.log("im here")
-                this.program[0].javascript_block=BlocklyJS.workspaceToCode(Workspace);
-                this.program[0].xml_block=Blockly.Xml.workspaceToCode(Workspace);  
+                this.program[0].javascript_block=BlocklyJS.workspaceToCode(workspace);
+                this.program[0].xml_block=Blockly.Xml.workspaceToCode(workspace);  
              }       
             },
 mounted (){
@@ -90,7 +90,7 @@ mounted (){
          toolbox: document.getElementById('toolbox')});
         Workspace.addChangeListener(()=>
         {
-            this.auto_compile()
+            this.auto_compile(Workspace)
         });
     
     Blockly.Xml.domToWorkspace(defaultBlocks, Workspace);       

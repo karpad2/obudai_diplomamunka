@@ -21277,10 +21277,10 @@ __webpack_require__.r(__webpack_exports__);
         javascript_block: this.program[0].javascript_block
       });
     },
-    auto_compile: function auto_compile() {
+    auto_compile: function auto_compile(workspace) {
       console.log("im here");
-      this.program[0].javascript_block = blockly_javascript__WEBPACK_IMPORTED_MODULE_12___default().workspaceToCode(blockly__WEBPACK_IMPORTED_MODULE_10__.Workspace);
-      this.program[0].xml_block = blockly__WEBPACK_IMPORTED_MODULE_10___default().Xml.workspaceToCode(blockly__WEBPACK_IMPORTED_MODULE_10__.Workspace);
+      this.program[0].javascript_block = blockly_javascript__WEBPACK_IMPORTED_MODULE_12___default().workspaceToCode(workspace);
+      this.program[0].xml_block = blockly__WEBPACK_IMPORTED_MODULE_10___default().Xml.workspaceToCode(workspace);
     }
   },
   mounted: function mounted() {
@@ -21293,7 +21293,7 @@ __webpack_require__.r(__webpack_exports__);
       toolbox: document.getElementById('toolbox')
     });
     Workspace.addChangeListener(function () {
-      _this.auto_compile();
+      _this.auto_compile(Workspace);
     });
     blockly__WEBPACK_IMPORTED_MODULE_10___default().Xml.domToWorkspace(defaultBlocks, Workspace);
   }
