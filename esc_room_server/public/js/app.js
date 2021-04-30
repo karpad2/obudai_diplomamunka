@@ -21231,8 +21231,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var blockly_msg_en__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(blockly_msg_en__WEBPACK_IMPORTED_MODULE_11__);
 /* harmony import */ var blockly_javascript__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! blockly/javascript */ "./node_modules/blockly/javascript.js");
 /* harmony import */ var blockly_javascript__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(blockly_javascript__WEBPACK_IMPORTED_MODULE_12__);
-var _this = undefined;
-
 
 
 
@@ -21286,6 +21284,8 @@ var _this = undefined;
     }
   },
   mounted: function mounted() {
+    var _this = this;
+
     var defaultBlocks = document.getElementById('blocklyDefault');
     blockly__WEBPACK_IMPORTED_MODULE_10___default().setLocale(blockly_msg_en__WEBPACK_IMPORTED_MODULE_11__);
     var Workspace = blockly__WEBPACK_IMPORTED_MODULE_10___default().inject('blocklyDiv', {

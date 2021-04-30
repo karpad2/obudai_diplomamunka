@@ -82,7 +82,7 @@
                 this.program[0].xml_block=Blockly.Xml.workspaceToCode(Workspace);  
              }       
             },
-mounted: ()=>{
+mounted (){
     let defaultBlocks = document.getElementById('blocklyDefault');
         Blockly.setLocale(En);
         let Workspace = Blockly.inject('blocklyDiv',{
