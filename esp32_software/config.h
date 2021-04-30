@@ -14,11 +14,25 @@
 #define relaypin 23
 #define interruptpin 25
 
+#define SCREEN_WIDTH 128 // OLED display width, in pixels
+#define SCREEN_HEIGHT 64 // OLED display height, in pixels
+
+
+
 #include <SPI.h>
 #include "SPIFFS.h"
 #include <Arduino_JSON.h>
 #include <MFRC522.h>
 #include <HTTPClient.h>
+#include <Wire.h>
+
+#include <Adafruit_GFX.h>
+#include <Adafruit_SSD1306.h>
+
+
+Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
+
+
 struct Config {
   char hostname[64];
   int port;
@@ -220,6 +234,17 @@ void fs_setup()
         else if(cucc=="input")
         {
         attachInterrupt(interruptpin, isr, FALLING); 
+        }
+        else if(cucc=="display")
+        {
+          cucc=tmp1["text"];
+          if(display.begin(SSD1306_SWITCHCAPVCC, 0x3C)) {
+            display.clearDisplay();
+            display.setTextSize(1);             // Normal 1:1 pixel scale
+            display.setTextColor(WHITE);        // Draw white text
+            display.setCursor(0,0);             // Start at top-left corner
+            display.println(F(cucc));
+          }
         }
         else if(cucc=="rfid")
         {

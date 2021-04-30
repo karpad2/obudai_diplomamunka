@@ -27,7 +27,7 @@ Route::get('device/status/{device_password}',function ($device_password){
 });
 
 Route::get('device/rfid/{device_password}/{code}',function ($device_password,$code){
-    $device=Devices::where('password',$device_password)->update(['status'=>1]);
+    $device=Devices::where('password',$device_password)->update(['text'=>$code]);
     Devices::findOrFail($device[0]->id)->update(['last_online'=>now()]);
     return $device[0];
 });
