@@ -11,12 +11,11 @@
                 <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                <p>Last online: {{device[0].last_online}}</p>
                <p>Mode: {{device[0].mode}}</p>
-               <p>Status: <div class="block mt-4">
+               <p>Status: 
                 <label class="flex items-center">
                     <jet-checkbox name="remember" v-model:checked="device[0].status" @change="save"/>
                     <span class="ml-2 text-sm text-gray-600">Activate</span>
-                </label>
-            </div></p>
+                </label></p>
 
                 
 

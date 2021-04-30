@@ -25,6 +25,7 @@
       <tr v-for="row in programs" :key="row.id">
        <td>{{ row.id }}</td>
        <td>{{ row.name }}</td>
+       <td> <span v-if="row.active=='1'"> <BIconCheck2Square /> </span></td>
        <td><inertia-link :href="'/update-program/'+row.id">Manage your Program <BIconGearFill /></inertia-link></td>
      </tr>
    </tbody>
@@ -47,7 +48,7 @@ import { Inertia } from '@inertiajs/inertia'
     import JetLabel from '@/Jetstream/Label'
     import JetButton from '@/Jetstream/Button'
     import JetInput from '@/Jetstream/Input'
-    import {BIconGearFill} from 'bootstrap-icons-vue';
+    import {BIconGearFill,BIconCheck2Square} from 'bootstrap-icons-vue';
     export default {
         
         props: {
