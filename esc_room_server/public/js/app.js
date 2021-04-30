@@ -21280,7 +21280,8 @@ __webpack_require__.r(__webpack_exports__);
     auto_compile: function auto_compile(workspace) {
       console.log("im here");
       this.program[0].javascript_block = blockly_javascript__WEBPACK_IMPORTED_MODULE_12___default().workspaceToCode(workspace);
-      this.program[0].xml_block = blockly__WEBPACK_IMPORTED_MODULE_10___default().Xml.workspaceToCode(workspace);
+      var xml = blockly__WEBPACK_IMPORTED_MODULE_10___default().Xml.workspaceToDom(workspace);
+      this.program[0].xml_block = xml;
     }
   },
   mounted: function mounted() {

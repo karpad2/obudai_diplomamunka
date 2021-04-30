@@ -79,7 +79,8 @@
              {
                 console.log("im here")
                 this.program[0].javascript_block=BlocklyJS.workspaceToCode(workspace);
-                this.program[0].xml_block=Blockly.Xml.workspaceToCode(workspace);  
+                let xml = Blockly.Xml.workspaceToDom(workspace);  
+                this.program[0].xml_block=xml;
              }       
             },
 mounted (){
