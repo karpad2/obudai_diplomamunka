@@ -75,7 +75,12 @@
                     name:this.program[0].name,
                     xml_block:this.program[0].xml_block,
                     javascript_block:this.program[0].javascript_block});
-                    }
+                    },
+             auto_compile()
+             {
+                this.program[0].javascript_block=Blockly.Javascript.workspaceToCode(Workspace);
+                this.program[0].xml_block=Blockly.Xml.workspaceToCode(Workspace);  
+             }       
             },
 mounted: ()=>{
     let defaultBlocks = document.getElementById('blocklyDefault');
@@ -85,8 +90,7 @@ mounted: ()=>{
          toolbox: document.getElementById('toolbox')});
         Workspace.addChangeListener(()=>
         {
-                this.program[0].javascript_block=Blockly.Javascript.workspaceToCode(Workspace);
-                this.program[0].xml_block=Blockly.Xml.workspaceToCode(Workspace);       
+                     
             
         });
     
