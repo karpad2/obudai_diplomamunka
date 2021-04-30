@@ -80,7 +80,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/device/{device_id}', func
 Route::middleware(['auth:sanctum', 'verified'])->get('/programs', function () {
     return Inertia::render('programs',[
         //'rooms'=> Room::where('user_id',Auth::id())->get(),
-        'programs'=>Room::join('programs','rooms.id','=','programs.room_id')->where(['user_id',Auth::id()])
+        'programs'=>Room::join('programs','rooms.id','=','programs.room_id')->where(['user_id',Auth::id()])->get()
         //join('rooms','programs.room_id','=','room.id')->where(['user_id',Auth::id()])->
 
     ]);
