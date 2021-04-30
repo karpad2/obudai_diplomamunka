@@ -17,7 +17,7 @@
             </div>
             <div id="blocklyDiv" class="mt-1 block w-full" style="height: 480px;"></div>
             <block_vue />
-            <xml id="blocklyDefault" v-model="a_program_xml" style="display: none"></xml>
+            <xml id="blocklyDefault" v-model="program[0].xml_block" style="display: none"></xml>
             <textarea id="program_javascript" v-model="program[0].javascript_block" name="program_javascript" style="display:none"></textarea>
             <textarea id="program_xml" v-model="program[0].xml_block" name="program_xml" style="display:none"></textarea>
             </div>
@@ -89,7 +89,7 @@ mounted: ()=>{
             
         });
     
-    if(program ==null)
+    if(this.program ==null)
     {
 
     }

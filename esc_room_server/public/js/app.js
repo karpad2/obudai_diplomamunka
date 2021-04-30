@@ -21292,7 +21292,7 @@ var _this = undefined;
       _this.program[0].xml_block = blockly__WEBPACK_IMPORTED_MODULE_10___default().Xml.workspaceToCode(Workspace);
     });
 
-    if (program == null) {} else {
+    if (_this.program == null) {} else {
       a_program_xml = _this.program[0].xml_block;
       a_program_javascript = _this.program[0].javascript_block;
       blockly__WEBPACK_IMPORTED_MODULE_10___default().Xml.domToWorkspace(defaultBlocks, Workspace);
@@ -29834,9 +29834,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       /* PROPS */
       , ["message"])]), _hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_block_vue), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_xml, {
         id: "blocklyDefault",
-        modelValue: $data.a_program_xml,
+        modelValue: $props.program[0].xml_block,
         "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
-          return $data.a_program_xml = $event;
+          return $props.program[0].xml_block = $event;
         }),
         style: {
           "display": "none"
