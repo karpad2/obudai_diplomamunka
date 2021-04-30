@@ -42,7 +42,7 @@
     import axios from 'axios';
     import Blockly, { Workspace } from 'blockly';
     import * as En from 'blockly/msg/en';
-    import 'blockly/javascript';
+    import BlocklyJS from 'blockly/javascript';
 
     export default {
         components: {
@@ -78,7 +78,7 @@
              auto_compile()
              {
                 console.log("im here")
-                this.program[0].javascript_block=Blockly.Javascript.workspaceToCode(Workspace);
+                this.program[0].javascript_block=BlocklyJS.workspaceToCode(Workspace);
                 this.program[0].xml_block=Blockly.Xml.workspaceToCode(Workspace);  
              }       
             },
