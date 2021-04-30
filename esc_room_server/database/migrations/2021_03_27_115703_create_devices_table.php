@@ -18,9 +18,10 @@ class CreateDevicesTable extends Migration
             $table->string('name');
             $table->string('password')->default('');
             $table->string('ip_address',45)->default('');
-            $table->enum('mode',array(["relay","rfid"]));
+            $table->enum('mode',array(["relay","rfid","input","text"]));
             $table->integer('status')->default('1');
             $table->timestamp('last_online')->now();
+            $table->string('text')->default('');
             $table->bigInteger('room_id')->unsigned()->index()->default('1');
             $table->foreign('room_id')->references('id')->on('rooms');
             $table->timestamps();

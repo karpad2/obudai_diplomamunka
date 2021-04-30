@@ -145,11 +145,11 @@ Route::middleware(['auth:sanctum', 'verified'])->post('create-program/{room_id}'
     Programs::create(['name'=>$request->name,'active'=>1,'javascript_block'=>$request->javascript_block,'xml_block'=>$request->xml_block,'room_id'=>$room_id]);
     return 'ok';
 });
-Route::middleware(['auth:sanctum', 'verified'])->post('update-program/{program_id}',function (Request $request,$program_id){
+Route::middleware(['auth:sanctum', 'verified'])->get('update-program/{program_id}',function (Request $request,$program_id){
     return Programs::where(['program_id',$program_id])->get();
 });
 
-Route::middleware(['auth:sanctum', 'verified'])->post('update-program/save/{program_id}',function (Request $request,$program_id){
+Route::middleware(['auth:sanctum', 'verified'])->post('update-program/{program_id}',function (Request $request,$program_id){
     Programs::where(['program_id',$program_id])->update(['name'=>$request->name,'active'=>1,'javascript_block'=>$request->javascript_block,'xml_block'=>$request->xml_block]);
     return 'ok';
 });
