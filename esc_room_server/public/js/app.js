@@ -21274,9 +21274,9 @@ var _this = undefined;
     myUpdateFunction: function myUpdateFunction(event) {},
     save: function save() {
       axios__WEBPACK_IMPORTED_MODULE_9___default().post("update-programs/save/" + rooms[0].id, {
-        program_name: this.a_program_name,
-        program_xml: this.a_program_xml,
-        program_javascript: this.a_program_javascript
+        program_name: this.program[0].name,
+        program_xml: this.program[0].xml_block,
+        program_javascript: this.program[0].javascript_block
       });
     }
   },
@@ -21288,13 +21288,13 @@ var _this = undefined;
       toolbox: document.getElementById('toolbox')
     });
     Workspace.addChangeListener(function () {
-      a_program_javascript = blockly__WEBPACK_IMPORTED_MODULE_10___default().Javascript.workspaceToCode(Workspace);
-      a_program_xml = blockly__WEBPACK_IMPORTED_MODULE_10___default().Xml.workspaceToCode(Workspace);
+      _this.program[0].javascript_block = blockly__WEBPACK_IMPORTED_MODULE_10___default().Javascript.workspaceToCode(Workspace);
+      _this.program[0].xml_block = blockly__WEBPACK_IMPORTED_MODULE_10___default().Xml.workspaceToCode(Workspace);
     });
 
     if (program == null) {} else {
-      a_program_xml = _this.program[0].program_xml;
-      a_program_javascript = _this.program[0].program_javascript;
+      a_program_xml = _this.program[0].xml_block;
+      a_program_javascript = _this.program[0].javascript_block;
       blockly__WEBPACK_IMPORTED_MODULE_10___default().Xml.domToWorkspace(defaultBlocks, Workspace);
     }
   }
@@ -29807,7 +29807,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_app_layout, null, {
     header: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("h2", _hoisted_1, " Programming Interface " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.a_program_name), 1
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("h2", _hoisted_1, " Programming Interface " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.program[0].name), 1
       /* TEXT */
       )];
     }),
@@ -29819,9 +29819,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         id: "program_name",
         type: "text",
         "class": "mt-1 block w-full",
-        modelValue: $data.a_program_name,
+        modelValue: $props.program[0].name,
         "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
-          return $data.a_program_name = $event;
+          return $props.program[0].name = $event;
         }),
         ref: "program_name",
         autocomplete: "program_name"
@@ -29846,7 +29846,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       , ["modelValue"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("textarea", {
         id: "program_javascript",
         "onUpdate:modelValue": _cache[3] || (_cache[3] = function ($event) {
-          return _ctx.program_javascript = $event;
+          return $props.program[0].javascript_block = $event;
         }),
         name: "program_javascript",
         style: {
@@ -29854,10 +29854,10 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         }
       }, null, 512
       /* NEED_PATCH */
-      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, _ctx.program_javascript]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("textarea", {
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $props.program[0].javascript_block]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("textarea", {
         id: "program_xml",
         "onUpdate:modelValue": _cache[4] || (_cache[4] = function ($event) {
-          return _ctx.program_xml = $event;
+          return $props.program[0].xml_block = $event;
         }),
         name: "program_xml",
         style: {
@@ -29865,7 +29865,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         }
       }, null, 512
       /* NEED_PATCH */
-      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, _ctx.program_xml]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_button, {
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $props.program[0].xml_block]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_button, {
         onClick: $options.save
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
