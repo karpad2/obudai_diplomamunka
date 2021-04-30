@@ -21273,10 +21273,10 @@ var _this = undefined;
   methods: {
     myUpdateFunction: function myUpdateFunction(event) {},
     save: function save() {
-      axios__WEBPACK_IMPORTED_MODULE_9___default().post("update-programs/save/" + rooms[0].id, {
-        program_name: this.program[0].name,
-        program_xml: this.program[0].xml_block,
-        program_javascript: this.program[0].javascript_block
+      axios__WEBPACK_IMPORTED_MODULE_9___default().post("/api/update-program/" + this.program[0].id, {
+        name: this.program[0].name,
+        xml_block: this.program[0].xml_block,
+        javascript_block: this.program[0].javascript_block
       });
     }
   },
@@ -21291,12 +21291,7 @@ var _this = undefined;
       _this.program[0].javascript_block = blockly__WEBPACK_IMPORTED_MODULE_10___default().Javascript.workspaceToCode(Workspace);
       _this.program[0].xml_block = blockly__WEBPACK_IMPORTED_MODULE_10___default().Xml.workspaceToCode(Workspace);
     });
-
-    if (_this.program == null) {} else {
-      a_program_xml = _this.program[0].xml_block;
-      a_program_javascript = _this.program[0].javascript_block;
-      blockly__WEBPACK_IMPORTED_MODULE_10___default().Xml.domToWorkspace(defaultBlocks, Workspace);
-    }
+    blockly__WEBPACK_IMPORTED_MODULE_10___default().Xml.domToWorkspace(defaultBlocks, Workspace);
   }
 });
 

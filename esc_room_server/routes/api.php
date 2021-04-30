@@ -52,3 +52,10 @@ Route::get('device/all',function ($id,$mode,$status){
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+
+Route::middleware(['auth:sanctum', 'verified'])->post('update-program/{program_id}',function (Request $request,$program_id){
+   
+    Programs::where('id',$program_id)->update(['name'=>$request->name,'active'=>1,'javascript_block'=>$request->javascript_block,'xml_block'=>$request->xml_block]);
+    
+});

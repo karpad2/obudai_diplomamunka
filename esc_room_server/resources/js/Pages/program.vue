@@ -71,9 +71,10 @@
             myUpdateFunction(event) {
            },
             save(){ 
-                    axios.post("update-programs/save/"+rooms[0].id,{program_name:this.program[0].name,
-                    program_xml:this.program[0].xml_block,
-                    program_javascript:this.program[0].javascript_block});
+                    axios.post("/api/update-program/"+this.program[0].id,{
+                    name:this.program[0].name,
+                    xml_block:this.program[0].xml_block,
+                    javascript_block:this.program[0].javascript_block});
                     }
             },
 mounted: ()=>{
@@ -89,17 +90,7 @@ mounted: ()=>{
             
         });
     
-    if(this.program ==null)
-    {
-
-    }
-    else
-    {
-        a_program_xml=this.program[0].xml_block;
-        a_program_javascript=this.program[0].javascript_block;
-        Blockly.Xml.domToWorkspace(defaultBlocks, Workspace);
-
-    }
+    Blockly.Xml.domToWorkspace(defaultBlocks, Workspace);
         
     }
     }
