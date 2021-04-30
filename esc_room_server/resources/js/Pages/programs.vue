@@ -11,7 +11,7 @@
 <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
 <div>
 <div class="bg-white shadow-md rounded my-6">
-<table class="table-auto">
+<table class="table-auto min-w-max w-full ">
 <thead>
     <tr>
       <th class="w-1/5 ...">#</th>
@@ -40,11 +40,10 @@
 </template>
 
 <script>
-//min-w-max w-full
+//
 import { Inertia } from '@inertiajs/inertia'
     import axios from 'axios';
     import AppLayout from '@/Layouts/AppLayout'
-    import Welcome from '@/Jetstream/Welcome'
     import JetLabel from '@/Jetstream/Label'
     import JetButton from '@/Jetstream/Button'
     import JetInput from '@/Jetstream/Input'

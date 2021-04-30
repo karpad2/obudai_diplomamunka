@@ -21317,13 +21317,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/Layouts/AppLayout */ "./resources/js/Layouts/AppLayout.vue");
-/* harmony import */ var _Jetstream_Welcome__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/Jetstream/Welcome */ "./resources/js/Jetstream/Welcome.vue");
-/* harmony import */ var _Jetstream_Label__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/Jetstream/Label */ "./resources/js/Jetstream/Label.vue");
-/* harmony import */ var _Jetstream_Button__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @/Jetstream/Button */ "./resources/js/Jetstream/Button.vue");
-/* harmony import */ var _Jetstream_Input__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @/Jetstream/Input */ "./resources/js/Jetstream/Input.vue");
-/* harmony import */ var bootstrap_icons_vue__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! bootstrap-icons-vue */ "./node_modules/bootstrap-icons-vue/dist/lib.esm.js");
-//min-w-max w-full
-
+/* harmony import */ var _Jetstream_Label__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/Jetstream/Label */ "./resources/js/Jetstream/Label.vue");
+/* harmony import */ var _Jetstream_Button__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/Jetstream/Button */ "./resources/js/Jetstream/Button.vue");
+/* harmony import */ var _Jetstream_Input__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @/Jetstream/Input */ "./resources/js/Jetstream/Input.vue");
+/* harmony import */ var bootstrap_icons_vue__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! bootstrap-icons-vue */ "./node_modules/bootstrap-icons-vue/dist/lib.esm.js");
+//
 
 
 
@@ -21352,11 +21350,11 @@ __webpack_require__.r(__webpack_exports__);
   },
   components: {
     AppLayout: _Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_2__.default,
-    JetButton: _Jetstream_Button__WEBPACK_IMPORTED_MODULE_5__.default,
-    JetInput: _Jetstream_Input__WEBPACK_IMPORTED_MODULE_6__.default,
-    JetLabel: _Jetstream_Label__WEBPACK_IMPORTED_MODULE_4__.default,
-    BIconGearFill: bootstrap_icons_vue__WEBPACK_IMPORTED_MODULE_7__.BIconGearFill,
-    BIconCheck2Square: bootstrap_icons_vue__WEBPACK_IMPORTED_MODULE_7__.BIconCheck2Square
+    JetButton: _Jetstream_Button__WEBPACK_IMPORTED_MODULE_4__.default,
+    JetInput: _Jetstream_Input__WEBPACK_IMPORTED_MODULE_5__.default,
+    JetLabel: _Jetstream_Label__WEBPACK_IMPORTED_MODULE_3__.default,
+    BIconGearFill: bootstrap_icons_vue__WEBPACK_IMPORTED_MODULE_6__.BIconGearFill,
+    BIconCheck2Square: bootstrap_icons_vue__WEBPACK_IMPORTED_MODULE_6__.BIconCheck2Square
   },
   methods: {
     submit: function submit() {
@@ -29921,7 +29919,7 @@ var _hoisted_5 = {
   "class": "bg-white shadow-md rounded my-6"
 };
 var _hoisted_6 = {
-  "class": "table-auto"
+  "class": "table-auto min-w-max w-full "
 };
 
 var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("thead", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("tr", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("th", {
