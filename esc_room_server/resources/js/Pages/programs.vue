@@ -14,30 +14,29 @@
 <table class="min-w-max w-full table-auto">
 <thead>
     <tr>
-      <th class="w-1/4 ...">#</th>
-      <th class="w-1/3 ...">Program Name:</th>
-      <th class="w-1/3 ...">Room:</th>
-      <th class="w-1/3 ...">Active:</th>
-      <th class="w-1/3 ...">Management</th>
+      <th class="w-1/5 ...">#</th>
+      <th class="w-1/5 ...">Program Name:</th>
+      <th class="w-1/5 ...">Room:</th>
+      <th class="w-1/5 ...">Active:</th>
+      <th class="w-1/5 ...">Management</th>
     </tr>
   </thead>
   <tbody>
       <tr v-for="row in programs" :key="row.id">
        <td>{{ row.id }}</td>
        <td>{{ row.name }}</td>
-       <td> <span v-if="row.active=='1'"> <BIconCheck2Square /> </span></td>
+       <td>{{ row.room_id }}</td>
+       <td> <span v-if="row.active=='1'"> <BIconCheck2Square class="" /></span></td>
        <td><inertia-link :href="'/update-program/'+row.id">Manage your Program <BIconGearFill /></inertia-link></td>
      </tr>
    </tbody>
 </table>   
-
-
-                    </div>
-                  </div>
-                </div>
-            </div>
+</div>
         </div>
-    </app-layout>
+      </div>
+    </div>
+  </div>
+ </app-layout>
 </template>
 
 <script>
