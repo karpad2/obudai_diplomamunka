@@ -90,7 +90,7 @@ mounted: ()=>{
          toolbox: document.getElementById('toolbox')});
         Workspace.addChangeListener(()=>
         {
-        auto_compile()
+            this.auto_compile()
         });
     
     Blockly.Xml.domToWorkspace(defaultBlocks, Workspace);       
