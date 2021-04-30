@@ -73,7 +73,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/devices', function () {
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/device/{device_id}', function ($device_id) {
     return Inertia::render('device',[
-        'device'=> Devices::findorFail($device_id)->get()
+        'device'=> Devices::where('id',$device_id)->get()
     ]);
 })->name('device');
 
