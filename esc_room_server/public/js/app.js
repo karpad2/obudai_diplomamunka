@@ -21278,6 +21278,7 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     auto_compile: function auto_compile() {
+      console.log("im here");
       this.program[0].javascript_block = blockly__WEBPACK_IMPORTED_MODULE_10___default().Javascript.workspaceToCode(blockly__WEBPACK_IMPORTED_MODULE_10__.Workspace);
       this.program[0].xml_block = blockly__WEBPACK_IMPORTED_MODULE_10___default().Xml.workspaceToCode(blockly__WEBPACK_IMPORTED_MODULE_10__.Workspace);
     }
@@ -21289,7 +21290,9 @@ __webpack_require__.r(__webpack_exports__);
       media: '/media/',
       toolbox: document.getElementById('toolbox')
     });
-    Workspace.addChangeListener(function () {});
+    Workspace.addChangeListener(function () {
+      auto_compile();
+    });
     blockly__WEBPACK_IMPORTED_MODULE_10___default().Xml.domToWorkspace(defaultBlocks, Workspace);
   }
 });

@@ -56,10 +56,10 @@
             Blockly
         },
         data()
-        {  return{
+        {  return {
             a_program_name:'',
             a_program_xml:'',
-            a_program_javascript:''}
+            a_program_javascript:''};
         },
         props: {
             program:{ 
@@ -68,8 +68,7 @@
             },
         },
     methods:{
-            myUpdateFunction(event) {
-           },
+            myUpdateFunction(event) {},
             save(){ 
                     axios.post("/api/update-program/"+this.program[0].id,{
                     name:this.program[0].name,
@@ -78,6 +77,7 @@
                     },
              auto_compile()
              {
+                console.log("im here")
                 this.program[0].javascript_block=Blockly.Javascript.workspaceToCode(Workspace);
                 this.program[0].xml_block=Blockly.Xml.workspaceToCode(Workspace);  
              }       
@@ -90,12 +90,10 @@ mounted: ()=>{
          toolbox: document.getElementById('toolbox')});
         Workspace.addChangeListener(()=>
         {
-                     
-            
+        auto_compile()
         });
     
-    Blockly.Xml.domToWorkspace(defaultBlocks, Workspace);
-        
+    Blockly.Xml.domToWorkspace(defaultBlocks, Workspace);       
     }
     }
 </script>
