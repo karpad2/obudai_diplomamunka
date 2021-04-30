@@ -28,34 +28,7 @@
        <td><inertia-link :href="'/update-program/'+row.id">Manage your Program <BIconGearFill /></inertia-link></td>
      </tr>
    </tbody>
-<tfoot>
-    <tr>
-      <td class="w-1/3 ..."></td>
-      
-      <td class="w-1/3 ...">
-     <div>
-                <jet-label for="name" value="Enter your program name here..." />
-                <jet-input aria-placeholder="Enter your device id here..." id="name" type="name" class="mt-1 block w-full" v-model="add_name" required autofocus />
-      </div>
-      
-      </td>
-       <td class="w-1/3 ...">
-     <div>
-                <jet-label for="room" value="Choose your room here..." />
-                <select v name="room" id="room" v-model="room">
-                 <option v-for="row in rooms" :key="row.id" :value=row.id>{{row.name}}</option>   
-                </select>
-       </div>
-      
-      </td>
-      
-      <td class="w-1/5 ...">
-      <jet-button class="ml-4" v-on:click="submit">
-                    Add Program
-       </jet-button>
-      </td>
-      </tr>
-</tfoot></table>   
+</table>   
 
 
                     </div>
@@ -114,5 +87,38 @@ import { Inertia } from '@inertiajs/inertia'
         }
     }
 
+/*
+
+<tfoot>
+    <tr>
+      <td class="w-1/3 ..."></td>
+      
+      <td class="w-1/3 ...">
+     <div>
+                <jet-label for="name" value="Enter your program name here..." />
+                <jet-input aria-placeholder="Enter your device id here..." id="name" type="name" class="mt-1 block w-full" v-model="add_name" required autofocus />
+      </div>
+      
+      </td>
+       <td class="w-1/3 ...">
+     <div>
+                <jet-label for="room" value="Choose your room here..." />
+                <select v name="room" id="room" v-model="room">
+                 <option v-for="row in rooms" :key="row.id" :value=row.id>{{row.name}}</option>   
+                </select>
+       </div>
+      
+      </td>
+      
+      <td class="w-1/5 ...">
+      <jet-button class="ml-4" v-on:click="submit">
+                    Add Program
+       </jet-button>
+      </td>
+      </tr>
+</tfoot>
+
+
+*/
     
 </script>

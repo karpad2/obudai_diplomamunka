@@ -21368,6 +21368,39 @@ __webpack_require__.r(__webpack_exports__);
     }
   }
 });
+/*
+
+<tfoot>
+    <tr>
+      <td class="w-1/3 ..."></td>
+      
+      <td class="w-1/3 ...">
+     <div>
+                <jet-label for="name" value="Enter your program name here..." />
+                <jet-input aria-placeholder="Enter your device id here..." id="name" type="name" class="mt-1 block w-full" v-model="add_name" required autofocus />
+      </div>
+      
+      </td>
+       <td class="w-1/3 ...">
+     <div>
+                <jet-label for="room" value="Choose your room here..." />
+                <select v name="room" id="room" v-model="room">
+                 <option v-for="row in rooms" :key="row.id" :value=row.id>{{row.name}}</option>   
+                </select>
+       </div>
+      
+      </td>
+      
+      <td class="w-1/5 ...">
+      <jet-button class="ml-4" v-on:click="submit">
+                    Add Program
+       </jet-button>
+      </td>
+      </tr>
+</tfoot>
+
+
+*/
 
 /***/ }),
 
@@ -29910,34 +29943,10 @@ var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("
 
 var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Manage your Program ");
 
-var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("td", {
-  "class": "w-1/3 ..."
-}, null, -1
-/* HOISTED */
-);
-
-var _hoisted_10 = {
-  "class": "w-1/3 ..."
-};
-var _hoisted_11 = {
-  "class": "w-1/3 ..."
-};
-var _hoisted_12 = {
-  "class": "w-1/5 ..."
-};
-
-var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Add Program ");
-
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_BIconGearFill = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("BIconGearFill");
 
   var _component_inertia_link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("inertia-link");
-
-  var _component_jet_label = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("jet-label");
-
-  var _component_jet_input = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("jet-input");
-
-  var _component_jet_button = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("jet-button");
 
   var _component_app_layout = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("app-layout");
 
@@ -29967,56 +29976,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         , ["href"])])]);
       }), 128
       /* KEYED_FRAGMENT */
-      ))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("tfoot", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("tr", null, [_hoisted_9, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("td", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
-        "for": "name",
-        value: "Enter your program name here..."
-      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input, {
-        "aria-placeholder": "Enter your device id here...",
-        id: "name",
-        type: "name",
-        "class": "mt-1 block w-full",
-        modelValue: $data.add_name,
-        "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
-          return $data.add_name = $event;
-        }),
-        required: "",
-        autofocus: ""
-      }, null, 8
-      /* PROPS */
-      , ["modelValue"])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("td", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
-        "for": "room",
-        value: "Choose your room here..."
-      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("select", {
-        v: "",
-        name: "room",
-        id: "room",
-        "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
-          return $data.room = $event;
-        })
-      }, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($props.rooms, function (row) {
-        return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("option", {
-          key: row.id,
-          value: row.id
-        }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(row.name), 9
-        /* TEXT, PROPS */
-        , ["value"]);
-      }), 128
-      /* KEYED_FRAGMENT */
-      ))], 512
-      /* NEED_PATCH */
-      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $data.room]])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("td", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_button, {
-        "class": "ml-4",
-        onClick: $options.submit
-      }, {
-        "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-          return [_hoisted_13];
-        }),
-        _: 1
-        /* STABLE */
-
-      }, 8
-      /* PROPS */
-      , ["onClick"])])])])])])])])])])];
+      ))])])])])])])])];
     }),
     _: 1
     /* STABLE */
