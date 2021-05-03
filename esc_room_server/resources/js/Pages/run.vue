@@ -9,7 +9,7 @@
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg col-span-full md:col-span-4">
-                   
+
                     <h3>Status:{{status}}/{{room_max}}</h3>
                      <h3>Timer:{{elapsed_time}}</h3>
                     <div>
@@ -21,7 +21,7 @@
                     <div class="bg-indigo-300 ...">
                      <img class="object-contain h-48 w-full" :src="getImgUrl(pic)" v-bind:alt="pic">
                     </div>
-                     
+
 
                      <div :v-for="log in console_log">
                         <p>{{log}}</p>
@@ -45,10 +45,10 @@
     import JetButton from '@/Jetstream/Button'
     import axios from 'axios';
     import acorn from 'acorn';
- 
+
     import * as En from 'blockly/msg/en';
     import 'blockly/javascript';
-    
+
 
     export default {
         data()
@@ -64,7 +64,7 @@
             JetButton
         },
         props: {
-            run:{ 
+            run:{
                 type:Array,
                 required: true
             },
@@ -115,8 +115,16 @@
         text = text ? text.toString() : '';
         return interpreter.createPrimitive(alert(text));
       };
+
+        let send_console = function(text) {
+            text = text ? text.toString() : '';
+            return interpreter.createPrimitive(this.send_console(text));
+        };
+
       interpreter.setProperty(scope, 'alert',
           interpreter.createNativeFunction(alertWrapper));
+      interpreter.setProperty(scope, 'send_console',
+            interpreter.createNativeFunction(send_console));
       let promptWrapper = function(text) {
         text = text ? text.toString() : '';
         return interpreter.createPrimitive(prompt(text));
@@ -125,7 +133,7 @@
           interpreter.createNativeFunction(promptWrapper));
     };
     let myInterpreter = new Interpreter(code, initFunc);
-    let stepsAllowed = 10000;
+    let stepsAllowed = 10000;  //max lépés
     while (myInterpreter.step() && stepsAllowed) {
       stepsAllowed--;
     }
@@ -137,13 +145,11 @@
         mounted()
         {
             executeBlockCode();
-
-
         }
-        
+
     }
-    
 
 
-    
+
+
 </script>
