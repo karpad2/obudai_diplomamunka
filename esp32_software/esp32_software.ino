@@ -26,7 +26,7 @@ void setup() {
 void loop(void) {
   //server.handleClient();
   http_mod();
-  delay(5*1000);
+  delay(3*1000);
 }
 
 

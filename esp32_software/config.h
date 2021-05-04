@@ -201,22 +201,22 @@ void fs_setup()
          tmpaddress=web_server+"/api/device/status/"+esp32_pass;
          res=http_sys(tmpaddress);
          tmp1=JSON.parse(res);
-         String cucc="";
-         cucc=tmp1["status"];
-         cucc=tmp1["mode"];
-         if(espstatus!=cucc)
+         String tmp3="";
+         tmp3=tmp1["status"];
+         tmp3=tmp1["mode"];
+         if(espstatus!=tmp3)
          {
-          configobj["mode"]=cucc;
+          configobj["mode"]=tmp3;
           save_config();
           ESP.restart();
          }
-         if(cucc=="relay")
+         if(tmp3=="relay")
          {
-          cucc=tmp1["status"];
+          tmp3=tmp1["status"];
           Serial.print("status:");
-          cucc=""+tmp1["status"];
+          tmp3=""+tmp1["status"];
           int stat=tmp1["status"];
-          Serial.println(cucc);
+          Serial.println(tmp3);
           
          if(stat==1)
          {
@@ -231,22 +231,22 @@ void fs_setup()
           Serial.println("Relay OFF");
          }
         }
-        else if(cucc=="input")
+        else if(tmp3=="input")
         {
         attachInterrupt(interruptpin, isr, FALLING); 
         }
-        else if(cucc=="display")
+        else if(tmp3=="display")
         {
-          cucc=tmp1["text"];
+          tmp3=tmp1["text"];
           if(display.begin(SSD1306_SWITCHCAPVCC, 0x3C)) {
             display.clearDisplay();
             display.setTextSize(1);             // Normal 1:1 pixel scale
             display.setTextColor(WHITE);        // Draw white text
             display.setCursor(0,0);             // Start at top-left corner
-            display.println(F(cucc));
+            display.println(F(tmp3));
           }
         }
-        else if(cucc=="rfid")
+        else if(tmp3=="rfid")
         {
     if ( ! rfid.PICC_IsNewCardPresent()) return;
     if ( ! rfid.PICC_ReadCardSerial()) return;
