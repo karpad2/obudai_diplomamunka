@@ -1,6 +1,6 @@
 <template>
     <app-layout>
-        <template #header>
+        <template>
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
                 Run
             </h2>
@@ -11,26 +11,26 @@
                 <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg col-span-full md:col-span-4">
 
                     <h3>Status:{{status}}/{{room_max}}</h3>
-                     <h3>Timer:{{elapsed_time}}</h3>
+                    <h3>Timer:{{elapsed_time}}</h3>
                     <div>
-                    <intertia-link>Stop</intertia-link>
+                    <inertia-link class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:shadow-outline-gray disabled:opacity-25 transition ease-in-out duration-150 ml-4" :href="'/run/'+room[0].id+'/stop'">Stop</inertia-link>
                     </div>
                     <div>
                     <intertia-link></intertia-link>
                     </div>
                     <div class="bg-indigo-300 ...">
-                     <img class="object-contain h-48 w-full" :src="getImgUrl(pic)" v-bind:alt="pic">
+                    <img class="object-contain h-48 w-full" src="alma.png">
                     </div>
 
-
-                     <div :v-for="log in console_log">
+                        <div class="bg-green-300 ...">
+                     <div class="object-contain h-48 w-full" :v-for="log in console_log">
                         <p>{{log}}</p>
                      </div>
                     <input type="text" v-model="console_in"/>
                      <jet-button class="ml-4" v-on:click="add_to_console">
                     Send
                     </jet-button>
-
+                        </div>
 
                 </div>
             </div>
@@ -44,7 +44,7 @@
     import Blockly, { isNumber } from 'blockly';
     import JetButton from '@/Jetstream/Button'
     import axios from 'axios';
-    import acorn from 'acorn';
+    import {Interpreter} from 'js-interpreter-npm'
 
     import * as En from 'blockly/msg/en';
     import 'blockly/javascript';
@@ -54,8 +54,11 @@
         data()
         {
         return {
-        console_log:[],
-        log:""
+        console_log:["Starting app",""],
+        log:"",
+        elapsed_time:"",
+        room_max:100,
+        status:0
         }
         },
         components: {
@@ -72,7 +75,7 @@
                 type:Array,
                 required: true
             },
-            run:{
+            program:{
                 type:Array,
                 required: true
             },
@@ -80,20 +83,30 @@
                 type:Array,
                 required: true
             },
+             room:{
+                type:Array,
+                required: true
+            },
         },
            methods: {
                syntaxerror()
                {
-                console_log.push("syntax_error");
+                this.console_log.push("syntax_error");
                },
-            add_to_console(text) {
-            console_log.push(console_in);
+               add_to_console_text(text)
+               {
+                this.console_log.push(Date.now()+" "+text);
+               },
+            add_to_console() {
+            let text=this.console_in;
+            console.log(text);
+            
             //device_id,mode,status
             //1,relay,ON
             if(text=="?")
             {
-                console_log.push("device_id,mode,status");
-                console_log.push("example:1,relay,ON");
+                this.add_to_console_text("device_id,mode,status");
+                this.add_to_console_text("example:1,relay,ON");
             }
             let texts=text.split(",");
             let device_id=texts[0];
@@ -109,7 +122,17 @@
             },
    executeBlockCode() {
     //let code = Blockly.JavaScript.workspaceToCode(workspace);
-    let code = programs[0].javascript_blocknp;
+    let code = this.program[0].javascript_block;
+    
+    let myInterpreter = new Interpreter(code, initFunc);
+    let stepsAllowed = 10000;  //max lépés
+    while (myInterpreter.step() && stepsAllowed) {
+      stepsAllowed--;
+      this.status++;
+    }
+    if (!stepsAllowed) {
+      throw EvalError('Infinite loop.');
+    }
     let initFunc = function(interpreter, scope) {
       let alertWrapper = function(text) {
         text = text ? text.toString() : '';
@@ -132,20 +155,24 @@
       interpreter.setProperty(scope, 'prompt',
           interpreter.createNativeFunction(promptWrapper));
     };
-    let myInterpreter = new Interpreter(code, initFunc);
-    let stepsAllowed = 10000;  //max lépés
-    while (myInterpreter.step() && stepsAllowed) {
-      stepsAllowed--;
-    }
-    if (!stepsAllowed) {
-      throw EvalError('Infinite loop.');
-    }
+  },
+  timers()
+  {
+      let starting_time=Date(this.run[0].start_time);
+      const event=setInterval(()=>{
+        this.elapsed_time= new Date(new Date().getTime() - starting_time).toLocaleTimeString();
+      },1000);
+      
   }
+
+
 },
         mounted()
         {
-            executeBlockCode();
-        }
+            this.executeBlockCode();
+            this.timers();
+        },
+        
 
     }
 

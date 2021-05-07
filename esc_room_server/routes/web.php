@@ -183,13 +183,13 @@ Route::middleware(['auth:sanctum', 'verified'])->post('update-rteams/{teams_id}'
 /*End Teams*/
 
 Route::middleware(['auth:sanctum', 'verified'])->get('run/{room_id}',function ($room_id){
-    $room=Room::findorFail($room_id)->get();
-    $program=Programs::where([['room_id',$room_id],['active',1]])->get();
-    
+    $room=Room::where('id',$room_id)->get();
+    $program=Programs::where('room_id',$room_id)->where('active',1)->get();
+    //$program_id=$program->id;
     $active_run = Run::where([["room_id",$room_id],["finish_time",NULL]])->get();
     if($active_run->isEmpty())
     {
-        $active_run=Run::create(["room_id"=>$room_id,"program_id"=>$program->id,"team_id"=>1,"start_time"=>now(),"finish_time"=>null])->get();
+        $active_run=Run::create(["room_id"=>$room_id,"program_id"=>1,"team_id"=>1,"start_time"=>now(),"finish_time"=>null])->get();
     }
 
     return Inertia::render('run',[
@@ -201,14 +201,11 @@ Route::middleware(['auth:sanctum', 'verified'])->get('run/{room_id}',function ($
 })->name('run');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('run/{room_id}/stop',function ($room_id){
-    $room=Room::findorFail($room_id)->get();
-    $program=Programs::where([['room_id',$room_id],['active',1]])->get();
-    
-    $active_run = Run::where([["room_id",$room_id],["finish_time",NULL]])->update(["finish_time",now()]);
-    return Inertia::render('run',[
-        'room'=>$room,
-        'program'=>$program,
-        'run'=>$active_run
+   
+   Run::where("room_id",$room_id)->where("finish_time",NULL)->update(["finish_time"=>now()]);
+
+    return Inertia::render('room',[
+        'room'=>Room::where('id',$room_id)->get()
     ]);
 
 })->name('run');
