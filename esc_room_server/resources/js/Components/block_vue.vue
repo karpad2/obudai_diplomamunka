@@ -312,8 +312,8 @@
       <block type="send_finish"></block>
     </category>
     <sep></sep>
-    <category name="Devices" v-for="row in devices" :key="row.id" colour="%{BKY_VARIABLES_HUE}">
-      <block type="text"><field name="TEXT">{{row.id}}</field></block>
+    <category name="Devices"  colour="%{BKY_VARIABLES_HUE}">
+      <block type="text" v-for="row in devices" :key="row.id" ><field name="TEXT">{{row.id}}</field></block>
     </category>
 </xml>
 </template>
