@@ -31,62 +31,14 @@
                                 <jet-nav-link :href="route('cameras')" :active="route().current('cameras')">
                                     Cameras
                                 </jet-nav-link>
+                                <jet-nav-link :href="route('teams')" :active="route().current('teams')">
+                                    Teams
+                                </jet-nav-link>
                             </div>
                         </div>
 
                         <div class="hidden sm:flex sm:items-center sm:ml-6">
-                            <div class="ml-3 relative">
-                                <!-- Teams Dropdown -->
-                                <jet-dropdown align="right" width="60" v-if="$page.props.jetstream.hasTeamFeatures">
-                                    <template #trigger>
-                                        <span class="inline-flex rounded-md">
-                                            <button type="button" class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:bg-gray-50 hover:text-gray-700 focus:outline-none focus:bg-gray-50 active:bg-gray-50 transition ease-in-out duration-150">
-                                                {{ $page.props.user.current_team.name }}
-
-                                                <BIconSliders class="ml-2 -mr-0.5 h-4 w-4" />
-                                            </button>
-                                        </span>
-                                    </template>
-
-                                    <template #content>
-                                        <div class="w-60">
-                                            <!-- Team Management -->
-                                            <template v-if="$page.props.jetstream.hasTeamFeatures">
-                                                <div class="block px-4 py-2 text-xs text-gray-400">
-                                                    Manage Team
-                                                </div>
-
-                                                <!-- Team Settings -->
-                                                <jet-dropdown-link :href="route('teams.show', $page.props.user.current_team)">
-                                                    Team Settings
-                                                </jet-dropdown-link>
-
-                                                <jet-dropdown-link :href="route('teams.create')" v-if="$page.props.jetstream.canCreateTeams">
-                                                    Create New Team
-                                                </jet-dropdown-link>
-
-                                                <div class="border-t border-gray-100"></div>
-
-                                                <!-- Team Switcher -->
-                                                <div class="block px-4 py-2 text-xs text-gray-400">
-                                                    Switch Teams
-                                                </div>
-
-                                                <template v-for="team in $page.props.user.all_teams" :key="team.id">
-                                                    <form @submit.prevent="switchToTeam(team)">
-                                                        <jet-dropdown-link as="button">
-                                                            <div class="flex items-center">
-                                                                <BIconCheck2  v-if="team.id == $page.props.user.current_team_id" class="mr-2 h-5 w-5 text-green-400" />
-                                                                <div>{{ team.name }}</div>
-                                                            </div>
-                                                        </jet-dropdown-link>
-                                                    </form>
-                                                </template>
-                                            </template>
-                                        </div>
-                                    </template>
-                                </jet-dropdown>
-                            </div>
+                            
 
                             <!-- Settings Dropdown -->
                             <div class="ml-3 relative">
@@ -121,6 +73,41 @@
 
                                         <div class="border-t border-gray-100"></div>
 
+                                        <!-- Team Management -->
+                                            <template v-if="$page.props.jetstream.hasTeamFeatures">
+                                                <div class="block px-4 py-2 text-xs text-gray-400">
+                                                    Manage Team
+                                                </div>
+
+                                                <!-- Team Settings -->
+                                                <jet-dropdown-link :href="route('teams.show', $page.props.user.current_team)">
+                                                    Team Settings
+                                                </jet-dropdown-link>
+
+                                                <jet-dropdown-link :href="route('teams.create')" v-if="$page.props.jetstream.canCreateTeams">
+                                                    Create New Team
+                                                </jet-dropdown-link>
+
+                                                <div class="border-t border-gray-100"></div>
+
+                                                <!-- Team Switcher -->
+                                                <div class="block px-4 py-2 text-xs text-gray-400">
+                                                    Switch Teams
+                                                </div>
+
+                                                <template v-for="team in $page.props.user.all_teams" :key="team.id">
+                                                    <form @submit.prevent="switchToTeam(team)">
+                                                        <jet-dropdown-link as="button">
+                                                            <div class="flex items-center">
+                                                                <BIconCheck2  v-if="team.id == $page.props.user.current_team_id" class="mr-2 h-5 w-5 text-green-400" />
+                                                                <div>{{ team.name }}</div>
+                                                            </div>
+                                                        </jet-dropdown-link>
+                                                    </form>
+                                                </template>
+                                            </template>
+
+                                        <div class="border-t border-gray-100"></div>
                                         <!-- Authentication -->
                                         <form @submit.prevent="logout">
                                             <jet-dropdown-link as="button">
@@ -294,5 +281,27 @@
                                     <path :class="{'hidden': showingNavigationDropdown, 'inline-flex': ! showingNavigationDropdown }" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
                                     <path :class="{'hidden': ! showingNavigationDropdown, 'inline-flex': showingNavigationDropdown }" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                                 </svg>
+    
+    <div class="ml-3 relative">
+                                <!-- Teams Dropdown -->
+                                <jet-dropdown align="right" width="60" v-if="$page.props.jetstream.hasTeamFeatures">
+                                    <template #trigger>
+                                        <span class="inline-flex rounded-md">
+                                            <button type="button" class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:bg-gray-50 hover:text-gray-700 focus:outline-none focus:bg-gray-50 active:bg-gray-50 transition ease-in-out duration-150">
+                                                {{ $page.props.user.current_team.name }}
+
+                                                <BIconSliders class="ml-2 -mr-0.5 h-4 w-4" />
+                                            </button>
+                                        </span>
+                                    </template>
+
+                                    <template #content>
+                                        <div class="w-60">
+                                            
+                                        </div>
+                                    </template>
+                                </jet-dropdown>
+                            </div>
     */
+
 </script>
