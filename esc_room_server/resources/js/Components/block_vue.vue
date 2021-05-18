@@ -318,5 +318,7 @@
 </xml>
 </template>
 <script>
-
+export default {
+        props: ['devices']
+}
 </script>
