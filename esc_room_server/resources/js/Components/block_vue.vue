@@ -308,6 +308,8 @@
     <sep></sep>
     <category name="Variables" colour="%{BKY_VARIABLES_HUE}" custom="VARIABLE"></category>
     <category name="Functions" colour="%{BKY_PROCEDURES_HUE}" custom="PROCEDURE">
+     </category>
+    <category name="Application Functions" colour="%{BKY_PROCEDURES_HUE}">
       <block type="send_data"></block>
       <block type="send_finish"></block>
     </category>
