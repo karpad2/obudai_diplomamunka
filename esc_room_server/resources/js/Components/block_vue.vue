@@ -313,7 +313,10 @@
     </category>
     <sep></sep>
     <category name="Devices"  colour="%{BKY_VARIABLES_HUE}">
-      <block type="text" v-for="row in devices" :key="row.id" ><field name="TEXT">{{row.id}}</field></block>
+      <block type="text" v-for="row in devices" :key="row.id" >
+        <shadow type="text">
+        <field name="TEXT">{{row.id}}</field></shadow>
+        </block>
     </category>
 </xml>
 </template>
