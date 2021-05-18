@@ -149,7 +149,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('update-program/{program_id
     $program=Programs::where('id',$program_id)->get();
     return Inertia::render('program',[
     'program'=> $program,
-    'devices'=>Room::join('devices','rooms.id','=','devices.room_id')->where('id',$program[0]->room_id)->get()
+    'devices'=>Room::join('devices','rooms.id','=','devices.room_id')->where('rooms.id',$program[0]->room_id)->get()
     ]);
 })->name('program');
 
