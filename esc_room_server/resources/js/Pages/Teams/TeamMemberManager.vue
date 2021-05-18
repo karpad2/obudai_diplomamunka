@@ -44,9 +44,9 @@
                                         <div class="text-sm text-gray-600" :class="{'font-semibold': addTeamMemberForm.role == role.key}">
                                             {{ role.name }}
                                         </div>
-
-                                        <svg v-if="addTeamMemberForm.role == role.key" class="ml-2 h-5 w-5 text-green-400" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                                    </div>
+                                        
+                                        <BIconCheck2  v-if="addTeamMemberForm.role == role.key" class="ml-2 h-5 w-5 text-green-400" />
+                                        </div>
 
                                     <!-- Role Description -->
                                     <div class="mt-2 text-xs text-gray-600">
@@ -177,8 +177,8 @@
                                     <div class="text-sm text-gray-600" :class="{'font-semibold': updateRoleForm.role === role.key}">
                                         {{ role.name }}
                                     </div>
-
-                                    <svg v-if="updateRoleForm.role === role.key" class="ml-2 h-5 w-5 text-green-400" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                        
+                                <BIconCheck2 v-if="updateRoleForm.role === role.key" class="ml-2 h-5 w-5 text-green-400" />
                                 </div>
 
                                 <!-- Role Description -->
@@ -259,6 +259,7 @@
     import JetLabel from '@/Jetstream/Label'
     import JetSecondaryButton from '@/Jetstream/SecondaryButton'
     import JetSectionBorder from '@/Jetstream/SectionBorder'
+    import {BIconCheck2} from 'bootstrap-icons-vue';
 
     export default {
         components: {
@@ -274,6 +275,7 @@
             JetLabel,
             JetSecondaryButton,
             JetSectionBorder,
+            BIconCheck2
         },
 
         props: [

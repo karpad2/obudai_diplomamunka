@@ -26,7 +26,7 @@
        <td class="w-1/5 ...">{{ row.id }}</td>
        <td class="w-1/5 ...">{{ row.name }}</td>
        <td class="w-1/5 ...">{{ row.room_id }}</td>
-       <td class="w-1/5 ..."> <span v-if="row.active=='1'"> <BIconCheck2Square class="green-600 fill-current" /></span></td>
+       <td class="w-1/5 ..."> <span v-if="row.active=='1'"> <BIconCheck2 class="mr-2 h-5 w-5 text-green-400" /></span></td>
        <td class="w-1/5 ..."><inertia-link :href="'/update-program/'+row.id">Manage your Program <BIconGearFill /></inertia-link></td>
      </tr>
    </tbody>
@@ -47,7 +47,7 @@ import { Inertia } from '@inertiajs/inertia'
     import JetLabel from '@/Jetstream/Label'
     import JetButton from '@/Jetstream/Button'
     import JetInput from '@/Jetstream/Input'
-    import {BIconGearFill,BIconCheck2Square} from 'bootstrap-icons-vue';
+    import {BIconGearFill,BIconCheck2} from 'bootstrap-icons-vue';
     export default {
         
         props: {
@@ -77,7 +77,7 @@ import { Inertia } from '@inertiajs/inertia'
             JetInput,
             JetLabel,
             BIconGearFill,
-            BIconCheck2Square
+            BIconCheck2
             
         },
         methods: {

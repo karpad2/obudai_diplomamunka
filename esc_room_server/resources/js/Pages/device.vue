@@ -12,18 +12,33 @@
                <p>Last online: {{device[0].last_online}}</p>
                <p>Mode: {{device[0].mode}}</p>
                <p>Status: 
+                <span v-if="device[0].mode=='relay'">
                 <label class="flex items-center">
-                    <jet-checkbox name="remember" v-model:checked="device[0].status" @change="save"/>
+                    <jet-checkbox name="remember" :v-model:checked="device[0].status" @change="save"/>
                     <span class="ml-2 text-sm text-gray-600">Activate</span>
-                </label></p>
-
+                </label></span>
                 
+                <span v-if="device[0].mode=='rfid'">
+                <label class="flex items-center">
+                    <input :v-model=device[0].text disabled />
+                    <span class="ml-2 text-sm text-gray-600">RFID Code:</span>
+                </label></span>
 
+                <span v-if="device[0].mode=='display'">
+                <label class="flex items-center">
+                    <input :v-model=device[0].text :change="save_text" />
+                    <span class="ml-2 text-sm text-gray-600">Display message:</span>
+                </label></span>
 
-               <div class="flex items-center justify-end mt-4">
-                    <jet-button class="ml-4" @click="save">
-                    Save
-                </jet-button>
+                <span v-if="device[0].mode=='input'">
+                <label class="flex items-center">
+                    <jet-checkbox name="remember" :v-model:checked="device[0].status" disabled />  
+                </label>
+                </span>
+
+                </p>
+            <div class="flex items-center justify-end mt-4">
+                    <jet-button class="ml-4" @click="save">Save</jet-button>
                </div>
                </div>
             </div>
@@ -35,6 +50,7 @@
     import AppLayout from '@/Layouts/AppLayout'
     import JetButton from '@/Jetstream/Button'
     import JetCheckbox from '@/Jetstream/Checkbox'
+    import { Inertia } from '@inertiajs/inertia'
     export default {
         components: {
             AppLayout,
@@ -62,10 +78,27 @@
                 this.send_data(this.device[0].id,this.device[0].mode,this.device[0].status==true?1:0);
             },
             
+            save_text()
+            {
+                this.send_data(this.device[0].id,this.device[0].mode,this.device[0].text);
+            },
+
             send_data(id,mode,status)
             {
             axios.get('/api/device/js-api/'+id+'/'+mode+'/'+status);
             },
+            update_data()
+            {
+                if(this.device[0].mode=="rfid" && this.device[0].mode=="input")
+                {
+                    Inertia.reload({ only: ['device'] });
+                }
+            }
+        },
+        created() {
+            setInterval(()=>{
+            this.update_data();      
+            },1000);
         }
 
 

@@ -6,21 +6,22 @@
             </h2>
         </template>
 
-        <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
+        <div class="lg:px-6 pt-10 lg:w-3/5 w-full mb-10">
             <div class="grid md:grid-cols-12 gap-3 md:bg-purple-300 md:p-5 md:py-20">
                     <div class="col-span-full md:col-span-4">
                     <h1 class=" inline text-xl text-white bg-purple-800 p-2 capitalize">Management Room</h1>
-                    <div class="flex flex-col items-start justify-center bg-purple-100 p-6" >
-                    <inertia-link class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:shadow-outline-gray disabled:opacity-25 transition ease-in-out duration-150 ml-4" :href="'/run/'+room[0].id">Start</inertia-link>
-                    <inertia-link class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:shadow-outline-gray disabled:opacity-25 transition ease-in-out duration-150 ml-4" :href="'/create-program/'+room[0].id">Add program</inertia-link>
+                    <div class="flex flex-col items-start justify-center  p-6" >
+                    <LinkButton :href="'/run/'+room[0].id">Start</LinkButton>
+                    <LinkButton :href="'/create-program/'+room[0].id">Add program</LinkButton>
                     </div>
                     </div>
                     <div class="col-span-full md:col-span-8">
                     <h1 class=" inline text-xl text-white bg-purple-800 p-2 capitalize">Devices</h1>
-                    <div class="flex flex-col items-start justify-center bg-purple-100 p-6" >
-                        <h2> Assign devices to room</h2>
+                    <div class="flex flex-col items-start justify-center  p-4" >
+                        <h2>Assign devices to room</h2>
                         <select name="add-device">
                         </select>
+                        <Select/>
 
                     </div>
                     </div>
@@ -57,6 +58,8 @@
     import JetLabel from '@/Jetstream/Label'
     import JetInput from '@/Jetstream/Input'
     import JetButton from '@/Jetstream/Button'
+    import LinkButton from '@/Jetstream/LinkButton'
+    import Select from '@/Jetstream/Select'
 
     export default {
         components: {
@@ -64,7 +67,9 @@
             BIconArrowRightSquareFill,
             JetLabel,
             JetInput,
-            JetButton
+            JetButton,
+            Select,
+            LinkButton
         },
         data()
         {
