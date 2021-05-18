@@ -307,6 +307,16 @@
     </category>
     <sep></sep>
     <category name="Variables" colour="%{BKY_VARIABLES_HUE}" custom="VARIABLE"></category>
-    <category name="Functions" colour="%{BKY_PROCEDURES_HUE}" custom="PROCEDURE"></category>
+    <category name="Functions" colour="%{BKY_PROCEDURES_HUE}" custom="PROCEDURE">
+      <block type="send_data"></block>
+      <block type="send_finish"></block>
+    </category>
+    <sep></sep>
+    <category name="Devices" v-for="row in devices" :key="row.id" colour="%{BKY_VARIABLES_HUE}">
+      <block type="text"><field name="TEXT">{{row.id}}</field></block>
+    </category>
 </xml>
-  </template>
+</template>
+<script>
+
+</script>

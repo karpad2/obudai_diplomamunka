@@ -11,7 +11,7 @@
                     <div class="col-span-full md:col-span-4">
                     <h1 class=" inline text-xl text-white bg-purple-800 p-2 capitalize">Management Room</h1>
                     <div class="flex flex-col items-start justify-center  p-6" >
-                    <LinkButton :href="'/run/'+room[0].id">Start</LinkButton>
+                    <LinkButton :href="'/lobby/'+room[0].id">Enter into Lobby</LinkButton>
                     <LinkButton :href="'/create-program/'+room[0].id">Add program</LinkButton>
                     </div>
                     </div>

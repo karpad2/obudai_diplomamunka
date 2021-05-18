@@ -94,7 +94,31 @@ mounted (){
             this.auto_compile(Workspace)
         });
     
-    Blockly.Xml.domToWorkspace(defaultBlocks, Workspace);       
+    Blockly.Xml.domToWorkspace(defaultBlocks, Workspace);
+
+    Blockly.Blocks['send_data'] = {
+  init: function() {
+    this.appendValueInput('VALUE')
+        .setCheck('String')
+        .appendField('length of');
+    this.setOutput(true, 'Number');
+    this.setColour(160);
+    this.setTooltip('Returns number of letters in the provided text.');
+    this.setHelpUrl('http://www.w3schools.com/jsref/jsref_length_string.asp');
+  }
+};
+Blockly.Blocks['send_finish'] = {
+  init: function() {
+    this.appendValueInput('VALUE')
+        .setCheck('String')
+        .appendField('length of');
+    this.setOutput(true, 'Number');
+    this.setColour(160);
+    this.setTooltip('Returns number of letters in the provided text.');
+    this.setHelpUrl('http://www.w3schools.com/jsref/jsref_length_string.asp');
+  }
+};
+
     }
     }
 </script>

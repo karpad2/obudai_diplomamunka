@@ -27,7 +27,7 @@
                                         <jet-button v-on:click="open_camera(row.id)">Show camera
                                             <BIconArrowRightSquareFill class=""/>
                                         </jet-button>
-                                        <span v-on:click="delete"><i class="bi bi-trash"></i> </span></td>
+                                    </td> 
                                 </tr>
                                 </tbody>
                                 <tfoot>

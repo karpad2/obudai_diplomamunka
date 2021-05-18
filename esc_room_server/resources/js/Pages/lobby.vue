@@ -2,15 +2,19 @@
     <app-layout>
         <template #header>
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                Run
+                Lobby
             </h2>
         </template>
 
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg col-span-full md:col-span-4">
-                   <a class="bg-green-500">Start</a>
-                   </div>
+                
+                <jet-label for="name" value="Name of room" />
+                <jet-input aria-placeholder="Enter room name..." id="name" type="name" class="mt-1 block w-full" v-model="add_name" required placeholder="Default" autofocus />
+                
+                <LinkButton :href="'/run/'+room[0].id">Start</LinkButton>
+
+
             </div>
         </div>
     </app-layout>

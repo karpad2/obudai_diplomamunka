@@ -209,3 +209,13 @@ Route::middleware(['auth:sanctum', 'verified'])->get('run/{room_id}/stop',functi
     ]);
 
 })->name('run');
+
+Route::middleware(['auth:sanctum', 'verified'])->get('lobby/{room_id}',function ($room_id){
+   
+    //Run::where("room_id",$room_id)->where("finish_time",NULL)->update(["finish_time"=>now()]);
+ 
+     return Inertia::render('room',[
+         'room'=>Room::where('id',$room_id)->get()
+     ]);
+ 
+ })->name('lobby');
