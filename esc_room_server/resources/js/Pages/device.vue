@@ -10,7 +10,7 @@
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                <p>Last online: {{device[0].last_online}}</p>
-               <p>Mode: {{device[0].mode}}</p>
+               <p>Mode: {{device[0].mode}} <Select :v-model="device[0].mode" :options="_options" /></p>
                <p>Status: 
                 <span v-if="device[0].mode=='relay'">
                 <label class="flex items-center">
@@ -50,12 +50,14 @@
     import AppLayout from '@/Layouts/AppLayout'
     import JetButton from '@/Jetstream/Button'
     import JetCheckbox from '@/Jetstream/Checkbox'
+    import Select from '@/Jetstream/Select'
     import { Inertia } from '@inertiajs/inertia'
     export default {
         components: {
             AppLayout,
             JetButton,
             JetCheckbox,
+            Select
         },
         props: {
             device:{
@@ -63,12 +65,27 @@
                 required: true
             },
         },
-        data: ()=>
-        {
+        data (){
             return
             {
-                status:device[0].status
-                el:device[0]
+                _options:[
+                {
+                    id:"relay",
+                    text:"Relay"
+                },
+                {
+                    id:"rfid",
+                    text:"RFID reading"
+                },
+                {
+                    id:"input",
+                    text:"Input"
+                },
+                {
+                    id:"display",
+                    text:"Displaying"
+                }
+            ]
             }
         },
         methods:
