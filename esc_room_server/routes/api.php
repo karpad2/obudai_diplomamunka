@@ -51,6 +51,12 @@ Route::get('device/js-api/{id}/{mode}/{status}', function ($id, $mode, $status) 
     return 'ok';
 });
 
+Route::get('device/js-api-name/{id}/{name}', function ($id, $name) {
+    $device = Devices::findOrFail($id)->get();
+    Devices::findOrFail($device[0]->id)->update(['name' => $name]);
+    return 'ok';
+});
+
 
 Route::get('device/all', function ($id, $mode, $status) {
     return Devices::all();
@@ -60,7 +66,11 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-
+Route::get('device/js-status/{device_password}', function ($device_password) {
+    $device = Devices::where('password', $device_password)->get();
+    //Devices::findOrFail($device[0]->id)->update(['last_online' => now()]);
+    return $device[0];
+});
 Route::post('update-program/{program_id}', function (Request $request, $program_id) {
     Programs::where('id', $program_id)->update(['name' => $request->name, 'active' => 1, 'javascript_block' => $request->javascript_block, 'xml_block' => $request->xml_block]);
 
