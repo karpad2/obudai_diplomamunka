@@ -9,10 +9,9 @@
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                     
-            
-            <div class="col-span-6 sm:col-span-4">
+        <div class="col-span-6 sm:col-span-4">
             <jet-label for="program_name" value="Program Name" />
-            <jet-input id="program_name" type="text" class="mt-1 block w-full" v-model="program[0].name" ref="program_name" autocomplete="program_name" />
+            <jet-input id="program_name" type="text" class="mt-1 block w-full" v-model="program[0].name" ref="program_name" autocomplete="program_name" v-on:change="save" />
             <jet-input-error :message="program_name" class="mt-2" />
             </div>
             <div id="blocklyDiv" class="mt-1 block w-full" style="height: 480px;"></div>
@@ -21,9 +20,7 @@
             <textarea id="program_javascript" v-model="program[0].javascript_block" class="mt-1 block w-full" style="display:block" name="program_javascript"></textarea>
             <textarea id="program_xml" v-model="program[0].xml_block" name="program_xml" style="display:none"></textarea>
             </div>
-            <jet-button v-on:click="save">
-                Save
-            </jet-button>
+           
             </div>
         </div>
        </app-layout>
@@ -85,6 +82,7 @@
                 this.program[0].javascript_block=BlocklyJS.workspaceToCode(workspace);
                 let xml = Blockly.Xml.workspaceToDom(workspace);  
                 this.program[0].xml_block=xml;
+                this.save();
              }       
             },
 mounted (){
@@ -104,10 +102,13 @@ mounted (){
   init: function() {
     this.appendValueInput('VALUE')
         .setCheck('String')
-        .appendField('length of');
-    this.setOutput(true, 'Number');
-    this.setColour(160);
-    this.setTooltip('Returns number of letters in the provided text.');
+        .appendField('Send Data');
+    this.appendValueInput('LIST')
+            .setCheck('Array')
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField('in list');    
+    this.setColour(170);
+    this.setTooltip('Send data to device');
     this.setHelpUrl('http://www.w3schools.com/jsref/jsref_length_string.asp');
   }
 };
@@ -115,16 +116,21 @@ Blockly.Blocks['send_finish'] = {
   init: function() {
     this.appendValueInput('VALUE')
         .setCheck('String')
-        .appendField('length of');
-    this.setOutput(true, 'Number');
-    this.setColour(160);
-    this.setTooltip('Returns number of letters in the provided text.');
+        .appendField('Send Finish');
+    //this.setOutput(true, 'Number');
+    this.setColour(140);
+    this.setTooltip('This module will finish the program.');
     this.setHelpUrl('http://www.w3schools.com/jsref/jsref_length_string.asp');
   }
 };
 
     }
     }
+    /*
+     <jet-button v-on:click="save">
+                Save
+            </jet-button>
+            */ 
 </script>
 <style>
 
