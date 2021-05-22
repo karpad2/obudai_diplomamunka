@@ -5,24 +5,33 @@
                 Room - {{room[0].name}}
             </h2>
         </template>
-
-        <div class="lg:px-6 pt-10 lg:w-3/5 w-full mb-10">
-            <div class="grid md:grid-cols-12 gap-3 md:bg-purple-300 md:p-5 md:py-20">
+<div class="py-12">
+       <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="p-6 sm:px-20 bg-white border-b border-gray-200">
                     <div class="col-span-full md:col-span-4">
                     <h1 class=" inline text-xl text-white bg-purple-800 p-2 capitalize">Management Room</h1>
-                    <div class="flex flex-col items-start justify-center  p-6" >
+                    <div class="flex flex-col items-start justify-center bg-purple-100 p-6 ">
+                    <div v-if="run.length===0">
+                    <span >Run is active!</span>
+                    <LinkButton :href="'/run/'+room[0].id">Enter into Room</LinkButton>
+                    </div>
+                    <div v-else>
+                    <span ></span>
                     <LinkButton :href="'/lobby/'+room[0].id">Enter into Lobby</LinkButton>
+                    </div>
                     <LinkButton :href="'/create-program/'+room[0].id">Add program</LinkButton>
+
+                    <LinkButton :href="'/past-runs/'+room[0].id">Show previous runs</LinkButton>
                     </div>
                     </div>
                     <div class="col-span-full md:col-span-8">
                     <h1 class=" inline text-xl text-white bg-purple-800 p-2 capitalize">Devices</h1>
-                    <div class="flex flex-col items-start justify-center  p-4" >
+                    <div class="flex flex-col items-start justify-center bg-purple-100 p-6 ">
                         <h2>Assign devices to room</h2>
-                        <select name="add-device">
-                        </select>
-                        <Select/>
-
+                        <Select v-model="selected_device" :options="list_device"/>
+                         <jet-button class="ml-4" v-on:click="add_device" >
+                            Add Device
+                        </jet-button>
                     </div>
                     </div>
                     <div class="col-span-full md:col-span-8">
@@ -42,11 +51,10 @@
                     </jet-button>
 
                     </div>
-                    <inertia-link :href="'/lobby/'+room[0].id"> Enter into lobby <BIconArrowRightSquareFill class="bg-green-500"/></inertia-link>
-
                 </div>
         </div>
         </div>
+    </div>    
     </app-layout>
 </template>
 
@@ -75,13 +83,26 @@
         {
             return{
             camera_name:"",
-            camera_url:""}
+            camera_url:"",
+            list_device:[
+               
+            ],
+            selected_device:""}
         },
         props: {
             room:{ 
                 type:Array,
                 required: true
-            }
+            },
+            devices:{ 
+                type:Array,
+                required: true
+            },
+            run:{ 
+                type:Array,
+                required: true
+            },
+            
         },
         methods:{
             add_camera()
@@ -90,8 +111,33 @@
                 camera_name:this.camera_name,
                 camera_url: this.camera_url
                 })
+            },
+            add_device()
+            {
+                axios.post("/add-camera-room/"+this.room[0].id,{
+                camera_name:this.camera_name,
+                camera_url: this.camera_url
+                })
+            },
+            device_to_list(devices)
+            {
+                devices.forEach((item) =>
+                {
+                this.list_device.push(
+                {
+                    id:item.id,
+                    text:item.name
+                })
+                })
+
             }
 
-        }
+
+        },
+        mounted() {
+            this.device_to_list(this.devices);
+            console.log(this.device_to_list);
+            
+            }   
     }
 </script>

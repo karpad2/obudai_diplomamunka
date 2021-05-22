@@ -8,6 +8,7 @@ use Inertia\Inertia;
 use App\Models\Devices;
 use App\Models\Room;
 
+
 use App\Http\Controllers\DevicesController;
 use App\Http\Controllers\CamerasController;
 use App\Http\Controllers\EteamsController;
@@ -54,14 +55,23 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 })->name('dashboard');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/rooms', function () {
+    
     return Inertia::render('rooms',[
-     'rooms'=> Room::where('user_id',Auth::id())->get()
+     'rooms'=> Room::where('user_id',Auth::id())->get(),
+
     ]);
 })->name('rooms');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/room/{room_id}', function ($room_id) {
+    $active_run = Run::where([["room_id",$room_id],["finish_time",NULL]])->get();
+    if($active_run->isEmpty())
+    {
+        //$active_run=Run::create(["room_id"=>$room_id,"program_id"=>$program[0]->id,"team_id"=>$team[0]->id,"start_time"=>now(),"finish_time"=>null])->get();
+    }
     return Inertia::render('room',[
-        'room'=>Room::where('id',$room_id)->get()
+        'room'=>Room::where('id',$room_id)->get(),
+        'run'=>$active_run,
+        'devices'=>Room::join('devices','rooms.id','=','devices.room_id')->where('user_id',Auth::id())->where('rooms.id','!=',$room_id)->get()
     ]);
 })->name('room');
 
@@ -184,14 +194,18 @@ Route::middleware(['auth:sanctum', 'verified'])->post('update-rteams/{teams_id}'
 
 /*End Teams*/
 
-Route::middleware(['auth:sanctum', 'verified'])->get('run/{room_id}',function ($room_id){
+Route::middleware(['auth:sanctum', 'verified'])->get('run/{room_id}/{team_name}',function ($room_id,$team_name){
     $room=Room::where('id',$room_id)->get();
     $program=Programs::where('room_id',$room_id)->where('active',1)->get();
+    $team=ETeams::firstOrCreate(['name'=>$team_name])->get();
+
     //$program_id=$program->id;
     $active_run = Run::where([["room_id",$room_id],["finish_time",NULL]])->get();
+
+
     if($active_run->isEmpty())
     {
-        $active_run=Run::create(["room_id"=>$room_id,"program_id"=>1,"team_id"=>1,"start_time"=>now(),"finish_time"=>null])->get();
+        $active_run=Run::create(["room_id"=>$room_id,"program_id"=>$program[0]->id,"team_id"=>$team[0]->id,"start_time"=>now(),"finish_time"=>null])->get();
     }
 
     return Inertia::render('run',[
@@ -202,7 +216,27 @@ Route::middleware(['auth:sanctum', 'verified'])->get('run/{room_id}',function ($
 
 })->name('run');
 
-Route::middleware(['auth:sanctum', 'verified'])->get('run/{room_id}/stop',function ($room_id){
+Route::middleware(['auth:sanctum', 'verified'])->get('run/{room_id}',function ($room_id){
+    $room=Room::where('id',$room_id)->get();
+    $program=Programs::where('room_id',$room_id)->where('active',1)->get();
+    
+
+    //$program_id=$program->id;
+    $active_run = Run::where([["room_id",$room_id],["finish_time",NULL]])->get();
+
+    $team=ETeams::where('id',$active_run[0]->team_id)->get();
+
+   return Inertia::render('run',[
+        'room'=>$room,
+        'program'=>$program,
+        'run'=>$active_run
+    ]);
+
+})->name('run');
+
+
+
+Route::middleware(['auth:sanctum', 'verified'])->get('run-stop/{room_id}/stop',function ($room_id){
    
    Run::where("room_id",$room_id)->where("finish_time",NULL)->update(["finish_time"=>now()]);
 
@@ -216,8 +250,20 @@ Route::middleware(['auth:sanctum', 'verified'])->get('lobby/{room_id}',function 
    
     //Run::where("room_id",$room_id)->where("finish_time",NULL)->update(["finish_time"=>now()]);
  
-     return Inertia::render('room',[
-         'room'=>Room::where('id',$room_id)->get()
+     return Inertia::render('lobby',[
+         'room'=>Room::where('id',$room_id)->get(),
+         'devices'=>Devices::where('room_id',$room_id)->get(),
+
      ]);
  
  })->name('lobby');
+
+
+ Route::middleware(['auth:sanctum', 'verified'])->get('past-runs/{room_id}',function ($room_id){
+    
+
+   return Inertia::render('PastRuns',[
+        'runs'=>Run::join('e_teams','e_teams.id','=','runs.team_id')->where("room_id",$room_id)->get()
+    ]);
+
+})->name('PastRuns');

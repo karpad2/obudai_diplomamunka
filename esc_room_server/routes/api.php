@@ -52,7 +52,7 @@ Route::get('device/js-api/{id}/{mode}/{status}', function ($id, $mode, $status) 
 });
 
 Route::get('device/js-api-name/{id}/{name}', function ($id, $name) {
-    $device = Devices::findOrFail($id)->get();
+    $device = Devices::where('id',$id)->get();
     Devices::findOrFail($device[0]->id)->update(['name' => $name]);
     return 'ok';
 });

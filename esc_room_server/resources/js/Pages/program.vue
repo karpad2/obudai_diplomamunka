@@ -16,9 +16,8 @@
             </div>
             <div id="blocklyDiv" class="mt-1 block w-full" style="height: 480px;"></div>
             <block_vue devices="devices" />
-            <xml id="blocklyDefault" v-model="program[0].xml_block" style="display: none"></xml>
             <textarea id="program_javascript" v-model="program[0].javascript_block" class="mt-1 block w-full" style="display:block" name="program_javascript"></textarea>
-            <textarea id="program_xml" v-model="program[0].xml_block" name="program_xml" style="display:none"></textarea>
+            <textarea id="blocklyDefault" v-model="program[0].xml_block" name="program_xml" class="mt-1 block w-full" style="display:none"></textarea>
             </div>
            
             </div>
@@ -71,35 +70,42 @@
     methods:{
             myUpdateFunction(event) {},
             save(){ 
-                    axios.post("/api/update-program/"+this.program[0].id,{
+                    if(this.program[0].javascript_block!="")
+                    {axios.post("/api/update-program/"+this.program[0].id,{
                     name:this.program[0].name,
                     xml_block:this.program[0].xml_block,
                     javascript_block:this.program[0].javascript_block});
-                    },
+                    }},
              auto_compile(workspace)
              {
                 console.log("im here")
                 this.program[0].javascript_block=BlocklyJS.workspaceToCode(workspace);
-                let xml = Blockly.Xml.workspaceToDom(workspace);  
-                this.program[0].xml_block=xml;
+                let xml = Blockly.Xml.workspaceToDom(workspace);
+                console.log(xml);
+                if(this.program[0].javascript_block!=""){  
+                this.program[0].xml_block= Blockly.Xml.domToText(xml);
                 this.save();
+                }
              }       
             },
 mounted (){
-    let defaultBlocks = document.getElementById('blocklyDefault');
+    
         Blockly.setLocale(En);
+        let blocklyDefault= document.getElementById('blocklyDefault');
         let Workspace = Blockly.inject('blocklyDiv',{
          media: '/media/',
          toolbox: document.getElementById('toolbox'),
          scrollbar:false
          });
-        Workspace.addChangeListener(()=>
-        {
+        let workspace_default=Blockly.Xml.textToDom(this.program[0].xml_block);
+    Blockly.Xml.appendDomToWorkspace( workspace_default, Workspace);
+   
+
+
+  Workspace.addChangeListener(()=>
+        {   
             this.auto_compile(Workspace)
         });
-    
-    Blockly.Xml.domToWorkspace(defaultBlocks, Workspace);
-
     Blockly.Blocks['send_data'] = {
   init: function() {
     this.appendValueInput('VALUE')
@@ -125,7 +131,7 @@ Blockly.Blocks['send_finish'] = {
     this.setHelpUrl('http://www.w3schools.com/jsref/jsref_length_string.asp');
   }
 };
-
+ 
     }
     }
     /*

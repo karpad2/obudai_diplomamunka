@@ -11,9 +11,9 @@
                 <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg col-span-full md:col-span-4">
 
                     <h3>Status:{{status}}/{{room_max}}</h3>
-                    <h3>Timer:{{elapsed_time}}</h3>
+                    <h3>Timer:<ElapsedTime :firstdate="run[0].start_time" :lastdate="_NOW" /></h3>
                     <div>
-                    <inertia-link class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:shadow-outline-gray disabled:opacity-25 transition ease-in-out duration-150 ml-4" :href="'/run/'+room[0].id+'/stop'">Stop</inertia-link>
+                    <LinkButton :href="'/run-stop/'+room[0].id+'/stop'">Stop</LinkButton>
                     </div>
                     <div>
                     <intertia-link></intertia-link>
@@ -42,6 +42,8 @@
     import AppLayout from '@/Layouts/AppLayout'
     //import Welcome from '@/Jetstream/Welcome'
     import Blockly, { isNumber } from 'blockly';
+    import LinkButton from '@/Jetstream/LinkButton'
+    import ElapsedTime from '@/Jetstream/ElapsedTime'
     import JetButton from '@/Jetstream/Button'
     import axios from 'axios';
     import {Interpreter} from 'js-interpreter-npm'
@@ -64,7 +66,9 @@
         components: {
             AppLayout,
             Blockly,
-            JetButton
+            JetButton,
+            LinkButton,
+            ElapsedTime
         },
         props: {
             run:{
@@ -155,22 +159,13 @@
       interpreter.setProperty(scope, 'prompt',
           interpreter.createNativeFunction(promptWrapper));
     };
-  },
-  timers()
-  {
-      let starting_time=Date(this.run[0].start_time);
-      const event=setInterval(()=>{
-        this.elapsed_time= new Date(new Date().getTime() - starting_time).toLocaleTimeString();
-      },1000);
-      
   }
 
 
 },
         mounted()
         {
-            this.executeBlockCode();
-            this.timers();
+            //this.executeBlockCode();
         },
         
 

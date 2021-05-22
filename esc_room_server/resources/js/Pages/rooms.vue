@@ -23,7 +23,7 @@
       <tr v-for="row in rooms" :key="row.id">
        <td>{{ row.id }}</td>
        <td>{{ row.name }}</td>
-       <td><inertia-link :href="'/room/'+row.id">Enter into room <BIconArrowRightSquareFill class="bg-green-500"/></inertia-link> <span v-on:click="delete"><i class="bi bi-trash"></i> </span> </td>
+       <td><inertia-link :href="'/room/'+row.id">Enter into room <BIconArrowRightSquareFill class="bg-green-500"/></inertia-link> <span :v-on:click="delete"><i class="bi bi-trash"></i> </span> </td>
      </tr>
    </tbody>
 <tfoot>
