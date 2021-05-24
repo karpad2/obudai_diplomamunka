@@ -11,11 +11,10 @@
                 <div class="cam-name">Kamera: {{camera_name}}</div>
                 <div class="cam-timestamp">{{time_string}}</div>
             </div>
+            <jet-secondary-button @click="close">
+                        Cancel
+            </jet-secondary-button>
             </div>
-        </div>
-
-        <div class="px-6 py-4 bg-gray-100 text-right">
-            
         </div>
     </modal>
 </template>
@@ -23,11 +22,13 @@
 <script>
     import * as moment from 'moment'
     import Modal from '@/Jetstream/Modal'
+    import JetSecondaryButton from '@/Jetstream/SecondaryButton'
 
     export default {
         emits: ['close'],
         components: {
             Modal,
+            JetSecondaryButton
         },
          data(){
             return {
@@ -55,7 +56,7 @@
             {
             
             this.time_string=moment().format('LTS');
-            }
+            },
         },
         created() {
             moment.locale(); 

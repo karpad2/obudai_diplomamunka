@@ -27,6 +27,7 @@
                                         <jet-button v-on:click="open_camera(row.id)">Show camera
                                             <BIconArrowRightSquareFill class=""/>
                                         </jet-button>
+                                        
                                     </td> 
                                 </tr>
                                 </tbody>
@@ -45,7 +46,7 @@
                                 </tr>
                                 </tfoot>
                             </table>
-
+                            <Cameraimage :show="camera_show" camera_name="row.name" imgUrl="row.url" />
 
                         </div>
                     </div>
@@ -78,7 +79,11 @@ export default {
     },
     data() {
         return {
-            add_name: ""
+            add_name: "",
+            camera_show:false,
+            camera_name:"",
+            cameraimgUrl:""
+
         }
 
     },
@@ -106,10 +111,19 @@ export default {
 
             console.log(tmp);
             let url = tmp.url;
-            console.log("Opening popup");
-            let new_window = window.open("about:blank", tmp.name, 'width=300,height=300');
-            new_window.document.write("<Cameraimage />");
-        }
+            //console.log("Opening popup");
+            //let new_window = window.open("about:blank", tmp.name, 'width=300,height=300');
+           
+           //new_window.document.write("<Cameraimage />");
+            this.camera_show=true;
+            this.camera_name=tmp.name;
+            this.cameraimgUrl=tmp.url;
+        },
+         closeModal() {
+                this.camera_show = false
+
+              
+            },
 
     }
 }
