@@ -23,7 +23,7 @@
           </div>
           <div
             id="blocklyDiv"
-            class="app-container mt-1 block w-full"
+            class="mt-1 block w-full"
             style="height: 480px"
           ></div>
           <block_vue devices="devices" />
