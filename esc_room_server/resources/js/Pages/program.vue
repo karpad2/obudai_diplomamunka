@@ -26,7 +26,7 @@
             class="mt-1 block w-full"
             style="height: 480px"
           ></div>
-          <block_vue devices="devices" />
+          <blockvue :devices="devices" />
           <textarea
             id="program_javascript"
             v-model="program[0].javascript_block"
@@ -50,7 +50,7 @@
 <script>
 import AppLayout from "@/Layouts/AppLayout";
 import Welcome from "@/Jetstream/Welcome";
-import block_vue from "@/Components/block_vue";
+import blockvue from "@/Components/blockvue";
 import JetActionMessage from "@/Jetstream/ActionMessage";
 import JetButton from "@/Jetstream/Button";
 import JetFormSection from "@/Jetstream/FormSection";
@@ -65,7 +65,7 @@ import BlocklyJS from "blockly/javascript";
 export default {
   components: {
     AppLayout,
-    block_vue,
+    blockvue,
     Welcome,
     JetButton,
     JetInput,
