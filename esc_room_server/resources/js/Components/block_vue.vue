@@ -311,6 +311,7 @@
      <sep></sep>
     <category name="Application Functions" colour="%{BKY_PROCEDURES_HUE}">
       <block type="send_data"></block>
+      <block type="get_data"></block>
       <block type="send_finish"></block>
     </category>
     
