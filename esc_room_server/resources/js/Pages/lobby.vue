@@ -26,8 +26,8 @@
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="row in devices" :key="row.id">
-                <td>{{ row.id }}</td>
+                <tr v-for="(row, index)  in devices" :key="row.id">
+                <td>{{ index+1 }}</td>
                 <td>{{ row.name }}</td>
                 <td><Deviceactivity  :lastonline="row.last_online"/></td>
                 </tr>

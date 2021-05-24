@@ -34,6 +34,15 @@
                         </jet-button>
                     </div>
                     </div>
+
+                     <div class="col-span-full md:col-span-8">
+                    <h1 class=" inline text-xl text-white bg-purple-800 p-2 capitalize">Program</h1>
+                    <div class="flex flex-col items-start justify-center bg-purple-100 p-6 ">
+                        <h2>Choose active program</h2>
+                        <Select v-model="selected_program" :options="list_programs" v-on:change="choose_program"/>
+                    </div>
+                    </div>
+
                     <div class="col-span-full md:col-span-8">
                     <h1 class=" inline text-xl text-white bg-purple-800 p-2 capitalize">Cameras</h1>
                     <div class="flex flex-col items-start justify-center bg-purple-100 p-6 ">
@@ -84,10 +93,10 @@
             return{
             camera_name:"",
             camera_url:"",
-            list_device:[
-               
-            ],
-            selected_device:""}
+            list_device:[],
+            list_programs:[],
+            selected_device:"",
+            selected_program:""}
         },
         props: {
             room:{ 
@@ -95,6 +104,10 @@
                 required: true
             },
             devices:{ 
+                type:Array,
+                required: true
+            },
+            programs:{ 
                 type:Array,
                 required: true
             },
@@ -130,13 +143,32 @@
                 })
                 })
 
+            },
+            programs_to_list(programs)
+            {
+                programs.forEach((item,index) =>
+                {
+                if(item.active==1) this.selected_program=item.id;
+                this.list_programs.push(
+                {
+                    id:item.id,
+                    text:item.name
+                })
+                })
+
+            },
+            choose_program()
+            {
+                axios.get("/api/set-program-room/"+this.selected_program);
             }
+
 
 
         },
         mounted() {
             this.device_to_list(this.devices);
-            console.log(this.device_to_list);
+            this.programs_to_list(this.programs);
+            //console.log(this.device_to_list);
             
             }   
     }

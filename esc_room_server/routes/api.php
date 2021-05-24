@@ -72,6 +72,15 @@ Route::get('device/js-status/{device_password}', function ($device_password) {
     return $device[0];
 });
 Route::post('update-program/{program_id}', function (Request $request, $program_id) {
+    $program=Programs::where('id', $program_id);
+    Programs::where('room_id',$program->room_id)->update(['active'=>0]);
     Programs::where('id', $program_id)->update(['name' => $request->name, 'active' => 1, 'javascript_block' => $request->javascript_block, 'xml_block' => $request->xml_block]);
+
+});
+
+Route::get('set-program-room/{program_id}', function ($program_id) {
+    $program=Programs::where('id', $program_id)->first();
+    Programs::where('room_id',$program->room_id)->update(['active'=>0]);
+    Programs::where('id', $program_id)->update(['active' => 1]);
 
 });

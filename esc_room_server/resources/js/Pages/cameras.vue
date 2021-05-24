@@ -20,8 +20,8 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr v-for="row in cameras" :key="row.id">
-                                    <td>{{ row.id }}</td>
+                                <tr v-for="(row, index)  in cameras" :key="row.id">
+                                    <td>{{ index+1 }}</td>
                                     <td>{{ row.name }}</td>
                                     <td>
                                         <jet-button v-on:click="open_camera(row.id)">Show camera
@@ -66,6 +66,7 @@ import JetInput from '@/Jetstream/Input'
 import {BIconArrowRightSquareFill} from 'bootstrap-icons-vue';
 
 import Button from "../Jetstream/Button";
+import Cameraimage from '@/Jetstream/Cameraimage'
 
 export default {
 
@@ -90,7 +91,8 @@ export default {
         JetButton,
         JetInput,
         JetLabel,
-        BIconArrowRightSquareFill
+        BIconArrowRightSquareFill,
+        Cameraimage
 
     },
     methods: {
@@ -106,7 +108,7 @@ export default {
             let url = tmp.url;
             console.log("Opening popup");
             let new_window = window.open("about:blank", tmp.name, 'width=300,height=300');
-            new_window.document.write("<img src=\"" + url + "\" alt=\"Camera\" />");
+            new_window.document.write("<Cameraimage />");
         }
 
     }

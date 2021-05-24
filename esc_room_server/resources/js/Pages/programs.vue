@@ -22,12 +22,12 @@
     </tr>
   </thead>
   <tbody>
-      <tr v-for="row in programs" :key="row.id">
-       <td class="w-1/5 ...">{{ row.id }}</td>
-       <td class="w-1/5 ...">{{ row.name }}</td>
-       <td class="w-1/5 ...">{{ row.room_id }}</td>
-       <td class="w-1/5 ..."> <span v-if="row.active=='1'"> <BIconCheck2 class="mr-2 h-5 w-5 text-green-400" /></span></td>
-       <td class="w-1/5 ..."><inertia-link :href="'/update-program/'+row.id">Manage your Program <BIconGearFill /></inertia-link></td>
+      <tr v-for="(row, index)  in programs" :key="row.id">
+       <td >{{ index+1 }}</td>
+       <td >{{ row.name }}</td>
+       <td >{{ row.room_id }}</td>
+       <td> <span v-if="row.active=='1'"> <BIconCheck2 class="mr-2 h-5 w-5 text-green-400" /></span></td>
+       <td ><inertia-link :href="'/update-program/'+row.id">Manage your Program <BIconGearFill /></inertia-link></td>
      </tr>
    </tbody>
 </table>   

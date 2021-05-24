@@ -20,8 +20,8 @@
     </tr>
   </thead>
   <tbody>
-      <tr v-for="row in teams" :key="row.id">
-       <td>{{ row.id }}</td>
+      <tr v-for="(row, index)  in teams" :key="row.id">
+       <td>{{ index+1 }}</td>
        <td>{{ row.name }}</td>
        <td><inertia-link :href="'/team/'+row.id">Show previous runs of team</inertia-link></td>
      </tr>
