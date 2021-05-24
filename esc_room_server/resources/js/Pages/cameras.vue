@@ -43,9 +43,9 @@
               </table>
               <Cameraimage
                 :show="camera_show"
-                camera_name="camera_name"
-                imgUrl="cameraimgUrl"
-                @close="closeModal"
+                :camera_name="camera_name"
+                :imgUrl="cameraimgUrl"
+                :close="closeModal"
               />
             </div>
           </div>
@@ -65,7 +65,7 @@ import JetButton from "@/Jetstream/Button";
 import JetInput from "@/Jetstream/Input";
 import { BIconArrowRightSquareFill } from "bootstrap-icons-vue";
 
-import Button from "../Jetstream/Button";
+import Button from "@/Jetstream/Button";
 import Cameraimage from "@/Jetstream/Cameraimage";
 
 export default {
