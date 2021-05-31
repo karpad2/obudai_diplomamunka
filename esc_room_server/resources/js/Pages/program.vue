@@ -161,9 +161,19 @@ export default {
             "http://www.w3schools.com/jsref/jsref_length_string.asp"
           );
         },
-      }),
+      });
+      
+
+      
         auto_setup_js();
       {
+        /*
+        Blockly.JavaScript['play_sound'] = function(block) {
+  let value = '\'' + block.getFieldValue('VALUE') + '\'';
+  return 'MusicMaker.queueSound(' + value + ');\n';
+};
+        */
+
         BlocklyJS["send_data"] = function (block) {
           // Search the text for a substring.
           var operator =
