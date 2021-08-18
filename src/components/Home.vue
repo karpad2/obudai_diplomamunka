@@ -122,27 +122,6 @@
 			</md-list>
 		</div>
 
-		<div class="section">
-			<md-avatar>
-				<img src="../assets/logo.png" alt="Avatar">
-				<md-tooltip md-direction="top">Top</md-tooltip>
-			</md-avatar>
-
-			<md-avatar>
-				<img src="../assets/logo.png" alt="Avatar">
-				<md-tooltip md-direction="right">Right</md-tooltip>
-			</md-avatar>
-
-			<md-avatar>
-				<img src="../assets/logo.png" alt="Avatar">
-				<md-tooltip md-direction="bottom">Bottom</md-tooltip>
-			</md-avatar>
-
-			<md-avatar>
-				<img src="../assets/logo.png" alt="Avatar">
-				<md-tooltip md-direction="left">Left</md-tooltip>
-			</md-avatar>
-		</div>
 
 	</div>
 </template>

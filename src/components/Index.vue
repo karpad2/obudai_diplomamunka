@@ -6,9 +6,10 @@
 					<md-icon>menu</md-icon>
 				</md-button>
 				<router-link class="router-link" to="/home">
-					<img class="bar-logo" src="../assets/logo.png" alt="Logo"/>
-					<span class="md-title">Vue.js Dashboard with Firebase</span>
+					<logo height="50pt" style="fill: white" />
+					<span class="md-title">Escape Room Management Room</span>
 				</router-link>
+				
 			</md-app-toolbar>
 
 			<md-app-drawer :md-active.sync="menuVisible" md-persistent="mini">
@@ -41,7 +42,11 @@
 </template>
 
 <script>
+import logo from '@/assets/logo';
 	export default {
+		components: {
+		logo
+		},
 		name: 'Index',
 		data: () => ({
 			menuVisible: false,

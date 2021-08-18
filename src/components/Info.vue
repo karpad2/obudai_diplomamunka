@@ -1,8 +1,7 @@
 <template>
 	<div class="center">
-		App made by <span class="vellons">Vellons</span>
-		<p><a href="https://github.com/vellons" target="_blank">GitHub</a></p>
-		<p>Ciao!</p>
+		App made by <span class="karpad2">karpad2</span>
+		<p><a href="https://karpad2.github.io" target="_blank">GitHub</a></p>
 	</div>
 </template>
 
@@ -22,7 +21,7 @@
 		text-align: center;
 	}
 
-	.vellons {
+	.karpad2 {
 		font-weight: bold;
 	}
 </style>

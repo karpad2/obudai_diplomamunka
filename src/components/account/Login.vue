@@ -13,14 +13,23 @@
 		<p>{{errorMessage}}</p>
 
 		<md-button class="md-raised md-primary" @click="login">Login</md-button>
+
+		<md-field>
+			<p>Or sign in with Google</p>
+			<md-button class="md-raised md-primary" @click="loginwithgoogle">Login with Google</md-button>
+		</md-field>
+
 	</div>
 </template>
 
 <script>
-	import {FirebaseAuth} from "@/firebase";
+	import {Firebase,FirebaseAuth} from "@/firebase";
 
 	export default {
 		name: "AccountLogin",
+		components: {
+    		
+  			},
 		data() {
 			return {
 				email: "",
@@ -29,7 +38,7 @@
 			}
 		},
 		mounted() {
-			FirebaseAuth.onAuthStateChanged((user) => {
+			FirebaseAuth.OAuthProvider((user) => {
 				if (user && this.email === "") this.$router.replace('/account').catch(() => {
 				}); // User already logged
 			});
@@ -51,6 +60,21 @@
 						}
 					});
 				}
+			},
+			loginwithgoogle: function()
+			{
+				let _this = this;
+				let provider= new Firebase.auth.GoogleAuthProvider();
+				FirebaseAuth.signInWithPopup(provider).then(()=>
+				{
+				this.$router.replace('/home');	
+				}).catch((error) => {
+						if (error.code === 'auth/wrong-password') {
+							_this.errorMessage = "Password wrong";
+						} else {
+							_this.errorMessage = "Check email and password";
+						}
+					});
 			}
 		}
 	}

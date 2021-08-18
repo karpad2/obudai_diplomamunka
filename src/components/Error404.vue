@@ -3,14 +3,14 @@
 		<md-app md-waterfall md-mode="fixed" :md-theme="userTheme">
 			<md-app-toolbar class="md-primary" md-elevation="5">
 				<router-link class="router-link" to="/">
-					<img class="bar-logo" src="../assets/logo.png" alt="Logo"/>
-					<span class="md-title">Vue.js Dashboard with Firebase</span>
+					<logo class="img-responsive" height="50pt" color />
+					<span class="md-title">Escape Room management</span>
 				</router-link>
 			</md-app-toolbar>
 
 			<md-app-content>
 				<div class="middle-center">
-					<img class="logo" src="../assets/logo.png" alt="Logo">
+					<logo />
 					<h1>Error 404</h1>
 				</div>
 			</md-app-content>
@@ -19,7 +19,11 @@
 </template>
 
 <script>
+import logo from '@/assets/logo';
 	export default {
+		components: {
+		logo
+		},
 		name: "Error404",
 		data: () => ({
 			userTheme: "default",

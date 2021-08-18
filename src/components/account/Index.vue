@@ -3,14 +3,16 @@
 		<md-app md-waterfall md-mode="fixed" :md-theme="userTheme">
 			<md-app-toolbar class="md-primary" md-elevation="5">
 				<router-link class="router-link" to="/home">
-					<img class="bar-logo" src="../../assets/logo.png" alt="Logo"/>
+					<logo class="bar-logo" />
 					<span class="md-title">Vue.js Dashboard with Firebase - Account</span>
 				</router-link>
 			</md-app-toolbar>
 
 			<md-app-content>
 				<div class="middle-center">
-					<img class="logo" src="../../assets/logo.png" alt="Logo">
+					
+					<logo class="logo" />
+					
 					<router-view @themeChanged="themeChanged"/>
 				</div>
 			</md-app-content>
@@ -19,7 +21,11 @@
 </template>
 
 <script>
+import logo from '@/assets/logo';
 	export default {
+		components: {
+		logo
+		},
 		name: "AccountIndex",
 		data: () => ({
 			userTheme: "default",
