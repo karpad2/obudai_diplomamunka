@@ -12,6 +12,8 @@ import AccountLogin from "../components/account/Login";
 import Home from "../components/Home";
 import Ciao from "../components/Ciao";
 import Info from "../components/Info";
+import Rooms from "../components/Rooms";
+import Room from "../components/Room";
 
 
 const router = new VueRouter ({
@@ -41,8 +43,23 @@ const router = new VueRouter ({
 					component: Ciao,
 				},
 				{
+					path: 'rooms',
+					name: 'rooms',
+					component: Rooms,
+				},
+				{
+					path: 'room',
+					name: 'room',
+					component: Room,
+				},
+				{
 					path: 'info',
 					name: 'info',
+					component: Info,
+				},
+				{
+					path: 'logout',
+					name: 'logout',
 					component: Info,
 				},
 			]
@@ -69,7 +86,6 @@ const router = new VueRouter ({
 router.beforeEach((to, from, next) => {
 	let currentUser = FirebaseAuth.currentUser;
 	let requiresAuth = to.matched.some(record => record.meta.requiresAuth);
-
 	if(requiresAuth && !currentUser) next('/account/login');
 	else next();
 })

@@ -4,7 +4,7 @@
 			<md-app-toolbar class="md-primary" md-elevation="5">
 				<router-link class="router-link" to="/home">
 					<logo class="bar-logo" />
-					<span class="md-title">Vue.js Dashboard with Firebase - Account</span>
+					<span class="md-title">Escape Room Management Software</span>
 				</router-link>
 			</md-app-toolbar>
 
@@ -37,7 +37,12 @@ import logo from '@/assets/logo';
 			themeChanged: function () {
 				if (localStorage.userTheme === "dark") this.userTheme = "dark";
 				else this.userTheme = "default";
-			}
+			},
+			changeTheme: function () {
+				if (this.themeSwitch) localStorage.userTheme = "dark";
+				else localStorage.userTheme = "light";
+				this.$emit('themeChanged');
+			},
 		}
 	}
 </script>

@@ -16,7 +16,7 @@
 
 		<md-field>
 			<p>Or sign in with Google</p>
-			<md-button class="md-raised md-primary" @click="loginwithgoogle">Login with Google</md-button>
+			<md-button class="md-raised md-primary" @click="loginwithgoogle">Login with <BIconGoogle /></md-button>
 		</md-field>
 
 	</div>
@@ -24,11 +24,12 @@
 
 <script>
 	import {Firebase,FirebaseAuth} from "@/firebase";
+	import {BIconGoogle} from "bootstrap-icons-vue";
 
 	export default {
 		name: "AccountLogin",
 		components: {
-    		
+    		BIconGoogle
   			},
 		data() {
 			return {
@@ -51,7 +52,9 @@
 					let _this = this;
 					FirebaseAuth.signInWithEmailAndPassword(this.email, this.password).then(() => {
 						this.password = "";
+						
 						this.$router.replace('/home'); // User logged
+						this.set_user_data_local();
 					}).catch((error) => {
 						if (error.code === 'auth/wrong-password') {
 							_this.errorMessage = "Password wrong";
@@ -67,7 +70,9 @@
 				let provider= new Firebase.auth.GoogleAuthProvider();
 				FirebaseAuth.signInWithPopup(provider).then(()=>
 				{
+							
 				this.$router.replace('/home');	
+				this.set_user_data_local();
 				}).catch((error) => {
 						if (error.code === 'auth/wrong-password') {
 							_this.errorMessage = "Password wrong";
@@ -76,7 +81,14 @@
 						}
 					});
 			}
+		},
+		set_user_data_local: function ()
+		{	FirebaseAuth.onAuthStateChanged((user) => {
+			localStorage.setItem('user',JSON.stringify(user));
+			});
 		}
+
+		
 	}
 </script>
 

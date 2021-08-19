@@ -9,8 +9,7 @@
 					<logo height="50pt" style="fill: white" />
 					<span class="md-title">Escape Room Management Room</span>
 				</router-link>
-				
-			</md-app-toolbar>
+				</md-app-toolbar>
 
 			<md-app-drawer :md-active.sync="menuVisible" md-persistent="mini">
 				<md-toolbar class="md-transparent" md-elevation="3">
@@ -29,19 +28,26 @@
 								<md-icon class="md-icon">{{tab.icon}}</md-icon>
 								<span class="md-list-item-text">{{tab.title}}</span>
 							</md-list-item>
+							
 						</router-link>
 					</div>
+					<md-list-item v-if="true" v-on:click="logout()">
+								<md-icon class="md-icon">logout</md-icon>
+								<span class="md-list-item-text"></span>
+					</md-list-item>
 				</md-list>
 			</md-app-drawer>
 
 			<md-app-content>
 				<router-view/>
 			</md-app-content>
+			<md-switch v-model="themeSwitch" @change="changeTheme">Theme light/dark</md-switch>
 		</md-app>
 	</div>
 </template>
 
 <script>
+import {FirebaseAuth} from "@/firebase";
 import logo from '@/assets/logo';
 	export default {
 		components: {
@@ -60,14 +66,14 @@ import logo from '@/assets/logo';
 				},
 				{
 					icon: 'place',
-					title: 'Ciao',
-					link: '/ciao',
+					title: 'room',
+					link: '/room',
 					auth: true,
 				},
 				{
 					icon: 'map',
-					title: 'Error 404 ;)',
-					link: '/ciao-ciao-error-404',
+					title: 'devices',
+					link: '/devices',
 					auth: true,
 				},
 				{
@@ -81,7 +87,8 @@ import logo from '@/assets/logo';
 					title: 'Account',
 					link: '/account',
 					auth: true,
-				}
+				},
+			
 			]
 		}),
 		mounted() {
@@ -96,6 +103,21 @@ import logo from '@/assets/logo';
 		methods: {
 			toggleMenu() {
 				this.menuVisible = !this.menuVisible;
+			},
+			logout: function () {
+				this.loading = true;
+				let _this = this;
+				FirebaseAuth.signOut().then(() => {
+					// Automatic redirect to login (onAuthStateChanged)
+					_this.$noty.success("Logout confirmed", {
+						killer: true,
+						timeout: 1500,
+					});
+					this.$router.replace('/account/login').catch(() => {}); // User not logged
+				}).catch((error) => {
+					console.log("signOut()", error);
+					_this.$noty.error("Logout error, please refresh the page.");
+				});
 			}
 		}
 	}

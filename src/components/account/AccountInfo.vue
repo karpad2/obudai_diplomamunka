@@ -3,7 +3,7 @@
 		<div v-if="!loading" class="center">
 			<p><b>Email:</b> {{email}}</p>
 			<div>
-				<md-switch v-model="themeSwitch" @change="changeTheme">Theme light/dark</md-switch>
+				
 			</div>
 			<p>
 				<router-link to="/">Home page</router-link>
@@ -15,7 +15,7 @@
 
 <script>
 	import {FirebaseAuth} from "@/firebase";
-
+	
 	export default {
 		name: "AccountInfo",
 		data() {
@@ -31,6 +31,7 @@
 			}
 			let _this = this;
 			FirebaseAuth.onAuthStateChanged((user) => {
+				//console.log(user);
 				if (user) {
 					_this.email = user.email;
 					_this.loading = false;
@@ -39,11 +40,7 @@
 			});
 		},
 		methods: {
-			changeTheme: function () {
-				if (this.themeSwitch) localStorage.userTheme = "dark";
-				else localStorage.userTheme = "light";
-				this.$emit('themeChanged');
-			},
+			
 			logout: function () {
 				this.loading = true;
 				let _this = this;

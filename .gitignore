@@ -10,4 +10,4 @@ node_modules
 ./esp32_software/.idea
 package-lock.json
 src/firebase/credentials.js
-#dist
+dist
