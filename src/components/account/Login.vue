@@ -16,20 +16,21 @@
 
 		<md-field>
 			<p>Or sign in with Google</p>
-			<md-button class="md-raised md-primary" @click="loginwithgoogle">Login with <BIconGoogle /></md-button>
+			<md-button class="md-raised md-primary" @click="loginwithgoogle">Login with <glogo/></md-button>
 		</md-field>
 
 	</div>
 </template>
 
 <script>
+import {signInWithEmailAndPassword,onAuthStateChanged,signInWithPopup,GoogleAuthProvider } from "firebase/auth";
 	import {Firebase,FirebaseAuth} from "@/firebase";
-	import {BIconGoogle} from "bootstrap-icons-vue";
+	import glogo from "@/assets/glogo";
 
 	export default {
 		name: "AccountLogin",
 		components: {
-    		BIconGoogle
+    		glogo
   			},
 		data() {
 			return {
@@ -39,8 +40,9 @@
 			}
 		},
 		mounted() {
-			FirebaseAuth.OAuthProvider((user) => {
+			onAuthStateChanged((user) => {
 				if (user && this.email === "") this.$router.replace('/account').catch(() => {
+				localStorage.user=this.user;
 				}); // User already logged
 			});
 		},
@@ -50,7 +52,7 @@
 					this.errorMessage = "Insert email and password";
 				} else {
 					let _this = this;
-					FirebaseAuth.signInWithEmailAndPassword(this.email, this.password).then(() => {
+					signInWithEmailAndPassword(FirebaseAuth,this.email, this.password).then(() => {
 						this.password = "";
 						
 						this.$router.replace('/home'); // User logged
@@ -67,10 +69,14 @@
 			loginwithgoogle: function()
 			{
 				let _this = this;
-				let provider= new Firebase.auth.GoogleAuthProvider();
-				FirebaseAuth.signInWithPopup(provider).then(()=>
-				{
-							
+				let provider= new GoogleAuthProvider();
+				signInWithPopup(FirebaseAuth,provider).then((result)=>
+				{	
+				
+				const credential = GoogleAuthProvider.credentialFromResult(result);
+				const token = credential.accessToken;
+				// The signed-in user info.
+				const user = result.user;
 				this.$router.replace('/home');	
 				this.set_user_data_local();
 				}).catch((error) => {
@@ -83,8 +89,8 @@
 			}
 		},
 		set_user_data_local: function ()
-		{	FirebaseAuth.onAuthStateChanged((user) => {
-			localStorage.setItem('user',JSON.stringify(user));
+		{	onAuthStateChanged((user) => {
+			localStorage.user=this.user;
 			});
 		}
 

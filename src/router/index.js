@@ -13,7 +13,14 @@ import Home from "../components/Home";
 import Ciao from "../components/Ciao";
 import Info from "../components/Info";
 import Rooms from "../components/Rooms";
-import Room from "../components/Room";
+import Room from "../components/Room/Room";
+
+import Devices from "../components/Devices";
+import Device from "../components/Device/Device";
+
+import Programs from "../components/Programs";
+import Program from "../components/Program/Program";
+
 
 
 const router = new VueRouter ({
@@ -48,6 +55,17 @@ const router = new VueRouter ({
 					component: Rooms,
 				},
 				{
+					path: 'devices',
+					name: 'devices',
+					component: Devices,
+				},
+				{
+					path: 'programs',
+					name: 'programs',
+					component: Programs,
+				},
+				
+				{
 					path: 'room',
 					name: 'room',
 					component: Room,
@@ -79,7 +97,53 @@ const router = new VueRouter ({
 					component: AccountLogin,
 				}
 			]
+		},
+		{
+			path: '/device',
+			component: Device,
+			children: [
+				{
+					path: '',
+					name: 'device-info',
+					component: Device,
+				},
+				{
+					path: 'login',
+					name: 'account-login',
+					component: Device,
+				}
+			]
+		},
+		{
+			path: '/room',
+			component: Room,
+			children: [
+				{
+					path: '',
+					name: 'room-info',
+					component: Room,
+				},
+				{
+					path: 'login',
+					name: 'account-login',
+					component: Room,
+				}
+			]
+		},
+		{
+			path: '/program',
+			component: Program,
+			children: [
+				{
+					path: '',
+					name: 'program-info',
+					component: Program,
+				},
+				
+			]
 		}
+
+
 	]
 });
 

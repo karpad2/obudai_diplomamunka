@@ -6,8 +6,8 @@
 					<md-icon>menu</md-icon>
 				</md-button>
 				<router-link class="router-link" to="/home">
-					<logo height="50pt" style="fill: white" />
-					<span class="md-title">Escape Room Management Room</span>
+					<logo class="bar-logo" />
+					<span class="md-title">Escape Room Management Software</span>
 				</router-link>
 				</md-app-toolbar>
 
@@ -31,27 +31,36 @@
 							
 						</router-link>
 					</div>
+					<md-list-item v-if="true" v-on:click="changeTheme()">
+								<md-icon class="md-icon">invert_colors</md-icon>
+								<span class="md-list-item-text">Color Theme</span>
+					</md-list-item>
 					<md-list-item v-if="true" v-on:click="logout()">
 								<md-icon class="md-icon">logout</md-icon>
-								<span class="md-list-item-text"></span>
+								<span class="md-list-item-text">Logout</span>
 					</md-list-item>
+					<md-divider></md-divider>
+					
 				</md-list>
 			</md-app-drawer>
 
 			<md-app-content>
 				<router-view/>
 			</md-app-content>
-			<md-switch v-model="themeSwitch" @change="changeTheme">Theme light/dark</md-switch>
+			
 		</md-app>
 	</div>
 </template>
 
 <script>
-import {FirebaseAuth} from "@/firebase";
-import logo from '@/assets/logo';
+import {signOut} from "firebase/auth";
+import {FireDb,FirebaseAuth,change_Theme_Fb} from "@/firebase";
+import {ref, set ,onValue,get, child} from "firebase/database";
+import logo from "@/assets/logo";
+
 	export default {
 		components: {
-		logo
+		logo,
 		},
 		name: 'Index',
 		data: () => ({
@@ -65,14 +74,14 @@ import logo from '@/assets/logo';
 					auth: true,
 				},
 				{
-					icon: 'place',
-					title: 'room',
-					link: '/room',
+					icon: 'other_houses',
+					title: 'Rooms',
+					link: '/rooms',
 					auth: true,
 				},
 				{
-					icon: 'map',
-					title: 'devices',
+					icon: 'precision_manufacturing',
+					title: 'Devices',
 					link: '/devices',
 					auth: true,
 				},
@@ -82,35 +91,57 @@ import logo from '@/assets/logo';
 					link: '/info',
 					auth: true,
 				},
+				
 				{
-					icon: 'person',
-					title: 'Account',
-					link: '/account',
+					icon: 'code',
+					title: 'Programs',
+					link: '/programs',
 					auth: true,
 				},
 			
 			]
 		}),
 		mounted() {
+			try{
+			//localStorage.user= FirebaseAuth._currentUser;
+			console.log("Index");
+			}
+			catch (e)
+			{
+				console.warn(e);
+			}
 			if (localStorage.userTheme === "dark") {
 				this.userTheme = "dark";
-			}
+				}
 			if (this.$route.fullPath === '/') {
 				this.$router.replace('/home').catch(() => {
 				});
 			}
 		},
 		methods: {
-			toggleMenu() {
+			toggleMenu: function() {
 				this.menuVisible = !this.menuVisible;
+			},
+			themeChanged: function () {
+				if (localStorage.userTheme === "dark") this.userTheme = "dark";
+				else this.userTheme = "default";
+			},
+			changeTheme: function () {
+				console.log("Change theme");
+				change_Theme_Fb("change");
+				this.themeChanged();
+				//const dbRef = ref(FireDb);
+        		console.log();
 			},
 			logout: function () {
 				this.loading = true;
 				let _this = this;
-				FirebaseAuth.signOut().then(() => {
+				signOut(FirebaseAuth).then(() => {
 					// Automatic redirect to login (onAuthStateChanged)
+					localStorage.clear();
 					_this.$noty.success("Logout confirmed", {
 						killer: true,
+						
 						timeout: 1500,
 					});
 					this.$router.replace('/account/login').catch(() => {}); // User not logged
@@ -121,6 +152,14 @@ import logo from '@/assets/logo';
 			}
 		}
 	}
+	/*
+	{
+					icon: 'person',
+					title: 'Account',
+					link: '/account',
+					auth: true,
+				},
+	*/
 </script>
 
 <style lang="scss">
@@ -135,14 +174,23 @@ import logo from '@/assets/logo';
 				align-items: center;
 			}
 
+
 			.bar-logo {
 				width: 35px !important;
+				
 			}
 
 			.md-app-drawer {
 				max-width: 300px !important;
 			}
-
+			.md-primary
+			{
+				height: 45pt;
+			}
+			.md-button
+			{
+				height: 30pt;
+			}
 			.md-list-item {
 
 				&:hover {

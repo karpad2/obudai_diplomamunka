@@ -59,6 +59,7 @@ import logo from '@/assets/logo';
 
 			.bar-logo {
 				width: 35px !important;
+				height: 30pt;
 			}
 
 			.middle-center {
