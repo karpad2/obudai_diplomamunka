@@ -10,7 +10,9 @@ jobs:
   build_and_deploy:
     runs-on: ubuntu-latest
     steps:
+      
       - uses: actions/checkout@v2
+      - run: echo ${{ secrets.CREDENTIALJS }}> ./src/firebase/credential.js
       - run: npm install && npm run build
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
