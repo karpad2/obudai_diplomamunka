@@ -12,7 +12,7 @@ jobs:
     steps:
       
       - uses: actions/checkout@v2
-      - run: printf ${{ secrets.CREDENTIALJS }} >> /src/firebase/credential.js
+      - run: printf ${{ secrets.CREDENTIALJS }} >> src/firebase/credential.js
       - run: npm install && npm run build
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
