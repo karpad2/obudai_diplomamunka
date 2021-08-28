@@ -103,13 +103,8 @@ const router = new VueRouter ({
 			component: Device,
 			children: [
 				{
-					path: '',
+					path: '/device/:id',
 					name: 'device-info',
-					component: Device,
-				},
-				{
-					path: 'login',
-					name: 'account-login',
 					component: Device,
 				}
 			]
@@ -119,13 +114,8 @@ const router = new VueRouter ({
 			component: Room,
 			children: [
 				{
-					path: '',
+					path: '/room/:id',
 					name: 'room-info',
-					component: Room,
-				},
-				{
-					path: 'login',
-					name: 'account-login',
 					component: Room,
 				}
 			]

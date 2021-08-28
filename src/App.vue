@@ -1,12 +1,26 @@
 <template>
 	<div id="app">
 		<router-view class="router-view"/>
+	<footer>
+    <cookie-law theme="dark-lime"></cookie-law>
+  </footer>
 	</div>
+	 
 </template>
 
 <script>
+  import CookieLaw from 'vue-cookie-law'
 	export default {
 		name: 'App',
+		components: { CookieLaw },
+
+		mounted()
+		{
+		console.log("App Start");
+		if( localStorage.getItem("userTheme")===null) localStorage.userTheme = "light";
+		console.log(localStorage.userTheme);
+		}
+		
 	}
 </script>
 

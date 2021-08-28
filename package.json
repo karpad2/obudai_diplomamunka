@@ -18,6 +18,8 @@
     "firebase-tools": "^9.16.5",
     "moment": "^2.29.1",
     "vue": "^2.6.11",
+    "vue-cookie-law": "^1.13.3",
+    "vue-cookies": "^1.7.4",
     "vue-material": "^1.0.0-beta-12",
     "vue-router": "^3.5",
     "vue-webble": "^0.1.0",

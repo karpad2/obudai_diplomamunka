@@ -9,6 +9,8 @@ import { enableIndexedDbPersistence } from "firebase/firestore";
 import firebaseCredentials from './credentials';
 const app = initializeApp(firebaseCredentials.config);
 
+
+
 const appCheck = initializeAppCheck(app, {
 	provider: new ReCaptchaV3Provider('6LelvRIcAAAAAEKE72hWevy4k3efJ7PJFrLdo5md'),
   
@@ -45,6 +47,7 @@ const user= getAuth._currentUser;
 //const user_data = child(dbRef, `users/${FirebaseAuth._currentUser.uid}`);
 let user_data ="";
 const change_Theme_Fb= (value)=>{
+	if( localStorage.getItem("userTheme")===null) localStorage.userTheme = "light";
 	if (localStorage.userTheme=="light")
 	{ localStorage.userTheme = "dark";
 	}
@@ -71,11 +74,12 @@ const change_Theme_Fb= (value)=>{
        
 };*/
 
-
+/*
 const db = FireDb;
 let read = ref(FireDb,'users/'+FirebaseAuth.uid);
 onValue(read, (snapshot) => {
 	let data = snapshot.val();
+	
 	console.log("Im here")
 	console.log(data);
   });
@@ -91,7 +95,7 @@ if (read===null || read===undefined)
 	localStorage.user=read;
 	console.log(read);
    }
-
+*/
 	
 
 

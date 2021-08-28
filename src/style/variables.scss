@@ -4,5 +4,24 @@ $labelColor: #dadbc0;
 .md-progress-spinner {
     margin: 24px;
   }
+  .md-field {
+		max-width: 500px;
+	}
 
+	.section {
+		margin-bottom: 50px;
+	}
+
+	.contact {
+		width: 320px;
+		max-width: 100%;
+		display: inline-block;
+		vertical-align: top;
+		overflow: auto;
+		border: 1px solid orange;
+	}
+
+	.md-avatar {
+		margin: 36px;
+	}
   
