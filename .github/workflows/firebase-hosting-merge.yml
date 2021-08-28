@@ -12,8 +12,7 @@ jobs:
     steps:
       
       - uses: actions/checkout@v2
-      - run: cr= ${{ secrets.CREDENTIALJS }}
-      - run: echo '$cr'  > ./src/firebase/credential.js
+      - run: echo '${{ secrets.CREDENTIALJS }}'  > ./src/firebase/credential.js
          
       - run: npm install && npm run build
       - uses: FirebaseExtended/action-hosting-deploy@v0
