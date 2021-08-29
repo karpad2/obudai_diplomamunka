@@ -45,11 +45,6 @@ const router = new VueRouter ({
 					component: Home,
 				},
 				{
-					path: 'ciao',
-					name: 'ciao',
-					component: Ciao,
-				},
-				{
 					path: 'rooms',
 					name: 'rooms',
 					component: Rooms,
@@ -110,15 +105,8 @@ const router = new VueRouter ({
 			]
 		},
 		{
-			path: '/room',
+			path: '/room/:id',
 			component: Room,
-			children: [
-				{
-					path: '/room/:id',
-					name: 'room-info',
-					component: Room,
-				}
-			]
 		},
 		{
 			path: '/program',

@@ -2,16 +2,19 @@
   "name": "escape_room",
   "version": "0.1.0",
   "private": true,
+  "main": "main.js",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "dev": "vue-cli-service serve & sleep 5 && electron ."
   },
   "dependencies": {
     "blockly": "^6.20210701.0",
     "bootstrap-icons": "^1.5.0",
     "bootstrap-icons-vue": "^0.7.0",
     "core-js": "^3.6.4",
+    "electron": "^13.2.3",
     "firebase": "^9.0.0-beta.7",
     "firebase-auth": "^0.1.2",
     "firebase-cli": "^1.2.0",
@@ -60,6 +63,7 @@
   "browserslist": [
     "> 1%",
     "last 2 versions",
-    "not dead"
+    "not dead",
+    "not ie <= 8"
   ]
 }

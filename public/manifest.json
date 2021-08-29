@@ -1,0 +1,16 @@
+{
+    "name": "Escape Room Management Software",
+    "short_name": "escape_room",
+    "icons": [
+      {
+        "src": "./favicon.png",
+        "sizes": "125x125",
+        "type": "image/png"
+      }
+    ],
+    "start_url": "./index.html",
+    "display": "standalone",
+    "background_color": "#000000",
+    "theme_color": "#4DBA87",
+    "gcm_sender_id": "BM6YzLuzrt6MiOzbKf7QFnEgxmGTofpknXrEyJR09BT8DDhSkI3KRmCGVIlSZIc6dMBj7gF6pYeN9UHmNfLRXtc"
+  }

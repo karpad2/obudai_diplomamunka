@@ -4,11 +4,12 @@ import user_default from "./user_default.json";
 const { initializeAppCheck, ReCaptchaV3Provider } = require("firebase/app-check");
 import {getDatabase,ref,set, onValue,onDisconnect,child} from 'firebase/database';
 import { initializeApp } from "firebase/app";
-import { enableIndexedDbPersistence } from "firebase/firestore"; 
+import { enableIndexedDbPersistence } from "firebase/firestore";
+import { getMessaging,getToken } from "firebase/messaging"; 
 
 import firebaseCredentials from './credentials';
 const app = initializeApp(firebaseCredentials.config);
-
+const messaging = getMessaging();
 
 
 const appCheck = initializeAppCheck(app, {
@@ -20,6 +21,23 @@ const appCheck = initializeAppCheck(app, {
   });
 // key for recatchpa3 
 //const appcheck=firebase.appCheck();
+getToken(messaging, { vapidKey: 'BM6YzLuzrt6MiOzbKf7QFnEgxmGTofpknXrEyJR09BT8DDhSkI3KRmCGVIlSZIc6dMBj7gF6pYeN9UHmNfLRXtc' }).then((currentToken) => {
+	if (currentToken) {
+	  // Send the token to your server and update the UI if necessary
+	  // ...
+	} else {
+	  // Show permission request UI
+	  console.log('No registration token available. Request permission to generate one.');
+	  // ...
+	}
+  }).catch((err) => {
+	console.log('An error occurred while retrieving token. ', err);
+	// ...
+  });
+
+// Request Permission of Notifications
+
+
 
 //appcheck.setTokenAutoRefreshEnabled();
 const FirebaseAuth = getAuth();
