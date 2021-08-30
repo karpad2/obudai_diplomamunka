@@ -1,4 +1,3 @@
-import firebase from 'firebase/app';
 import {getAuth} from 'firebase/auth';
 import user_default from "./user_default.json";
 const { initializeAppCheck, ReCaptchaV3Provider } = require("firebase/app-check");
@@ -41,7 +40,7 @@ getToken(messaging, { vapidKey: 'BM6YzLuzrt6MiOzbKf7QFnEgxmGTofpknXrEyJR09BT8DDh
 
 //appcheck.setTokenAutoRefreshEnabled();
 const FirebaseAuth = getAuth();
-const Firebase = firebase;
+//const Firebase = firebase;
 const FireDb = getDatabase();
 const presenceRef = ref(FireDb, "disconnectmessage");
 
@@ -58,69 +57,26 @@ onValue(connectedRef, (snap) => {
 });
 
 
-
+const userId = null;
 const auth = getAuth();
-const user= getAuth._currentUser;
+const user= getAuth.currentUser;
 
 //const user_data = child(dbRef, `users/${FirebaseAuth._currentUser.uid}`);
 let user_data ="";
 const change_Theme_Fb= (value)=>{
+	const userId = FirebaseAuth.currentUser.uid;
 	if( localStorage.getItem("userTheme")===null) localStorage.userTheme = "light";
 	if (localStorage.userTheme=="light")
 	{ localStorage.userTheme = "dark";
+	set(ref(FireDb,`users/${userId}/user_profile_color`),"dark");
 	}
 	else
 	{
 		localStorage.userTheme = "light";
+		set(ref(FireDb,`users/${userId}/user_profile_color`),"light");
 	}
 };
-/*const change_Theme_Fb= (value)=>
-{	let dbRef= ref(FireDb);
-	let user_data = child(dbRef, `users/${FirebaseAuth._currentUser.uid}`);
-	if (localStorage.userTheme=="light")
-	{ localStorage.userTheme = "dark";
-	user_data.update({"user_profile_color":"dark"});
-	}
-				else 
-				{
-					localStorage.userTheme = "light";
-					user_data.update({"user_profile_color":"light"});
-				}
-				console.log("Change theme");
-				//user_data.update({"":""});
-				
-       
-};*/
 
-/*
-const db = FireDb;
-let read = ref(FireDb,'users/'+FirebaseAuth.uid);
-onValue(read, (snapshot) => {
-	let data = snapshot.val();
-	
-	console.log("Im here")
-	console.log(data);
-  });
-if (read===null || read===undefined) 
-   {
-	
-	  
-    set(ref('users/'+FirebaseAuth.uid),user_default);      
-	localStorage.user=user_default;
-}
-   else 
-   {
-	localStorage.user=read;
-	console.log(read);
-   }
-*/
-	
-
-
-
-export {
-	Firebase
-}
 export {
 	FirebaseAuth
 }
@@ -132,4 +88,7 @@ export {
 }
 export {
 	user
+}
+export {
+	userId
 }

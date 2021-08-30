@@ -19,8 +19,12 @@ let app = null;
 Vue.config.productionTip = false;
 
 
-import {FirebaseAuth} from "@/firebase";
-FirebaseAuth.onAuthStateChanged(() => { // Mount app only after firebase auth initialized
+
+
+
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+const auth = getAuth();
+onAuthStateChanged(auth, (user) => {
 	if (!app) {
 		app = new Vue({
 			router,
@@ -28,3 +32,7 @@ FirebaseAuth.onAuthStateChanged(() => { // Mount app only after firebase auth in
 		}).$mount('#app');
 	}
 });
+/*FirebaseAuth.onAuthStateChanged(() => { // Mount app only after firebase auth initialized
+	
+});
+*/

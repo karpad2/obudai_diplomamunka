@@ -104,6 +104,18 @@ import logo from "@/assets/logo";
 		mounted() {
 			try{
 			//localStorage.user= FirebaseAuth._currentUser;
+			const userId = FirebaseAuth.currentUser.uid;
+
+			get(child(FireDb.once, `users/${userId}/user_profile_color`)).then((snapshot) => {
+        if (snapshot.exists()) {
+            //this.rooms=snapshot;
+			localStorage.userTheme=snapshot.val().user_profile_color;
+		}
+		else 
+		{
+			set(ref(FireDb,`users/${userId}/user_profile_color`),"light");
+		}});
+
 			console.log("Index");
 			}
 			catch (e)

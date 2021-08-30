@@ -2,10 +2,9 @@
 	<div id="app">
 		<router-view class="router-view"/>
 	<footer>
-    <cookie-law theme="dark-lime"></cookie-law>
-  </footer>
-	</div>
-	 
+    	<cookie-law theme="dark-lime"></cookie-law>
+  	</footer>
+	</div> 
 </template>
 
 <script>
@@ -13,7 +12,6 @@
 	export default {
 		name: 'App',
 		components: { CookieLaw },
-
 		mounted()
 		{
 		console.log("App Start");

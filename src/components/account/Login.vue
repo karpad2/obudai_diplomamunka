@@ -23,8 +23,8 @@
 </template>
 
 <script>
-import {signInWithEmailAndPassword,onAuthStateChanged,signInWithPopup,GoogleAuthProvider } from "firebase/auth";
-	import {Firebase,FirebaseAuth} from "@/firebase";
+import {signInWithEmailAndPassword,onAuthStateChanged,signInWithPopup,GoogleAuthProvider,getAuth } from "firebase/auth";
+	import {FirebaseAuth} from "@/firebase";
 	import glogo from "@/assets/glogo";
 
 	export default {
@@ -40,7 +40,8 @@ import {signInWithEmailAndPassword,onAuthStateChanged,signInWithPopup,GoogleAuth
 			}
 		},
 		mounted() {
-			onAuthStateChanged((user) => {
+			const auth = getAuth();
+			onAuthStateChanged(auth,(user) => {
 				if (user && this.email === "") this.$router.replace('/account').catch(() => {
 				localStorage.user=this.user;
 				}); // User already logged
