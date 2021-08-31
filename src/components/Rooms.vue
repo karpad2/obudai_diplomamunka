@@ -10,7 +10,7 @@
       </md-table-toolbar>
 
       <md-table-row>
-        <md-table-head md-numeric>ID</md-table-head>
+        <md-table-head md-numeric>#</md-table-head>
         <md-table-head>Room Name</md-table-head>
         <md-table-head>Edit Room</md-table-head>
         <md-table-head>Enter into Lobby</md-table-head>
@@ -20,9 +20,9 @@
       <md-table-row v-for="(row,index) in rows" :key="row.i">
         <md-table-cell md-numeric>{{index+1}}</md-table-cell>
         <md-table-cell>{{row.name}}</md-table-cell>
-        <md-table-cell><router-link :to="'edit/'+key">Edit</router-link></md-table-cell>
-        <md-table-cell>Lobby</md-table-cell>
-        <md-table-cell>Active devices:</md-table-cell>
+        <md-table-cell><router-link :to="{ path: '/Room/'+row.key}">Edit</router-link></md-table-cell>
+        <md-table-cell><router-link :to="{ path: '/Lobby/'+row.key}">Lobby</router-link></md-table-cell>
+        <md-table-cell>{{row.devices}}</md-table-cell>
     </md-table-row>
       
       </md-table>
@@ -106,8 +106,19 @@ export default {
             a.push(element.val());
             localStorage.setItem('rooms',JSON.stringify(a));
             this.room_keys.push(element.key);
-            
-            this.rows.push({i:i,name:element.val().room_name,key:element.key});
+            let dev="";
+            console.log(element.val().devices);
+
+            if(element.val().devices==undefined)
+            {
+              dev="Device was not found!";
+            }
+            else
+            {
+              dev=element.val().devices.length+" is active";
+
+            }
+            this.rows.push({i:i,name:element.val().room_name,key:element.key,devices:dev});
          });
       localStorage.setItem("rows",JSON.stringify(this.rows));
       this.rooms=JSON.parse(localStorage.getItem('rooms'));

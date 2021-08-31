@@ -2,7 +2,7 @@
 	<div id="app">
 		<router-view class="router-view"/>
 	<footer>
-    	<cookie-law theme="dark-lime"></cookie-law>
+    	<cookie-law id="cookie_button" theme="dark-lime"></cookie-law>
   	</footer>
 	</div> 
 </template>
@@ -22,7 +22,7 @@
 	}
 </script>
 
-<style lang="scss">
+<style lang="scss" scope>
 	@import "../src/style/variables.scss";
 	@import "~vue-material/dist/theme/engine";
 	@include md-register-theme("default", (
@@ -42,5 +42,13 @@
 		border: 0;
 		padding: 0;
 		height: 100vh;
+	}
+	.Cookie--mytheme .Cookie__button
+	{
+	background: $primary;
+	}
+	#cookie_button 	.Cookie__button
+	{
+	background: $primary;
 	}
 </style>

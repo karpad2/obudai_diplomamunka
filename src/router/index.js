@@ -10,16 +10,17 @@ import AccountInfo from "../components/account/AccountInfo";
 import AccountLogin from "../components/account/Login";
 
 import Home from "../components/Home";
-import Ciao from "../components/Ciao";
 import Info from "../components/Info";
 import Rooms from "../components/Rooms";
-import Room from "../components/Room/Room";
+import Room from "../components/Room";
 
 import Devices from "../components/Devices";
-import Device from "../components/Device/Device";
+import Device from "../components/Device";
 
 import Programs from "../components/Programs";
-import Program from "../components/Program/Program";
+import Program from "../components/Program";
+
+import Lobby from "../components/Lobby";
 
 
 
@@ -75,6 +76,22 @@ const router = new VueRouter ({
 					name: 'logout',
 					component: Info,
 				},
+				{
+					path: '/room/:id',
+					component: Room,
+				},
+				{
+					path: '/device/:id',
+					component: Device,
+				},
+				{
+					path: '/program/:id',
+					component: Program,
+				},
+				{
+					path: '/lobby/:id',
+					component: Lobby,
+				},
 			]
 		},
 		{
@@ -104,10 +121,7 @@ const router = new VueRouter ({
 				}
 			]
 		},
-		{
-			path: '/room/:id',
-			component: Room,
-		},
+		
 		{
 			path: '/program',
 			component: Program,
