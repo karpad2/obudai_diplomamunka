@@ -1,7 +1,11 @@
 <template>
 <div class="center">
 <h2>Devices</h2>
-
+<p>How to add device?</p>
+<p>There is two method.</p>
+<p>First you will need to add a device manually on the website.</p>
+<p>Our method is using a "config.json" and flash this file to microcontroller, this file will contains the data for reaching server,
+and network settings for it.</p>
 <div class="section">
     <md-table  md-card>
       <md-table-toolbar>
