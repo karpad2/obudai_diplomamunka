@@ -1,6 +1,6 @@
 <template>
 	<div class="center">
-		App made by <span class="karpad2">karpad2</span>
+		App made by <a href="https://karpad2.github.io" class="karpad2" target="_blank">karpad2</a>
 		<p><a href="https://karpad2.github.io" target="_blank">GitHub</a></p>
 	</div>
 </template>
@@ -23,5 +23,6 @@
 
 	.karpad2 {
 		font-weight: bold;
+		
 	}
 </style>

@@ -1,11 +1,11 @@
 import Vue from 'vue';
 import router from './router';
-
+import ForkeMeOnGithub from 'fork-me-on-github-vue';
 
 import VueMaterial from 'vue-material'; // TODO: import only needed component, not all
 import 'vue-material/dist/vue-material.min.css';
 Vue.use(VueMaterial);
-
+Vue.use(ForkeMeOnGithub);
 import VueNoty from 'vuejs-noty';
 Vue.use(VueNoty, {
 	timeout: 4000,

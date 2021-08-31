@@ -1,6 +1,7 @@
 <template>
 	<div id="app">
 		<router-view class="router-view"/>
+		<Ribbon v-bind="ribbonOptions"></Ribbon>
 	<footer>
     	<cookie-law id="cookie_button" theme="dark-lime"></cookie-law>
   	</footer>
@@ -17,6 +18,16 @@
 		console.log("App Start");
 		if( localStorage.getItem("userTheme")===null) localStorage.userTheme = "light";
 		console.log(localStorage.userTheme);
+		},
+		data()
+		{
+			return{
+		ribbonOptions: {
+        	text: 'Fork me on GitHub',
+        	linkUrl: "https://github.com/karpad2/obudai_diplomamunka",
+        	fixed: true
+      }
+			}
 		}
 		
 	}
