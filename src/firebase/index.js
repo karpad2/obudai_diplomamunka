@@ -4,12 +4,18 @@ const { initializeAppCheck, ReCaptchaV3Provider } = require("firebase/app-check"
 import {getDatabase,ref,set, onValue,onDisconnect,child} from 'firebase/database';
 import { initializeApp } from "firebase/app";
 import { enableIndexedDbPersistence } from "firebase/firestore";
-import { getMessaging,getToken } from "firebase/messaging"; 
+import { getMessaging,getToken } from "firebase/messaging";
+import { getPerformance } from "firebase/performance";
+import { getAnalytics, logEvent } from "firebase/analytics";
+
 
 import firebaseCredentials from './credentials';
 const app = initializeApp(firebaseCredentials.config);
 const messaging = getMessaging();
+const perf = getPerformance(app);
 
+const analytics = getAnalytics();
+logEvent(analytics, 'notification_received');
 
 const appCheck = initializeAppCheck(app, {
 	provider: new ReCaptchaV3Provider('6LelvRIcAAAAAEKE72hWevy4k3efJ7PJFrLdo5md'),

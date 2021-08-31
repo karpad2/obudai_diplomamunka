@@ -2,6 +2,30 @@
 <div class="center">
 <h2>Devices</h2>
 
+<div class="section">
+    <md-table  md-card>
+      <md-table-toolbar>
+        <h1 class="md-title">Devices</h1>
+      </md-table-toolbar>
+      <md-table-row>
+        <md-table-head md-numeric>#</md-table-head>
+        <md-table-head>Device Name:</md-table-head>
+        <md-table-head>Device Activity:</md-table-head>
+        <md-table-head>Device is Active</md-table-head>
+        <md-table-head>Delete Device:</md-table-head>
+      </md-table-row>
+      
+      <md-table-row v-for="(row,index) in devices" :key="row.i">
+        <md-table-cell md-numeric>{{index+1}}</md-table-cell>
+        <md-table-cell>{{row.name}}</md-table-cell>
+        <md-table-cell>{{row.mode}}</md-table-cell>
+        <md-table-cell><activedevice :lastonline="row.lastonline"/></md-table-cell>
+        <md-table-cell><md-button class="md-raised md-primary" @click="showDDialog = true">Delete Device <BIconPlus /></md-button></md-table-cell>
+    </md-table-row>
+      
+      </md-table>
+      <md-button class="md-raised md-primary" @click="showDDialog = true">Add Device <BIconPlus/></md-button>
+    </div>
 
 <h2>Searching for Devices</h2>
 <md-list v-if="!found_devices || !found_devices.length">
@@ -39,17 +63,47 @@
 </div>
 </template>
 <script>
+
+import {FireDb,FirebaseAuth,userId} from "@/firebase";
+import {ref, set ,onValue,get, child,push,runTransaction } from "firebase/database";
+import {BIconCheck2,BIconPlus} from 'bootstrap-icons-vue'
 export default {
+    
+
     name: 'Devices',
     data: () => ({
       showDialog: false,
       scan : navigator.bluetooth.requestLEScan({"acceptAllAdvertisements":true}),
-      found_devices:[]
+      found_devices:[],
+      devices:[],
+      showDDialog:false
+     
     }),
+    components:{
+    BIconPlus
+    },
     mounted()
     {
-        navigator.bluetooth.addEventListener('advertisementreceived',this.findADevice(event));
-
+        localStorage.setItem('devices',JSON.stringify([]));
+        const userId = FirebaseAuth.currentUser.uid;
+        onValue(ref(FireDb, `/users/${userId}/rooms`),(sn)=>
+     {
+       if(sn.exists())
+       {
+         sn.forEach((element,i) => {
+            let a=JSON.parse(localStorage.getItem('devices'));
+            if(element.val().devices!=null)
+            {   a.push(element.val().devices);
+                localStorage.setItem('devices',JSON.stringify(a));
+            }
+            //a.push()
+         });
+     }});
+     this.devices=localStorage.getItem('devices');
+        /*
+            még nincs implementálva a böngészőkben OwO
+            navigator.bluetooth.addEventListener('advertisementreceived',this.findADevice(event));
+        */
     },
     methods:
     {
@@ -68,12 +122,8 @@ export default {
             console.log('Stopped.  scan.active = ' + this.scan.active);
             },
         search_devices()
-        {   
-            
-            setTimeout(this.stopScan, 10000);
-             
-  
-        }
+        {setTimeout(this.stopScan, 10000);},
+
 
 
         }

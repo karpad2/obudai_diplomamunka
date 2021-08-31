@@ -5,7 +5,7 @@
     <div class="section">
      <md-table  md-card>
       <md-table-toolbar>
-        <h1 class="md-title">Show Previous Runs</h1>
+        <h1 class="md-title">Previous Runs:</h1>
       </md-table-toolbar>
 
       <md-table-row>
@@ -44,7 +44,7 @@
         <md-table-cell md-numeric>{{index+1}}</md-table-cell>
         <md-table-cell>{{row.name}}</md-table-cell>
         <md-table-cell>{{row.mode}}</md-table-cell>
-        <md-table-cell><activedevice :lastonline="row.lonline"/></md-table-cell>
+        <md-table-cell><activedevice :lastonline="row.lastonline"/></md-table-cell>
         <md-table-cell><md-button class="md-raised md-primary" @click="showDDialog = true">Delete Device <BIconPlus/></md-button></md-table-cell>
     </md-table-row>
       
@@ -67,13 +67,38 @@
       <md-table-row v-for="(row,index) in programs" :key="row.i">
         <md-table-cell md-numeric>{{index+1}}</md-table-cell>
         <md-table-cell>{{row.name}}</md-table-cell>
-        <md-table-cell><router-link :to="{ path: '/Room/'+row.key}">Edit</router-link></md-table-cell>
+        <md-table-cell><md-radio v-model="a_program" :value="row.key" class="primary">Active</md-radio></md-table-cell>
         <md-table-cell><router-link :to="{ path: '/Lobby/'+row.key}">Lobby</router-link></md-table-cell>
         <md-table-cell>{{row.devices}}</md-table-cell>
     </md-table-row>
       
       </md-table>
       <md-button class="md-raised md-primary" @click="showDialog = true">Add program</md-button>
+      </div>
+
+      <div class="section">
+  <md-table  md-card>
+      <md-table-toolbar>
+        <h1 class="md-title">Cameras:</h1>
+      </md-table-toolbar>
+
+      <md-table-row>
+        <md-table-head md-numeric>#</md-table-head>
+        <md-table-head>Camera Name:</md-table-head>
+        <md-table-head>Camera is Active?</md-table-head>
+        <md-table-head>Modify Camera:</md-table-head>
+      </md-table-row>
+      
+      <md-table-row v-for="(row,index) in cameras" :key="row.i">
+        <md-table-cell md-numeric>{{index+1}}</md-table-cell>
+        <md-table-cell>{{row.name}}</md-table-cell>
+        <md-table-cell></md-table-cell>
+        <md-table-cell></md-table-cell>
+        <md-table-cell></md-table-cell>
+    </md-table-row>
+      
+      </md-table>
+      <md-button class="md-raised md-primary" @click="showDialog = true">Add Camera</md-button>
       </div>    
 <md-dialog :md-active.sync="showPDialog">
 	<md-dialog-title>Add Program</md-dialog-title>
@@ -106,7 +131,14 @@
       md-confirm-text="Done"
       :md-confirm="add_program" />
 
-
+      <md-dialog-prompt
+      :md-active.sync="showCDialog"
+      v-model="camera_name"
+      md-title="Add Camera"
+      md-input-maxlength="30"
+      md-input-placeholder="Camera name ..."
+      md-confirm-text="Done"
+      :md-confirm="add_camera" />
 
 </div>
 </template>
@@ -128,8 +160,12 @@ export default {
             active_program:"",
             showPDialog:false,
             showDDialog:false,
+            showCDialog:false,
             room_name:"",
-            program_name:""
+            program_name:"",
+            a_program:"",
+            camera_name:"",
+            cameras:[]
 
         }
     },
@@ -137,11 +173,11 @@ export default {
             {BIconPlus,
             Activedevice,
             ElapsedTime
-                        
             },
 mounted()
 {
-   const room_id=this.$route.params.id;
+   const room_id=this.$route.params.rid;
+   console.log(this.$route.params);
    console.log(room_id);
    const userId = FirebaseAuth.currentUser.uid;
      onValue(ref(FireDb, `/users/${userId}/rooms/${room_id}`),(sn)=>
@@ -153,6 +189,7 @@ mounted()
        this.programs=sn.val().programs;
        this.activeprogram=sn.val().activeprogram;
        this.rans=sn.val().rans;
+       this.cameras=sn.val().cameras;
      });
 },
 methods:
@@ -160,19 +197,19 @@ methods:
     add_program()
     {
      
-      if(this.room_name=="") return;
-      console.log("Add Room");
-      const room_id=this.$route.params.id;
+      if(this.program_name=="") return;
+      console.log("Add program");
+      const room_id=this.$route.params.rid;
       const userId = FirebaseAuth.currentUser.uid;
         
     const postData =  {
                                 "program_name":this.program_name,
                                 "program_xml":"",
                                 "program_javascript":"",
-                                "program_active":true};
+                      };
                         try
                         {
-      let frooms= ref(FireDb, `/users/${userId}/rooms/${room_id}`);
+      let frooms= ref(FireDb, `/users/${userId}/rooms/${room_id}/programs`);
       let newroomref = push(frooms);
       set(newroomref,postData);
       }
@@ -181,6 +218,56 @@ methods:
         console.error(E);
       }
 
+      this.program_name="";
+    },
+    add_camera()
+    {
+     
+      if(this.camera_name=="") return;
+      console.log("Add Camera");
+      const room_id=this.$route.params.rid;
+      const userId = FirebaseAuth.currentUser.uid;
+        
+    const postData =  {
+                                "camera_name":this.camera_name,
+                                "camera_url":""};
+                        try
+                        {
+      let frooms= ref(FireDb, `/users/${userId}/rooms/${room_id}/cameras/`);
+      let newroomref = push(frooms);
+      set(newroomref,postData);
+      }
+      catch (E)
+      {
+        console.error(E);
+      }
+      this.camera_name="";
+
+    },
+    add_device()
+    {
+     
+      if(this.room_name=="") return;
+      console.log("Add Device");
+      const room_id=this.$route.params.rid;
+      const userId = FirebaseAuth.currentUser.uid;
+        
+    const postData =  {
+                                "device_name":this.device_name,
+                                "mode":"",
+                                "status":""
+                      };
+                        try
+                        {
+      let frooms= ref(FireDb, `/users/${userId}/rooms/${room_id}/devices/`);
+      let newroomref = push(frooms);
+      set(newroomref,postData);
+      }
+      catch (E)
+      {
+        console.error(E);
+      }
+      this.room_name="";
 
     }
 }

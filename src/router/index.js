@@ -21,6 +21,8 @@ import Programs from "../components/Programs";
 import Program from "../components/Program";
 
 import Lobby from "../components/lobby";
+import Run from "../components/run";
+import Camera from "../components/Camera";
 
 
 
@@ -77,20 +79,28 @@ const router = new VueRouter ({
 					component: Info,
 				},
 				{
-					path: '/room/:id',
+					path: '/room/:rid',
 					component: Room,
 				},
 				{
-					path: '/device/:id',
+					path: '/room/:rid/device/:did',
 					component: Device,
 				},
 				{
-					path: '/program/:id',
+					path: '/room/:rid/program/:pid',
 					component: Program,
 				},
 				{
-					path: '/lobby/:id',
+					path: '/room/:rid/lobby',
 					component: Lobby,
+				},
+				{
+					path: '/room/:rid/run/:id',
+					component: Run
+				},
+				{
+					path: '/room/:rid/camera/:cid',
+					component: Camera
 				},
 			]
 		},
@@ -109,32 +119,7 @@ const router = new VueRouter ({
 					component: AccountLogin,
 				}
 			]
-		},
-		{
-			path: '/device',
-			component: Device,
-			children: [
-				{
-					path: '/device/:id',
-					name: 'device-info',
-					component: Device,
-				}
-			]
-		},
-		
-		{
-			path: '/program',
-			component: Program,
-			children: [
-				{
-					path: '',
-					name: 'program-info',
-					component: Program,
-				},
-				
-			]
 		}
-
 
 	]
 });

@@ -20,8 +20,8 @@
       <md-table-row v-for="(row,index) in rows" :key="row.i">
         <md-table-cell md-numeric>{{index+1}}</md-table-cell>
         <md-table-cell>{{row.name}}</md-table-cell>
-        <md-table-cell><router-link :to="{ path: '/Room/'+row.key}">Edit</router-link></md-table-cell>
-        <md-table-cell><router-link :to="{ path: '/Lobby/'+row.key}">Lobby</router-link></md-table-cell>
+        <md-table-cell><router-link :to="{ path: '/room/'+row.key}">Edit</router-link></md-table-cell>
+        <md-table-cell><router-link :to="{ path: '/room/'+row.key+'/lobby/'}">Lobby</router-link></md-table-cell>
         <md-table-cell>{{row.devices}}</md-table-cell>
     </md-table-row>
       
@@ -34,7 +34,7 @@
       md-input-maxlength="30"
       md-input-placeholder="Room name ..."
       md-confirm-text="Done"
-      :md-confirm="add_room" />
+      :md-confirm="add_room()" />
     <md-button class="md-raised md-primary" @click="showDialog = true">Add room</md-button>
 </div>
 </template>
@@ -64,7 +64,9 @@ export default {
    methods:{
     add_room()
     {
-      if(this.room_name=="") return;
+      console.log("Add Room");
+      console.log(this.room_name);
+      if(this.room_name==="") return;
       console.log("Add Room");
         
     const postData = {
@@ -89,7 +91,8 @@ export default {
         console.error(E);
       }
       //this.showDialog=false;
-       this.get_rooms(); 
+       this.get_rooms();
+       this.room_name=""; 
     },
      get_rooms(){
     this.room_keys=[];

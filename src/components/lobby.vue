@@ -1,5 +1,6 @@
 <template>
    <div>
+       <h2>Lobby</h2>
    </div>
 </template>
 
@@ -7,6 +8,11 @@
    
 
     export default {
+        mounted()
+        {
+           
+
+        }
        
     }
 </script>

@@ -1,22 +1,15 @@
 <template>
-    <app-layout>
-        <template>
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                Run
-            </h2>
-        </template>
-
-        <div class="py-12">
-            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg col-span-full md:col-span-4">
-
+    <div class="center">
+            <h2>Run</h2>
+        <div class="section">
+          
                     <h3>Status:{{status}}/{{room_max}}</h3>
                     <h3>Timer:<ElapsedTime :firstdate="run[0].start_time" :lastdate="_NOW" /></h3>
                     <div>
-                    <LinkButton :href="'/run-stop/'+room[0].id+'/stop'">Stop</LinkButton>
+                    <md-button :href="'/run-stop/'+room[0].id+'/stop'">Stop</md-button >
                     </div>
                     <div>
-                    <intertia-link></intertia-link>
+                    
                     </div>
                     <div class="bg-indigo-300 ...">
                     <img class="object-contain h-48 w-full" src="alma.png">
@@ -27,25 +20,20 @@
                         <p>{{log}}</p>
                      </div>
                     <input type="text" v-model="console_in"/>
-                     <jet-button class="ml-4" v-on:click="add_to_console">
-                    Send
-                    </jet-button>
-                        </div>
-
+                     <md-button v-on:click="add_to_console">Send</md-button>
                 </div>
-            </div>
+
+          
         </div>
-    </app-layout>
+  </div>
 </template>
 
 <script>
-    import AppLayout from '@/Layouts/AppLayout'
+    
     //import Welcome from '@/Jetstream/Welcome'
     import Blockly, { isNumber } from 'blockly';
-    import LinkButton from '@/Jetstream/LinkButton'
-    import ElapsedTime from '@/Jetstream/ElapsedTime'
-    import JetButton from '@/Jetstream/Button'
-    import axios from 'axios';
+   
+    import ElapsedTime from '@/components/ElapsedTime'
     import {Interpreter} from 'js-interpreter-npm'
 
     import * as En from 'blockly/msg/en';
@@ -64,33 +52,8 @@
         }
         },
         components: {
-            AppLayout,
-            Blockly,
-            JetButton,
-            LinkButton,
+            
             ElapsedTime
-        },
-        props: {
-            run:{
-                type:Array,
-                required: true
-            },
-            cameras:{
-                type:Array,
-                required: true
-            },
-            program:{
-                type:Array,
-                required: true
-            },
-            cameras:{
-                type:Array,
-                required: true
-            },
-             room:{
-                type:Array,
-                required: true
-            },
         },
            methods: {
                syntaxerror()
@@ -101,6 +64,10 @@
                {
                 this.console_log.push(Date.now()+" "+text);
                },
+                send_data(id,mode,status)
+            {
+                console.log(id);
+            },
             add_to_console() {
             let text=this.console_in;
             console.log(text);
@@ -117,13 +84,10 @@
             if(!isNumber(device_id)) { this.syntaxerror(); return 0;}
             if(texts[2]=="ON" || texts[2]=="OFF")
             {
-                send_data(device_id,texts[1],texts[2]=="ON"?"1":"0")
+                this.send_data(device_id,texts[1],texts[2]=="ON"?"1":"0");
             }
             },
-            send_data(id,mode,status)
-            {
-            axios.get('/api/device/js-api/'+id+'/'+mode+'/'+status);
-            },
+           
    executeBlockCode() {
     //let code = Blockly.JavaScript.workspaceToCode(workspace);
     let code = this.program[0].javascript_block;
