@@ -20,7 +20,7 @@ import Device from "../components/Device";
 import Programs from "../components/Programs";
 import Program from "../components/Program";
 
-import Lobby from "../components/Lobby";
+import Lobby from "../components/lobby";
 
 
 
