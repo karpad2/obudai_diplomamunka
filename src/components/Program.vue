@@ -11,9 +11,9 @@
 </div>
 </template>
 <script>
-import * as Blockly from "blockly";
+import {Blockly} from "blockly";
 import * as En from "blockly/msg/en";
-import BlocklyJS from "blockly/javascript";
+
 
 export default {
     name: 'Programs',
@@ -37,7 +37,7 @@ export default {
     },
     auto_compile(workspace) {
       console.log("im here");
-      this.program[0].javascript_block = BlocklyJS.workspaceToCode(workspace);
+      this.program[0].javascript_block = Blockly.Javascript.workspaceToCode(workspace);
       let xml = Blockly.Xml.workspaceToDom(workspace);
       console.log(xml);
       if (this.program[0].javascript_block != "") {
@@ -70,6 +70,8 @@ export default {
     },
   },
   mounted() {
+
+
     Blockly.setLocale(En);
     let blocklyDefault = document.getElementById("blocklyDefault");
     let Workspace = Blockly.inject("blocklyDiv", {

@@ -21,7 +21,6 @@ import Programs from "../components/Programs";
 import Program from "../components/Program";
 
 import Lobby from "../components/lobby";
-import Run from "../components/run";
 import Camera from "../components/Camera";
 
 
@@ -94,10 +93,7 @@ const router = new VueRouter ({
 					path: '/room/:rid/lobby',
 					component: Lobby,
 				},
-				{
-					path: '/room/:rid/run/:id',
-					component: Run
-				},
+				
 				{
 					path: '/room/:rid/camera/:cid',
 					component: Camera

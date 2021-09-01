@@ -1,8 +1,10 @@
 <template>
+<div>
 <span v-if="active" > Device is online </span>
 <span v-else> Device was online {{time_string}}</span>
-  <BIconCheck2  class="mr-2 h-5 w-5 text-green-400" v-if="active" />
-   <BIconExclamationTriangle class="mr-2 h-5 w-5 text-red-400" v-else />
+  <BIconCheck2   v-if="active" />
+   <BIconExclamationTriangle v-else />
+</div>
 </template>
 
 <script>

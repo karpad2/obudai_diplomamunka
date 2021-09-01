@@ -11,8 +11,8 @@
       md-input-maxlength="30"
       md-input-placeholder="Team name ..."
       md-confirm-text="Start"
-      :md-confirm="start()"
-      :md-cancel="cancel()" />
+      @md-confirm="start"
+      @md-cancel="stop" />
    </div>
    
 </template>
