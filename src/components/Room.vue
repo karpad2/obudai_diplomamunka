@@ -99,6 +99,8 @@
       
       </md-table>
       <md-button class="md-raised md-primary" @click="showDialog = true">Add Camera</md-button>
+
+      <md-button class="md-raised md-secondary" @click="showDeleteDialog = true">Delete Room</md-button>
       </div>    
 
 <md-dialog-prompt
@@ -128,13 +130,24 @@
       md-confirm-text="Done"
       @md-confirm="add_camera()" />
 
+      <md-dialog-confirm
+      :md-active.sync="showDeleteDialog"
+      md-title="Delete this room?"
+      md-content="Entire project will be empty, your device needed to reconnect to the base, your camera settings will be forgotten, and all of your programs in this room will be deleted."
+      md-confirm-text="Agree"
+      md-cancel-text="Disagree"
+      @md-cancel="onCancel()"
+      @md-confirm="delete_room()" />
+
 </div>
 </template>
 <script>
-import {FireDb,FirebaseAuth,userId} from "@/firebase";
+
 import Activedevice from "@/components/parts/Activedevice";
 import ElapsedTime from "@/components/ElapsedTime";
+import router from "@/router";
 import {BIconCheck2,BIconPlus} from 'bootstrap-icons-vue'
+import {FireDb,FirebaseAuth,userId} from "@/firebase";
 import {ref, set ,onValue,get, child,push,runTransaction } from "firebase/database";
 
 
@@ -149,6 +162,7 @@ export default {
             showPDialog:false,
             showDDialog:false,
             showCDialog:false,
+            showDeleteDialog:false,
             room_name:"",
             program_name:"",
             device_name:"",
@@ -190,8 +204,7 @@ methods:
      //console.log(this.devices);
   },
 
-  get_data_fromdb(k)
-  {
+  get_data_fromdb(k){
     const room_id=this.$route.params.rid;
     const userId = FirebaseAuth.currentUser.uid;
     let b=[];
@@ -285,7 +298,23 @@ methods:
       }
       this.device_name="";
       this.get_data();
-    }
+    },
+    delete_room()
+{
+console.log("Delete process");
+const room_id=this.$route.params.rid;
+    const userId = FirebaseAuth.currentUser.uid;
+    let b=[];
+    let _ref= ref(FireDb, `/users/${userId}/rooms/${room_id}`);
+    set(_ref,null);
+     router.go(-1); 
+
+},
+onCancel () {
+        //this.value = 'Disagreed'
+      }
+},
+
 }
-}
+
 </script>

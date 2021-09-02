@@ -14,21 +14,21 @@ and network settings for it.</p>
       <md-table-row>
         <md-table-head md-numeric>#</md-table-head>
         <md-table-head>Device Name:</md-table-head>
-        <md-table-head>Device Activity:</md-table-head>
-        <md-table-head>Device is Active</md-table-head>
-        <md-table-head>Delete Device:</md-table-head>
+        <md-table-head>Device Mode:</md-table-head>
+        <md-table-head>Device is Online?</md-table-head>
+        <md-table-head>Devices Edit:</md-table-head>
       </md-table-row>
       
-      <md-table-row v-for="(row,index) in devices" :key="row.i">
+      <md-table-row v-for="(row,index) in devices" :key="index">
         <md-table-cell md-numeric>{{index+1}}</md-table-cell>
         <md-table-cell>{{row.name}}</md-table-cell>
         <md-table-cell>{{row.mode}}</md-table-cell>
         <md-table-cell><activedevice :lastonline="row.lastonline"/></md-table-cell>
-        <md-table-cell><md-button class="md-raised md-primary" @click="showDDialog = true">Delete Device <BIconPlus /></md-button></md-table-cell>
+        <md-table-cell><md-button class="md-raised md-primary" @click="showDDialog = true">Edit Device </md-button></md-table-cell>
     </md-table-row>
       
       </md-table>
-      <md-button class="md-raised md-primary" @click="showDDialog = true">Add Device <BIconPlus/></md-button>
+      <md-button class="md-raised md-primary" @click="showDDialog = true">Add Device </md-button>
     </div>
 
 <h2>Searching for Devices</h2>
@@ -51,17 +51,6 @@ and network settings for it.</p>
       </md-list-item>
 </md-list>
 
-<md-dialog :md-active.sync="showDialog">
-	<md-dialog-title>Add Program</md-dialog-title>
-	<md-text>
-		
-		
-	</md-text>
-	<md-dialog-actions>
-	<md-button class="md-primary" @click="showDialog = false">Close</md-button>
-    <md-button class="md-primary md-raised" @click="showDialog = false">Save</md-button>
-	</md-dialog-actions>
-</md-dialog>
 
  <md-button class="md-raised md-primary">Add device</md-button>
 </div>
@@ -84,33 +73,19 @@ export default {
      
     }),
     components:{
-    BIconPlus
+    
     },
     mounted()
-    {
-        localStorage.setItem('devices',JSON.stringify([]));
-        const userId = FirebaseAuth.currentUser.uid;
-        onValue(ref(FireDb, `/users/${userId}/rooms`),(sn)=>
-     {
-       if(sn.exists())
-       {
-         sn.forEach((element,i) => {
-            let a=JSON.parse(localStorage.getItem('devices'));
-            if(element.val().devices!=null)
-            {   a.push(element.val().devices);
-                localStorage.setItem('devices',JSON.stringify(a));
-            }
-            //a.push()
-         });
-     }});
-     this.devices=localStorage.getItem('devices');
+    {        
+       const userId = FirebaseAuth.currentUser.uid;
+       this.get_data_fromdb();
         /*
             még nincs implementálva a böngészőkben OwO
             navigator.bluetooth.addEventListener('advertisementreceived',this.findADevice(event));
         */
     },
     methods:
-    {
+    {/*
         findADevice(event)
         {
             this.found_devices.push(
@@ -126,11 +101,47 @@ export default {
             console.log('Stopped.  scan.active = ' + this.scan.active);
             },
         search_devices()
-        {setTimeout(this.stopScan, 10000);},
+        {setTimeout(this.stopScan, 10000);},*/
 
+get_data_fromdb(){
+          this.devices=[];
+          let k="devices";
+          let room_id="";
+          //let l=[];
 
+          const userId = FirebaseAuth.currentUser.uid;
+          let b=[];
+      onValue(ref(FireDb, `/users/${userId}/rooms`),(sn_out)=>{
+            if(sn_out.exists()){
+              sn_out.forEach((l)=>{
+              room_id=l.key;
+              //console.log(room_id);
+             // console.log(`/users/${userId}/rooms/${room_id}/${k}`);
+             onValue(ref(FireDb, `/users/${userId}/rooms/${room_id}/${k}`),(sna)=>{
+                 if(sna.exists())
+                    {
+                    //console.log(sna);
+                    sna.forEach((lb)=>{
+                      b.push(lb.val());
+                     
+                    });
+                    }
+                  });
+              });
 
-        }
+            }
+          });
+
+           //console.log(b);
+          switch(k)
+          {
+            case "devices": this.devices=b; break;
+          }
+          console.log(this.devices); 
+  },
+
+        },
+        
     
   }
 

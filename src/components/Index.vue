@@ -9,6 +9,12 @@
 					<logo class="bar-logo" />
 					<span class="md-title">Escape Room Management Software</span>
 				</router-link>
+				<div class="md-toolbar-section-end">
+        			
+					<md-avatar @click="showSidepanel = true">
+						<img :src="profile_picture_url" alt="Avatar">
+					</md-avatar>
+     		 	</div>
 				</md-app-toolbar>
 
 			<md-app-drawer :md-active.sync="menuVisible" md-persistent="mini">
@@ -64,6 +70,9 @@ import logo from "@/assets/logo";
 		},
 		name: 'Index',
 		data: () => ({
+			profile_picture_url:"",
+			profile_name:"",
+			showSidepanel:false,
 			menuVisible: false,
 			userTheme: "default",
 			menuTab: [
@@ -108,10 +117,13 @@ import logo from "@/assets/logo";
 			]
 		}),
 		mounted() {
+
 			try{
 			//localStorage.user= FirebaseAuth._currentUser;
 			const userId = FirebaseAuth.currentUser.uid;
-
+			this.profile_picture_url=FirebaseAuth.currentUser.photoURL;
+			this.profile_name=FirebaseAuth.displayName;
+			//console.log(FirebaseAuth.currentUser);
 			get(child(FireDb.once, `users/${userId}/user_profile_color`)).then((snapshot) => {
         if (snapshot.exists()) {
             //this.rooms=snapshot;

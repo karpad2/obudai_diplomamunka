@@ -6,7 +6,7 @@ import {IconsPlugin } from 'bootstrap-vue';
 import VueMaterial from 'vue-material'; // TODO: import only needed component, not all
 import 'vue-material/dist/vue-material.min.css';
 Vue.use(VueMaterial);
-Vue.use(ForkeMeOnGithub);
+//Vue.use(ForkeMeOnGithub);
 Vue.use(IconsPlugin);
 import VueNoty from 'vuejs-noty';
 Vue.use(VueNoty, {

@@ -1,7 +1,7 @@
 <template>
 	<div id="app">
 		<router-view class="router-view"/>
-		<Ribbon v-bind="ribbonOptions"></Ribbon>
+		
 	<footer>
     	<cookie-law id="cookie_button" theme="dark-lime"></cookie-law>
   	</footer>
@@ -22,11 +22,12 @@
 		data()
 		{
 			return{
+			/*	<Ribbon v-bind="ribbonOptions"></Ribbon>
 		ribbonOptions: {
         	text: 'Fork me on GitHub',
         	linkUrl: "https://github.com/karpad2/obudai_diplomamunka",
         	fixed: true
-      }
+      }*/
 			}
 		}
 		
