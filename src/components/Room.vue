@@ -45,7 +45,7 @@
         <md-table-cell>{{row.device_name}}</md-table-cell>
         <md-table-cell>{{row.mode}}</md-table-cell>
         <md-table-cell><activedevice :lastonline="row.lastonline"/></md-table-cell>
-        <md-table-cell><md-button class="md-raised md-primary" @click="showDDialog = true">Delete Device <BIconPlus/></md-button></md-table-cell>
+        <md-table-cell><md-button class="md-raised md-primary" @click="showDDialog = true">Settings <BIconPlus/></md-button></md-table-cell>
     </md-table-row>
       
       </md-table>
@@ -100,17 +100,6 @@
       </md-table>
       <md-button class="md-raised md-primary" @click="showDialog = true">Add Camera</md-button>
       </div>    
-<md-dialog :md-active.sync="showPDialog">
-	<md-dialog-title>Add Program</md-dialog-title>
-	<md-text>	
-	</md-text>
-	<md-dialog-actions>
-	<md-button class="md-primary" @click="showPDialog = false">Close</md-button>
-    <md-button class="md-primary md-raised" @click="showPDialog = false">Save</md-button>
-	</md-dialog-actions>
-</md-dialog>
-
-
 
 <md-dialog-prompt
       :md-active.sync="showPDialog"
@@ -170,10 +159,11 @@ export default {
         }
     },
     components:
-            {BIconPlus,
+        {
+            BIconPlus,
             Activedevice,
             ElapsedTime
-            },
+        },
 mounted()
 {
    this.get_data();
@@ -222,16 +212,15 @@ methods:
   },
     add_program()
     {
-     
-      if(this.program_name=="") return;
+     if(this.program_name=="") return;
       console.log("Add program");
       const room_id=this.$route.params.rid;
       const userId = FirebaseAuth.currentUser.uid;
         
     const postData =  {
-                                "program_name":this.program_name,
-                                "program_xml":"",
-                                "program_javascript":"",
+                        "program_name":this.program_name,
+                        "program_xml":"",
+                        "program_javascript":"",
                       };
                         try
                         {
@@ -255,8 +244,9 @@ methods:
       const userId = FirebaseAuth.currentUser.uid;
         
     const postData =  {
-                                "camera_name":this.camera_name,
-                                "camera_url":""};
+          "camera_name":this.camera_name,
+          "camera_url":""
+          };
                         try
                         {
       let frooms= ref(FireDb, `/users/${userId}/rooms/${room_id}/cameras/`);
@@ -280,11 +270,11 @@ methods:
         
     const postData =  {
                                 "device_name":this.device_name,
-                                "mode":"",
-                                "status":""
+                                "mode":"relay",
+                                "status":"0"
                       };
-                        try
-                        {
+   try
+      {
       let frooms= ref(FireDb, `/users/${userId}/rooms/${room_id}/devices/`);
       let newroomref = push(frooms);
       set(newroomref,postData);

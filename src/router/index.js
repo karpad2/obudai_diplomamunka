@@ -22,6 +22,7 @@ import Program from "../components/Program";
 
 import Lobby from "../components/lobby";
 import Camera from "../components/Camera";
+import Cameras from "../components/Cameras";
 
 
 
@@ -61,7 +62,12 @@ const router = new VueRouter ({
 					name: 'programs',
 					component: Programs,
 				},
-				
+				//
+				{
+					path: 'cameras',
+					name: 'cameras',
+					component: Cameras,
+				},
 				{
 					path: 'room',
 					name: 'room',

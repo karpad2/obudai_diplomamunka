@@ -98,6 +98,12 @@ import logo from "@/assets/logo";
 					link: '/programs',
 					auth: true,
 				},
+				{
+					icon: 'videocam',
+					title: 'Cameras',
+					link: '/cameras',
+					auth: true,
+				},
 			
 			]
 		}),

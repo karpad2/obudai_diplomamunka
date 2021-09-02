@@ -7,7 +7,7 @@
        <md-dialog-prompt
       :md-active.sync="showDialog"
       v-model="team_name"
-      md-title="Starting Run"
+      md-title="Enter team name:"
       md-input-maxlength="30"
       md-input-placeholder="Team name ..."
       md-confirm-text="Start"
