@@ -1,54 +1,87 @@
 <template>
 <div class="center">
-    <h2>Device {{device_name}}</h2>
+    <h2>Device ~ {{device.device_name}}</h2>
 
-            <div class="section">
+     <div class="section">
 
      <md-field>
       <label>Device name:</label>
-      <md-input v-model="device_name"></md-input>
+      <md-input v-model="device.device_name"></md-input>
     </md-field>
-               <p><Deviceactivity :lastonline="device.last_online" /></p> 
-            </div>
+    <p><Deviceactivity :lastonline="device.last_online" /></p> 
 
+    
+    <div class="md-layout md-gutter">
+      <div class="md-layout-item">
+        <md-field>
+          <label for="operation">Device Mode</label>
+          <md-select id="operation" v-model="select" @change="achange" >
+            <md-option v-for="mode in devm" :key="mode.type" :value="mode.type">{{mode.name}}</md-option>
+          </md-select>
+        </md-field>
+       <DeviceInput :mode="select" :v-model="device.status" />
 
+      </div>
 
+    </div>
+    <div class="section">
+<md-button class="md-raised md-secondary" @click="showDeleteDialog = true">Delete Room</md-button>
+</div>
+<md-dialog-confirm
+      :md-active.sync="showDeleteDialog"
+      md-title="Delete this device?"
+      md-content="Your device settings will be deleted and cant be recovered."
+      md-confirm-text="Agree"
+      md-cancel-text="Disagree"
+      @md-cancel="onCancel()"
+      @md-confirm="delete_device()" />
+
+</div>
 </div>
 </template>
 <script>
 import {FireDb,FirebaseAuth,userId} from "@/firebase";
 import {ref, set ,onValue,get, child,push,runTransaction } from "firebase/database";
-import Deviceactivity from '@/components/parts/Deviceactivity'
+import Deviceactivity from '@/components/parts/Deviceactivity';
+import DeviceInput from '@/components/parts/DeviceInput'
+import {devicemodes} from "@/datas";
 export default {
- name: 'Devices',
+ name: 'Device',
     data: () => ({
       showDialog: false,
-      found_devices:[],
-      device:[],
+      showDeleteDialog:false,
+      device:{device_name:"_Basic",mode:"relay",status:false},
+      devm:devicemodes,
+      select:"relay",
       showDDialog:false,
       device_name:"",
-     
     }),
     components:{
-    Deviceactivity
+    Deviceactivity,
+    DeviceInput
     },
     mounted()
     {
         console.log(this.$route.params);
-        localStorage.setItem('device',JSON.stringify(null));
+        //localStorage.setItem('device',JSON.stringify(null));
         const userId = FirebaseAuth.currentUser.uid;
-        const devId = FirebaseAuth.currentUser.uid;
-        onValue(ref(FireDb, `/users/${userId}/rooms/devices${devId}`),(sn)=>
-     {
-       if(sn.exists())
-       {
+        const devId = this.$route.params.did;
+        const room_id=this.$route.params.rid;
+        localStorage.setItem("mods",JSON.stringify(this.devm));
+
+        onValue(ref(FireDb, `/users/${userId}/rooms/${room_id}/devices/${devId}`),(sn)=>{
+       if(sn.exists()) 
+       {this.device=sn.val();
+        this.select=this.device.mode;
+       }
+        });
+
         
-        console.log(sn.val());
-        this.device=sn.val();
-            //a.push()
-         
-     }});
-     this.devices=localStorage.getItem('devices');
+
+        if(this.device.status==null)
+        {
+            set(ref(FireDb, `/users/${userId}/rooms/${room_id}/devices/${devId}/status`),false);
+        }
         /*
             még nincs implementálva a böngészőkben OwO
             navigator.bluetooth.addEventListener('advertisementreceived',this.findADevice(event));
@@ -56,26 +89,64 @@ export default {
     },
     methods:
     {
-        findADevice(event)
-        {
-            this.found_devices.push(
+        delete_device()
                 {
-                    name:event.device_name,
-                    device_id:event.device.id
-                }
-            )
-        },
-        stopScan() {
-            console.log('Stopping scan...');
-            this.scan.stop();
-            console.log('Stopped.  scan.active = ' + this.scan.active);
-            },
-        search_devices()
-        {setTimeout(this.stopScan, 10000);},
+                console.log("Delete process");
+                    const userId = FirebaseAuth.currentUser.uid;
+                    let b=[];
+                    let _ref= ref(FireDb, `/users/${userId}/rooms/${this.$route.params.rid}/devices/${this.$route.params.did}`);
+                    set(_ref,null);
+                    this.$route.router.go(-1); 
 
-
-
-        }
+                },
+                onCancel () {
+                        //this.value = 'Disagreed'
+                    },
+                     get_type()
+                    {
+                        let b=[];
+                        b=JSON.parse(localStorage.getItem("mods"));
+                        let l="";
+                        console.log(b);
+                        if(this.device.mode==null) return "text";
+                        if(!b||b==null) return "text"; //to b or not 2[b]
+                        
+                        b.forEach((k)=>{
+                            if(this.device.mode===k.type)
+                            {
+                                l=k.control;
+                                return;
+                            }});
+                        //this.device.mode
+                        return l;
+                    },
+                     get_readonly()
+                    {
+                        let b=[];
+                        b=JSON.parse(localStorage.getItem("mods"));
+                        let l="";
+                        if(this.device.mode==null) return "false";
+                        if(!b||b==null) return "false";
+                        console.log(b);
+                        
+                        b.forEach((k)=>{
+                            if(this.device.mode===k.type)
+                            {
+                                l=k.readonly;
+                                 return;
+                            }
+                        });
+                        //this.device.mode
+                        return l;
+                    },
+                    achange()
+                    {
+                        console.log(this.device.mode);
+                        let _ref= ref(FireDb, `/users/${userId}/rooms/${this.$route.params.rid}/devices/${this.$route.params.did}/mode`);
+                        set(_ref,this.device.mode);
+                    }
+                    },
+                   
     
   }
 

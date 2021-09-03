@@ -21,10 +21,10 @@ and network settings for it.</p>
       
       <md-table-row v-for="(row,index) in devices" :key="index">
         <md-table-cell md-numeric>{{index+1}}</md-table-cell>
-        <md-table-cell>{{row.name}}</md-table-cell>
-        <md-table-cell>{{row.mode}}</md-table-cell>
+        <md-table-cell>{{row.data.device_name}}</md-table-cell>
+        <md-table-cell>{{row.data.mode}}</md-table-cell>
         <md-table-cell><activedevice :lastonline="row.lastonline"/></md-table-cell>
-        <md-table-cell><md-button class="md-raised md-primary" @click="showDDialog = true">Edit Device </md-button></md-table-cell>
+        <md-table-cell><md-button class="md-raised md-primary" @click="edit(`/room/${row.room}/device/${row.dev_id}`)">Edit Device</md-button></md-table-cell>
     </md-table-row>
       
       </md-table>
@@ -37,26 +37,33 @@ and network settings for it.</p>
     </md-list-item>
 </md-list>
 
-<md-list v-for="fdevice in found_devices" :key="fdevice.device_id">
- <md-list-item>
-        <md-avatar>
-          <img src="https://placeimg.com/40/40/people/6" alt="People">
-        </md-avatar>
-
-        <span class="md-list-item-text">Mary Johnson</span>
-
-        <md-button class="md-icon-button md-list-action">
-          <md-icon>chat_bubble</md-icon>
-        </md-button>
-      </md-list-item>
-</md-list>
-
+<md-table  md-card>
+      <md-table-toolbar>
+        <h1 class="md-title">Searching for Devices</h1>
+      </md-table-toolbar>
+      <md-table-row>
+        <md-table-head md-numeric>#</md-table-head>
+        <md-table-head>Device Name:</md-table-head>
+        <md-table-head>Device Mode:</md-table-head>
+        <md-table-head>Device is Online?</md-table-head>
+        <md-table-head>Devices Edit:</md-table-head>
+      </md-table-row>
+ <md-table-row v-for="(row,index) in found_devices" :key="index">
+        <md-table-cell md-numeric>{{index+1}}</md-table-cell>
+        <md-table-cell>{{row.device_name}}</md-table-cell>
+        <md-table-cell>{{row.mode}}</md-table-cell>
+        <md-table-cell><activedevice :lastonline="row.lastonline"/></md-table-cell>
+        <md-table-cell><md-button class="md-raised md-primary" @click="showADDialog = true">Add Device </md-button></md-table-cell>
+    </md-table-row>
+ </md-table>
 
  <md-button class="md-raised md-primary">Add device</md-button>
 </div>
 </template>
 <script>
-
+import Activedevice from "@/components/parts/Activedevice";
+import ElapsedTime from "@/components/ElapsedTime";
+import router from "@/router";
 import {FireDb,FirebaseAuth,userId} from "@/firebase";
 import {ref, set ,onValue,get, child,push,runTransaction } from "firebase/database";
 import {BIconCheck2,BIconPlus} from 'bootstrap-icons-vue'
@@ -66,14 +73,14 @@ export default {
     name: 'Devices',
     data: () => ({
       showDialog: false,
-      scan : navigator.bluetooth.requestLEScan({"acceptAllAdvertisements":true}),
+      scan:null,
       found_devices:[],
       devices:[],
       showDDialog:false
      
     }),
     components:{
-    
+      Activedevice
     },
     mounted()
     {        
@@ -81,7 +88,9 @@ export default {
        this.get_data_fromdb();
         /*
             még nincs implementálva a böngészőkben OwO
+            this.scan = navigator.bluetooth.requestLEScan({"acceptAllAdvertisements":true});
             navigator.bluetooth.addEventListener('advertisementreceived',this.findADevice(event));
+             //
         */
     },
     methods:
@@ -102,7 +111,10 @@ export default {
             },
         search_devices()
         {setTimeout(this.stopScan, 10000);},*/
-
+edit(l)
+{
+  router.push(l);
+},
 get_data_fromdb(){
           this.devices=[];
           let k="devices";
@@ -122,7 +134,10 @@ get_data_fromdb(){
                     {
                     //console.log(sna);
                     sna.forEach((lb)=>{
-                      b.push(lb.val());
+                      b.push(
+                        {data:lb.val(),
+                        room:room_id,
+                        dev_id:lb.key});
                      
                     });
                     }

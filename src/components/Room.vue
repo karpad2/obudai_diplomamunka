@@ -42,10 +42,10 @@
       
       <md-table-row v-for="(row,index) in devices" :key="row.i">
         <md-table-cell md-numeric>{{index+1}}</md-table-cell>
-        <md-table-cell>{{row.device_name}}</md-table-cell>
-        <md-table-cell>{{row.mode}}</md-table-cell>
-        <md-table-cell><activedevice :lastonline="row.lastonline"/></md-table-cell>
-        <md-table-cell><md-button class="md-raised md-primary" @click="showDDialog = true">Settings <BIconPlus/></md-button></md-table-cell>
+        <md-table-cell>{{row.data.device_name}}</md-table-cell>
+        <md-table-cell>{{row.data.mode}}</md-table-cell>
+        <md-table-cell><activedevice :lastonline="row.data.lastonline"/></md-table-cell>
+        <md-table-cell><md-button class="md-raised md-primary"  @click="edit(`/room/${$route.params.rid}/device/${row.dev_id}`)">Settings <BIconPlus/></md-button></md-table-cell>
     </md-table-row>
       
       </md-table>
@@ -214,7 +214,10 @@ methods:
        console.log(sn);
       sn.forEach((l)=>
      {
-       b.push(l.val());
+       b.push({
+         data:l.val(),
+         dev_id:l.key
+       });
      })});
     switch(k)
     {
@@ -299,6 +302,10 @@ methods:
       this.device_name="";
       this.get_data();
     },
+    edit(l)
+      {
+        router.push(l);
+      },
     delete_room()
 {
 console.log("Delete process");
