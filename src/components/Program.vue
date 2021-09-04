@@ -1,36 +1,52 @@
 <template>
 <div class="center">
-<h2>Programs ~ {{program.program.name}}</h2>
+<h2>Program ~ {{program.program_name}}</h2>
 
-<div id="blocklyDiv" class="mt-1 block w-full" style="height: 480px"></div>
+<div id="blocklyDiv"  style="height: 480px; width: 640px"></div>
 
- <textarea id="program_javascript" v-model="program[0].javascript_block" class="mt-1 block w-full" style="display: block" name="program_javascript" ></textarea>
- <textarea id="blocklyDefault" v-model="program[0].xml_block" name="program_xml" class="mt-1 block w-full" style="display: none"></textarea>
+ <textarea id="program_javascript" v-model="program.javascript"  style="display: block" name="program_javascript" ></textarea>
+ <textarea id="blocklyDefault" v-model="program.xml" name="program_xml" style="display: none"></textarea>
 
 <md-button class="md-raised md-primary" @click="showDialog = true">Add program</md-button>
+
+<md-dialog-confirm
+      :md-active.sync="showDeleteDialog"
+      md-title="Delete this program?"
+      md-content="Your program will be deleted."
+      md-confirm-text="Continue"
+      md-cancel-text="Cancel"
+      @md-cancel="onCancel()"
+      @md-confirm="delete_program()" />
+
 </div>
 </template>
 <script>
-import {Blockly} from "blockly";
+import Blockly from 'blockly';
 import * as En from "blockly/msg/en";
-
+import 'blockly/javascript';
+import 'blockly/blocks';  
+//import {media} from "blockly/media";
 import {FireDb,FirebaseAuth,userId} from "@/firebase";
 import {ref, set ,onValue,get, child,push,runTransaction } from "firebase/database";
 
 export default {
     name: 'Programs',
     data: () => ({
+      program:{},
       showDialog: false,
 	    a_program_name: "",
       a_program_xml: "",
       a_program_javascript: "",
       camera:{},
-            showDeleteDialog:false
+      showDeleteDialog:false
     }),
+    comments:{
+      Blockly
+    },
      methods: {
     myUpdateFunction(event) {},
     save() {
-      if (this.program[0].javascript_block != "") {
+      if (this.program[0].javascript != "") {
         /*axios.post("/api/update-program/" + this.program[0].id, {
           name: this.program[0].name,
           xml_block: this.program[0].xml_block,
@@ -49,34 +65,37 @@ export default {
                     this.$route.router.go(-1); 
 
                 },
-                onCancel () {
+         onCancel () {
                         //this.value = 'Disagreed'
                     },
-                achange()
+         achange()
                     {
                         const userId = FirebaseAuth.currentUser.uid;
                         console.log(this.device.mode);
-                        let _ref= ref(FireDb, `/users/${userId}/rooms/${this.$route.params.rid}/devices/${this.$route.params.cid}/camera_url`);
-                        set(_ref,this.camera.camera_url);
+                        let _ref= ref(FireDb, `/users/${userId}/rooms/${this.$route.params.rid}/programs/${this.$route.params.cid}/program_xml`);
+                        set(_ref,this.program.xml);
+
+                        _ref= ref(FireDb, `/users/${userId}/rooms/${this.$route.params.rid}/programs/${this.$route.params.cid}/program_javascript`);
+                        set(_ref,this.program.javascript);
                        // _ref= ref(FireDb, `/users/${userId}/rooms/${this.$route.params.rid}/devices/${this.$route.params.cid}/status`);
                        // set(_ref,false);
                     },
                     namechange()
                     {
                         const userId = FirebaseAuth.currentUser.uid;
-                        console.log(this.device.mode);
-                        let _ref= ref(FireDb, `/users/${userId}/rooms/${this.$route.params.rid}/camera/${this.$route.params.did}/camera_name`);
-                        set(_ref,this.device.camera_name);
+                        //console.log(this.device.mode);
+                        let _ref= ref(FireDb, `/users/${userId}/rooms/${this.$route.params.rid}/programs/${this.$route.params.did}/program_name`);
+                        set(_ref,this.program.program_name);
                     },
     
     auto_compile(workspace) {
       console.log("im here");
-      this.program[0].javascript_block = Blockly.Javascript.workspaceToCode(workspace);
+      this.program.javascript = Blockly.Javascript.workspaceToCode(workspace);
       let xml = Blockly.Xml.workspaceToDom(workspace);
       console.log(xml);
-      if (this.program[0].javascript_block != "") {
-        this.program[0].xml_block = Blockly.Xml.domToText(xml);
-        this.save();
+      if (this.program.javascript != "") {
+        this.program.xml = Blockly.Xml.domToText(xml);
+        this.achange();
       }
     },
     auto_setup() {
@@ -111,19 +130,19 @@ export default {
 
         onValue(ref(FireDb, `/users/${userId}/rooms/${room_id}/programs/${devId}`),(sn)=>{
        if(sn.exists()) 
-       {this.camera=sn.val();
+       {this.program=sn.val();
         //this.select=this.device.mode;
        }
         });
 
     Blockly.setLocale(En);
-    let blocklyDefault = document.getElementById("blocklyDefault");
+    //let blocklyDefault = document.getElementById("blocklyDefault");
     let Workspace = Blockly.inject("blocklyDiv", {
-      media: "/media/",
       toolbox: document.getElementById("toolbox"),
       scrollbar: false,
     });
-    let workspace_default = Blockly.Xml.textToDom(this.program[0].xml_block);
+    //media: "/media/",
+    let workspace_default = Blockly.Xml.textToDom(this.program.xml);
     Blockly.Xml.appendDomToWorkspace(workspace_default, Workspace);
 
     Workspace.addChangeListener(() => {

@@ -19,12 +19,11 @@
         <md-table-head>Camera Edit</md-table-head>
       </md-table-row>
       
-      <md-table-row v-for="(row,index) in cameras" :key="row.i">
+      <md-table-row v-for="(row,index) in cameras" :key="index">
         <md-table-cell md-numeric>{{index+1}}</md-table-cell>
-        <md-table-cell>{{row.name}}</md-table-cell>
-        <md-table-cell><img :src="row.url" class="" /></md-table-cell>
+        <md-table-cell>{{row.data.camera_name}}</md-table-cell>
+        <md-table-cell><img :src="row.data.camera_url" class="" /></md-table-cell>
         <md-table-cell><router-link :to="{ path: `/room/${row.room_id}/camera/${row.cam_id}`}">Edit</router-link></md-table-cell>
-        <md-table-cell>{{row.devices}}</md-table-cell>
     </md-table-row>
       
       </md-table>
@@ -69,7 +68,11 @@ export default
               console.log(sn);
               sn.forEach((l)=>
             {
-              b.push(l.val());
+              b.push({
+                room_id:this.room_id,
+                cam_id:l.key,
+                data:l.val()
+                });
             })});});
 
        }

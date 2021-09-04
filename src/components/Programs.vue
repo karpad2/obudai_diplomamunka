@@ -9,13 +9,13 @@
       <md-table-row>
         <md-table-head md-numeric>#</md-table-head>
         <md-table-head>Program Name:</md-table-head>
-        <md-table-head>Program is Active:</md-table-head>
+        <md-table-head>Program edit:</md-table-head>
       </md-table-row>
       
-      <md-table-row v-for="(row,index) in programs" :key="row.i">
+      <md-table-row v-for="(row,index) in programs" :key="index">
         <md-table-cell md-numeric>{{index+1}}</md-table-cell>
-        <md-table-cell>{{row.name}}</md-table-cell>
-        <md-table-cell>{{row.mode}}</md-table-cell>
+        <md-table-cell>{{row.data.program_name}}</md-table-cell>
+        <md-table-cell><router-link :to="{ path: `/room/${row.room_id}/program/${row.program_id}`}">Edit</router-link></md-table-cell>
     </md-table-row>
       
       </md-table>
@@ -37,11 +37,58 @@
 </div>
 </template>
 <script>
+import {FireDb,FirebaseAuth,userId} from "@/firebase";
+import {ref, set ,onValue,get, child,push,runTransaction } from "firebase/database";
 export default {
     name: 'Programs',
-    data: () => ({
+    data () {
+      return{
       showDialog: false,
-      programs:[]
-    })
+      programs:[]}
+    },
+    methods:
+    {
+  get_data_fromdb()
+        {
+          let k="programs";
+          let room_id="";
+          let l=[];
+
+          const userId = FirebaseAuth.currentUser.uid;
+          let b=[];
+      onValue(ref(FireDb, `/users/${userId}/rooms`),(sn_out)=>
+          {
+            if(sn_out.exists())
+            {
+              sn_out.forEach((la)=>{
+              room_id=la.key;
+                  onValue(ref(FireDb, `/users/${userId}/rooms/${room_id}/${k}`),(sn)=>
+                  {
+                    if(sn.exists())
+                    console.log(sn);
+                    sn.forEach((l)=>
+                  {
+                    b.push({
+                      room_id:la.key,
+                      program_id:l.key,
+                      data:l.val()
+                      });
+                  })});});
+
+            }
+          });
+
+          
+          switch(k)
+          {
+            case "programs": this.programs=b; break;
+          }
+          
+        },
+    },
+    mounted()
+    {
+      this.get_data_fromdb();
+    }
   }
 </script>
