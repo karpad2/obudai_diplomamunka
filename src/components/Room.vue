@@ -91,17 +91,17 @@
       
       <md-table-row v-for="(row,index) in cameras" :key="row.i">
         <md-table-cell md-numeric>{{index+1}}</md-table-cell>
-        <md-table-cell>{{row.name}}</md-table-cell>
+        <md-table-cell>{{row.data.camera_name}}</md-table-cell>
         <md-table-cell></md-table-cell>
-        <md-table-cell></md-table-cell>
-        <md-table-cell></md-table-cell>
+        <md-table-cell><md-button class="md-raised md-primary"  @click="edit(`/room/${$route.params.rid}/camera/${row.dev_id}`)">Settings <BIconPlus/></md-button></md-table-cell>
     </md-table-row>
       
       </md-table>
-      <md-button class="md-raised md-primary" @click="showDialog = true">Add Camera</md-button>
-
+      <md-button class="md-raised md-primary" @click="showCDialog = true">Add Camera</md-button>
+<div class="section">
       <md-button class="md-raised md-secondary" @click="showDeleteDialog = true">Delete Room</md-button>
       </div>    
+      </div>   
 
 <md-dialog-prompt
       :md-active.sync="showPDialog"
@@ -201,6 +201,7 @@ methods:
      this.get_data_fromdb("cameras");
      this.get_data_fromdb("devices");
      this.get_data_fromdb("programs");  
+     console.log(this.cameras);
      //console.log(this.devices);
   },
 

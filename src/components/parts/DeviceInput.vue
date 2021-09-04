@@ -2,10 +2,10 @@
    <div>
        <label>{{mode}}</label>
        <md-field>
-        <md-input v-model="modelValue" @change="oChange" @input="$emit('update:modelValue', $event.target.value)" v-if="mode=='oled'" ></md-input>
-        <md-input v-model="modelValue" @change="oChange" @input="$emit('update:modelValue', $event.target.value)" v-else-if="mode=='rfid'" readonly></md-input>
-        <md-switch v-model="modelValue" @change="oChange" @input="$emit('update:modelValue', $event.target.value)"  v-else-if="mode=='relay'" >{{ modelValue ? 'On' : 'Off' }}</md-switch>
-        <md-switch v-model="modelValue" @change="oChange" @input="$emit('update:modelValue', $event.target.value)" v-else-if="mode=='input'" >{{ modelValue ? 'On' : 'Off' }}</md-switch> 
+        <md-input v-model="modelValue" @change="oChange"  v-if="mode=='oled'" ></md-input>
+        <md-input v-model="modelValue" @change="oChange"  v-else-if="mode=='rfid'" readonly></md-input>
+        <md-switch v-model="modelValue" @change="oChange"  v-else-if="mode=='relay'" >{{ modelValue ? 'On' : 'Off' }}</md-switch>
+        <md-switch v-model="modelValue" @change="oChange"  v-else-if="mode=='input'" >{{ modelValue ? 'On' : 'Off' }}</md-switch> 
         <span v-else>Unknown mode</span> 
        </md-field>
     </div> 

@@ -6,7 +6,7 @@
 
      <md-field>
       <label>Device name:</label>
-      <md-input v-model="device.device_name"></md-input>
+      <md-input @change="namechange" v-model="device.device_name"></md-input>
     </md-field>
     <p><Deviceactivity :lastonline="device.last_online" /></p> 
 
@@ -15,9 +15,9 @@
       <div class="md-layout-item">
         <md-field>
           <label for="operation">Device Mode</label>
-          <md-select id="operation" v-model="select" @change="achange" >
-            <md-option v-for="mode in devm" :key="mode.type" :value="mode.type">{{mode.name}}</md-option>
-          </md-select>
+          <select id="operation" v-model="select" @change="achange" >
+            <option v-for="mode in devm" :key="mode.type" :value="mode.type">{{mode.name}}</option>
+          </select>
         </md-field>
        <DeviceInput :mode="select" :v-model="device.status" />
 
@@ -62,6 +62,13 @@ export default {
     },
     mounted()
     {
+
+        /*
+             <md-select id="operation " v-model="select" @change="achange" >
+            <md-option v-for="mode in devm" :key="mode.type" :value="mode.type">{{mode.name}}</md-option>
+          </md-select>
+
+        */
         console.log(this.$route.params);
         //localStorage.setItem('device',JSON.stringify(null));
         const userId = FirebaseAuth.currentUser.uid;
@@ -141,9 +148,19 @@ export default {
                     },
                     achange()
                     {
+                        const userId = FirebaseAuth.currentUser.uid;
                         console.log(this.device.mode);
                         let _ref= ref(FireDb, `/users/${userId}/rooms/${this.$route.params.rid}/devices/${this.$route.params.did}/mode`);
-                        set(_ref,this.device.mode);
+                        set(_ref,this.select);
+                        _ref= ref(FireDb, `/users/${userId}/rooms/${this.$route.params.rid}/devices/${this.$route.params.did}/status`);
+                        set(_ref,false);
+                    },
+                    namechange()
+                    {
+                        const userId = FirebaseAuth.currentUser.uid;
+                        console.log(this.device.mode);
+                        let _ref= ref(FireDb, `/users/${userId}/rooms/${this.$route.params.rid}/devices/${this.$route.params.did}/device_name`);
+                        set(_ref,this.device.device_name);
                     }
                     },
                    
