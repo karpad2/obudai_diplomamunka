@@ -66,14 +66,13 @@
       
       <md-table-row v-for="(row,index) in programs" :key="row.i">
         <md-table-cell md-numeric>{{index+1}}</md-table-cell>
-        <md-table-cell>{{row.name}}</md-table-cell>
+        <md-table-cell>{{row.data.program_name}}</md-table-cell>
         <md-table-cell><md-radio v-model="a_program" :value="row.key" class="primary">Active</md-radio></md-table-cell>
-        <md-table-cell><router-link :to="{ path: '/Lobby/'+row.key}">Lobby</router-link></md-table-cell>
-        <md-table-cell>{{row.devices}}</md-table-cell>
+        <md-table-cell><md-button class="md-raised md-primary"  @click="edit(`/room/${$route.params.rid}/program/${row.dev_id}`)">Settings <BIconPlus/></md-button></md-table-cell>
     </md-table-row>
       
       </md-table>
-      <md-button class="md-raised md-primary" @click="showDialog = true">Add program</md-button>
+      <md-button class="md-raised md-primary" @click="showPDialog = true">Add program</md-button>
       </div>
 
       <div class="section">

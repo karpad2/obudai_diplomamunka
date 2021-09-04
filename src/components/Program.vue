@@ -1,6 +1,6 @@
 <template>
 <div class="center">
-<h2>Programs</h2>
+<h2>Programs ~ {{program.program.name}}</h2>
 
 <div id="blocklyDiv" class="mt-1 block w-full" style="height: 480px"></div>
 
@@ -14,6 +14,8 @@
 import {Blockly} from "blockly";
 import * as En from "blockly/msg/en";
 
+import {FireDb,FirebaseAuth,userId} from "@/firebase";
+import {ref, set ,onValue,get, child,push,runTransaction } from "firebase/database";
 
 export default {
     name: 'Programs',
@@ -22,6 +24,8 @@ export default {
 	    a_program_name: "",
       a_program_xml: "",
       a_program_javascript: "",
+      camera:{},
+            showDeleteDialog:false
     }),
      methods: {
     myUpdateFunction(event) {},
@@ -32,9 +36,39 @@ export default {
           xml_block: this.program[0].xml_block,
           javascript_block: this.program[0].javascript_block,
         });*/
-        console.log("WELP");
       }
-    },
+        console.log("WELP");
+      },
+      delete_program()
+                {
+                console.log("Delete process");
+                    const userId = FirebaseAuth.currentUser.uid;
+                    let b=[];
+                    let _ref= ref(FireDb, `/users/${userId}/rooms/${this.$route.params.rid}/programs/${this.$route.params.pid}`);
+                    set(_ref,null);
+                    this.$route.router.go(-1); 
+
+                },
+                onCancel () {
+                        //this.value = 'Disagreed'
+                    },
+                achange()
+                    {
+                        const userId = FirebaseAuth.currentUser.uid;
+                        console.log(this.device.mode);
+                        let _ref= ref(FireDb, `/users/${userId}/rooms/${this.$route.params.rid}/devices/${this.$route.params.cid}/camera_url`);
+                        set(_ref,this.camera.camera_url);
+                       // _ref= ref(FireDb, `/users/${userId}/rooms/${this.$route.params.rid}/devices/${this.$route.params.cid}/status`);
+                       // set(_ref,false);
+                    },
+                    namechange()
+                    {
+                        const userId = FirebaseAuth.currentUser.uid;
+                        console.log(this.device.mode);
+                        let _ref= ref(FireDb, `/users/${userId}/rooms/${this.$route.params.rid}/camera/${this.$route.params.did}/camera_name`);
+                        set(_ref,this.device.camera_name);
+                    },
+    
     auto_compile(workspace) {
       console.log("im here");
       this.program[0].javascript_block = Blockly.Javascript.workspaceToCode(workspace);
@@ -63,14 +97,24 @@ export default {
             "http://www.w3schools.com/jsref/jsref_length_string.asp"
           );
         }
-      }
-     
-      
-      
+      } 
     },
   },
   mounted() {
 
+    console.log(this.$route.params);
+        //localStorage.setItem('device',JSON.stringify(null));
+        const userId = FirebaseAuth.currentUser.uid;
+        const devId = this.$route.params.pid;
+        const room_id=this.$route.params.rid;
+        
+
+        onValue(ref(FireDb, `/users/${userId}/rooms/${room_id}/programs/${devId}`),(sn)=>{
+       if(sn.exists()) 
+       {this.camera=sn.val();
+        //this.select=this.device.mode;
+       }
+        });
 
     Blockly.setLocale(En);
     let blocklyDefault = document.getElementById("blocklyDefault");

@@ -13,7 +13,18 @@
     </md-field>
 
     <img :src="camera.camera_url"  alt="Camera Live Image" id="camera_live_image"/>
+<md-field>
+      <md-button class="md-raised md-secondary" @click="showDeleteDialog = true">Delete Camera</md-button>
 
+</md-field>
+<md-dialog-confirm
+      :md-active.sync="showDeleteDialog"
+      md-title="Delete this Camera?"
+      md-content="Are you delete this camera?"
+      md-confirm-text="Agree"
+      md-cancel-text="Disagree"
+      @md-cancel="onCancel()"
+      @md-confirm="delete_camera()" />
 
 </div>
 </template>
@@ -26,7 +37,8 @@ export default
     data()
     {
         return{
-            camera:{}
+            camera:{},
+            showDeleteDialog:false
         }
     },
     components:
