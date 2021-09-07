@@ -32,7 +32,7 @@
 <script>
 import * as Blockly from 'blockly/core';
 import * as En from "blockly/msg/en";
-import BlocklyJavascript from "blockly/javascript";
+import  "blockly/javascript";
 import 'blockly/blocks';
 import Blocks from "@/components/parts/Blocks";
 import {BlocklyJS} from "@/components/BlocklyJS";
@@ -115,7 +115,7 @@ export default {
     
     auto_compile() {
       console.log("im here");
-      this.program.program_javascript = BlocklyJavascript.workspaceToCode(this.Workspace);
+      this.program.program_javascript = Blockly.Javascript.workspaceToCode(this.Workspace);
       let xml = Blockly.Xml.workspaceToDom(this.Workspace);
       console.log(xml);
       if (this.program.program_javascript != "") {

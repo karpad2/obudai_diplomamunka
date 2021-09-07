@@ -23,8 +23,8 @@
     import CryptoJS from "crypto-js";
     import * as Blockly from 'blockly/core';
     import * as En from "blockly/msg/en";
-    import BlocklyJavascript from "blockly/javascript";
-    import {BlocklyJS} from "@/components/BlocklyJS";
+    import "blockly/javascript";
+    import "@/components/BlocklyJS";
     import Blocks from "@/components/parts/Blocks";
     import 'blockly/blocks';
     import {FireDb,FirebaseAuth,userId} from "@/firebase";
@@ -50,19 +50,18 @@
         {
            this.get_data();
            console.log(this.room);
-           
-            Blockly.setLocale(En);
-            BlocklyJS();
+           Blockly.setLocale(En);
+            
 
             this.Workspace = Blockly.inject("blocklyDiv", {
                 toolbox: document.getElementById("toolbox"),
                 scrollbar: false});
-
-           BlocklyJS();
+           Blockly.JavaScript.INFINITE_LOOP_TRAP = null;
+           
            console.log(this.program.program_xml);
            let workspace_default = Blockly.Xml.textToDom(this.program.program_xml);
            Blockly.Xml.appendDomToWorkspace(workspace_default,this.Workspace);
-           this.program.program_javascript = BlocklyJavascript.workspaceToCode(this.Workspace);
+           this.program.program_javascript = Blockly.Javascript.workspaceToCode(this.Workspace);
            
            
         },
