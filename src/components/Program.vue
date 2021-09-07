@@ -9,12 +9,7 @@
     </md-field>
 <div id="blocklyDiv"></div>
 <Blocks :devices="devices" />
-<md-field>
-  <md-textarea id="text_programjavascript"  v-model="program.program_javascript" name="program_javascript"  md-autogrow ></md-textarea>
-</md-field>
-<md-field>
-  <md-textarea id="text_programxml" v-model="program.program_xml"  name="program_xml"></md-textarea>
-</md-field>
+
 <md-field>
 <md-button class="md-raised md-secondary" @click="showDeleteDialog = true">Delete Program</md-button>
 </md-field>
@@ -35,7 +30,7 @@ import * as En from "blockly/msg/en";
 import  "blockly/javascript";
 import 'blockly/blocks';
 import Blocks from "@/components/parts/Blocks";
-import {send_data} from "@/components/BlocklyJS";
+import {send_data,devices,init,get_data,send_finish} from "@/components/BlocklyJS";
 import CryptoJS from "crypto-js";  
 //import {media} from "blockly/media";
 import {FireDb,FirebaseAuth,userId} from "@/firebase";
@@ -94,11 +89,6 @@ export default {
                         let encoding=CryptoJS.enc.Utf8.parse(this.program.program_xml);
                         let encoded = CryptoJS.enc.Base64.stringify(encoding);
                         set(_ref,encoded);
-
-                      /*  _ref= ref(FireDb, `/users/${userId}/rooms/${this.$route.params.rid}/programs/${this.$route.params.pid}/program_javascript`);
-                        set(_ref,this.program.javascript);*/
-                       // _ref= ref(FireDb, `/users/${userId}/rooms/${this.$route.params.rid}/devices/${this.$route.params.cid}/status`);
-                       // set(_ref,false);
                     },
                     namechange()
                     {
@@ -116,16 +106,17 @@ export default {
     
     auto_compile() {
       console.log("im here");
-      this.program.program_javascript = Blockly.Javascript.workspaceToCode(this.Workspace);
+      //this.program.program_javascript = Blockly.Javascript.workspaceToCode(this.Workspace);
       let xml = Blockly.Xml.workspaceToDom(this.Workspace);
       console.log(xml);
-      if (this.program.program_javascript != "") {
+      if (xml != "") {
         this.program.program_xml = Blockly.Xml.domToText(xml);
         console.log(this.program.program_xml);
         this.achange();
       }
     },
     auto_setup() {
+     
      
     },
     start()
@@ -181,9 +172,7 @@ export default {
          });
          }
          
-         this.start();
-        //this.select=this.device.mode;
-       
+         this.start();      
         });
   },
   }

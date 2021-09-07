@@ -313,13 +313,12 @@
       <block type="send_data"></block>
       <block type="get_data"></block>
       <block type="send_finish"></block>
-      <block type="init"></block>
+     
     </category>
     
     <category name="Devices"  colour="%{BKY_VARIABLES_HUE}">
-      <block type="text" v-for="(row,index) in devices" :key="index" >
-        <shadow type="text">
-        <field name="TEXT">{{row.devID}}</field></shadow>
+      <block type="devices" v-for="(row,index) in devices" :key="index" >
+        <field name="TEXT">{{row.devID}}</field>
         </block>
     </category>
 </xml>
@@ -330,7 +329,7 @@ export default {
   //
 
   /*
-  
+   <block type="init"></block>
   */
 }
 </script>

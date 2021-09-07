@@ -17,12 +17,12 @@
         <md-table-head>Active Devices:</md-table-head>
       </md-table-row>
       
-      <md-table-row v-for="(row,index) in rows" :key="row.i">
+      <md-table-row v-for="(row,index) in rooms" :key="row.devID">
         <md-table-cell md-numeric>{{index+1}}</md-table-cell>
-        <md-table-cell>{{row.name}}</md-table-cell>
-        <md-table-cell><router-link :to="{ path: '/room/'+row.key}">Edit</router-link></md-table-cell>
-        <md-table-cell><router-link :to="{ path: '/room/'+row.key+'/lobby/'}">Lobby</router-link></md-table-cell>
-        <md-table-cell>{{row.devices}}</md-table-cell>
+        <md-table-cell>{{row.data.room_name}}</md-table-cell>
+        <md-table-cell><router-link :to="{ path: '/room/'+row.devID}">Edit</router-link></md-table-cell>
+        <md-table-cell><router-link :to="{ path: '/room/'+row.devID+'/lobby/'}">Lobby</router-link></md-table-cell>
+        <md-table-cell>{{get_active_devices(row.devID)}}</md-table-cell>
     </md-table-row>
       
       </md-table>
@@ -53,6 +53,7 @@ export default {
       room_name:"",
       test:"aaa",
       rows:[],
+      devices:[],
       users:[]}
     },
     
@@ -74,6 +75,7 @@ export default {
                         "programs":{
                            "program_1": {
                                 "program_name":"test program",
+                                "active_program":true,
                                 "program_xml":"",
                                 "program_javascript":"",
                                 "program_active":true}
@@ -95,53 +97,89 @@ export default {
        this.room_name=""; 
     },
      get_rooms(){
-    this.room_keys=[];
-    this.rows=[];
-     localStorage.setItem('rooms',JSON.stringify([]));
      const userId = FirebaseAuth.currentUser.uid;
      onValue(ref(FireDb, `/users/${userId}/rooms`),(sn)=>
      {
        if(sn.exists())
        {
-         sn.forEach((element,i) => {
-           let a=JSON.parse(localStorage.getItem('rooms'));
-           console.log(a);
-            a.push(element.val());
-            localStorage.setItem('rooms',JSON.stringify(a));
-            this.room_keys.push(element.key);
-            let dev="";
-            console.log(element.val().devices);
-
-            if(element.val().devices==undefined)
-            {
-              dev="Device was not found!";
-            }
-            else
-            {
-              dev=element.val().devices.length+" is active";
-
-            }
-            this.rows.push({i:i,name:element.val().room_name,key:element.key,devices:dev});
+         sn.forEach((element) => {
+          this.rooms.push(
+             {
+               data:element.val(),
+               devID:element.key
+             });
          });
-      localStorage.setItem("rows",JSON.stringify(this.rows));
-      this.rooms=JSON.parse(localStorage.getItem('rooms'));
-       console.log(this.rooms);
        }
        else
        {
          this.rooms.push(
            {
-             room_name:"Nincs szoba"
+             data:{room_name:"Nincs szoba"}
            }
          );
        }
      });
       
    
-  }
-
-    
   },
+  get_active_devices(index)
+    {
+     this.get_data_fromdb(index,"devices");
+     let active=0,inactive=0,k;
+
+      this.devices.forEach(element => {
+        console.log(element.data.lastonline);
+        k=Date.now()-Date(element.data.lastonline);
+        if(k<120)
+        {
+          active++;
+        }
+        else
+        {
+          inactive++;
+        }
+       
+       // console.log(k);
+      });
+       if(inactive==0)
+        {
+          return "All device online";
+        }
+        else if(active==0)
+        {
+          return "All device offline";
+        }
+        else
+        {
+          return `${active} are online, and ${inactive} are offline`;
+        }
+      
+    },
+     get_data_fromdb(room_id,k){
+    const userId = FirebaseAuth.currentUser.uid;
+    let b=[];
+     onValue(ref(FireDb, `/users/${userId}/rooms/${room_id}/${k}`),(sn)=>
+     {
+       if(sn.exists())
+       console.log(sn);
+      sn.forEach((l)=>
+     {
+       b.push({
+         data:l.val(),
+         dev_id:l.key
+       });
+     })});
+    switch(k)
+    {
+     
+      case "devices": this.devices=b; break;
+      
+    } 
+  },
+},
+  computed:{
+    
+  }
  
 
  

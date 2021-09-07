@@ -3,27 +3,18 @@ import "blockly/javascript";
 
 Blockly.defineBlocksWithJsonArray([
     {
-        "type": "send_data",
-        "message0": "set device %1 %2 %3",
+        "type": "send_finish",
+        "message0": "send finish %1",
         "args0": [
             {
                 "type": "input_value",
                 "name": "device",
                 "check": ["String"]
             },
-            {
-                "type": "input_value",
-                "name": "mode",
-                "check": ["String"]
-            },
-            {
-                "type": "input_value",
-                "name": "value",
-                "check": ["String"]
-            }
+            
         ],
         "inputsInline": true,
-       
+        "previousStatement": true,
         "colour": '#0ddb69',
         "tooltip": "",
         "helpUrl": "",
@@ -47,10 +38,11 @@ Blockly.Extensions.register('assExtensions', function(){
         }
     })
 });*/
-Blockly.JavaScript['send_data'] = function(block) {
+Blockly.JavaScript['send_finish'] = function(block) {
     var device = Blockly.JavaScript.statementToCode(block, 'device');
-    var mode = Blockly.JavaScript.statementToCode(block, 'mode');
-    var value = Blockly.JavaScript.statementToCode(block, 'value');
-    var code = `set_data(${device},${mode},${value});`;
-    return  [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
+    
+
+    
+    var code = `send_finish();`;
+    return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
 };

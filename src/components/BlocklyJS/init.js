@@ -3,38 +3,29 @@ import "blockly/javascript";
 
 Blockly.defineBlocksWithJsonArray([
     {
-        "type": "send_data",
-        "message0": "set device %1 %2 %3",
+        "type": "init",
+        "message0": "%1 valami %2",
         "args0": [
             {
                 "type": "input_value",
-                "name": "device",
-                "check": ["String"]
+                "name": "as_oldName",
+                "check": ["aggregate_min", "aggregate_max", "aggregate_avg", "aggregate_count", "aggregate_sum", "CONDITIONCHOOSER", "freeinput"]
             },
             {
                 "type": "input_value",
-                "name": "mode",
-                "check": ["String"]
-            },
-            {
-                "type": "input_value",
-                "name": "value",
-                "check": ["String"]
+                "name": "as_newName",
+                "check": ["freeinput"]
             }
         ],
         "inputsInline": true,
-       
+        "output": 'String',
         "colour": '#0ddb69',
         "tooltip": "",
         "helpUrl": "",
-        
+        'extensions': 'initExtensions'
     },
 ]);//AS-Modifier
-
-/*
- "output": '',
-  
-Blockly.Extensions.register('assExtensions', function(){
+Blockly.Extensions.register('initExtensions', function(){
     this.setOnChange(function (changeEvent) {
         var parent = this.getSurroundParent();
         if(parent != null){
@@ -46,11 +37,10 @@ Blockly.Extensions.register('assExtensions', function(){
             }
         }
     })
-});*/
-Blockly.JavaScript['send_data'] = function(block) {
-    var device = Blockly.JavaScript.statementToCode(block, 'device');
-    var mode = Blockly.JavaScript.statementToCode(block, 'mode');
-    var value = Blockly.JavaScript.statementToCode(block, 'value');
-    var code = `set_data(${device},${mode},${value});`;
-    return  [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
+});
+Blockly.JavaScript['init'] = function(block) {
+    var argumentOld = Blockly.JavaScript.statementToCode(block, 'as_oldName');
+    var argumentNew = Blockly.JavaScript.statementToCode(block, 'as_newName');
+    var code = argumentOld + ' as ' + argumentNew;
+    return code;
 };
