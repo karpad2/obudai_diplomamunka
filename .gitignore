@@ -1,12 +1,27 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
-
-.idea
+.DS_Store
 node_modules
-./server_part/.idea
-./server_part/config.php
-~$index.docx
-.~$index.docx
-.~lock.index.docx#
-./esp32_software/.idea
-package-lock.json
-src/firebase/credentials.js
+.package-lock.json
+/dist
+
+
+# local env files
+.env.local
+.env.*.local
+
+# Log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Editor directories and files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+#Electron-builder output
+/dist_electron
