@@ -35,7 +35,7 @@ import * as En from "blockly/msg/en";
 import  "blockly/javascript";
 import 'blockly/blocks';
 import Blocks from "@/components/parts/Blocks";
-import {BlocklyJS} from "@/components/BlocklyJS";
+import {send_data} from "@/components/BlocklyJS";
 import CryptoJS from "crypto-js";  
 //import {media} from "blockly/media";
 import {FireDb,FirebaseAuth,userId} from "@/firebase";
@@ -56,6 +56,7 @@ export default {
     }),
     comments:{
       Blockly,
+      
       
     },
     components:
@@ -125,7 +126,7 @@ export default {
       }
     },
     auto_setup() {
-      BlocklyJS();
+     
     },
     start()
     {
@@ -142,7 +143,7 @@ export default {
   },
   mounted() {
     Blockly.setLocale(En);
-    BlocklyJS();
+    
 
       this.Workspace = Blockly.inject("blocklyDiv", {
       toolbox: document.getElementById("toolbox"),
