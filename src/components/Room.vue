@@ -1,7 +1,7 @@
 <template>
 <div  class="center">
     
-    <h2>Room ~ {{room_name}}</h2>
+    <h2>Room ~ {{room.room_name}}</h2>
     <div class="section">
      <md-table  md-card>
       <md-table-toolbar>
@@ -26,7 +26,7 @@
       
       </md-table>
       </div>
-      <activedevice :lastonline="Date.now()"/>
+      
       <div class="section">
     <md-table  md-card>
       <md-table-toolbar>
@@ -52,23 +52,26 @@
       <md-button class="md-raised md-primary" @click="showDDialog = true">Add Device <BIconPlus/></md-button>
     </div>
       <div class="section">
+        
+   <h3>Choose Active Program:</h3>
+   <b-select @change="changeprogram" v-model="room.active_program">
+     <b-select-option v-for="row in programs" :key="row.devID" :value="row.devID">{{row.data.program_name}}</b-select-option>
+   </b-select>
+
   <md-table  md-card>
       <md-table-toolbar>
         <h1 class="md-title">Programs:</h1>
       </md-table-toolbar>
-
       <md-table-row>
         <md-table-head md-numeric>#</md-table-head>
         <md-table-head>Program Name:</md-table-head>
-        <md-table-head>Program is Active?</md-table-head>
-        <md-table-head>Delete Program:</md-table-head>
+        <md-table-head>Program edit:</md-table-head>
       </md-table-row>
       
       <md-table-row v-for="(row,index) in programs" :key="row.i">
         <md-table-cell md-numeric>{{index+1}}</md-table-cell>
         <md-table-cell>{{row.data.program_name}}</md-table-cell>
-        <md-table-cell><md-radio v-model="a_program" :value="row.key" class="primary">Active</md-radio></md-table-cell>
-        <md-table-cell><md-button class="md-raised md-primary"  @click="edit(`/room/${$route.params.rid}/program/${row.dev_id}`)">Settings <BIconPlus/></md-button></md-table-cell>
+       <md-table-cell><md-button class="md-raised md-primary"  @click="edit(`/room/${$route.params.rid}/program/${row.dev_id}`)">Settings <BIconPlus/></md-button></md-table-cell>
     </md-table-row>
       
       </md-table>
@@ -150,12 +153,14 @@ import {FireDb,FirebaseAuth,userId} from "@/firebase";
 import {ref, set ,onValue,get, child,push,runTransaction } from "firebase/database";
 
 
+
 export default {
     data()
     {
         return{
             programs:[],
             devices:[],
+            room:{},
             rans:[],
             active_program:"",
             showPDialog:false,
@@ -183,7 +188,13 @@ mounted()
 },
 methods:
 {
-
+changeprogram()
+{
+      const room_id=this.$route.params.rid;
+      const userId = FirebaseAuth.currentUser.uid;
+      let frooms= ref(FireDb, `/users/${userId}/rooms/${room_id}/active_program`);
+      set(frooms,this.room.active_program);
+},
   get_data()
   {
   const room_id=this.$route.params.rid;
@@ -194,8 +205,10 @@ methods:
      {
        if(sn.exists())
        console.log(sn);
+       this.room=sn.val();
        this.room_name=sn.val().room_name;       
-       this.activeprogram=sn.val().activeprogram;
+       this.activeprogram=sn.val().active_program;
+       console.log( this.activeprogram);
     });
      this.get_data_fromdb("cameras");
      this.get_data_fromdb("devices");
@@ -238,8 +251,8 @@ methods:
                         "program_xml":"",
                         "program_javascript":"",
                       };
-                        try
-                        {
+     try
+        {
       let frooms= ref(FireDb, `/users/${userId}/rooms/${room_id}/programs`);
       let newroomref = push(frooms);
       set(newroomref,postData);

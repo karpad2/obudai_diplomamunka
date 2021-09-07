@@ -15,12 +15,14 @@
     "bootstrap-icons-vue": "^0.7.0",
     "bootstrap-vue": "^2.21.2",
     "core-js": "^3.6.4",
+    "crypto-js": "^4.1.1",
     "electron": "^13.2.3",
     "firebase": "^9.0.0-beta.7",
     "firebase-auth": "^0.1.2",
     "firebase-cli": "^1.2.0",
     "firebase-tools": "^9.16.5",
     "fork-me-on-github-vue": "^1.0.7",
+    "lzma": "^2.3.2",
     "moment": "^2.29.1",
     "moment-duration-format": "^2.3.2",
     "vue": "^2.6.11",
@@ -40,7 +42,7 @@
     "@webpack-cli/generators": "^2.3.0",
     "babel-eslint": "^10.1.0",
     "eslint": "^6.7.2",
-    "eslint-plugin-vue": "^6.2.2",
+    "eslint-plugin-vue": "^7.17.0",
     "node-sass": "^4.14.0",
     "sass-loader": "^8.0.2",
     "vue-template-compiler": "^2.6.11",
@@ -61,7 +63,8 @@
     "rules": {
       "strict": "off",
       "no-unused-vars": "off",
-      "no-mixed-spaces-and-tabs": "off"
+      "no-mixed-spaces-and-tabs": "off",
+      "vue/no-parsing-error": "off"
     }
   },
   "browserslist": [

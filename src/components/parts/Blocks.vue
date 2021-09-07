@@ -1,6 +1,6 @@
 <template>
-<xml xmlns="https://developers.google.com/blockly/xml" id="toolbox" style="display: none">
-      <category name="Logics" colour="%{BKY_LOGIC_HUE}">
+<xml  xmlns="https://developers.google.com/blockly/xml" id="toolbox" style="display: none">
+      <category v-pre name="Logics" colour="%{BKY_LOGIC_HUE}">
       <block type="controls_if"></block>
       <block type="logic_compare"></block>
       <block type="logic_operation"></block>
@@ -9,7 +9,7 @@
       <block type="logic_null"></block>
       <block type="logic_ternary"></block>
     </category>
-    <category name="Loops" colour="%{BKY_LOOPS_HUE}">
+    <category v-pre name="Loops" colour="%{BKY_LOOPS_HUE}">
       <block type="controls_repeat_ext">
         <value name="TIMES">
           <shadow type="math_number">
@@ -38,7 +38,7 @@
       <block type="controls_forEach"></block>
       <block type="controls_flow_statements"></block>
     </category>
-    <category name="Maths" colour="%{BKY_MATH_HUE}">
+    <category v-pre name="Maths" colour="%{BKY_MATH_HUE}">
       <block type="math_number">
         <field name="NUM">123</field>
       </block>
@@ -139,7 +139,7 @@
         </value>
       </block>
     </category>
-    <category name="Text" colour="%{BKY_TEXTS_HUE}">
+    <category v-pre name="Text" colour="%{BKY_TEXTS_HUE}">
       <block type="text"></block>
       <block type="text_join"></block>
       <block type="text_append">
@@ -216,7 +216,7 @@
         </value>
       </block>
     </category>
-    <category name="Lists" colour="%{BKY_LISTS_HUE}">
+    <category v-pre name="Lists" colour="%{BKY_LISTS_HUE}">
       <block type="lists_create_with">
         <mutation items="0"></mutation>
       </block>
@@ -267,7 +267,7 @@
       </block>
       <block type="lists_sort"></block>
     </category>
-    <category name="Color" colour="%{BKY_COLOUR_HUE}">
+    <category v-pre name="Color" colour="%{BKY_COLOUR_HUE}">
       <block type="colour_picker"></block>
       <block type="colour_random"></block>
       <block type="colour_rgb">
@@ -313,18 +313,24 @@
       <block type="send_data"></block>
       <block type="get_data"></block>
       <block type="send_finish"></block>
+      <block type="init"></block>
     </category>
     
     <category name="Devices"  colour="%{BKY_VARIABLES_HUE}">
-      <block type="text" v-for="row in devices" :key="row.id" >
+      <block type="text" v-for="(row,index) in devices" :key="index" >
         <shadow type="text">
-        <field name="TEXT">{{row.id}}</field></shadow>
+        <field name="TEXT">{{row.devID}}</field></shadow>
         </block>
     </category>
 </xml>
 </template>
 <script>
 export default {
-        props: ['devices']
+  props: ['devices']
+  //
+
+  /*
+  
+  */
 }
 </script>

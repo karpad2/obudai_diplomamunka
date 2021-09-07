@@ -2,10 +2,10 @@
    <div>
        <label>{{mode}}</label>
        <md-field>
-        <md-input v-model="modelValue" @change="oChange"  v-if="mode=='oled'" ></md-input>
-        <md-input v-model="modelValue" @change="oChange"  v-else-if="mode=='rfid'" readonly></md-input>
-        <md-switch v-model="modelValue" @change="oChange"  v-else-if="mode=='relay'" >{{ modelValue ? 'On' : 'Off' }}</md-switch>
-        <md-switch v-model="modelValue" @change="oChange"  v-else-if="mode=='input'" >{{ modelValue ? 'On' : 'Off' }}</md-switch> 
+        <md-input v-model="status" @change="oChange"  v-if="mode=='oled'" ></md-input>
+        <md-input v-model="status" @change="oChange"  v-else-if="mode=='rfid'" readonly></md-input>
+        <md-switch v-model="status" @change="oChange"  v-else-if="mode=='relay'" >{{ status ? 'On' : 'Off' }}</md-switch>
+        <md-switch v-model="status" @change="oChange"  v-else-if="mode=='input'" >{{ status ? 'On' : 'Off' }}</md-switch> 
         <span v-else>Unknown mode</span> 
        </md-field>
     </div> 
@@ -21,7 +21,7 @@ export default {
     data()
     {
         return{
-            astatus:this.status
+           status:this.modelValue
         }
     },
     methods:{
@@ -30,8 +30,22 @@ export default {
             const userId = FirebaseAuth.currentUser.uid;
             console.log(this.modelValue);
             let _ref= ref(FireDb, `/users/${userId}/rooms/${this.$route.params.rid}/devices/${this.$route.params.did}/status`);
-            set(_ref,this.modelValue);
+            set(_ref,this.status);
         }
+    },
+    mounted()
+    {
+        const userId = FirebaseAuth.currentUser.uid;
+            console.log(this.modelValue);
+            let _ref= ref(FireDb, `/users/${userId}/rooms/${this.$route.params.rid}/devices/${this.$route.params.did}/status`);
+            onValue(_ref,(e)=>
+            {
+                if(e.exists())
+                {
+                    this.status=e.val();
+                }
+
+            });
     }
     
 }
