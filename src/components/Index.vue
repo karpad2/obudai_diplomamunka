@@ -38,7 +38,7 @@
 						</router-link>
 					</div>
 					<md-list-item v-if="true" v-on:click="changeTheme()">
-								<md-icon class="md-icon">invert_colors</md-icon>
+								<md-icon class="md-icon">settings_brightness</md-icon>
 								<span class="md-list-item-text">Color Theme</span>
 					</md-list-item>
 					<md-list-item v-if="true" v-on:click="logout()">
