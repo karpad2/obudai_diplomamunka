@@ -83,7 +83,8 @@
     </md-drawer>
 
 			<md-app-content>
-				<router-view/>
+				<router-view  v-if="!loading_screen"/>
+				<loading v-else />
 			</md-app-content>
 			
 		</md-app>
@@ -94,11 +95,13 @@
 import {signOut} from "firebase/auth";
 import {FireDb,FirebaseAuth,change_Theme_Fb} from "@/firebase";
 import {ref, set ,onValue,get, child} from "firebase/database";
+import loading from "@/components/parts/loading";
 import logo from "@/assets/logo";
 
 	export default {
 		components: {
 		logo,
+		loading
 		},
 		name: 'Index',
 		data: () => ({
@@ -107,6 +110,7 @@ import logo from "@/assets/logo";
 			showSidepanel:false,
 			menuVisible: false,
 			userTheme: "default",
+			loading_screen:false,
 			menuTab: [
 				{
 					icon: 'home',
@@ -156,12 +160,24 @@ import logo from "@/assets/logo";
 			]
 		}),
 		mounted() {
-
+			
+			this.$router.beforeEach((to,from,next)=>{
+				
+				this.loading_screen=true;
+				next();
+			});
+			
+			this.$router.afterEach(()=>{
+				setTimeout(()=>{this.loading_screen=false},500);
+			});
+			
 			try{
 			//localStorage.user= FirebaseAuth._currentUser;
 			const userId = FirebaseAuth.currentUser.uid;
 			this.profile_picture_url=FirebaseAuth.currentUser.photoURL;
 			this.profile_name=FirebaseAuth.displayName;
+			
+			
 			//console.log(FirebaseAuth.currentUser);
 			get(child(FireDb.once, `users/${userId}/user_profile_color`)).then((snapshot) => {
         if (snapshot.exists()) {

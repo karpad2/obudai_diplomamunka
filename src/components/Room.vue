@@ -116,6 +116,7 @@
 </div>
 <div class="section">
       <md-button class="md-raised md-secondary" @click="showDeleteDialog = true">Delete Room</md-button>
+      <md-button class="md-raised md-secondary" @click="duplicate_room()">Duplicate Room</md-button>
       </div>    
       </div>   
 
@@ -165,7 +166,7 @@ import {BIconCheck2,BIconPlus} from 'bootstrap-icons-vue'
 import {FireDb,FirebaseAuth,userId} from "@/firebase";
 import {ref, set ,onValue,get, child,push,runTransaction } from "firebase/database";
 import {get_data_fromdb,get_data_fromroomdb} from "@/mod_data/get_data";
-import {add_program,add_camera,add_device} from "@/mod_data/set_data";
+import {add_program,add_camera,add_device,add_room} from "@/mod_data/set_data";
 import {delete_room} from "@/mod_data/del_data";
 
 
@@ -262,6 +263,10 @@ send_wifi()
     del_room()
         {
         delete_room(this.$route.params.rid);
+        },
+        duplicate_room()
+        {
+          add_room(`${this.room_name} duplicate`,this.room)
         },
 onCancel () {
         //this.value = 'Disagreed'

@@ -76,14 +76,14 @@ function add_program(room_id,l,k=null)
       }
     }
 
-   function add_room(room_name)
+   function add_room(room_name,k=null)
     {
       console.log("Add Room");
       console.log(room_name);
       if(room_name==="") return;
       console.log("Add Room");
         
-    const postData = {
+    let postData = {
                         "room_name":room_name,
                         "programs":{
                            "test": {
@@ -95,6 +95,8 @@ function add_program(room_id,l,k=null)
                         }
                         ,
                         "devices":[]};
+    if(k!=null) postData=k;
+    postData.room_name=room_name;
        try
       {
       let frooms= ref(FireDb, `users/${FirebaseAuth._currentUser.uid}/rooms`);
