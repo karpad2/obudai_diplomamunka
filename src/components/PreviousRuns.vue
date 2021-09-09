@@ -5,8 +5,8 @@
         You can see Previous runs which made by teams.
         <p> You can modify or even delete this run datas.</p>
     </div>
-     <div class="section">
-  <md-table  md-card>
+     <div class="section" >
+  <md-table  md-card v-if="pruns.length>0">
       <md-table-toolbar>
         <h1 class="md-title">Previous runs  by rooms:</h1>
       </md-table-toolbar>
@@ -18,7 +18,7 @@
         <md-table-head>Time:</md-table-head>
       </md-table-row>
       
-      <md-table-row v-for="(row,index) in cameras" :key="index">
+      <md-table-row v-for="(row,index) in pruns" :key="index">
         <md-table-cell md-numeric>{{index+1}}</md-table-cell>
         <md-table-cell>{{row.room_name}}</md-table-cell>
         <md-table-cell><img :src="row.data.team_name" class="" /></md-table-cell>
@@ -27,6 +27,12 @@
       
       </md-table>
       
+      <md-empty-state v-else
+			md-icon="history_toggle_off"
+			md-label="You do not have previous run."
+			md-description="You do not have previous run :/">
+			
+		</md-empty-state>
       </div>
 </div>
 </template>

@@ -4,6 +4,7 @@
     <div class="section">
     <div ></div>
     </div>
+    <div  v-if="rooms.length>0"> 
     <md-table  md-card>
       <md-table-toolbar>
         <h1 class="md-title">Rooms</h1>
@@ -24,8 +25,16 @@
         <md-table-cell><router-link :to="{ path: '/room/'+row.devID+'/lobby/'}">Lobby</router-link></md-table-cell>
         <md-table-cell>{{get_active_devices(row.devID)}}</md-table-cell>
     </md-table-row>
-      
+      <md-button class="md-raised md-primary" @click="showDialog = true">Add room</md-button>
       </md-table>
+    </div>
+    
+      <md-empty-state v-else
+			md-icon="other_houses"
+			md-label="Create your first room"
+			md-description="Create beautiful project with this program, and you'll be able to create great things.">
+			<md-button class="md-primary md-raised" @click="showDialog = true" >Add Room</md-button>
+		</md-empty-state>
     
 <md-dialog-prompt
       :md-active.sync="showDialog"
@@ -35,7 +44,7 @@
       md-input-placeholder="Room name ..."
       md-confirm-text="Done"
       :md-confirm="add_room()" />
-    <md-button class="md-raised md-primary" @click="showDialog = true">Add room</md-button>
+    
 </div>
 </template>
 <script>

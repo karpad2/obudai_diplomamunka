@@ -7,7 +7,7 @@
         <p>To remotely use cameras from different location you must proxied them through a vpn or from public IP (this is not recommended)</p>
     </div>
      <div class="section">
-  <md-table  md-card>
+  <md-table  md-card v-if="cameras.length>0">
       <md-table-toolbar>
         <h1 class="md-title">Cameras of all room:</h1>
       </md-table-toolbar>
@@ -27,6 +27,13 @@
     </md-table-row>
       
       </md-table>
+
+      <md-empty-state v-else
+			md-icon="videocam"
+			md-label="You do not have cameras"
+			md-description="You do not have cameras. You can create camera inside the Room. :/">
+			
+		</md-empty-state>
       
       </div>
 </div>

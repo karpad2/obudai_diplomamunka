@@ -75,11 +75,41 @@ function add_program(room_id,l,k=null)
         console.error(E);
       }
     }
+function start_run(room_id,team_name)
+{     
+      const userId = FirebaseAuth.currentUser.uid;
+      let postData={};
+      let frooms= ref(FireDb, `/users/${userId}/rooms/${room_id}/devices/`);
+      let newroomref = push(frooms);
+      set(newroomref,postData);
+      
+}
+function stop_run(room_id,team_name)
+{     
+      const userId = FirebaseAuth.currentUser.uid;
+      let postData={};
+      let frooms= ref(FireDb, `/users/${userId}/rooms/${room_id}/devices/`);
+      let newroomref = push(frooms);
+      set(newroomref,postData);
+      
+}
+function status_run(room_id)
+{     
+      const userId = FirebaseAuth.currentUser.uid;
+      let postData={};
+      let frooms= ref(FireDb, `/users/${userId}/rooms/${room_id}/pastruns`);
+      let newroomref = push(frooms);
+      set(newroomref,postData);
+      
+}        
    
 
 export
 {
     add_program,
     add_camera,
-    add_device
+    add_device,
+    start_run,
+    status_run,
+    stop_run
 }

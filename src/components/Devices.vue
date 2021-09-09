@@ -6,7 +6,7 @@
 <p>First you will need to add a device manually on the website.</p>
 <p>Our method is using a "config.json" and flash this file to microcontroller, this file will contains the data for reaching server,
 and network settings for it.</p>
-<div class="section">
+<div class="section" v-if="devices.length>0">
     <md-table  md-card>
       <md-table-toolbar>
         <h1 class="md-title">Devices</h1>
@@ -29,35 +29,13 @@ and network settings for it.</p>
       
       </md-table>
       <md-button class="md-raised md-primary" @click="showDDialog = true">Add Device </md-button>
-    </div>
+  </div>
+     <md-empty-state v-else
+			md-icon="precision_manufacturing"
+			md-label="You do not have devices"
+			md-description="You do not have registered device. You can create device inside the Room. :/">
+    </md-empty-state>
 
-<h2>Searching for Devices</h2>
-<md-list v-if="!found_devices || !found_devices.length">
-    <md-list-item>
-    </md-list-item>
-</md-list>
-
-<md-table  md-card>
-      <md-table-toolbar>
-        <h1 class="md-title">Searching for Devices</h1>
-      </md-table-toolbar>
-      <md-table-row>
-        <md-table-head md-numeric>#</md-table-head>
-        <md-table-head>Device Name:</md-table-head>
-        <md-table-head>Device Mode:</md-table-head>
-        <md-table-head>Device is Online?</md-table-head>
-        <md-table-head>Devices Edit:</md-table-head>
-      </md-table-row>
- <md-table-row v-for="(row,index) in found_devices" :key="index">
-        <md-table-cell md-numeric>{{index+1}}</md-table-cell>
-        <md-table-cell>{{row.device_name}}</md-table-cell>
-        <md-table-cell>{{row.mode}}</md-table-cell>
-        <md-table-cell><activedevice :lastonline="row.lastonline"/></md-table-cell>
-        <md-table-cell><md-button class="md-raised md-primary" @click="showADDialog = true">Add Device </md-button></md-table-cell>
-    </md-table-row>
- </md-table>
-
- <md-button class="md-raised md-primary">Add device</md-button>
 </div>
 </template>
 <script>
@@ -123,4 +101,33 @@ edit(l)
     
   }
 
+/*
+<h2>Searching for Devices</h2>
+<md-list v-if="!found_devices || !found_devices.length">
+    <md-list-item>
+    </md-list-item>
+</md-list>
+
+<md-table  md-card>
+      <md-table-toolbar>
+        <h1 class="md-title">Searching for Devices</h1>
+      </md-table-toolbar>
+      <md-table-row>
+        <md-table-head md-numeric>#</md-table-head>
+        <md-table-head>Device Name:</md-table-head>
+        <md-table-head>Device Mode:</md-table-head>
+        <md-table-head>Device is Online?</md-table-head>
+        <md-table-head>Devices Edit:</md-table-head>
+      </md-table-row>
+ <md-table-row v-for="(row,index) in found_devices" :key="index">
+        <md-table-cell md-numeric>{{index+1}}</md-table-cell>
+        <md-table-cell>{{row.device_name}}</md-table-cell>
+        <md-table-cell>{{row.mode}}</md-table-cell>
+        <md-table-cell><activedevice :lastonline="row.lastonline"/></md-table-cell>
+        <md-table-cell><md-button class="md-raised md-primary" @click="showADDialog = true">Add Device </md-button></md-table-cell>
+    </md-table-row>
+ </md-table>
+
+ <md-button class="md-raised md-primary">Add device</md-button>
+*/
 </script>

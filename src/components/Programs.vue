@@ -1,7 +1,7 @@
 <template>
 <div class="center">
 <h2>Programs</h2>
-<div class="section">
+<div class="section" v-if="programs.length>0">
     <md-table  md-card>
       <md-table-toolbar>
         <h1 class="md-title">Programs</h1>
@@ -19,8 +19,14 @@
     </md-table-row>
       
       </md-table>
-      
+      <md-button class="md-raised md-primary" @click="showDialog = true">Add program</md-button>
     </div>
+    <md-empty-state v-else
+			md-icon="other_houses"
+			md-label="Create your first room"
+			md-description="Create beautiful project with this program, and you'll be able to create great things.">
+			<md-button class="md-primary md-raised" @click="showDialog = true" >Add Room</md-button>
+		</md-empty-state>
 <md-dialog :md-active.sync="showDialog">
 	<md-dialog-title>Add Program</md-dialog-title>
 	<md-text>
@@ -33,7 +39,7 @@
 	</md-dialog-actions>
 </md-dialog>
 
-<md-button class="md-raised md-primary" @click="showDialog = true">Add program</md-button>
+
 </div>
 </template>
 <script>

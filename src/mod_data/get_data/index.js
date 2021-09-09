@@ -97,14 +97,7 @@ function  get_rooms(){
             });
         });
       }
-      else
-      {
-        l.push(
-          {
-            data:{room_name:"Nincs szoba"}
-          }
-        );
-      }
+     
     });
      return l;
   
