@@ -10,6 +10,8 @@
 <div id="blocklyDiv"></div>
 <Blocks :devices="devices" />
 
+<md-button class="md-raised md-primary" @click="duplicateprogram()">Duplicate program</md-button>
+      
 <md-field>
 <md-button class="md-raised md-secondary" @click="showDeleteDialog = true">Delete Program</md-button>
 </md-field>
@@ -35,6 +37,7 @@ import CryptoJS from "crypto-js";
 //import {media} from "blockly/media";
 import {FireDb,FirebaseAuth,userId} from "@/firebase";
 import {ref, set ,onValue,get, child,push,runTransaction } from "firebase/database";
+import {add_program} from "@/mod_data/set_data";
 
 export default {
     name: 'Programs',
@@ -70,14 +73,12 @@ export default {
         console.log("WELP");
       },
       delete_program()
-                {
-                console.log("Delete process");
+      {   console.log("Delete process");
                     const userId = FirebaseAuth.currentUser.uid;
                     let _ref= ref(FireDb, `/users/${userId}/rooms/${this.$route.params.rid}/programs/${this.$route.params.pid}`);
                     set(_ref,null);
                     this.$route.router.go(-1); 
-
-                },
+      },
          onCancel () {
                         //this.value = 'Disagreed'
                     },
@@ -93,7 +94,6 @@ export default {
                     namechange()
                     {
                         const userId = FirebaseAuth.currentUser.uid;
-                        //console.log(this.device.mode);
                         let _ref= ref(FireDb, `/users/${userId}/rooms/${this.$route.params.rid}/programs/${this.$route.params.pid}/program_name`);
                         set(_ref,this.program.program_name);
                     },
@@ -130,6 +130,10 @@ export default {
     let workspace_default = Blockly.Xml.textToDom(this.program.program_xml);
     Blockly.Xml.appendDomToWorkspace(workspace_default,this.Workspace);
       this.auto_setup();
+  },
+   duplicateprogram()
+  {
+    add_program(this.$route.params.rid,this.program.program_name,this.program);
   }
   },
   mounted() {
@@ -175,6 +179,7 @@ export default {
          this.start();      
         });
   },
+ 
   }
 
 

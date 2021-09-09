@@ -42,6 +42,8 @@
 import {FireDb,FirebaseAuth,userId} from "@/firebase";
 
 import {ref, set ,onValue,get, child,push,runTransaction } from "firebase/database";
+import {get_data_fromroomdb,get_rooms} from "@/mod_data/get_data";
+
 
 export default {
     name: 'Rooms',
@@ -59,7 +61,7 @@ export default {
     
     mounted()
     {
-       this.get_rooms(); 
+       this.rooms=get_rooms(); 
         //console.log(this.rooms);
     },
    methods:{
@@ -82,8 +84,8 @@ export default {
                         }
                         ,
                         "devices":[]};
-                        try
-                        {
+       try
+      {
       let frooms= ref(FireDb, `users/${FirebaseAuth._currentUser.uid}/rooms`);
       let newroomref = push(frooms);
       set(newroomref,postData);
@@ -96,35 +98,10 @@ export default {
        this.get_rooms();
        this.room_name=""; 
     },
-     get_rooms(){
-     const userId = FirebaseAuth.currentUser.uid;
-     onValue(ref(FireDb, `/users/${userId}/rooms`),(sn)=>
-     {
-       if(sn.exists())
-       {
-         sn.forEach((element) => {
-          this.rooms.push(
-             {
-               data:element.val(),
-               devID:element.key
-             });
-         });
-       }
-       else
-       {
-         this.rooms.push(
-           {
-             data:{room_name:"Nincs szoba"}
-           }
-         );
-       }
-     });
-      
-   
-  },
+     
   get_active_devices(index)
     {
-     this.get_data_fromdb(index,"devices");
+    this.devices=get_data_fromroomdb(index,"devices");
      let active=0,inactive=0,k;
 
       this.devices.forEach(element => {
@@ -155,27 +132,7 @@ export default {
         }
       
     },
-     get_data_fromdb(room_id,k){
-    const userId = FirebaseAuth.currentUser.uid;
-    let b=[];
-     onValue(ref(FireDb, `/users/${userId}/rooms/${room_id}/${k}`),(sn)=>
-     {
-       if(sn.exists())
-       console.log(sn);
-      sn.forEach((l)=>
-     {
-       b.push({
-         data:l.val(),
-         dev_id:l.key
-       });
-     })});
-    switch(k)
-    {
      
-      case "devices": this.devices=b; break;
-      
-    } 
-  },
 },
   computed:{
     

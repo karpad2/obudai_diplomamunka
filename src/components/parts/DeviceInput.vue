@@ -1,11 +1,11 @@
 <template>
    <div>
-       <label>{{mode}}</label>
+       <label for="input">{{mode}}</label>
        <md-field>
-        <md-input v-model="status" @change="oChange"  v-if="mode=='oled'" ></md-input>
-        <md-input v-model="status" @change="oChange"  v-else-if="mode=='rfid'" readonly></md-input>
-        <md-switch v-model="status" @change="oChange"  v-else-if="mode=='relay'" >{{ status ? 'On' : 'Off' }}</md-switch>
-        <md-switch v-model="status" @change="oChange"  v-else-if="mode=='input'" >{{ status ? 'On' : 'Off' }}</md-switch> 
+        <md-input id="input" v-model="status" @change="oChange"  v-if="mode=='oled'" ></md-input>
+        <md-input id="input" v-model="status" @change="oChange"  v-else-if="mode=='rfid'" readonly></md-input>
+        <md-switch id="input" v-model="status" @change="oChange"  v-else-if="mode=='relay'" >{{ status ? 'On' : 'Off' }}</md-switch>
+        <md-switch id="input" v-model="status" @change="oChange"  v-else-if="mode=='input'" >{{ status ? 'On' : 'Off' }}</md-switch> 
         <span v-else>Unknown mode</span> 
        </md-field>
     </div> 

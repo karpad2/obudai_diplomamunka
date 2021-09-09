@@ -14,13 +14,13 @@
     <div class="md-layout md-gutter">
       <div class="md-layout-item">
         <md-field>
-          <label for="operation">Device Mode</label>
-          <select id="operation" v-model="select" @change="achange" >
-            <option v-for="mode in devm" :key="mode.type" :value="mode.type">{{mode.name}}</option>
-          </select>
+      <h3>Choose mode:</h3>
+   <b-select @change="achange" v-model="device.mode">
+     <b-select-option v-for="mode in devm" :key="mode.type" :value="mode.type">{{mode.name}}</b-select-option>
+   </b-select>
         </md-field>
        <DeviceInput :mode="select" :v-model="device.status" />
-
+      <md-button class="md-raised md-primary" @click="duplicatedevice">Duplicate device with same settings</md-button>
       </div>
 
     </div>
@@ -45,6 +45,7 @@ import {ref, set ,onValue,get, child,push,runTransaction } from "firebase/databa
 import Deviceactivity from '@/components/parts/Deviceactivity';
 import DeviceInput from '@/components/parts/DeviceInput'
 import {devicemodes} from "@/datas";
+import {add_device} from "@/mod_data/set_data";
 export default {
  name: 'Device',
     data: () => ({
@@ -104,8 +105,7 @@ export default {
                     let _ref= ref(FireDb, `/users/${userId}/rooms/${this.$route.params.rid}/devices/${this.$route.params.did}`);
                     set(_ref,null);
                     this.$route.router.go(-1); 
-
-                },
+                    },
                 onCancel () {
                         //this.value = 'Disagreed'
                     },
@@ -161,6 +161,14 @@ export default {
                         console.log(this.device.mode);
                         let _ref= ref(FireDb, `/users/${userId}/rooms/${this.$route.params.rid}/devices/${this.$route.params.did}/device_name`);
                         set(_ref,this.device.device_name);
+                    },
+                    duplicatedevice()
+                    {
+                      add_device(this.$route.params.rid,this.device.device_name,this.device);
+                    },
+                    get_config()
+                    {
+                      
                     }
                     },
                    

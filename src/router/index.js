@@ -23,6 +23,8 @@ import Program from "../components/Program";
 import Lobby from "../components/lobby";
 import Camera from "../components/Camera";
 import Cameras from "../components/Cameras";
+import PreviousRuns from "@/components/PreviousRuns";
+import PreviousRun from "@/components/PreviousRun";
 
 
 
@@ -69,6 +71,11 @@ const router = new VueRouter ({
 					component: Cameras,
 				},
 				{
+					path: 'pruns',
+					name: 'pruns',
+					component: PreviousRuns,
+				},
+				{
 					path: 'room',
 					name: 'room',
 					component: Room,
@@ -103,6 +110,10 @@ const router = new VueRouter ({
 				{
 					path: '/room/:rid/camera/:cid',
 					component: Camera
+				},
+				{
+					path: '/room/:rid/prun/:prid',
+					component: PreviousRun
 				},
 			]
 		},

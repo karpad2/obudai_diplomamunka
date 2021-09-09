@@ -23,7 +23,7 @@
         <md-table-cell md-numeric>{{index+1}}</md-table-cell>
         <md-table-cell>{{row.data.camera_name}}</md-table-cell>
         <md-table-cell><img :src="row.data.camera_url" class="" /></md-table-cell>
-        <md-table-cell><router-link :to="{ path: `/room/${row.room_id}/camera/${row.cam_id}`}">Edit</router-link></md-table-cell>
+        <md-table-cell><router-link :to="{ path: `/room/${row.room_id}/camera/${row.dev_id}`}">Edit</router-link></md-table-cell>
     </md-table-row>
       
       </md-table>
@@ -34,6 +34,7 @@
 <script>
 import {FireDb,FirebaseAuth,userId} from "@/firebase";
 import {ref, set ,onValue,get, child,push,runTransaction } from "firebase/database";
+import {get_data_from_allroomdb} from "@/mod_data/get_data";
 export default
 {
   data()
@@ -44,46 +45,11 @@ export default
   },
   mounted()
   {
-    
+    this.cameras=get_data_from_allroomdb("cameras");
 
   },
   methods:{
-  get_data_fromdb()
-  {
-    let k="cameras";
-    let room_id="";
-    let l=[];
-
-    const userId = FirebaseAuth.currentUser.uid;
-    let b=[];
- onValue(ref(FireDb, `/users/${userId}/rooms`),(sn_out)=>
-     {
-       if(sn_out.exists())
-       {
-         sn_out.forEach((l)=>{
-        room_id=l.key;
-            onValue(ref(FireDb, `/users/${userId}/rooms/${room_id}/${k}`),(sn)=>
-            {
-              if(sn.exists())
-              console.log(sn);
-              sn.forEach((l)=>
-            {
-              b.push({
-                room_id:this.room_id,
-                cam_id:l.key,
-                data:l.val()
-                });
-            })});});
-
-       }
-     });
-
-    
-    switch(k)
-    {
-      case "cameras": this.cameras.push(b); break;
-    } 
-  },
+  
   }
 }
 

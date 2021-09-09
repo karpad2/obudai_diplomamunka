@@ -97,9 +97,23 @@
         <md-table-cell></md-table-cell>
         <md-table-cell><md-button class="md-raised md-primary"  @click="edit(`/room/${$route.params.rid}/camera/${row.dev_id}`)">Settings <BIconPlus/></md-button></md-table-cell>
     </md-table-row>
+
+    
       
       </md-table>
       <md-button class="md-raised md-primary" @click="showCDialog = true">Add Camera</md-button>
+      <div class="section">
+    <h4>Network Settings:</h4>
+       <md-field>
+         <label for="input">Wifi Name:</label>
+        <md-input id="input" @change="send_wifi" v-model="room.wifi_name"></md-input>
+        </md-field>
+        <md-field>
+         <label for="input">Wifi Password:</label>
+        <md-input id="input" @change="send_wifi" v-model="room.wifi_password"></md-input>
+        </md-field>
+
+</div>
 <div class="section">
       <md-button class="md-raised md-secondary" @click="showDeleteDialog = true">Delete Room</md-button>
       </div>    
@@ -112,7 +126,7 @@
       md-input-maxlength="30"
       md-input-placeholder="Program name ..."
       md-confirm-text="Done"
-      @md-confirm="add_program()" />
+      @md-confirm="padd_program()" />
 
  <md-dialog-prompt
       :md-active.sync="showDDialog"
@@ -121,7 +135,7 @@
       md-input-maxlength="30"
       md-input-placeholder="Device name ..."
       md-confirm-text="Done"
-      @md-confirm="add_device()" />
+      @md-confirm="padd_device()" />
 
       <md-dialog-prompt
       :md-active.sync="showCDialog"
@@ -130,7 +144,7 @@
       md-input-maxlength="30"
       md-input-placeholder="Camera name ..."
       md-confirm-text="Done"
-      @md-confirm="add_camera()" />
+      @md-confirm="padd_camera()" />
 
       <md-dialog-confirm
       :md-active.sync="showDeleteDialog"
@@ -139,8 +153,7 @@
       md-confirm-text="Agree"
       md-cancel-text="Disagree"
       @md-cancel="onCancel()"
-      @md-confirm="delete_room()" />
-
+      @md-confirm="del_room()" />
 </div>
 </template>
 <script>
@@ -151,7 +164,9 @@ import router from "@/router";
 import {BIconCheck2,BIconPlus} from 'bootstrap-icons-vue'
 import {FireDb,FirebaseAuth,userId} from "@/firebase";
 import {ref, set ,onValue,get, child,push,runTransaction } from "firebase/database";
-
+import {get_data_fromdb,get_data_fromroomdb} from "@/mod_data/get_data";
+import {add_program,add_camera,add_device} from "@/mod_data/set_data";
+import {delete_room} from "@/mod_data/del_data";
 
 
 export default {
@@ -188,12 +203,35 @@ mounted()
 },
 methods:
 {
+  padd_program()
+  {
+    add_program(this.$route.params.rid,this.device_name,null)
+  },
+  padd_camera()
+  {
+    add_camera(this.$route.params.rid,this.camera_name,null)
+  },
+  padd_device()
+  {
+    add_device(this.$route.params.rid,this.device_name,null)
+  },
+  
 changeprogram()
 {
       const room_id=this.$route.params.rid;
       const userId = FirebaseAuth.currentUser.uid;
       let frooms= ref(FireDb, `/users/${userId}/rooms/${room_id}/active_program`);
       set(frooms,this.room.active_program);
+},
+send_wifi()
+{
+    if(this.room.wifi_password.length<8 || this.room.wifi_name.length<3 ) return;
+      const room_id=this.$route.params.rid;
+      const userId = FirebaseAuth.currentUser.uid;
+      let frooms= ref(FireDb, `/users/${userId}/rooms/${room_id}/wifi_name`);
+      set(frooms,this.room.wifi_name);
+      frooms= ref(FireDb, `/users/${userId}/rooms/${room_id}/wifi_password`);
+      set(frooms,this.room.wifi_password);
 },
   get_data()
   {
@@ -210,126 +248,21 @@ changeprogram()
        this.activeprogram=sn.val().active_program;
        console.log( this.activeprogram);
     });
-     this.get_data_fromdb("cameras");
-     this.get_data_fromdb("devices");
-     this.get_data_fromdb("programs");  
+     this.cameras=get_data_fromroomdb(room_id,"cameras");
+     this.devices=get_data_fromroomdb(room_id,"devices");
+     this.programs=get_data_fromroomdb(room_id,"programs");  
      console.log(this.cameras);
      //console.log(this.devices);
   },
-
-  get_data_fromdb(k){
-    const room_id=this.$route.params.rid;
-    const userId = FirebaseAuth.currentUser.uid;
-    let b=[];
-     onValue(ref(FireDb, `/users/${userId}/rooms/${room_id}/${k}`),(sn)=>
-     {
-       if(sn.exists())
-       console.log(sn);
-      sn.forEach((l)=>
-     {
-       b.push({
-         data:l.val(),
-         dev_id:l.key
-       });
-     })});
-    switch(k)
-    {
-      case "cameras": this.cameras=b; break;
-      case "devices": this.devices=b; break;
-      case "programs": this.programs=b; break;
-    } 
-  },
-    add_program()
-    {
-     if(this.program_name=="") return;
-      console.log("Add program");
-      const room_id=this.$route.params.rid;
-      const userId = FirebaseAuth.currentUser.uid;
-        
-    const postData =  {
-                        "program_name":this.program_name,
-                        "program_xml":"",
-                        "program_javascript":"",
-                      };
-     try
-        {
-      let frooms= ref(FireDb, `/users/${userId}/rooms/${room_id}/programs`);
-      let newroomref = push(frooms);
-      set(newroomref,postData);
-      }
-      catch (E)
-      {
-        console.error(E);
-      }
-
-      this.program_name="";
-    },
-    add_camera()
-    {
-     
-      if(this.camera_name=="") return;
-      console.log("Add Camera");
-      const room_id=this.$route.params.rid;
-      const userId = FirebaseAuth.currentUser.uid;
-        
-    const postData =  {
-          "camera_name":this.camera_name,
-          "camera_url":""
-          };
-                        try
-                        {
-      let frooms= ref(FireDb, `/users/${userId}/rooms/${room_id}/cameras/`);
-      let newroomref = push(frooms);
-      set(newroomref,postData);
-      }
-      catch (E)
-      {
-        console.error(E);
-      }
-      this.camera_name="";
-
-    },
-    add_device()
-    {
-     
-      if(this.device_name=="") return;
-      console.log("Add Device");
-      const room_id=this.$route.params.rid;
-      const userId = FirebaseAuth.currentUser.uid;
-        
-    const postData =  {
-                                "device_name":this.device_name,
-                                "mode":"relay",
-                                "status":"0"
-                      };
-   try
-      {
-      let frooms= ref(FireDb, `/users/${userId}/rooms/${room_id}/devices/`);
-      let newroomref = push(frooms);
-      set(newroomref,postData);
-      }
-      catch (E)
-      {
-        console.error(E);
-      }
-      this.device_name="";
-      this.get_data();
-    },
+    
     edit(l)
       {
         router.push(l);
       },
-    delete_room()
-{
-console.log("Delete process");
-const room_id=this.$route.params.rid;
-    const userId = FirebaseAuth.currentUser.uid;
-    let b=[];
-    let _ref= ref(FireDb, `/users/${userId}/rooms/${room_id}`);
-    set(_ref,null);
-     router.go(-1); 
-
-},
+    del_room()
+        {
+        delete_room(this.$route.params.rid);
+        },
 onCancel () {
         //this.value = 'Disagreed'
       }

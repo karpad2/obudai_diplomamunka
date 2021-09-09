@@ -24,7 +24,7 @@ and network settings for it.</p>
         <md-table-cell>{{row.data.device_name}}</md-table-cell>
         <md-table-cell>{{row.data.mode}}</md-table-cell>
         <md-table-cell><activedevice :lastonline="row.lastonline"/></md-table-cell>
-        <md-table-cell><md-button class="md-raised md-primary" @click="edit(`/room/${row.room}/device/${row.dev_id}`)">Edit Device</md-button></md-table-cell>
+        <md-table-cell><md-button class="md-raised md-primary" @click="edit(`/room/${row.room_id}/device/${row.dev_id}`)">Edit Device</md-button></md-table-cell>
     </md-table-row>
       
       </md-table>
@@ -67,6 +67,7 @@ import router from "@/router";
 import {FireDb,FirebaseAuth,userId} from "@/firebase";
 import {ref, set ,onValue,get, child,push,runTransaction } from "firebase/database";
 import {BIconCheck2,BIconPlus} from 'bootstrap-icons-vue'
+import {get_data_from_allroomdb} from "@/mod_data/get_data";
 export default {
     
 
@@ -85,7 +86,7 @@ export default {
     mounted()
     {        
        const userId = FirebaseAuth.currentUser.uid;
-       this.get_data_fromdb();
+       this.devices=get_data_from_allroomdb("devices");
         /*
             még nincs implementálva a böngészőkben OwO
             this.scan = navigator.bluetooth.requestLEScan({"acceptAllAdvertisements":true});
@@ -115,45 +116,7 @@ edit(l)
 {
   router.push(l);
 },
-get_data_fromdb(){
-          this.devices=[];
-          let k="devices";
-          let room_id="";
-          //let l=[];
 
-          const userId = FirebaseAuth.currentUser.uid;
-          let b=[];
-      onValue(ref(FireDb, `/users/${userId}/rooms`),(sn_out)=>{
-            if(sn_out.exists()){
-              sn_out.forEach((l)=>{
-              room_id=l.key;
-              //console.log(room_id);
-             // console.log(`/users/${userId}/rooms/${room_id}/${k}`);
-             onValue(ref(FireDb, `/users/${userId}/rooms/${room_id}/${k}`),(sna)=>{
-                 if(sna.exists())
-                    {
-                    //console.log(sna);
-                    sna.forEach((lb)=>{
-                      b.push(
-                        {data:lb.val(),
-                        room:room_id,
-                        dev_id:lb.key});
-                     
-                    });
-                    }
-                  });
-              });
-
-            }
-          });
-
-           //console.log(b);
-          switch(k)
-          {
-            case "devices": this.devices=b; break;
-          }
-          console.log(this.devices); 
-  },
 
         },
         

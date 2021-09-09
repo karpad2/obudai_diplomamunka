@@ -134,7 +134,7 @@ import logo from "@/assets/logo";
 				},
 				
 				{
-					icon: 'code',
+					icon: 'developer_mode',
 					title: 'Programs',
 					link: '/programs',
 					auth: true,
@@ -145,6 +145,13 @@ import logo from "@/assets/logo";
 					link: '/cameras',
 					auth: true,
 				},
+				{
+					icon: 'history_toggle_off',
+					title: 'Previous Runs',
+					link: '/pruns',
+					auth: true,
+				},
+				
 			
 			]
 		}),
