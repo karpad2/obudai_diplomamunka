@@ -23,6 +23,5 @@
 
 	.karpad2 {
 		font-weight: bold;
-		
 	}
 </style>
