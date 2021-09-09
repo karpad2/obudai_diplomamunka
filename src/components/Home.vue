@@ -1,15 +1,56 @@
 <template>
 	<div>
+		<div class="section">
+	<md-card md-with-hover>
+      <md-card-header>
+        <div class="md-title">Profile</div>
+      </md-card-header>
+
+      <md-card-content>
+        Hello, <span class="profile">{{profilename}}</span>
+      </md-card-content>
+
+      <md-card-actions>
+        
+      </md-card-actions>
+    </md-card>
+
+	<md-card md-with-hover @click="navigate('devices')">
+      <md-card-header>
+        <div class="md-title">Devices</div>
+      </md-card-header>
+
+      <md-card-content>
+        <span v-if="active==0">Devices are offline</span>
+		<span v-else-if="inactive==0">Devices are online</span>
+		<span v-else>{{active}} are online, and {{inactive}} are offline</span>
+      </md-card-content>
+
+      <md-card-actions>
+        
+      </md-card-actions>
+    </md-card>
+		</div>
+	<div class="section">
+
 	</div>
+	</div>
+	
 </template>
 
 <script>
+import {FireDb,FirebaseAuth,userId} from "@/firebase";
+import {get_data_fromroomdb,get_rooms} from "@/mod_data/get_data";
 	export default {
 		name: "Home",
 		data: () => ({
 			selectedMovies: [],
 			selectedDate: null,
-			boolean: false
+			boolean: false,
+			active:0,
+			inactive:0,
+			devices:{}
+			
 		}),
 		computed: {
 			firstDayOfAWeek: {
@@ -18,7 +59,8 @@
 				},
 				set(val) {
 					this.$material.locale.firstDayOfAWeek = val;
-				}
+				},
+				
 			},
 			dateFormat: {
 				get() {
@@ -27,7 +69,17 @@
 				set(val) {
 					this.$material.locale.dateFormat = val;
 				}
+			},
+			profilename()
+			{
+				return FirebaseAuth.currentUser.displayName;
 			}
+			
+		},
+		mounted()
+		{
+			this.get_name();
+			//console.log(this.$route)
 		},
 		methods: {
 			showSuccess: function () {
@@ -38,11 +90,51 @@
 					killer: true,
 					timeout: 1500,
 				});
-			}
-		}
+			},
+			get_name()
+			{
+				//this.profilename=;
+				console.log(FirebaseAuth);
+			},
+			navigate(k)
+			{
+			console.log("try to navigate");
+			this.$route.push(`/${k}`)
+			},
+	get_active_devices(index)
+    {
+    this.devices=get_data_fromroomdb(index,"devices");
+     let k;
+
+      this.devices.forEach(element => {
+        console.log(element.data.lastonline);
+        k=Date.now()-Date(element.data.lastonline);
+        if(k<120)
+        {
+          this.active++;
+        }
+        else
+        {
+          this.inactive++;
+        }
+       
+       // console.log(k);
+      });
+      
+    },
+		},
+		
 	}
 </script>
 
 <style scoped>
-	
+	 .md-card {
+    width: 320px;
+    margin: 15px;
+    display: inline-block;
+    vertical-align: top;
+  }
+  .profile{
+	  font-weight: bold;
+  }
 </style>

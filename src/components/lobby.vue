@@ -13,7 +13,7 @@
       md-input-maxlength="30"
       md-input-placeholder="Team name ..."
       md-confirm-text="Start"
-      @md-confirm="start_run"
+      @md-confirm="start_runprocess"
       @md-cancel="stop" />
    </div>
    
@@ -68,7 +68,7 @@
 
         methods:
         {
-            start_run()
+            start_runprocess()
             {
 
             },
