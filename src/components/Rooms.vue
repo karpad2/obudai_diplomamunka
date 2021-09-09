@@ -43,7 +43,7 @@
       md-input-maxlength="30"
       md-input-placeholder="Room name ..."
       md-confirm-text="Done"
-      :md-confirm="add_room()" />
+      :md-confirm="padd_room()" />
     
 </div>
 </template>
@@ -52,6 +52,7 @@ import {FireDb,FirebaseAuth,userId} from "@/firebase";
 
 import {ref, set ,onValue,get, child,push,runTransaction } from "firebase/database";
 import {get_data_fromroomdb,get_rooms} from "@/mod_data/get_data";
+import {add_room} from "@/mod_data/set_data";
 
 
 export default {
@@ -74,38 +75,12 @@ export default {
         //console.log(this.rooms);
     },
    methods:{
-    add_room()
-    {
-      console.log("Add Room");
-      console.log(this.room_name);
-      if(this.room_name==="") return;
-      console.log("Add Room");
-        
-    const postData = {
-                        "room_name":this.room_name,
-                        "programs":{
-                           "program_1": {
-                                "program_name":"test program",
-                                "active_program":true,
-                                "program_xml":"",
-                                "program_javascript":"",
-                                "program_active":true}
-                        }
-                        ,
-                        "devices":[]};
-       try
-      {
-      let frooms= ref(FireDb, `users/${FirebaseAuth._currentUser.uid}/rooms`);
-      let newroomref = push(frooms);
-      set(newroomref,postData);
-      }
-      catch (E)
-      {
-        console.error(E);
-      }
+    padd_room() {
+     add_room(this.room_name);
       //this.showDialog=false;
-       this.get_rooms();
-       this.room_name=""; 
+      this.room_name="";
+       get_rooms();
+       
     },
      
   get_active_devices(index)

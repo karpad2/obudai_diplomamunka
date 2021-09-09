@@ -75,6 +75,40 @@ function add_program(room_id,l,k=null)
         console.error(E);
       }
     }
+
+   function add_room(room_name)
+    {
+      console.log("Add Room");
+      console.log(room_name);
+      if(room_name==="") return;
+      console.log("Add Room");
+        
+    const postData = {
+                        "room_name":room_name,
+                        "programs":{
+                           "test": {
+                                "program_name":"test",
+                                "active_program":true,
+                                "program_xml":"",
+                                "program_javascript":"",
+                                "program_active":true}
+                        }
+                        ,
+                        "devices":[]};
+       try
+      {
+      let frooms= ref(FireDb, `users/${FirebaseAuth._currentUser.uid}/rooms`);
+      let newroomref = push(frooms);
+      set(newroomref,postData);
+      }
+      catch (E)
+      {
+        console.error(E);
+      }
+      //this.showDialog=false;
+      
+       
+    }
 function start_run(room_id,team_name)
 {     
       const userId = FirebaseAuth.currentUser.uid;
@@ -111,5 +145,7 @@ export
     add_device,
     start_run,
     status_run,
-    stop_run
+    stop_run,
+    add_room
+
 }
