@@ -69,7 +69,7 @@ export default {
       users:[]}
     },
     
-    mounted()
+    beforeMount()
     {
        this.rooms=get_rooms(); 
         //console.log(this.rooms);

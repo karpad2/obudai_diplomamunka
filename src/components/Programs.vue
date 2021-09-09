@@ -58,7 +58,7 @@ export default {
     {
 
     },
-    mounted()
+    beforeMount()
     {
       this.programs=get_data_from_allroomdb("programs");
     }

@@ -50,7 +50,7 @@ export default
       cameras:[]
     }
   },
-  mounted()
+  beforeMount()
   {
     this.cameras=get_data_from_allroomdb("cameras");
 

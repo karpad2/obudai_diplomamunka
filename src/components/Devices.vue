@@ -61,7 +61,7 @@ export default {
     components:{
       Activedevice
     },
-    mounted()
+    beforeMount()
     {        
        const userId = FirebaseAuth.currentUser.uid;
        this.devices=get_data_from_allroomdb("devices");
