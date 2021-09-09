@@ -37,6 +37,21 @@ function get_data_fromdb(k){
     return b;
   }
 
+  function get_data_fromroomitemdb(room_id,k){
+    const userId = FirebaseAuth.currentUser.uid;
+    let b=null;
+     onValue(ref(FireDb, `/users/${userId}/rooms/${room_id}/${k}`),(sn)=>
+     {
+       if(sn.exists())
+       console.log(sn);
+     
+         b=sn.val();
+         
+      
+    });
+    return b;
+  }
+
   function get_data_from_allroomdb(k){
     let room_id="";
    const userId = FirebaseAuth.currentUser.uid;
@@ -99,5 +114,6 @@ export {
     get_data_fromdb,
     get_data_from_allroomdb,
     get_data_fromroomdb,
-    get_rooms 
+    get_rooms ,
+    get_data_fromroomitemdb
 }

@@ -18,6 +18,11 @@ console.log("Delete room");
 //const room_id=this.$route.params.rid;
  deletep(`rooms/${room_id}`);   
 }
+function delete_device(room_id,devID)
+                {
+                    deletep(`rooms/${room_id}/devices/${devID}`);
+                }
 export{
-    delete_room
+    delete_room,
+    delete_device
 }

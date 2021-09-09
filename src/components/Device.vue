@@ -21,11 +21,12 @@
         </md-field>
        <DeviceInput :mode="select" :v-model="device.status" />
       <md-button class="md-raised md-primary" @click="duplicatedevice">Duplicate device with same settings</md-button>
+      <md-button class="md-raised md-primary" @click="get_config">Download Config file</md-button>
       </div>
 
     </div>
     <div class="section">
-<md-button class="md-raised md-secondary" @click="showDeleteDialog = true">Delete Room</md-button>
+<md-button class="md-raised md-secondary" @click="showDeleteDialog = true">Delete Device</md-button>
 </div>
 <md-dialog-confirm
       :md-active.sync="showDeleteDialog"
@@ -34,7 +35,7 @@
       md-confirm-text="Agree"
       md-cancel-text="Disagree"
       @md-cancel="onCancel()"
-      @md-confirm="delete_device()" />
+      @md-confirm="adelete()" />
 
 </div>
 </div>
@@ -45,7 +46,11 @@ import {ref, set ,onValue,get, child,push,runTransaction } from "firebase/databa
 import Deviceactivity from '@/components/parts/Deviceactivity';
 import DeviceInput from '@/components/parts/DeviceInput'
 import {devicemodes} from "@/datas";
+
+import {get_data_fromroomitemdb} from "@/mod_data/get_data";
 import {add_device} from "@/mod_data/set_data";
+import {delete_device} from "@/mod_data/del_data";
+import {saveTextAsFile} from "@/file";
 export default {
  name: 'Device',
     data: () => ({
@@ -97,15 +102,10 @@ export default {
     },
     methods:
     {
-        delete_device()
-                {
-                console.log("Delete process");
-                    const userId = FirebaseAuth.currentUser.uid;
-                    let b=[];
-                    let _ref= ref(FireDb, `/users/${userId}/rooms/${this.$route.params.rid}/devices/${this.$route.params.did}`);
-                    set(_ref,null);
-                    this.$route.router.go(-1); 
-                    },
+        adelete()
+        {
+          delete_device(this.$route.params.rid,this.$route.params.did);
+        },
                 onCancel () {
                         //this.value = 'Disagreed'
                     },
@@ -168,11 +168,18 @@ export default {
                     },
                     get_config()
                     {
-                      
+                      let filename="config.json";
+                      let l={data:this.device,wifiname:get_data_fromroomitemdb(this.$route.params.rid,"wifi_name"),
+                      wifipassword:get_data_fromroomitemdb(this.$route.params.rid,"wifi_password"),
+                      device_id:this.$route.params.did};
+
+                      saveTextAsFile(JSON.stringify(l),filename);
                     }
                     },
                    
     
   }
+
+
 
 </script>
