@@ -1,30 +1,30 @@
 <template>
 <div class="center">
-    <h2>Camera ~ {{camera.camera_name}}</h2>
+    <h2>Event reservation ~ {{event.contact_name}}</h2>
     
     <md-field>
-      <label>Camera name:</label>
-      <md-input v-model="camera.camera_name"></md-input>
+      <label>Contact name:</label>
+      <md-input v-model="event.contact_name"></md-input>
     </md-field>
 
     <md-field>
-      <label>Camera url:</label>
-      <md-input v-model="camera.camera_url"></md-input>
+      <label>Contact Phone:</label>
+      <md-input v-model="event.contact_phone"></md-input>
     </md-field>
 
-    <img :src="camera.camera_url"  alt="Camera Live Image" id="camera_live_image"/>
+    
 <md-field>
-      <md-button class="md-raised md-secondary" @click="showDeleteDialog = true">Delete Camera</md-button>
+      <md-button class="md-raised md-secondary" @click="showDeleteDialog = true">Delete Event</md-button>
 
 </md-field>
 <md-dialog-confirm
       :md-active.sync="showDeleteDialog"
-      md-title="Delete this Camera?"
-      md-content="Are you delete this camera?"
+      md-title="Delete this Event?"
+      md-content="Are you delete this event?"
       md-confirm-text="Agree"
       md-cancel-text="Disagree"
       @md-cancel="onCancel()"
-      @md-confirm="delete_camera()" />
+      @md-confirm="delete_event()" />
 
 </div>
 </template>
@@ -37,7 +37,7 @@ export default
     data()
     {
         return{
-            camera:{},
+            event:{},
             showDeleteDialog:false
         }
     },
@@ -57,25 +57,25 @@ export default
         console.log(this.$route.params);
         //localStorage.setItem('device',JSON.stringify(null));
         const userId = FirebaseAuth.currentUser.uid;
-        const devId = this.$route.params.cid;
+        const eventID = this.$route.params.cid;
         const room_id=this.$route.params.rid;
         
 
-        onValue(ref(FireDb, `/users/${userId}/rooms/${room_id}/cameras/${devId}`),(sn)=>{
+        onValue(ref(FireDb, `/users/${userId}/rooms/${room_id}/events/${eventID}`),(sn)=>{
        if(sn.exists()) 
-       {this.camera=sn.val();
+       {this.event=sn.val();
         //this.select=this.device.mode;
        }
         });
     },
     methods:
     {
-        delete_camera()
+        delete_event()
                 {
-                console.log("Delete process");
+                console.log("Delete event");
                     const userId = FirebaseAuth.currentUser.uid;
                     let b=[];
-                    let _ref= ref(FireDb, `/users/${userId}/rooms/${this.$route.params.rid}/cameras/${this.$route.params.cid}`);
+                    let _ref= ref(FireDb, `/users/${userId}/rooms/${this.$route.params.rid}/events/${this.$route.params.eid}`);
                     set(_ref,null);
                     this.$route.router.go(-1); 
 
@@ -87,8 +87,8 @@ export default
                     {
                         const userId = FirebaseAuth.currentUser.uid;
                         console.log(this.device.mode);
-                        let _ref= ref(FireDb, `/users/${userId}/rooms/${this.$route.params.rid}/cameras/${this.$route.params.cid}/camera_url`);
-                        set(_ref,this.camera.camera_url);
+                        let _ref= ref(FireDb, `/users/${userId}/rooms/${this.$route.params.rid}/events/${this.$route.params.eid}/contact_phone`);
+                        set(_ref,this.event.contact_phone);
                        // _ref= ref(FireDb, `/users/${userId}/rooms/${this.$route.params.rid}/devices/${this.$route.params.cid}/status`);
                        // set(_ref,false);
                     },
@@ -96,8 +96,8 @@ export default
                     {
                         const userId = FirebaseAuth.currentUser.uid;
                         console.log(this.device.mode);
-                        let _ref= ref(FireDb, `/users/${userId}/rooms/${this.$route.params.rid}/cameras/${this.$route.params.did}/camera_name`);
-                        set(_ref,this.device.camera_name);
+                        let _ref= ref(FireDb, `/users/${userId}/rooms/${this.$route.params.rid}/events/${this.$route.params.eid}/camera_name`);
+                        set(_ref,this.event.contact_name);
                     }
                     },
 }

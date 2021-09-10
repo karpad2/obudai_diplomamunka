@@ -119,6 +119,12 @@ import logo from "@/assets/logo";
 					auth: true,
 				},
 				{
+					icon: 'event',
+					title: 'Calendar',
+					link: '/events',
+					auth: true,
+				},
+				{
 					icon: 'other_houses',
 					title: 'Rooms',
 					link: '/rooms',
@@ -155,6 +161,13 @@ import logo from "@/assets/logo";
 					link: '/pruns',
 					auth: true,
 				},
+				{
+					icon: 'contact_support',
+					title: 'Support & Troubleshooting',
+					link: '/support',
+					auth: true,
+				},
+				
 				
 			
 			]

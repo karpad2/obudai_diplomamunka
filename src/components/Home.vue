@@ -30,8 +30,24 @@
         
       </md-card-actions>
     </md-card>
+
+	
 		</div>
 	<div class="section">
+		<md-card md-with-hover @click="navigate('devices')">
+      <md-card-header>
+        <div class="md-title">Calendar</div>
+      </md-card-header>
+		<Calendar :attributes='attributes'/>
+      <md-card-content>
+        
+		
+      </md-card-content>
+
+      <md-card-actions>
+        
+      </md-card-actions>
+    </md-card>
 
 	</div>
 	</div>
@@ -41,6 +57,7 @@
 <script>
 import {FireDb,FirebaseAuth,userId} from "@/firebase";
 import {get_data_fromroomdb,get_rooms} from "@/mod_data/get_data";
+import {  Calendar } from 'v-calendar';
 	export default {
 		name: "Home",
 		data: () => ({
@@ -49,9 +66,15 @@ import {get_data_fromroomdb,get_rooms} from "@/mod_data/get_data";
 			boolean: false,
 			active:0,
 			inactive:0,
-			devices:{}
+			devices:{},
+			events:[],
+			date: new Date(),
 			
 		}),
+		components:{
+			
+    		Calendar,
+		},
 		computed: {
 			firstDayOfAWeek: {
 				get() {
@@ -73,6 +96,16 @@ import {get_data_fromroomdb,get_rooms} from "@/mod_data/get_data";
 			profilename()
 			{
 				return FirebaseAuth.currentUser.displayName;
+			},
+			attributes() {
+				return this.events.map(t => ({
+					key: `event.${t.id}`,
+					dot: {
+					backgroundColor: "red",
+					},
+					dates: t.date,
+					customData: t,
+      }));
 			}
 			
 		},
@@ -128,13 +161,15 @@ import {get_data_fromroomdb,get_rooms} from "@/mod_data/get_data";
 </script>
 
 <style scoped>
-	 .md-card {
+.md-card {
     width: 320px;
     margin: 15px;
+	padding: 15px;
     display: inline-block;
     vertical-align: top;
   }
   .profile{
 	  font-weight: bold;
   }
+
 </style>

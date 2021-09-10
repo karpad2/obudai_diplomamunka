@@ -53,13 +53,14 @@ function get_data_fromdb(k){
   }
 
   function get_data_from_allroomdb(k){
-    let room_id="";
+    let room_id="",room_name="";
    const userId = FirebaseAuth.currentUser.uid;
     let b=[];
 onValue(ref(FireDb, `/users/${userId}/rooms`),(sn_out)=>{
       if(sn_out.exists()){
         sn_out.forEach((l)=>{
         room_id=l.key;
+        room_name=l.val().room_name;
         //console.log(room_id);
        // console.log(`/users/${userId}/rooms/${room_id}/${k}`);
        onValue(ref(FireDb, `/users/${userId}/rooms/${room_id}/${k}`),(sna)=>{
@@ -70,6 +71,7 @@ onValue(ref(FireDb, `/users/${userId}/rooms`),(sn_out)=>{
                 b.push(
                   {data:lb.val(),
                   room_id:room_id,
+                  room_name:room_name,
                   dev_id:lb.key});     
               });
               }
@@ -102,12 +104,27 @@ function  get_rooms(){
      return l;
   
  }
- function get_encoding(r_id,p_id)
+ function get_encoding(r_id,p_id=null)
  {
   const userId = FirebaseAuth.currentUser.uid;
+  let reference=ref(FireDb, `/users/${userId}/rooms/${r_id}/programs/${p_id}/program_encoding`);
+  let k="";
+  if(p_id==null) 
+  {
+    reference=ref(FireDb, `/users/${userId}/rooms/${r_id}/active_program`);
+    onValue (reference,(sn)=>{
+      if(sn.exists())
+      {
+        k=sn.val();
+      }});
+  }
+  else
+  {
+    k=p_id;
+  }
   let encoding="";
   const defaultvalue="base64";
-  let reference=ref(FireDb, `/users/${userId}/rooms/${r_id}/programs/${p_id}/program_encoding`);
+  reference=ref(FireDb, `/users/${userId}/rooms/${r_id}/programs/${k}/program_encoding`);
   onValue (reference,(sn)=>{
     if(sn.exists())
     {

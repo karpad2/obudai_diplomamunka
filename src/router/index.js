@@ -26,6 +26,11 @@ import Cameras from "../components/Cameras";
 import PreviousRuns from "@/components/PreviousRuns";
 import PreviousRun from "@/components/PreviousRun";
 
+import Events from "@/components/Events";
+import Event from "@/components/Event";
+import Support from "@/components/Support";
+
+
 
 
 const router = new VueRouter ({
@@ -91,6 +96,16 @@ const router = new VueRouter ({
 					component: Info,
 				},
 				{
+					path: 'events',
+					name: 'event',
+					component: Events,
+				},
+				{
+					path: 'support',
+					name: 'support',
+					component: Support,
+				},
+				{
 					path: '/room/:rid',
 					component: Room,
 				},
@@ -101,6 +116,10 @@ const router = new VueRouter ({
 				{
 					path: '/room/:rid/program/:pid',
 					component: Program,
+				},
+				{
+					path: '/room/:rid/event/:eid',
+					component: Event,
 				},
 				{
 					path: '/room/:rid/lobby',

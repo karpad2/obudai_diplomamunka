@@ -29,6 +29,30 @@ function add_program(room_id,l,k=null)
 
       l="";
     }
+    function add_event(room_id,contact=null)
+    {
+     if(contact==null) return;
+      console.log("Add Event");
+      const userId = FirebaseAuth.currentUser.uid;   
+    let postData =  {
+                        "contact_name":"",
+                        "contact_phone":"",
+                        "date":Date(),
+                      };
+     if(contact!=null) postData=contact;                 
+     try
+      {
+      let frooms= ref(FireDb, `/users/${userId}/rooms/${room_id}/events`);
+      let newroomref = push(frooms);
+      set(newroomref,postData);
+      }
+      catch (E)
+      {
+        console.error(E);
+      }
+
+      
+    }    
     function add_camera (room_id,l,k=null){
      
       if(l=="") return;
@@ -168,6 +192,7 @@ export
     start_run,
     status_run,
     stop_run,
-    add_room
+    add_room,
+    add_event
 
 }

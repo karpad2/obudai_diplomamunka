@@ -56,8 +56,6 @@ export default {
     }),
     comments:{
       Blockly,
-      
-      
     },
     components:
       {
@@ -88,6 +86,7 @@ export default {
                         let _ref= ref(FireDb, `/users/${userId}/rooms/${this.$route.params.rid}/programs/${this.$route.params.pid}/program_xml`);
                         this.program.program_xml=encode(this.a_program_xml,get_encoding(this.$route.params.rid,this.$route.params.pid));
                         set(_ref,this.program.program_xml);
+                        this.$noty.success("Saved!");
        },
        namechange(){
                         const userId = FirebaseAuth.currentUser.uid;
@@ -105,6 +104,7 @@ export default {
         this.a_program_xml = Blockly.Xml.domToText(xml);
         console.log(this.a_program_xml);
         this.achange();
+        
       }
     },
     auto_setup() {
@@ -118,10 +118,9 @@ export default {
    
     //media: "/media/",
     if(this.program.program_xml==undefined||this.program.program_xml==null) return;
-    
     console.log(get_encoding(this.$route.params.rid,this.$route.params.pid));
     this.a_program_xml=decoding(this.program.program_xml,get_encoding(this.$route.params.rid,this.$route.params.pid));
-    console.log(this.a_program_xml);
+    //console.log(this.a_program_xml);
     let workspace_default = Blockly.Xml.textToDom(this.a_program_xml);
     Blockly.Xml.appendDomToWorkspace(workspace_default,this.Workspace);
     this.auto_setup();
@@ -129,6 +128,8 @@ export default {
    duplicateprogram()
   {
     add_program(this.$route.params.rid,this.program.program_name,this.program);
+    this.$noty.success("Success!");
+			
   }
   },
   mounted() {

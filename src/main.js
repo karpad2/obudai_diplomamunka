@@ -3,7 +3,8 @@ import router from './router';
 import ForkeMeOnGithub from 'fork-me-on-github-vue';
 import {IconsPlugin } from 'bootstrap-vue';
 import BootstrapVue from "bootstrap-vue";
-
+import VueNoty from 'vuejs-noty';
+import VCalendar from 'v-calendar';
 import VueMaterial from 'vue-material'; // TODO: import only needed component, not all
 import 'vue-material/dist/vue-material.min.css';
 Vue.use(VueMaterial);
@@ -16,7 +17,8 @@ import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap-vue/dist/bootstrap-vue.css";
 
 Vue.use(IconsPlugin);
-import VueNoty from 'vuejs-noty';
+Vue.use(VCalendar, {})
+
 Vue.use(VueNoty, {
 	timeout: 4000,
 	progressBar: true,
@@ -41,7 +43,3 @@ onAuthStateChanged(auth, (user) => {
 		app.$mount('#app');
 	}
 });
-/*FirebaseAuth.onAuthStateChanged(() => { // Mount app only after firebase auth initialized
-	
-});
-*/
