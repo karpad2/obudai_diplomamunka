@@ -22,7 +22,7 @@
       md-confirm-text="Continue"
       md-cancel-text="Cancel"
       @md-cancel="onCancel()"
-      @md-confirm="delete_program()" />
+      @md-confirm="delete_pr()" />
 
 </div>
 </template>
@@ -33,11 +33,13 @@ import  "blockly/javascript";
 import 'blockly/blocks';
 import Blocks from "@/components/parts/Blocks";
 import {send_data,devices,init,get_data,send_finish} from "@/components/BlocklyJS";
-import CryptoJS from "crypto-js";  
 //import {media} from "blockly/media";
 import {FireDb,FirebaseAuth,userId} from "@/firebase";
 import {ref, set ,onValue,get, child,push,runTransaction } from "firebase/database";
 import {add_program} from "@/mod_data/set_data";
+import {get_encoding} from "@/mod_data/get_data";
+import {delete_program} from "@/mod_data/del_data";
+import {encode,decoding} from "@/datas";
 
 export default {
     name: 'Programs',
@@ -72,37 +74,27 @@ export default {
       }
         console.log("WELP");
       },
-      delete_program()
-      {   console.log("Delete process");
-                    const userId = FirebaseAuth.currentUser.uid;
-                    let _ref= ref(FireDb, `/users/${userId}/rooms/${this.$route.params.rid}/programs/${this.$route.params.pid}`);
-                    set(_ref,null);
-                    this.$route.router.go(-1); 
+      delete_pr()
+      {   
+                   delete_program(this.$route.params.rid,this.$route.params.pid);
       },
-         onCancel () {
+      onCancel () {
                         //this.value = 'Disagreed'
                     },
-         achange()
-                    {
+      achange()
+      {
                         const userId = FirebaseAuth.currentUser.uid;
                         //console.log(this.device.mode);
                         let _ref= ref(FireDb, `/users/${userId}/rooms/${this.$route.params.rid}/programs/${this.$route.params.pid}/program_xml`);
-                        let encoding=CryptoJS.enc.Utf8.parse(this.program.program_xml);
-                        let encoded = CryptoJS.enc.Base64.stringify(encoding);
-                        set(_ref,encoded);
-                    },
-                    namechange()
-                    {
+                        this.program.program_xml=encode(this.a_program_xml,get_encoding(this.$route.params.rid,this.$route.params.pid));
+                        set(_ref,this.program.program_xml);
+       },
+       namechange(){
                         const userId = FirebaseAuth.currentUser.uid;
                         let _ref= ref(FireDb, `/users/${userId}/rooms/${this.$route.params.rid}/programs/${this.$route.params.pid}/program_name`);
                         set(_ref,this.program.program_name);
                     },
-
-                    decoding()
-                    {
-                      const encodedWord = CryptoJS.enc.Base64.parse(this.program.program_xml); // encodedWord via Base64.parse()
-                      this.program.program_xml = CryptoJS.enc.Utf8.stringify(encodedWord);
-                    },
+                    
     
     auto_compile() {
       console.log("im here");
@@ -110,8 +102,8 @@ export default {
       let xml = Blockly.Xml.workspaceToDom(this.Workspace);
       console.log(xml);
       if (xml != "") {
-        this.program.program_xml = Blockly.Xml.domToText(xml);
-        console.log(this.program.program_xml);
+        this.a_program_xml = Blockly.Xml.domToText(xml);
+        console.log(this.a_program_xml);
         this.achange();
       }
     },
@@ -125,11 +117,14 @@ export default {
     //let blocklyDefault = document.getElementById("blocklyDefault");
    
     //media: "/media/",
-    if(this.program.program_xml===undefined) return;
-    this.decoding();
-    let workspace_default = Blockly.Xml.textToDom(this.program.program_xml);
+    if(this.program.program_xml==undefined||this.program.program_xml==null) return;
+    
+    console.log(get_encoding(this.$route.params.rid,this.$route.params.pid));
+    this.a_program_xml=decoding(this.program.program_xml,get_encoding(this.$route.params.rid,this.$route.params.pid));
+    console.log(this.a_program_xml);
+    let workspace_default = Blockly.Xml.textToDom(this.a_program_xml);
     Blockly.Xml.appendDomToWorkspace(workspace_default,this.Workspace);
-      this.auto_setup();
+    this.auto_setup();
   },
    duplicateprogram()
   {
@@ -138,8 +133,6 @@ export default {
   },
   mounted() {
     Blockly.setLocale(En);
-    
-
       this.Workspace = Blockly.inject("blocklyDiv", {
       toolbox: document.getElementById("toolbox"),
       scrollbar: false,
@@ -181,10 +174,6 @@ export default {
   },
  
   }
-
-
-
-
 
 </script>
 <style lang="scss" scoped>

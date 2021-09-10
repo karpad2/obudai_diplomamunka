@@ -1,6 +1,7 @@
 
 import {FireDb,FirebaseAuth,userId} from "@/firebase";
 import {ref, set ,onValue,get, child,push,runTransaction } from "firebase/database";
+import {deletep} from "@/mod_data/del_data";
 import router from "@/router";
 
 function add_program(room_id,l,k=null)
@@ -12,6 +13,7 @@ function add_program(room_id,l,k=null)
                         "program_name":l,
                         "program_xml":"",
                         "program_javascript":"",
+                        "program_encode":"base64"
                       };
      if(k!=null) postData=k;                 
      try
@@ -114,30 +116,48 @@ function add_program(room_id,l,k=null)
 function start_run(room_id,team_name)
 {     
       const userId = FirebaseAuth.currentUser.uid;
-      let postData={};
-      let frooms= ref(FireDb, `/users/${userId}/rooms/${room_id}/devices/`);
-      let newroomref = push(frooms);
-      set(newroomref,postData);
+      let active_program=null;
+
+      if(status_run!=null) return;
       
+      onValue(ref(FireDb, `/users/${userId}/rooms/${room_id}/active_program`),(sn)=>
+      {
+        if(sn.exists()) active_program=sn.val();
+      });
+      let frooms= ref(FireDb, `/users/${userId}/rooms/${room_id}/current_run`);
+      //let newroomref = push(frooms);
+      let postData={
+        team_name:team_name,
+        starting_time:Date(),
+        program_id:active_program,
+        finishing_time:"NULL"
+      };
+      set(frooms,postData);
+    
 }
-function stop_run(room_id,team_name)
+function stop_run(room_id)
 {     
       const userId = FirebaseAuth.currentUser.uid;
-      let postData={};
-      let frooms= ref(FireDb, `/users/${userId}/rooms/${room_id}/devices/`);
+      let postData=null;
+      let frooms= ref(FireDb, `/users/${userId}/rooms/${room_id}/past_runs/`);
       let newroomref = push(frooms);
+      
+      postData=status_run(room_id);
+      postData.finishing_time=Date();
       set(newroomref,postData);
+      deletep(`rooms/${room_id}/current_run`);
       
 }
 function status_run(room_id)
 {     
       const userId = FirebaseAuth.currentUser.uid;
-      let postData={};
-      let frooms= ref(FireDb, `/users/${userId}/rooms/${room_id}/pastruns`);
-      let newroomref = push(frooms);
-      set(newroomref,postData);
-      
-}        
+      let postData=null;
+      onValue(ref(FireDb, `/users/${userId}/rooms/${room_id}/current_run`),(sn)=>
+      {
+        if(sn.exists()) postData=sn.val();
+      });
+      return postData;
+  }        
    
 
 export

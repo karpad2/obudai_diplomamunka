@@ -14,7 +14,7 @@
       md-input-placeholder="Team name ..."
       md-confirm-text="Start"
       @md-confirm="start_runprocess"
-      @md-cancel="stop" />
+      @md-cancel="cancel" />
    </div>
    
 </template>
@@ -28,7 +28,8 @@
     import Blocks from "@/components/parts/Blocks";
     import 'blockly/blocks';
     import {FireDb,FirebaseAuth,userId} from "@/firebase";
-    import {ref, set ,onValue,get, child,push,runTransaction } from "firebase/database";  
+    import {ref, set ,onValue,get, child,push,runTransaction } from "firebase/database";
+    import {start_run,status_run,stop_run} from "@/mod_data/set_data";  
 
     export default {
         data()
@@ -40,11 +41,16 @@
                 room:{},
                 program:{},
                 devices:[],
-                Workspace:null
+                Workspace:null,
+                status:null
             }
         },
         components:{
             Blocks
+        },
+        beforeMount()
+        {
+            this.status=status_run();
         },
         mounted()
         {
@@ -52,7 +58,6 @@
            console.log(this.room);
            Blockly.setLocale(En);
             
-
             this.Workspace = Blockly.inject("blocklyDiv", {
                 toolbox: document.getElementById("toolbox"),
                 scrollbar: false});
@@ -76,13 +81,18 @@
             {
                 if(this.team_name=="") return;
                 this.team_name="";
-                
+                start_run(this.$route.params.rid,this.team_name);
             },
-            stop()
+            cancel()
             {   
                 console.warn("Cancelled start");
                 this.team_name="";
             },
+            stop()
+            {
+                stop_run();
+            },
+
             decoding() {
                     console.log( this.program);
                       const encodedWord = CryptoJS.enc.Base64.parse(this.program.program_xml);

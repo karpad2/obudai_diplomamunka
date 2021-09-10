@@ -102,11 +102,30 @@ function  get_rooms(){
      return l;
   
  }
+ function get_encoding(r_id,p_id)
+ {
+  const userId = FirebaseAuth.currentUser.uid;
+  let encoding="";
+  const defaultvalue="base64";
+  let reference=ref(FireDb, `/users/${userId}/rooms/${r_id}/programs/${p_id}/program_encoding`);
+  onValue (reference,(sn)=>{
+    if(sn.exists())
+    {
+      encoding=sn.val();
+    }
+    else {
+    set(reference,defaultvalue);
+    encoding=defaultvalue;        
+      }
+  });
+  return encoding;
+ }
 
 export {
     get_data_fromdb,
     get_data_from_allroomdb,
     get_data_fromroomdb,
     get_rooms ,
+    get_encoding,
     get_data_fromroomitemdb
 }
