@@ -15,7 +15,7 @@
         <md-table-head>Room Name</md-table-head>
         <md-table-head>Edit Room</md-table-head>
         <md-table-head>Enter into Lobby</md-table-head>
-        <md-table-head>Active Devices:</md-table-head>
+        
       </md-table-row>
       
       <md-table-row v-for="(row,index) in rooms" :key="row.devID">
@@ -23,7 +23,7 @@
         <md-table-cell>{{row.data.room_name}}</md-table-cell>
         <md-table-cell><router-link :to="{ path: '/room/'+row.devID}">Edit</router-link></md-table-cell>
         <md-table-cell><router-link :to="{ path: '/room/'+row.devID+'/lobby/'}">Lobby</router-link></md-table-cell>
-        <md-table-cell>{{get_active_devices(row.devID)}}</md-table-cell>
+       
     </md-table-row>
       <md-button class="md-raised md-primary" @click="showDialog = true">Add room</md-button>
       </md-table>
@@ -86,7 +86,7 @@ export default {
   get_active_devices(index)
     {
     this.devices=get_data_fromroomdb(index,"devices");
-     let active=0,inactive=0,k;
+    let active=0,inactive=0,k;
 
       this.devices.forEach(element => {
         console.log(element.data.lastonline);
@@ -117,10 +117,7 @@ export default {
       
     },
      
-},
-  computed:{
-    
-  }
+}
  
 
  
