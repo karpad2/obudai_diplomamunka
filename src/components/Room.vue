@@ -1,5 +1,5 @@
 <template>
-<div  class="center">
+<div >
     
     <h2>Room ~ {{room.room_name}}</h2>
     <div class="section">

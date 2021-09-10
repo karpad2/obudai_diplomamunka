@@ -1,5 +1,5 @@
 <template>
-<div class="center">
+<div >
 <h2>Programs</h2>
 <div class="section" v-if="programs.length>0">
     <md-table  md-card>

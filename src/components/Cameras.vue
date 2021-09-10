@@ -1,5 +1,5 @@
 <template>
-<div class="center">
+<div>
     <h2>Cameras</h2>
     <div>
         To add Cameras and to use them only supported cameras are IP cameras:

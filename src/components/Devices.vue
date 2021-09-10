@@ -1,5 +1,5 @@
 <template>
-<div class="center">
+<div >
 <h2>Devices</h2>
 <p>How to add device?</p>
 <p>There is two method.</p>

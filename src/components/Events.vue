@@ -1,5 +1,5 @@
 <template>
-<div class="center">
+<div >
     <div class="section">
     <h2>Events</h2>
     </div>

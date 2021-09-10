@@ -1,5 +1,5 @@
 <template>
-<div class="center">
+<div >
     <h2>Previous Runs</h2>
     <div>
         You can see Previous runs which made by teams.
