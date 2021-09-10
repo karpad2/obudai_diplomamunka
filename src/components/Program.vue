@@ -11,9 +11,11 @@
 <Blocks :devices="devices" />
 
 <md-button class="md-raised md-primary" @click="duplicateprogram()">Duplicate program</md-button>
+<md-button class="md-raised md-secondary" @click="get_config()">Download Program</md-button>
       
 <md-field>
 <md-button class="md-raised md-secondary" @click="showDeleteDialog = true">Delete Program</md-button>
+
 </md-field>
 <md-dialog-confirm
       :md-active.sync="showDeleteDialog"
@@ -40,6 +42,7 @@ import {add_program} from "@/mod_data/set_data";
 import {get_encoding} from "@/mod_data/get_data";
 import {delete_program} from "@/mod_data/del_data";
 import {encode,decoding} from "@/datas";
+import {saveTextAsFile} from "@/file";
 
 export default {
     name: 'Programs',
@@ -52,7 +55,8 @@ export default {
       camera:{},
       devices:[],
       showDeleteDialog:false,
-      Workspace:null
+      Workspace:null,
+      prev:""
     }),
     comments:{
       Blockly,
@@ -80,12 +84,13 @@ export default {
                         //this.value = 'Disagreed'
                     },
       achange()
-      {
+      {                 if(this.prev==this.a_program_xml) return;
                         const userId = FirebaseAuth.currentUser.uid;
                         //console.log(this.device.mode);
                         let _ref= ref(FireDb, `/users/${userId}/rooms/${this.$route.params.rid}/programs/${this.$route.params.pid}/program_xml`);
                         this.program.program_xml=encode(this.a_program_xml,get_encoding(this.$route.params.rid,this.$route.params.pid));
                         set(_ref,this.program.program_xml);
+                        this.prev=this.a_program_xml;
                         this.$noty.success("Saved!");
        },
        namechange(){
@@ -130,7 +135,12 @@ export default {
     add_program(this.$route.params.rid,this.program.program_name,this.program);
     this.$noty.success("Success!");
 			
-  }
+  },
+   get_config()
+                    {
+                      let filename="program.json";
+                      let l={data:this.program};
+                      saveTextAsFile(JSON.stringify(l),filename);}
   },
   mounted() {
     Blockly.setLocale(En);
