@@ -44,6 +44,41 @@
           
       </md-card-actions>
     </md-card>
+
+     <md-card  >
+      <md-card-header>
+        <div class="md-title">Devices</div>
+      </md-card-header>
+    <md-card-content>
+       <md-table  md-card>
+      <md-table-toolbar>
+        <h1 class="md-title">Devices</h1>
+      </md-table-toolbar>
+      <md-table-row>
+        <md-table-head md-numeric>#</md-table-head>
+        <md-table-head>Device Name:</md-table-head>
+        <md-table-head>Device Activity:</md-table-head>
+        <md-table-head>Device is Active:</md-table-head>
+        <md-table-head></md-table-head>
+      </md-table-row>
+      
+      <md-table-row v-for="(row,index) in devices" :key="row.devID">
+        <md-table-cell md-numeric>{{index+1}}</md-table-cell>
+        <md-table-cell>{{row.data.device_name}}</md-table-cell>
+        <md-table-cell>{{row.data.mode}}</md-table-cell>
+        <md-table-cell><activedevice :lastonline="row.data.lastonline"/></md-table-cell>
+   </md-table-row>
+      
+      </md-table>
+       
+
+      </md-card-content>
+
+      <md-card-actions>
+          
+          
+      </md-card-actions>
+    </md-card>
        
        <div id="blocklyDiv"></div>
         <Blocks :devices="devices" />
@@ -111,6 +146,7 @@ import {encode,decoding} from "@/datas";
            Blockly.setLocale(En);
            const room_id=this.$route.params.rid;
             this.cameras=get_data_fromroomdb(room_id,"cameras");
+            this.devices=get_data_fromroomdb(room_id,"devices");
             this.Workspace = Blockly.inject("blocklyDiv", {
                 toolbox: document.getElementById("toolbox"),
                 scrollbar: false});
