@@ -40,7 +40,7 @@
       </md-card-header>
 		
       <md-card-content>
-        <Calendar :attributes='attributes'/>
+        <Calendar :min-date='new Date()' :attributes='attributes'/>
 		
       </md-card-content>
 
@@ -56,7 +56,7 @@
 
 <script>
 import {FireDb,FirebaseAuth,userId} from "@/firebase";
-import {get_data_fromroomdb,get_rooms} from "@/mod_data/get_data";
+import {get_data_from_allroomdb,get_rooms,get_data_fromroomdb} from "@/mod_data/get_data";
 import {  Calendar } from 'v-calendar';
 	export default {
 		name: "Home",
@@ -99,12 +99,12 @@ import {  Calendar } from 'v-calendar';
 			},
 			attributes() {
 				return this.events.map(t => ({
-					key: `event.${t.id}`,
+					key: `events.${t.id}`,
 					dot: {
 					backgroundColor: "red",
 					},
-					dates: t.date,
-					customData: t,
+					dates: t.contact_date,
+					customData: t.contact_name,
       }));
 			}
 			
@@ -112,6 +112,7 @@ import {  Calendar } from 'v-calendar';
 		mounted()
 		{
 			this.get_name();
+			this.events=get_data_from_allroomdb("events");
 			//console.log(this.$route)
 		},
 		methods: {

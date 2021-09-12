@@ -31,6 +31,7 @@ function add_program(room_id,l,k=null)
     }
     function add_event(room_id,contact=null)
     {
+      if(room_id=="") return;
      if(contact==null) return;
       console.log("Add Event");
       const userId = FirebaseAuth.currentUser.uid;   

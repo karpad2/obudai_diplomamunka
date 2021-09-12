@@ -1,30 +1,50 @@
 <template>
-   <div class="center">
+   <div >
        <div class="section">
-       <h2>Lobby</h2>
-       
+           <md-card >
+               <md-card-header>
+       <div class="md-title">Lobby</div>
+       </md-card-header>
+       <md-card-actions>
             <md-button class="md-raised md-primary" @click="showDialog = true" v-if="!started">Start</md-button>
             <md-button class="md-raised md-dense  stop" @click="stop()" v-if="started">Stop</md-button>
+            </md-card-actions>
+            </md-card>
     </div>
-    <div class="section">
-    <md-card md-with-hover v-if="!started">
+    
+    <md-card  >
       <md-card-header>
         <div class="md-title">Cameras</div>
       </md-card-header>
-        <b-carousel-slide img-src="https://picsum.photos/1024/480/?image=54">
-        <h1>Hello world!</h1>
-      </b-carousel-slide>
-
-      <md-card-content>
-        
+    <md-card-content>
+        <b-carousel-slide :img-src="actual_camera">
+        </b-carousel-slide>
+        <img class="cameras" :src="cameras[camera_id].camera_url" :alt="cameras[camera_id].camera_name"  />
 
       </md-card-content>
 
       <md-card-actions>
-        
+          <md-button class="md-raised md-dense" @click="prev_camera()" >Previous Camera</md-button>
+          <md-button class="md-raised md-dense" @click="next_camera()" >Next Camera</md-button>
+          
       </md-card-actions>
     </md-card>
-       </div>
+    <md-card  >
+      <md-card-header>
+        <div class="md-title">Timer</div>
+      </md-card-header>
+    <md-card-content>
+       
+       
+
+      </md-card-content>
+
+      <md-card-actions>
+          
+          
+      </md-card-actions>
+    </md-card>
+       
        <div id="blocklyDiv"></div>
         <Blocks :devices="devices" />
        <md-dialog-prompt
@@ -51,6 +71,7 @@
     import {FireDb,FirebaseAuth,userId} from "@/firebase";
     import {ref, set ,onValue,get, child,push,runTransaction } from "firebase/database";
     import {start_run,status_run,stop_run} from "@/mod_data/set_data";
+    import {get_data_fromdb,get_data_fromroomdb} from "@/mod_data/get_data";
     import {add_program} from "@/mod_data/set_data";
 import {get_encoding} from "@/mod_data/get_data";
 import {delete_program} from "@/mod_data/del_data";
@@ -68,9 +89,12 @@ import {encode,decoding} from "@/datas";
                 devices:[],
                 a_xml:"",
                 a_js:"",
+                actual_camera:"",
+                camera_id:0,
                 Workspace:null,
                 status:null,
-                started:false
+                started:false,
+                cameras:[]
             }
         },
         components:{
@@ -85,7 +109,8 @@ import {encode,decoding} from "@/datas";
            this.get_data();
            console.log(this.room);
            Blockly.setLocale(En);
-            
+           const room_id=this.$route.params.rid;
+            this.cameras=get_data_fromroomdb(room_id,"cameras");
             this.Workspace = Blockly.inject("blocklyDiv", {
                 toolbox: document.getElementById("toolbox"),
                 scrollbar: false});
@@ -119,6 +144,19 @@ import {encode,decoding} from "@/datas";
             stop()
             {
                 stop_run();
+            },
+            next_camera()
+            {
+                this.camera_id++;
+                if(this.camera_id>this.room.cameras.length-1) this.camera_id=0;
+                this.actual_camera=this.cameras[this.camera_id].camera_url;
+            },
+            prev_camera()
+            {
+                this.camera_id--;
+                if(this.camera_id<(0-this.room.cameras.length+1)) this.camera_id=0;
+                this.actual_camera=this.cameras[this.camera_id].camera_url;
+
             },
 
             
@@ -161,6 +199,13 @@ import {encode,decoding} from "@/datas";
     }
 </script>
 <style lang="scss" scoped>
+ .md-card
+  {
+  width: 300px;
+    margin: 4px;
+    display: inline-block;
+    vertical-align: top;
+  }
 #blocklyDiv
 {
     display: none;
@@ -168,5 +213,9 @@ import {encode,decoding} from "@/datas";
 .stop
 {
     background: brown;
+}
+.cameras{
+    width: 300px;
+    height: 300px;
 }
 </style>

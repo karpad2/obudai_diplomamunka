@@ -12,6 +12,10 @@
       <md-input v-model="event.contact_phone"></md-input>
     </md-field>
 
+    <md-field>
+      
+      {{get_timestamp(event.contact_date)}}
+    </md-field>
     
 <md-field>
       <md-button class="md-raised md-secondary" @click="showDeleteDialog = true">Delete Event</md-button>
@@ -32,6 +36,7 @@
 import Input from "@/components/parts/Input";
 import {FireDb,FirebaseAuth,userId} from "@/firebase";
 import {ref, set ,onValue,get, child,push,runTransaction } from "firebase/database";
+import moment from "moment";
 export default
 {
     data()
@@ -98,8 +103,13 @@ export default
                         console.log(this.device.mode);
                         let _ref= ref(FireDb, `/users/${userId}/rooms/${this.$route.params.rid}/events/${this.$route.params.eid}/camera_name`);
                         set(_ref,this.event.contact_name);
-                    }
                     },
+                    get_timestamp(string)
+                      {
+                       return moment(string).format('MMMM Do YYYY, HH:mm ');
+                     }
+                    },
+                   
 }
 
 </script>

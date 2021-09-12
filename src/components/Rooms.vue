@@ -1,14 +1,13 @@
 <template>
-<div class="center">
-    
-    <div class="section">
-    <div ></div>
-    </div>
-    <div  v-if="rooms.length>0"> 
+<div >
+
+    <div  v-if="rooms.length>0">
+
+      <md-card  >
+          <md-card-header><div class="md-title">Rooms</div></md-card-header>
+    <md-card-content>  
     <md-table  md-card>
-      <md-table-toolbar>
-        <h1 class="md-title">Rooms</h1>
-      </md-table-toolbar>
+      
 
       <md-table-row>
         <md-table-head md-numeric>#</md-table-head>
@@ -25,8 +24,13 @@
         <md-table-cell><router-link :to="{ path: '/room/'+row.devID+'/lobby/'}">Lobby</router-link></md-table-cell>
        
     </md-table-row>
-      <md-button class="md-raised md-primary" @click="showDialog = true">Add room</md-button>
+    
       </md-table>
+      </md-card-content>
+      <md-card-actions> 
+      <md-button class="md-raised md-primary" @click="showDialog = true">Add room</md-button>
+      </md-card-actions>
+       </md-card> 
     </div>
     
       <md-empty-state v-else
@@ -71,6 +75,7 @@ export default {
     
     beforeMount()
     {
+      this.rooms=[];
        this.rooms=get_rooms(); 
         //console.log(this.rooms);
     },
@@ -79,7 +84,7 @@ export default {
      add_room(this.room_name);
       //this.showDialog=false;
       this.room_name="";
-       get_rooms();
+      
        
     },
      

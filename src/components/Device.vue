@@ -36,13 +36,13 @@
         <div class="md-title" >Flashing Device</div>
       </md-card-header>
 		  <md-card-content>
-        
+        Only supported devices are  <a href="https://en.wikipedia.org/wiki/ESP32">ESP32</a> family.
 		
       </md-card-content>
 
       <md-card-actions>
         <md-button class="md-raised md-primary" @click="check_ports">Connect to device through Serial port</md-button>
-        <md-button class="md-raised md-primary" @click="flash_device">Flash device</md-button>
+        <md-button class="md-raised md-primary" @click="flash_config">Flash config</md-button>
       </md-card-actions>
     </md-card>
 <md-dialog-confirm
@@ -124,8 +124,9 @@ export default {
         */
        //setTimeout(this.serial_log, 3000);
       if(this.serial_supported)
-       {navigator.serial.addEventListener("connect",(event)=> {this.connect_device(event)});
-       navigator.serial.addEventListener("disconnect",(event)=> {this.disconnect_device(event)});
+       {
+          navigator.serial.addEventListener("connect",(event)=> {this.connect_device(event)});
+          navigator.serial.addEventListener("disconnect",(event)=> {this.disconnect_device(event)});
        }
     },
     methods:
@@ -177,17 +178,21 @@ export default {
                     async check_ports()
                     {
                       let config_for_join={ baudRate: 9600 };
-                      this.serial_device = await navigator.serial.requestPort({ });
+                      const filters=[
+                        { usbVendorId: 4292, usbProductId: 60000 }
+                      ]
+
+                      this.serial_device = await navigator.serial.requestPort({ filters});
                       //this.serial_device.open(config_for_join);
                       console.log( this.serial_device);
                       console.log(this.serial_device.getInfo());
 
                       await this.serial_device.open(config_for_join);
 
-                      this.serial_reader=this.serial_device.readable.getReader();
+                      //this.serial_reader=this.serial_device.readable.getReader();
                       this.serial_log();
                     },
-                    flash_device()
+                    flash_config()
                     {
 
                     },
@@ -240,7 +245,7 @@ export default {
                       /*eslint no-undef: "error"*/
 
                       if( !ReadableStream.prototype.pipeTo ) {
-                        this.$noty.error();( "Your browser doesn't support pipeTo");
+                        this.$noty.error( "Your browser doesn't support pipeTo");
                         return;
                       }
                       const textDecoder = new TextDecoderStream();
