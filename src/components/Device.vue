@@ -123,9 +123,10 @@ export default {
             navigator.bluetooth.addEventListener('advertisementreceived',this.findADevice(event));
         */
        //setTimeout(this.serial_log, 3000);
-
-       navigator.serial.addEventListener("connect",(event)=> {this.connect_device(event)});
+      if(this.serial_supported)
+       {navigator.serial.addEventListener("connect",(event)=> {this.connect_device(event)});
        navigator.serial.addEventListener("disconnect",(event)=> {this.disconnect_device(event)});
+       }
     },
     methods:
     {
@@ -266,7 +267,6 @@ export default {
                         //const value = parseInt(text);
                         const bytes = new Uint8Array([text]);
                         const writer = this.serial_device.writable.getWriter();
-
                         writer.write(bytes);
                         writer.releaseLock();
                      
