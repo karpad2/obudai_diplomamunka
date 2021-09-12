@@ -1,33 +1,50 @@
 <template>
-<div class="center">
-    <h2>Device ~ {{device.device_name}}</h2>
+<div >
+    
 
-     <div class="section">
-
-     <md-field>
-      <label>Device name:</label>
-      <md-input @change="namechange" v-model="device.device_name"></md-input>
-    </md-field>
+<div class="section">
+<md-card md-with-hover >
+     
+       <md-card-header>
+         <div class="md-title" >Device ~ {{device.device_name}}</div>
+        </md-card-header>
+        <md-card-content>
+          <md-field>
+            <label for="name">Device name:</label>
+            <md-input id="name" @change="namechange" v-model="device.device_name"></md-input>
+          </md-field>
     <p><Deviceactivity :lastonline="device.last_online" /></p> 
 
-    
-    <div class="md-layout md-gutter">
-      <div class="md-layout-item">
-        <md-field>
-      <h3>Choose mode:</h3>
-   <b-select @change="achange" v-model="device.mode">
+      <md-field>
+      <p >Choose mode:</p>
+   <b-select id="select" @change="achange" v-model="device.mode">
      <b-select-option v-for="mode in devm" :key="mode.type" :value="mode.type">{{mode.name}}</b-select-option>
    </b-select>
         </md-field>
-       <DeviceInput :mode="select" :v-model="device.status" />
+       <DeviceInput :mode="device.mode" :v-model="device.status" />
+       </md-card-content>
+       <md-card-actions>
       <md-button class="md-raised md-primary" @click="duplicatedevice">Duplicate device with same settings</md-button>
       <md-button class="md-raised md-primary" @click="get_config">Download Config file</md-button>
-      </div>
+      <md-button class="md-raised md-secondary" @click="showDeleteDialog = true">Delete Device</md-button>
+      </md-card-actions>
+     </md-card>
+   </div>
+   <div class="section">
+<md-card md-with-hover  v-if="serial_supported">
+      <md-card-header>
+        <div class="md-title" >Flashing Device</div>
+      </md-card-header>
+		  <md-card-content>
+        
+		
+      </md-card-content>
 
-    </div>
-    <div class="section">
-<md-button class="md-raised md-secondary" @click="showDeleteDialog = true">Delete Device</md-button>
-</div>
+      <md-card-actions>
+        <md-button class="md-raised md-primary" @click="check_ports">Connect to device through Serial port</md-button>
+        <md-button class="md-raised md-primary" @click="flash_device">Flash device</md-button>
+      </md-card-actions>
+    </md-card>
 <md-dialog-confirm
       :md-active.sync="showDeleteDialog"
       md-title="Delete this device?"
@@ -44,7 +61,8 @@
 import {FireDb,FirebaseAuth,userId} from "@/firebase";
 import {ref, set ,onValue,get, child,push,runTransaction } from "firebase/database";
 import Deviceactivity from '@/components/parts/Deviceactivity';
-import DeviceInput from '@/components/parts/DeviceInput'
+import DeviceInput from '@/components/parts/DeviceInput';
+import {check_serial_supported,list_coms} from '@/components/flash_device';
 import {devicemodes} from "@/datas";
 
 import {get_data_fromroomitemdb} from "@/mod_data/get_data";
@@ -61,6 +79,11 @@ export default {
       select:"relay",
       showDDialog:false,
       device_name:"",
+      serial_supported:false,
+      serial_device:null,
+      serial_reader:null,
+      connected:false
+
     }),
     components:{
     Deviceactivity,
@@ -81,14 +104,14 @@ export default {
         const devId = this.$route.params.did;
         const room_id=this.$route.params.rid;
         localStorage.setItem("mods",JSON.stringify(this.devm));
-
+        this.serial_supported=check_serial_supported();
         onValue(ref(FireDb, `/users/${userId}/rooms/${room_id}/devices/${devId}`),(sn)=>{
        if(sn.exists()) 
        {this.device=sn.val();
         this.select=this.device.mode;
        }
         });
-
+        
         
 
         if(this.device.status==null)
@@ -99,6 +122,10 @@ export default {
             még nincs implementálva a böngészőkben OwO
             navigator.bluetooth.addEventListener('advertisementreceived',this.findADevice(event));
         */
+       //setTimeout(this.serial_log, 3000);
+
+       navigator.serial.addEventListener("connect",(event)=> {this.connect_device(event)});
+       navigator.serial.addEventListener("disconnect",(event)=> {this.disconnect_device(event)});
     },
     methods:
     {
@@ -146,12 +173,29 @@ export default {
                         //this.device.mode
                         return l;
                     },
+                    async check_ports()
+                    {
+                      let config_for_join={ baudRate: 9600 };
+                      this.serial_device = await navigator.serial.requestPort({ });
+                      //this.serial_device.open(config_for_join);
+                      console.log( this.serial_device);
+                      console.log(this.serial_device.getInfo());
+
+                      await this.serial_device.open(config_for_join);
+
+                      this.serial_reader=this.serial_device.readable.getReader();
+                      this.serial_log();
+                    },
+                    flash_device()
+                    {
+
+                    },
                     achange()
                     {
                         const userId = FirebaseAuth.currentUser.uid;
                         console.log(this.device.mode);
                         let _ref= ref(FireDb, `/users/${userId}/rooms/${this.$route.params.rid}/devices/${this.$route.params.did}/mode`);
-                        set(_ref,this.select);
+                        set(_ref,this.device.mode);
                         _ref= ref(FireDb, `/users/${userId}/rooms/${this.$route.params.rid}/devices/${this.$route.params.did}/status`);
                         set(_ref,false);
                     },
@@ -166,6 +210,19 @@ export default {
                     {
                       add_device(this.$route.params.rid,this.device.device_name,this.device);
                     },
+                    connect_device()
+                    {
+                      if(this.connected) return;
+                        this.$noty.success("Device connected!");
+                        this.check_ports();
+                        this.connected=true;
+                    },
+                    disconnect_device()
+                    {
+                      if(!this.connected) return;
+                      this.$noty.success("Device disconnected!");
+                      this.connected=false;
+                    },
                     get_config()
                     {
                       let filename="config.json";
@@ -174,8 +231,51 @@ export default {
                       device_id:this.$route.params.did};
 
                       saveTextAsFile(JSON.stringify(l),filename);
-                    }
                     },
+                    async serial_log()
+                     {
+                       let string="";
+                      /*global TextDecoderStream, a*/
+                      /*eslint no-undef: "error"*/
+
+                      if( !ReadableStream.prototype.pipeTo ) {
+                        this.$noty.error();( "Your browser doesn't support pipeTo");
+                        return;
+                      }
+                      const textDecoder = new TextDecoderStream();
+                      const readableStreamClosed = this.serial_device.readable.pipeTo(textDecoder.writable);
+                      const reader = textDecoder.readable.getReader();
+
+                      // Listen to data coming from the serial device.
+                     /*eslint no-constant-condition: ["error", { "checkLoops": false }]*/
+                      while (true) {
+                        const { value, done } = await reader.read();
+                        if (done) {
+                          // Allow the serial port to be closed later.
+                          reader.releaseLock();
+                          break;
+                        }
+                        // value is a string.
+                        console.log(value);
+                      }
+                        
+                    },
+                  write_to_serial(text)
+                  {
+                     if (this.serial_device && this.serial_device.writable) {
+                        //const value = parseInt(text);
+                        const bytes = new Uint8Array([text]);
+                        const writer = this.serial_device.writable.getWriter();
+
+                        writer.write(bytes);
+                        writer.releaseLock();
+                     
+                     }
+
+
+                  }
+
+    }
                    
     
   }

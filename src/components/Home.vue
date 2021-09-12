@@ -38,9 +38,9 @@
       <md-card-header>
         <div class="md-title">Calendar</div>
       </md-card-header>
-		<Calendar :attributes='attributes'/>
+		
       <md-card-content>
-        
+        <Calendar :attributes='attributes'/>
 		
       </md-card-content>
 
