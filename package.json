@@ -27,6 +27,7 @@
     "moment-duration-format": "^2.3.2",
     "v-calendar": "^2.3.2",
     "vue": "^2.6.11",
+    "vue-audio-recorder": "^3.0.1",
     "vue-cli-plugin-pwa": "^4.6.0",
     "vue-cookie-law": "^1.13.3",
     "vue-cookies": "^1.7.4",

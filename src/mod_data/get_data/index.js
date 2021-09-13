@@ -46,8 +46,7 @@ function get_data_fromdb(k){
        console.log(sn);
      
          b=sn.val();
-         
-      
+           
     });
     return b;
   }

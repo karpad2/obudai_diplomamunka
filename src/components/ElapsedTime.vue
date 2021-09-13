@@ -29,7 +29,7 @@ import 'moment-duration-format'
             
             }
             let duration = moment.duration(ldate.diff(sdate));
-            this.time_string=duration.format('h:mm:ss');
+            this.time_string=duration.format('hh:mm:ss');
             }
         },
 

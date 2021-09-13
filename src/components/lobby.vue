@@ -10,6 +10,37 @@
             <md-button class="md-raised md-dense  stop" @click="stop()" v-if="started">Stop</md-button>
             </md-card-actions>
             </md-card>
+            <md-card  >
+      <md-card-header>
+        <div class="md-title">Timer</div>
+      </md-card-header>
+    <md-card-content>
+       <ElapsedTime :first_date="start_date" last_date="_NOW" />
+       
+
+      </md-card-content>
+        
+      <md-card-actions>
+          
+          
+      </md-card-actions>
+    </md-card>
+
+            <md-card >
+               <md-card-header>
+       <div class="md-title">Sound effects</div>
+       </md-card-header>
+       <md-card-content>
+         <audio controls>
+           <source v-for="sound in sounds" v-bind:key="sound" :src="sound" type="audio/mpeg"/>
+         </audio>
+         </md-card-content>
+       <md-card-actions>
+         
+            
+            </md-card-actions>
+            </md-card>
+                
     </div>
     
     <md-card  >
@@ -24,36 +55,19 @@
       </md-card-content>
 
       <md-card-actions>
-          <md-button class="md-raised md-dense" @click="prev_camera()" >Previous Camera</md-button>
-          <md-button class="md-raised md-dense" @click="next_camera()" >Next Camera</md-button>
-          
-      </md-card-actions>
-    </md-card>
-    <md-card  >
-      <md-card-header>
-        <div class="md-title">Timer</div>
-      </md-card-header>
-    <md-card-content>
-       
-       
-
-      </md-card-content>
-        <ElapsedTime />
-      <md-card-actions>
-          
+          <md-button class="md-raised md-dense" @click="prev_camera">Previous Camera</md-button>
+          <md-button class="md-raised md-dense" @click="next_camera">Next Camera</md-button>
           
       </md-card-actions>
     </md-card>
 
-     <md-card  >
+
+     <md-card id="devices" >
       <md-card-header>
         <div class="md-title">Devices</div>
       </md-card-header>
     <md-card-content>
-       <md-table  md-card>
-      <md-table-toolbar>
-        <h1 class="md-title">Devices</h1>
-      </md-table-toolbar>
+       <md-table>
       <md-table-row>
         <md-table-head md-numeric>#</md-table-head>
         <md-table-head>Device Name:</md-table-head>
@@ -112,7 +126,7 @@
 import {get_encoding} from "@/mod_data/get_data";
 import {delete_program} from "@/mod_data/del_data";
 import {encode,decoding} from "@/datas";  
-import ElapsedTime from './ElapsedTime.vue';
+
 
     export default {
         data()
@@ -131,7 +145,14 @@ import ElapsedTime from './ElapsedTime.vue';
                 Workspace:null,
                 status:null,
                 started:false,
-                cameras:[]
+                cameras:[{camera_url:"",camera_name:"Test"}],
+                first_date:Date(),
+                last_date:Date(),
+                alarm_url:"https://raw.githubusercontent.com/karpad2/obudai_diplomamunka/soundeffects/",
+                sounds:[
+                  `${this.alarm_url}alarmeffect.mp3`,
+                  `${this.alarm_url}"mexican_theme.mp3`,
+                ]
             }
         },
         components:{
@@ -145,7 +166,8 @@ import ElapsedTime from './ElapsedTime.vue';
         mounted()
         {
            this.get_data();
-           console.log(this.room);
+          // console.log(this.room);
+            console.log(this.sounds)
            Blockly.setLocale(En);
            const room_id=this.$route.params.rid;
             this.cameras=get_data_fromroomdb(room_id,"cameras");
@@ -159,7 +181,21 @@ import ElapsedTime from './ElapsedTime.vue';
            let workspace_default = Blockly.Xml.textToDom(this.a_xml);
            Blockly.Xml.appendDomToWorkspace(workspace_default,this.Workspace);
            this.a_js = Blockly.Javascript.workspaceToCode(this.Workspace);
+          
                       
+        },
+        computed:{
+          start_date()
+            {
+              let b=null;
+                if(this.started) b=this.status.starting_time;
+                else
+                {
+                    b=Date();
+                }
+                return b;
+            },
+
         },
 
         methods:
@@ -168,6 +204,7 @@ import ElapsedTime from './ElapsedTime.vue';
             {
 
             },
+           
             start()
             {
                 if(this.team_name=="") return;
@@ -197,8 +234,6 @@ import ElapsedTime from './ElapsedTime.vue';
                 this.actual_camera=this.cameras[this.camera_id].camera_url;
 
             },
-
-            
             get_data() {  
                         const userId = FirebaseAuth.currentUser.uid; 
                         onValue(ref(FireDb, `/users/${userId}/rooms/${this.$route.params.rid}`),(sn)=>{
@@ -216,9 +251,6 @@ import ElapsedTime from './ElapsedTime.vue';
                             console.log(this.program);
                             }
                         });
-                        
-                       
-
                         onValue(ref(FireDb, `/users/${userId}/rooms/${this.$route.params.rid}/devices`),(sn)=>{
                             if(sn.exists()) 
                             {
@@ -240,10 +272,15 @@ import ElapsedTime from './ElapsedTime.vue';
 <style lang="scss" scoped>
  .md-card
   {
-  width: 300px;
+  max-width: 400px;
+  min-width: 200px;
     margin: 4px;
     display: inline-block;
     vertical-align: top;
+    max-height: 600px;
+    overflow-y: auto;
+    overflow-x: auto;
+    padding: 15px;
   }
 #blocklyDiv
 {
@@ -255,6 +292,10 @@ import ElapsedTime from './ElapsedTime.vue';
 }
 .cameras{
     width: 300px;
+    height: 300px;
+}
+#devices{
+    width: 500px;
     height: 300px;
 }
 </style>

@@ -5,13 +5,15 @@ import {IconsPlugin } from 'bootstrap-vue';
 import BootstrapVue from "bootstrap-vue";
 import VueNoty from 'vuejs-noty';
 import VCalendar from 'v-calendar';
+import AudioRecorder from 'vue-audio-recorder';
 import VueMaterial from 'vue-material'; // TODO: import only needed component, not all
 import 'vue-material/dist/vue-material.min.css';
 Vue.use(VueMaterial);
 //Vue.use(ForkeMeOnGithub);
 
 
-
+ 
+Vue.use(AudioRecorder);
 Vue.use(BootstrapVue);
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap-vue/dist/bootstrap-vue.css";

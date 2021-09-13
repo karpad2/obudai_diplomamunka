@@ -62,13 +62,15 @@ export default
         console.log(this.$route.params);
         //localStorage.setItem('device',JSON.stringify(null));
         const userId = FirebaseAuth.currentUser.uid;
-        const eventID = this.$route.params.cid;
+        const eventID = this.$route.params.eid;
         const room_id=this.$route.params.rid;
         
 
         onValue(ref(FireDb, `/users/${userId}/rooms/${room_id}/events/${eventID}`),(sn)=>{
        if(sn.exists()) 
-       {this.event=sn.val();
+       {
+        this.event=sn.val();
+       // this.event.contact_date=Date(sn.val().contact_date);
         //this.select=this.device.mode;
        }
         });
