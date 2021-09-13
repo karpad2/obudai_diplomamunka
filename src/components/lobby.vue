@@ -38,7 +38,7 @@
        
 
       </md-card-content>
-
+        <ElapsedTime />
       <md-card-actions>
           
           
@@ -101,6 +101,7 @@
     import * as En from "blockly/msg/en";
     import "blockly/javascript";
     import "@/components/BlocklyJS";
+    import ElapsedTime from "@/components/ElapsedTime";
     import Blocks from "@/components/parts/Blocks";
     import 'blockly/blocks';
     import {FireDb,FirebaseAuth,userId} from "@/firebase";
@@ -111,6 +112,7 @@
 import {get_encoding} from "@/mod_data/get_data";
 import {delete_program} from "@/mod_data/del_data";
 import {encode,decoding} from "@/datas";  
+import ElapsedTime from './ElapsedTime.vue';
 
     export default {
         data()
@@ -133,7 +135,8 @@ import {encode,decoding} from "@/datas";
             }
         },
         components:{
-            Blocks
+            Blocks,
+            ElapsedTime
         },
         beforeMount()
         {
