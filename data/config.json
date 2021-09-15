@@ -1,12 +1,1 @@
-{
-  "Wifi-name":"Escape Room",
-  "Wifi-pass":"escape_room",
-  "esp32pass":"",
-  "webserveraddress":"http://192.168.0.101",
-  "factory": {
-    "mode": ["RFID","Reset","Relay"],
-    "status": true
-  },
-  "mode": [],
-  "device_mode": "relay"
-}
+{"wifiname":"Escape Room","wifipass":"escape_room","device_mode":"relay","api_key":"Rko9QOoaBDbXAndM0UGhKbZBFFZWFGsl6KiUNnGt","database_url":"https://escaperoom-b4ae9-default-rtdb.europe-west1.firebasedatabase.app"}
