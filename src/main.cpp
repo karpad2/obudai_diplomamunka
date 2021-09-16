@@ -40,7 +40,7 @@ void setup() {
 }
 
 void loop() {
-  
+  bluetooth_serial();
   if (Serial.available() > 0) {
     receiving_data = Serial.readString();
     parse_serial(receiving_data);
@@ -89,9 +89,8 @@ void parse_text_tojson(String text)
   else if(parsejson["mod"].as<String>()=="setup")
   {
     setupjson["wifiname"]=parsejson["wifiname"].as<String>();
-    setupjson["wifipass"]=parsejson["wifipass"].as<String>();
-    setupjson["wifiname"]=parsejson["wifipassword"].as<String>();
-    setupjson["device_id"]=parsejson["device_id"].as<String>();
+    setupjson["wifipassword"]=parsejson["wifipassword"].as<String>();
+   setupjson["device_id"]=parsejson["device_id"].as<String>();
     setupjson["room_id"]=parsejson["room_id"].as<String>();
     setupjson["user_id"]=parsejson["user_id"].as<String>();
 

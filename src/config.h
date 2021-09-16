@@ -2,8 +2,8 @@
 
 #ifndef ESP32_CONFIG_H
 #define ESP32_CONFIG_H
-#define PORT 9000
-#define USBPORT 9600
+//#define PORT 9000
+#define USBPORT 115200
 #define rfid_pins 14
 #define SS_PIN    21
 #define RST_PIN   22
@@ -18,6 +18,8 @@
 #define SCREEN_WIDTH 128 // OLED display width, in pixels
 #define SCREEN_HEIGHT 64 // OLED display height, in pixels
 
+//#define SERVICE_UUID "6e400001-b5a3-f393-e0a9-e50e24dcca9e" 
+//#define CHARACTERISTIC_UUID "6e400003-b5a3-f393-e0a9-e50e24dcca9e"
 
 DynamicJsonDocument doc(2048);
 DynamicJsonDocument configs(2048);

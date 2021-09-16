@@ -37,6 +37,7 @@ void firebase_begin()
     Firebase.setMaxRetry(fbdo, 5);
     Firebase.setMaxErrorQueue(fbdo, 30);
     Firebase.reconnectWiFi(true);
+    //Firebase.setSystemTime();
     
     //Firebase.setReadWriteRules(fbdo, base_path.c_str(), DATABASE_SECRET);
 }
