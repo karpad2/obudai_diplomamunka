@@ -25,4 +25,5 @@ void network_setup()
         Serial.println("MDNS responder started");
         blinking(3);
     }
+    //configTime(_TZOffset * 3600, _DSTOffset * 3600, "pool.ntp.org");
 }

@@ -1,4 +1,9 @@
 #include <ArduinoJSON.h>
+#include <BLEDevice.h>
+#include <BLEServer.h>
+#include <BLEUtils.h>
+
+#include <BLE2902.h>
 
 #ifndef ESP32_CONFIG_H
 #define ESP32_CONFIG_H
@@ -13,6 +18,7 @@
 #define relaypin 23
 #define interruptpin 25
 #define boot_pin 0
+#define bluetooth_name "EscapeRoomDevice"
 
 #define refresh_rate 3000
 #define SCREEN_WIDTH 128 // OLED display width, in pixels
@@ -39,5 +45,9 @@ char terminator=0x17;
 unsigned long dataMillis = 0;
 int count = 0;
 int long_pressed=0;
+
+
+
+
 
 #endif //ESP32_CONFIG_H
