@@ -42,7 +42,7 @@
       </md-card-content>
 
       <md-card-actions>
-        <md-button class="md-raised md-secondary" @click="bluetooth_connect">Try to connect with Bluetooth</md-button>
+        <md-button class="md-raised md-secondary" :v-if="('bluetooth' in navigator)" @click="bluetooth_connect">Try to connect with Bluetooth (alpha)</md-button>
         <md-button class="md-raised md-primary" @click="check_ports">Connect to device through Serial port</md-button>
         <md-button class="md-raised md-primary" @click="flash_config">Flash config</md-button>
       </md-card-actions>

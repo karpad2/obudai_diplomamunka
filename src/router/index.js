@@ -20,7 +20,7 @@ import Device from "../components/Device";
 import Programs from "../components/Programs";
 import Program from "../components/Program";
 
-import Lobby from "../components/lobby";
+import Lobby from "../components/Lobby";
 import Camera from "../components/Camera";
 import Cameras from "../components/Cameras";
 import PreviousRuns from "@/components/PreviousRuns";
