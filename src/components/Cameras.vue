@@ -22,7 +22,7 @@
       <md-table-row v-for="(row,index) in cameras" :key="index">
         <md-table-cell md-numeric>{{index+1}}</md-table-cell>
         <md-table-cell>{{row.data.camera_name}}</md-table-cell>
-        <md-table-cell><img :src="row.data.camera_url" class="" /></md-table-cell>
+        <md-table-cell><img class="image" :src="row.data.camera_url"  /></md-table-cell>
         <md-table-cell><router-link :to="{ path: `/room/${row.room_id}/camera/${row.dev_id}`}">Edit</router-link></md-table-cell>
     </md-table-row>
       
@@ -61,3 +61,10 @@ export default
 }
 
 </script>
+<style lang="scss" scoped>
+.image{
+  width: 100px;
+  height: 100px;
+  border: 1px black solid;
+}
+</style>

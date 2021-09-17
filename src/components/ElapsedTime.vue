@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import {BIconCheck2,BIconExclamationTriangle} from 'bootstrap-icons-vue'
+import {BIconCheck2,BIconExclamationTriangle} from 'bootstrap-icons-vue';
 import * as moment from 'moment'
 import 'moment-duration-format'
     export default {
@@ -26,7 +26,6 @@ import 'moment-duration-format'
             }
             else{
                 ldate=moment(this.lastdate);
-            
             }
             let duration = moment.duration(ldate.diff(sdate));
             this.time_string=duration.format('hh:mm:ss');

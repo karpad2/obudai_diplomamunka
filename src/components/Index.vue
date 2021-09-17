@@ -11,8 +11,8 @@
 				</router-link>
 				<div  class="md-toolbar-section-end">
         			
-					<md-avatar  v-on:click="showSidepanel = true" >
-						<img :src="profile_picture_url" alt="Avatar">
+					<md-avatar  style="z-index:999" >
+						<img @click="toggleSidepanel" :src="profile_picture_url" alt="Avatar">
 					</md-avatar>
      		 	</div>
 				</md-app-toolbar>
@@ -52,7 +52,7 @@
 
 	<md-drawer class="md-right" :md-active.sync="showSidepanel">
       <md-toolbar class="md-transparent" md-elevation="0">
-        <span class="md-title">Favorites</span>
+        <span class="md-title">Account</span>
       </md-toolbar>
 
       <md-list>
@@ -181,7 +181,7 @@ import logo from "@/assets/logo";
 			});
 			
 			this.$router.afterEach(()=>{
-				setTimeout(()=>{this.loading_screen=false},500);
+				setTimeout(()=>{this.loading_screen=false},300);
 			});
 			
 			try{
@@ -220,6 +220,10 @@ import logo from "@/assets/logo";
 			toggleMenu: function() {
 				this.menuVisible = !this.menuVisible;
 			},
+			toggleSidepanel: function()
+			{
+				this.showSidepanel = !this.showSidepanel;
+			},
 			themeChanged: function () {
 				if (localStorage.userTheme === "dark") this.userTheme = "dark";
 				else this.userTheme = "default";
@@ -228,8 +232,7 @@ import logo from "@/assets/logo";
 				console.log("Change theme");
 				change_Theme_Fb("change");
 				this.themeChanged();
-				//const dbRef = ref(FireDb);
-        		console.log();
+				
 			},
 			logout: function () {
 				this.loading = true;
@@ -319,5 +322,9 @@ import logo from "@/assets/logo";
 				}
 			}
 		}
+		 .md-drawer {
+		width: 230px;
+		max-width: calc(100vw - 125px);
+ 		 }
 	}
 </style>

@@ -7,13 +7,14 @@ import { enableIndexedDbPersistence } from "firebase/firestore";
 import { getMessaging,getToken } from "firebase/messaging";
 import { getPerformance } from "firebase/performance";
 import { getAnalytics, logEvent } from "firebase/analytics";
+import { getStorage } from "firebase/storage";
 
 
 import firebaseCredentials from './credentials';
 const app = initializeApp(firebaseCredentials.config);
 const messaging = getMessaging();
 const perf = getPerformance(app);
-
+const storage = getStorage();
 const analytics = getAnalytics();
 logEvent(analytics, 'notification_received');
 
@@ -84,17 +85,11 @@ const change_Theme_Fb= (value)=>{
 };
 
 export {
-	FirebaseAuth
-}
-export { 
-	FireDb
-}
-export { 
-	change_Theme_Fb
-}
-export {
-	user
-}
-export {
+	FirebaseAuth,
+	storage,
+	FireDb,
+	change_Theme_Fb,
+	user,
 	userId
 }
+

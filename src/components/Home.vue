@@ -111,6 +111,7 @@ import {  Calendar } from 'v-calendar';
 		},
 		mounted()
 		{
+			console.log(FirebaseAuth.currentUser);
 			this.get_name();
 			this.events=get_data_from_allroomdb("events");
 			//console.log(this.$route)

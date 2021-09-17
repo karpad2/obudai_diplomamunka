@@ -1,5 +1,6 @@
 <template>
 	<div class="center">
+		<p>Latest version:</p>
 		App made by <a href="https://karpad2.github.io" class="karpad2" target="_blank">karpad2</a>
 		<p><a href="https://karpad2.github.io" target="_blank">GitHub</a></p>
 	</div>

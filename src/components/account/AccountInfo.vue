@@ -2,6 +2,7 @@
 	<div id="account-info-container">
 		<div v-if="!loading" class="center">
 			<p><b>Email:</b> {{email}}</p>
+			
 			<div>
 				
 			</div>

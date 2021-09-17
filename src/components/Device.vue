@@ -25,7 +25,7 @@
        </md-card-content>
        <md-card-actions>
       <md-button class="md-raised md-primary" @click="duplicatedevice">Duplicate device with same settings</md-button>
-      <md-button class="md-raised md-primary" @click="get_config">Download Config file</md-button>
+      <md-button class="md-raised md-primary" @click="download_file">Download Config file</md-button>
       <md-button class="md-raised md-secondary" @click="showDeleteDialog = true">Delete Device</md-button>
       </md-card-actions>
      </md-card>
@@ -37,10 +37,12 @@
       </md-card-header>
 		  <md-card-content>
         Only supported devices are  <a href="https://en.wikipedia.org/wiki/ESP32">ESP32</a> family.
-		
+        Connected device : {{serial.device_name}};
+
       </md-card-content>
 
       <md-card-actions>
+        <md-button class="md-raised md-secondary" @click="bluetooth_connect">Try to connect with Bluetooth</md-button>
         <md-button class="md-raised md-primary" @click="check_ports">Connect to device through Serial port</md-button>
         <md-button class="md-raised md-primary" @click="flash_config">Flash config</md-button>
       </md-card-actions>
@@ -64,6 +66,7 @@ import Deviceactivity from '@/components/parts/Deviceactivity';
 import DeviceInput from '@/components/parts/DeviceInput';
 import {check_serial_supported,list_coms} from '@/components/flash_device';
 import {devicemodes} from "@/datas";
+import BluetoothTerminal from "@/bluetooth/BluetoothTerminal";
 
 import {get_data_fromroomitemdb} from "@/mod_data/get_data";
 import {add_device} from "@/mod_data/set_data";
@@ -82,7 +85,11 @@ export default {
       serial_supported:false,
       serial_device:null,
       serial_reader:null,
-      connected:false
+      connected:false,
+      defaultDeviceName:"mcu",
+      serial:{device_name:"",terminalcontainer:""},
+      bluetooth_uuid:"00001101-0000-1000-8000-00805F9B34FB",
+      terminal : null
 
     }),
     components:{
@@ -128,6 +135,8 @@ export default {
           navigator.serial.addEventListener("connect",(event)=> {this.connect_device(event)});
           navigator.serial.addEventListener("disconnect",(event)=> {this.disconnect_device(event)});
        }
+      let serviveUuid = 0xFFE0, characteristicUuid = 0xFFE1;
+       this.terminal=new BluetoothTerminal(serviveUuid,characteristicUuid,'\n','\n');
     },
     methods:
     {
@@ -231,11 +240,46 @@ export default {
                     },
                     get_config()
                     {
-                      let filename="config.json";
-                      let l={data:this.device,wifiname:get_data_fromroomitemdb(this.$route.params.rid,"wifi_name"),
+                      const userId = FirebaseAuth.currentUser.uid;
+                      
+                      let l={
+                      data:this.device,wifiname:get_data_fromroomitemdb(this.$route.params.rid,"wifi_name"),
                       wifipassword:get_data_fromroomitemdb(this.$route.params.rid,"wifi_password"),
-                      device_id:this.$route.params.did};
+                      device_id:this.$route.params.did,
+                      room_id:this.$route.params.rid,
+                      user_id:userId,
+                      user_email:FirebaseAuth.currentUser.user_email,
+                      device_mode:this.device.mode,
+                      database_url:"https://escaperoom-b4ae9-default-rtdb.europe-west1.firebasedatabase.app",
+                      api_key:"Rko9QOoaBDbXAndM0UGhKbZBFFZWFGsl6KiUNnGt",
+                      mod:"setup",
+                      accessToken:FirebaseAuth.currentUser.accessToken
+                      };
 
+                      return l;
+                    },
+                    bluetooth_connect()
+                    {
+                     /* var serviveUuid = null;
+                      var characteristicUuid = null;
+                      navigator.bluetooth.requestDevice({acceptAllDevices: true})
+                        .then(device => {
+                              console.log(device);
+                        });*/
+                      
+                      this.terminal.connect().
+                      then(() => {
+                        this.serial.device_name = this.terminal.getDeviceName() ?
+                            this.terminal.getDeviceName() : this.defaultDeviceName;
+                      });
+
+                    },
+
+
+                    download_file()
+                    {
+                      let filename="config.json";
+                      let l=this.get_config();
                       saveTextAsFile(JSON.stringify(l),filename);
                     },
                     async serial_log()
