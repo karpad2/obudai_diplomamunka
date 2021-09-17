@@ -3,31 +3,17 @@ import "blockly/javascript";
 
 Blockly.defineBlocksWithJsonArray([
     {
-        "type": "send_data",
-        "message0": "set device %1, mode: %2, status: %3",
+        "type": "start_room",
+        "message0": "Start Progress",
         "args0": [
-            {
-                "type": "field_variable",
-                "name": "device",
-                "check": ["String"]
-            },
-            {
-                "type": "field_variable",
-                "name": "mode",
-                "variableTypes": [""]
-            },
-            {
-                "type": "input_value",
-                "name": "value",
-                "check": ["String"]
-            }
+            
+            
         ],
-        "inputsInline": true,
         "previousStatement": true,
         "nextStatement": true,
-        "colour": 160,
+        "colour": '#0ddb69',
         "tooltip": "",
-        "helpUrl": "",
+        "helpUrl": "https://github.com/karpad2/obudai_diplomamunka/wiki/Start-Process",
         
     },
 ]);//AS-Modifier
@@ -48,10 +34,11 @@ Blockly.Extensions.register('assExtensions', function(){
         }
     })
 });*/
-Blockly.JavaScript['send_data'] = function(block) {
+Blockly.JavaScript['start_room'] = function(block) {
     var device = Blockly.JavaScript.statementToCode(block, 'device');
-    var mode = Blockly.JavaScript.statementToCode(block, 'mode');
-    var value = Blockly.JavaScript.statementToCode(block, 'value');
-    var code = `set_data(${device},${mode},${value});`;
-    return  [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
+    
+
+    
+    var code = `start_room();`;
+    return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
 };

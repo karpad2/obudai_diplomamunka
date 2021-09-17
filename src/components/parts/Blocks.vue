@@ -310,6 +310,7 @@
     <category name="Functions" colour="%{BKY_PROCEDURES_HUE}" custom="PROCEDURE"></category>
      <sep></sep>
     <category name="Application Functions" colour="%{BKY_PROCEDURES_HUE}">
+      <block type="start_room"></block>
       <block type="send_data"></block>
       <block type="get_data"></block>
       <block type="send_finish"></block>

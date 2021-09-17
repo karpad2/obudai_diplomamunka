@@ -1,9 +1,14 @@
 <template>
 <div>
+    <div v-if="time_string!='Invalid date'">
     <span v-if="active">Device is online</span>
     <span v-else> Device was online {{time_string}}</span>
     <BIconCheck2  class="" v-if="active" />
     <BIconExclamationTriangle class="" v-else />
+    </div>
+<div v-else>
+    <span style="color:red">Invalid data, probably device never was online?</span>
+</div>
 </div>
 </template>
 

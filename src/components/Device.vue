@@ -1,7 +1,5 @@
 <template>
-<div >
-    
-
+<div > 
 <div class="section">
 <md-card md-with-hover >
      
@@ -36,13 +34,13 @@
         <div class="md-title" >Flashing Device</div>
       </md-card-header>
 		  <md-card-content>
-        Only supported devices are  <a href="https://en.wikipedia.org/wiki/ESP32">ESP32</a> family.
+        <p>Only supported devices are  <a href="https://en.wikipedia.org/wiki/ESP32">ESP32</a> family.</p>
         Connected device : {{serial.device_name}};
 
       </md-card-content>
 
       <md-card-actions>
-        <md-button class="md-raised md-secondary" :v-if="('bluetooth' in navigator)" @click="bluetooth_connect">Try to connect with Bluetooth (alpha)</md-button>
+        <md-button class="md-raised md-secondary" :v-if="bluetooth_active" @click="bluetooth_connect">Try to connect with Bluetooth (alpha)</md-button>
         <md-button class="md-raised md-primary" @click="check_ports">Connect to device through Serial port</md-button>
         <md-button class="md-raised md-primary" @click="flash_config">Flash config</md-button>
       </md-card-actions>
@@ -64,7 +62,7 @@ import {FireDb,FirebaseAuth,userId} from "@/firebase";
 import {ref, set ,onValue,get, child,push,runTransaction } from "firebase/database";
 import Deviceactivity from '@/components/parts/Deviceactivity';
 import DeviceInput from '@/components/parts/DeviceInput';
-import {check_serial_supported,list_coms} from '@/components/flash_device';
+import {check_serial_supported,check_bluetooth_supported,list_coms} from '@/components/flash_device';
 import {devicemodes} from "@/datas";
 import BluetoothTerminal from "@/bluetooth/BluetoothTerminal";
 
@@ -89,7 +87,8 @@ export default {
       defaultDeviceName:"mcu",
       serial:{device_name:"",terminalcontainer:""},
       bluetooth_uuid:"00001101-0000-1000-8000-00805F9B34FB",
-      terminal : null
+      terminal : null,
+      bluetooth_active:false
 
     }),
     components:{
@@ -112,6 +111,7 @@ export default {
         const room_id=this.$route.params.rid;
         localStorage.setItem("mods",JSON.stringify(this.devm));
         this.serial_supported=check_serial_supported();
+        this.bluetooth_active=check_bluetooth_supported();
         onValue(ref(FireDb, `/users/${userId}/rooms/${room_id}/devices/${devId}`),(sn)=>{
        if(sn.exists()) 
        {this.device=sn.val();
@@ -126,6 +126,7 @@ export default {
             set(ref(FireDb, `/users/${userId}/rooms/${room_id}/devices/${devId}/status`),false);
         }
         /*
+
             még nincs implementálva a böngészőkben OwO
             navigator.bluetooth.addEventListener('advertisementreceived',this.findADevice(event));
         */
@@ -135,9 +136,12 @@ export default {
           navigator.serial.addEventListener("connect",(event)=> {this.connect_device(event)});
           navigator.serial.addEventListener("disconnect",(event)=> {this.disconnect_device(event)});
        }
+       console.log(navigator.bluetooth);
+       if(this.bluetooth_active)
+       {
       let serviveUuid = 0xFFE0, characteristicUuid = 0xFFE1;
-       this.terminal=new BluetoothTerminal(serviveUuid,characteristicUuid,'\n','\n');
-    },
+      this.terminal=new BluetoothTerminal(serviveUuid,characteristicUuid,'\n','\n');
+    }},
     methods:
     {
         adelete()
@@ -266,13 +270,14 @@ export default {
                         .then(device => {
                               console.log(device);
                         });*/
-                      
+                       if(this.bluetooth_active)
+                    {
                       this.terminal.connect().
                       then(() => {
                         this.serial.device_name = this.terminal.getDeviceName() ?
                             this.terminal.getDeviceName() : this.defaultDeviceName;
-                      });
-
+                        });
+                      }
                     },
 
 

@@ -6,6 +6,7 @@ const devices= require("./devices");
 const init= require("./init");
 const get_data= require("./get_data");
 const send_finish= require("./send_finish");
+const start_room = require("./start_room");
 import Blocks from "@/components/parts/Blocks";
 
 
@@ -14,5 +15,6 @@ export {
     devices,
     init,
     get_data,
-    send_finish
+    send_finish,
+    start_room
 }

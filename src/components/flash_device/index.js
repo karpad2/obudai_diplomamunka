@@ -9,6 +9,13 @@ function check_serial_supported()
         return true;
       }
 }
+
+function check_bluetooth_supported()
+{
+    if ("bluetooth" in navigator) {
+        return true;
+      }
+}
 function list_coms()
 {
     
@@ -19,6 +26,7 @@ function list_coms()
 
 export{
  check_serial_supported,
- list_coms
+ list_coms,
+ check_bluetooth_supported
 
 }

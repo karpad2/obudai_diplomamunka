@@ -4,16 +4,12 @@ import "blockly/javascript";
 Blockly.defineBlocksWithJsonArray([
     {
         "type": "send_finish",
-        "message0": "send finish %1",
+        "message0": "End progress",
         "args0": [
-            {
-                "type": "input_value",
-                "name": "device",
-                "check": ["String"]
-            },
+            
             
         ],
-        "inputsInline": true,
+        
         "previousStatement": true,
         "colour": '#0ddb69',
         "tooltip": "",

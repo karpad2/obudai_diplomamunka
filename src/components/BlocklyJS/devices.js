@@ -16,6 +16,8 @@ Blockly.defineBlocksWithJsonArray([
             ]
           }
         ],
+        "previousStatement": true,
+        "nextStatement": true,
         "output": "String",
         "style": "lists_blocks",
         "tooltip": "%{BKY_LOGIC_BOOLEAN_TOOLTIP}",

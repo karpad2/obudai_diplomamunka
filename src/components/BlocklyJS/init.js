@@ -4,7 +4,7 @@ import "blockly/javascript";
 Blockly.defineBlocksWithJsonArray([
     {
         "type": "init",
-        "message0": "%1 valami %2",
+        "message0": "%1 valami",
         "args0": [
             {
                 "type": "input_value",
