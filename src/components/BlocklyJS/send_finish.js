@@ -36,9 +36,6 @@ Blockly.Extensions.register('assExtensions', function(){
 });*/
 Blockly.JavaScript['send_finish'] = function(block) {
     var device = Blockly.JavaScript.statementToCode(block, 'device');
-    
-
-    
     var code = `send_finish();`;
     return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
 };

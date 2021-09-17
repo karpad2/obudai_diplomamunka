@@ -12,9 +12,15 @@ Blockly.defineBlocksWithJsonArray([
                 "check": ["String"]
             },
             {
-                "type": "field_variable",
+                "type": "field_dropdown",
                 "name": "mode",
-                "variableTypes": [""]
+                "variableTypes": [""],
+                "options": [
+                    ["Relay", "relay"],
+                    ["RFID reader", "rfid"],
+                    ["Input", "input"],
+                    ["OLED Display", "oled"],
+                ]
             },
             {
                 "type": "input_value",

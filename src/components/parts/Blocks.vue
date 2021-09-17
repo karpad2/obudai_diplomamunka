@@ -309,19 +309,14 @@
     <category name="Variables" colour="%{BKY_VARIABLES_HUE}" custom="VARIABLE"></category>
     <category name="Functions" colour="%{BKY_PROCEDURES_HUE}" custom="PROCEDURE"></category>
      <sep></sep>
-    <category name="Application Functions" colour="%{BKY_PROCEDURES_HUE}">
+    <category name="Blocks Library" colour="%{BKY_MATH_HUE}">
       <block type="start_room"></block>
       <block type="send_data"></block>
       <block type="get_data"></block>
       <block type="send_finish"></block>
-     
     </category>
     
-    <category name="Devices"  colour="%{BKY_VARIABLES_HUE}">
-      <block type="devices" v-for="(row,index) in devices" :key="index" >
-        <field name="TEXT">{{row.devID}}</field>
-        </block>
-    </category>
+  
 </xml>
 </template>
 <script>
@@ -331,6 +326,11 @@ export default {
 
   /*
    <block type="init"></block>
+     <category name="Devices"  colour="%{BKY_VARIABLES_HUE}">
+      <block type="devices" v-for="(row,index) in devices" :key="index" >
+        <field name="TEXT">{{row.devID}}</field>
+        </block>
+    </category>
   */
 }
 </script>

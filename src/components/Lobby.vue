@@ -170,6 +170,7 @@ import {encode,decoding} from "@/datas";
             console.log(this.sounds)
            Blockly.setLocale(En);
            const room_id=this.$route.params.rid;
+           localStorage.setItem("roomID",room_id);
             this.cameras=get_data_fromroomdb(room_id,"cameras");
             this.devices=get_data_fromroomdb(room_id,"devices");
             this.Workspace = Blockly.inject("blocklyDiv", {
