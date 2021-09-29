@@ -118,6 +118,7 @@
     import ElapsedTime from "@/components/ElapsedTime";
     import Blocks from "@/components/parts/Blocks";
     import 'blockly/blocks';
+    const Interpreter = require('js-interpreter-npm')
     import {FireDb,FirebaseAuth,userId} from "@/firebase";
     import {ref, set ,onValue,get, child,push,runTransaction } from "firebase/database";
     import {start_run,status_run,stop_run} from "@/mod_data/set_data";
@@ -204,8 +205,30 @@ import {encode,decoding} from "@/datas";
             start_runprocess()
             {
 
+                var myInterpreter = new Interpreter(this.a_js, this.initFunc);
+                var stepsAllowed = 10000;
+                while (myInterpreter.step() && stepsAllowed) {
+                  stepsAllowed--;
+                }
+                if (!stepsAllowed) {
+                  throw EvalError('Infinite loop.');
+                }
+              
             },
-           
+           initFunc(interpreter, scope) {
+                var alertWrapper = function(text) {
+                  text = text ? text.toString() : '';
+                  return interpreter.createPrimitive(alert(text));
+                };
+                interpreter.setProperty(scope, 'alert',
+                    interpreter.createNativeFunction(alertWrapper));
+                var promptWrapper = function(text) {
+                  text = text ? text.toString() : '';
+                  return interpreter.createPrimitive(prompt(text));
+                };
+                interpreter.setProperty(scope, 'prompt', interpreter.createNativeFunction(promptWrapper)); 
+
+      },
             start()
             {
                 if(this.team_name=="") return;

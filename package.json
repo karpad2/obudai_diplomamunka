@@ -22,6 +22,7 @@
     "firebase-cli": "^1.2.0",
     "firebase-tools": "^9.16.5",
     "fork-me-on-github-vue": "^1.0.7",
+    "js-interpreter-npm": "^1.0.6",
     "lzma": "^2.3.2",
     "moment": "^2.29.1",
     "moment-duration-format": "^2.3.2",

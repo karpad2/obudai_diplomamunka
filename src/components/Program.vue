@@ -31,7 +31,8 @@
 <script>
 import * as Blockly from 'blockly/core';
 import * as En from "blockly/msg/en";
-import  "blockly/javascript";
+import BJavascript from "blockly/javascript";
+
 import 'blockly/blocks';
 import Blocks from "@/components/parts/Blocks";
 import {send_data,devices,init,get_data,send_finish} from "@/components/BlocklyJS";
@@ -56,7 +57,8 @@ export default {
       devices:[],
       showDeleteDialog:false,
       Workspace:null,
-      prev:""
+      prev:"",
+      js_code:""
     }),
     comments:{
       Blockly,
@@ -116,6 +118,7 @@ export default {
      
      
     },
+     
     start()
     {
     
@@ -128,6 +131,8 @@ export default {
     //console.log(this.a_program_xml);
     let workspace_default = Blockly.Xml.textToDom(this.a_program_xml);
     Blockly.Xml.appendDomToWorkspace(workspace_default,this.Workspace);
+    //this.js_code=BJavascript.workspaceToCode(this.Workspace);
+    //console.log(this.js_code);
     this.auto_setup();
   },
    duplicateprogram()
@@ -186,6 +191,9 @@ export default {
  
   }
 
+
+
+  
 </script>
 <style lang="scss" scoped>
 #blocklyDiv

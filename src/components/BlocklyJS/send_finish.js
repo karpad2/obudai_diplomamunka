@@ -4,11 +4,10 @@ import "blockly/javascript";
 Blockly.defineBlocksWithJsonArray([
     {
         "type": "send_finish",
-        "message0": "End progress",
-        "args0": [
+        "message0": "send finish",
+        
             
-            
-        ],
+       
         
         "previousStatement": true,
         "colour": '#0ddb69',
@@ -35,7 +34,7 @@ Blockly.Extensions.register('assExtensions', function(){
     })
 });*/
 Blockly.JavaScript['send_finish'] = function(block) {
-    var device = Blockly.JavaScript.statementToCode(block, 'device');
+   
     var code = `send_finish();`;
     return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
 };
