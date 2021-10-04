@@ -4,7 +4,7 @@
 #include "SPIFFS.h"
 #include "serial.h"
 #include "network_control.h"
-#include "firebase.h"
+
 #include "file.h"
 #include <ArduinoJSON.h>
 #include <MFRC522.h>
@@ -35,7 +35,6 @@ void setup() {
   device_id=doc["device_id"].as<String>();
   if(user_id=="null") return;
   network_setup();
-  firebase_begin();
   basepath = "/users/"+user_id+"/rooms/"+room_id+"/devices/"+device_id;
 }
 
@@ -51,12 +50,12 @@ void loop() {
   }
 
 
-   if (millis() - dataMillis > refresh_rate && Firebase.ready())
+   if (millis() - dataMillis > refresh_rate)
    {
      dataMillis = millis();
      path = basepath;
      path += "/test/int";
-     Serial.printf("Set int... %s\n", Firebase.setInt(fbdo, path.c_str(), count++) ? "ok" : fbdo.errorReason().c_str()); 
+    
    }
   // put your main code here, to run repeatedly:
 }
@@ -90,7 +89,7 @@ void parse_text_tojson(String text)
   {
     setupjson["wifiname"]=parsejson["wifiname"].as<String>();
     setupjson["wifipassword"]=parsejson["wifipassword"].as<String>();
-   setupjson["device_id"]=parsejson["device_id"].as<String>();
+    setupjson["device_id"]=parsejson["device_id"].as<String>();
     setupjson["room_id"]=parsejson["room_id"].as<String>();
     setupjson["user_id"]=parsejson["user_id"].as<String>();
 
