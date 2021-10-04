@@ -21,6 +21,7 @@
 #define bluetooth_name "EscapeRoomDevice"
 
 #define refresh_rate 3000
+#define update_rate 10000
 #define SCREEN_WIDTH 128 // OLED display width, in pixels
 #define SCREEN_HEIGHT 64 // OLED display height, in pixels
 
@@ -29,20 +30,35 @@
 
 DynamicJsonDocument doc(2048);
 DynamicJsonDocument configs(2048);
+DynamicJsonDocument version_tester(2048);
 #define DATABASE_SECRET "DATABASE_SECRET"
 #define DATABASE_URL "URL"
 String ok ="[OK!]";
 String dots ="...";
 String receiving_data="";
 String config_json="{\"wifiname\":\"Escape Room\",\"wifipass\":\"escape_room\",\"device_mode\":\"relay\",\"api_key\":\"\",\"firebase_host\":\"\"}";
-String user_id="";
-String room_id="";
-String device_id="";
+String user="";
+String room="";
+String device="";
 String basepath = "";
 String path="";
+int httpCode=0;
+double version=0;
+const char* ntpServer = "europe.pool.ntp.org";
+const char* fw_link = "https://raw.githubusercontent.com/karpad2/obudai_diplomamunka/esp32_szoftver/data/config.json";
+const char* fw_link_bin = "https://raw.githubusercontent.com/karpad2/obudai_diplomamunka/esp32_szoftver/bin/firmware.bin";
+
+
+const long  gmtOffset_sec = 3600;
+const int   daylightOffset_sec = 3600;
+
+struct tm timeinfo;
+
+String json_response="";
 
 char terminator=0x17;
 unsigned long dataMillis = 0;
+unsigned long updateMillis = 0;
 int count = 0;
 int long_pressed=0;
 

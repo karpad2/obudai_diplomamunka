@@ -83,3 +83,10 @@ void a_config_write(String text)
         file.close();
         ESP.restart();
 }
+void get_config_data()
+{
+  user=doc["user"].as<String>();
+  room=doc["room"].as<String>();
+  device=doc["device"].as<String>();
+  version=doc["version"].as<double>();
+}

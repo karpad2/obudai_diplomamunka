@@ -4,14 +4,17 @@
 #include "SPIFFS.h"
 #include "serial.h"
 #include "network_control.h"
-
+#include "time.h"
 #include "file.h"
 #include <ArduinoJSON.h>
 #include <MFRC522.h>
+#include <NTPClient.h>
 
+HTTPClient http;
 
 void parse_serial(String text);
 void parse_text_tojson(String text);
+
 
 MFRC522 rfid(SS_PIN, RST_PIN);
 MFRC522::MIFARE_Key key;
@@ -29,13 +32,19 @@ void setup() {
   String text=a_config_read();
   parse_text_tojson(text);
   text=""; 
+  get_config_data();
   
-  user_id=doc["user_id"].as<String>();
-  room_id=doc["room_id"].as<String>();
-  device_id=doc["device_id"].as<String>();
-  if(user_id=="null") return;
+  if(user=="null") return;
   network_setup();
-  basepath = "/users/"+user_id+"/rooms/"+room_id+"/devices/"+device_id;
+  configTime(gmtOffset_sec, daylightOffset_sec, ntpServer);
+
+String link=build_link(user,room,device);
+char charBuf[link.length() + 1];
+    link.toCharArray(charBuf, link.length());
+
+    printLocalTime();
+
+  http.begin(charBuf);
 }
 
 void loop() {
@@ -53,9 +62,22 @@ void loop() {
    if (millis() - dataMillis > refresh_rate)
    {
      dataMillis = millis();
-     path = basepath;
-     path += "/test/int";
-    
+     httpCode=http.GET();
+     json_response="";
+    if (httpCode > 0) {
+      json_response=http.getString();
+      
+
+
+    }
+    else Serial.println("Error HTTP");
+   }
+
+   if(millis() - updateMillis > update_rate)
+   {
+     updateMillis = millis();
+     system_update();
+     
    }
   // put your main code here, to run repeatedly:
 }
@@ -89,9 +111,9 @@ void parse_text_tojson(String text)
   {
     setupjson["wifiname"]=parsejson["wifiname"].as<String>();
     setupjson["wifipassword"]=parsejson["wifipassword"].as<String>();
-    setupjson["device_id"]=parsejson["device_id"].as<String>();
-    setupjson["room_id"]=parsejson["room_id"].as<String>();
-    setupjson["user_id"]=parsejson["user_id"].as<String>();
+    setupjson["device"]=parsejson["device"].as<String>();
+    setupjson["room"]=parsejson["room"].as<String>();
+    setupjson["user"]=parsejson["user"].as<String>();
 
 
   }
