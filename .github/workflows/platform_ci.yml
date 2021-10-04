@@ -29,6 +29,8 @@ jobs:
         pip install --upgrade platformio
     - name: Check PlatformIO
       run: |
-          pio system info    
+          pio system info
+    - name: Run PlatformIO
+      run: pio lib install "bblanchon/ArduinoJson"         
     - name: Run PlatformIO
       run: pio run -e esp32dev -v
