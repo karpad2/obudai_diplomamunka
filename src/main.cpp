@@ -2,7 +2,7 @@
 #include <WiFi.h>
 #include <SPI.h>
 #include "SPIFFS.h"
-#include "serial.h"
+//#include "serial.h"
 #include "network_control.h"
 #include "time.h"
 #include "file.h"
@@ -10,10 +10,11 @@
 #include <MFRC522.h>
 #include <NTPClient.h>
 
-HTTPClient http;
+
 
 void parse_serial(String text);
 void parse_text_tojson(String text);
+ void setup_serial();
 
 
 MFRC522 rfid(SS_PIN, RST_PIN);
@@ -22,33 +23,40 @@ byte nuidPICC[4];
 
 void setup() {
   setup_serial();
-
-  if (Serial.available() > 0) {
+ if (Serial.available() > 0) {
     receiving_data = Serial.readString();
     parse_serial(receiving_data);
   } 
   a_setup_filesystem();
 
   String text=a_config_read();
-  parse_text_tojson(text);
+
+  firebase_cert=firebasecert_read();
+  github_cert=githubcert_read();
+  
+  
+  deserializeJson(doc, (char*)text.c_str());
+
+  Serial.println(text);
   text=""; 
   get_config_data();
+  delay(500);
+ 
   
-  if(user=="null") return;
-  network_setup();
-  configTime(gmtOffset_sec, daylightOffset_sec, ntpServer);
-
-String link=build_link(user,room,device);
-char charBuf[link.length() + 1];
-    link.toCharArray(charBuf, link.length());
-
-    printLocalTime();
-
-  http.begin(charBuf);
+  while(!network_setup())
+  {
+    Serial.println("...");
+    delay(1000);
+  }
+ printLocalTime();
+  
 }
 
 void loop() {
-  bluetooth_serial();
+
+  
+  //bluetooth_serial();
+  
   if (Serial.available() > 0) {
     receiving_data = Serial.readString();
     parse_serial(receiving_data);
@@ -57,29 +65,46 @@ void loop() {
   {
     button_pressed();
   }
-
+ 
 
    if (millis() - dataMillis > refresh_rate)
    {
+     
+     client.setCACert((char*)firebase_cert.c_str());
+     String link=build_link(user,room,device);
+     HTTPClient http;
+     
+     if(http.begin(client,(char*)link.c_str())) {
      dataMillis = millis();
+     
      httpCode=http.GET();
+     
+     
+
      json_response="";
-    if (httpCode > 0) {
+    if (httpCode == HTTP_CODE_OK) {
+      Serial.printf("[HTTPS] GET... code: %d\n", httpCode);
       json_response=http.getString();
-      
-
-
+      Serial.println(json_response);
+       http.end();
     }
-    else Serial.println("Error HTTP");
+    else Serial.printf("[HTTP] GET... failed, error: %s\n", http.errorToString(httpCode).c_str());
+    
+     }
+     else {
+        Serial.printf("[HTTPS] Unable to connect\n");
+      }
+    
    }
-
+  
+  
    if(millis() - updateMillis > update_rate)
    {
      updateMillis = millis();
      system_update();
-     
-   }
-  // put your main code here, to run repeatedly:
+     }
+  
+  
 }
 
 void parse_serial(String text)
@@ -95,6 +120,8 @@ void parse_serial(String text)
         a_config_write(txt);
     }
 }
+
+
 void parse_text_tojson(String text)
 {
   DynamicJsonDocument parsejson(2048);
@@ -103,21 +130,32 @@ void parse_text_tojson(String text)
   text.toCharArray(charBuf, text.length());
   deserializeJson(parsejson, charBuf);
 
-  if(parsejson["mod"].as<String>()=="status")
-  {
+      if(parsejson["mod"].as<String>()=="status")
+      {
 
-  }
-  else if(parsejson["mod"].as<String>()=="setup")
-  {
-    setupjson["wifiname"]=parsejson["wifiname"].as<String>();
-    setupjson["wifipassword"]=parsejson["wifipassword"].as<String>();
-    setupjson["device"]=parsejson["device"].as<String>();
-    setupjson["room"]=parsejson["room"].as<String>();
-    setupjson["user"]=parsejson["user"].as<String>();
-
-
-  }
+      }
+      else if(parsejson["mod"].as<String>()=="setup")
+      {
+        setupjson["wifi_name"]=parsejson["wifi_name"].as<String>();
+        setupjson["wifi_password"]=parsejson["wifi_password"].as<String>();
+        setupjson["device"]=parsejson["device"].as<String>();
+        setupjson["room"]=parsejson["room"].as<String>();
+        setupjson["user"]=parsejson["user"].as<String>();
 
 
+      }
 
-  }
+}
+
+  void setup_serial()
+{
+  
+  Serial.begin(USBPORT);
+  Serial.println("");
+  //SerialBT.begin("EscapeRoom-device");
+  
+  
+  Serial.println("Setup started...");
+ 
+  Serial.println("The device started, now you can pair it with bluetooth!");
+}

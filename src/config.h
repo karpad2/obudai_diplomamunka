@@ -42,6 +42,8 @@ String room="";
 String device="";
 String basepath = "";
 String path="";
+String firebase_cert="",github_cert="";
+IPAddress dns(8, 8, 8, 8); 
 int httpCode=0;
 double version=0;
 const char* ntpServer = "europe.pool.ntp.org";
@@ -52,7 +54,9 @@ const char* fw_link_bin = "https://raw.githubusercontent.com/karpad2/obudai_dipl
 const long  gmtOffset_sec = 3600;
 const int   daylightOffset_sec = 3600;
 
-struct tm timeinfo;
+
+IPAddress primaryDNS(1, 1, 1, 1);   //optional
+IPAddress secondaryDNS(8, 8, 8, 4); //optional
 
 String json_response="";
 
@@ -61,7 +65,6 @@ unsigned long dataMillis = 0;
 unsigned long updateMillis = 0;
 int count = 0;
 int long_pressed=0;
-
 
 
 

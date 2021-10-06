@@ -30,6 +30,9 @@ jobs:
     - name: Check PlatformIO
       run: |
           pio system info
+    - name: Check PlatformIO
+      run: |
+          pio  run --target size --environment esp32dev      
     - name: Run PlatformIO
       run: pio lib install "bblanchon/ArduinoJson"         
     - name: Run PlatformIO

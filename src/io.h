@@ -22,8 +22,7 @@ void setup_io()
 
 void blinking(int _i)
 {
-    int currentMillis=0;
-    currentMillis=millis();
+    
     for (int i=0;i<_i;i++)
     {
       digitalWrite(led, 1);
@@ -33,11 +32,7 @@ void blinking(int _i)
     }
 }
 
-void button(int _i)
-{
-    int currentMillis=0;
-    currentMillis=millis();
- }
+
 
 void button_pressed()
 {

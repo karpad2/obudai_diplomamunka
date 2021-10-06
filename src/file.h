@@ -20,18 +20,18 @@ void a_setup_filesystem()
         
 }
 
-String a_config_read()
+String a_file_read(String filename)
 {   
-    Serial.println("Try to read config.json");
+    Serial.println("Try to read "+filename);
 
     String configtxt="";
-    File file = SPIFFS.open("/config.json");
+    File file = SPIFFS.open("/"+filename);
         if(!file){
             Serial.println("There was an error opening the file,try to recreate it.");
             file.close();
-            a_config_write(config_json);
+            //a_config_write(config_json);
             
-            return a_config_read();
+            return a_file_read(filename);
             //return "";
         }
         else{
@@ -41,6 +41,20 @@ String a_config_read()
         }
          
         file.close();
-        Serial.println(configtxt);
+        //Serial.println(configtxt);
         return configtxt;
+}
+
+String a_config_read()
+{   
+    return a_file_read("config.json");
+}
+String firebasecert_read()
+{   
+    return a_file_read("firebase.txt");
+}
+
+String githubcert_read()
+{   
+    return a_file_read("github.txt");
 }
