@@ -85,3 +85,16 @@ void get_config_data()
   device=doc["device"].as<String>();
   version=doc["version"].as<double>();
 }
+
+  void setup_serial()
+{
+  
+  Serial.begin(USBPORT);
+  Serial.println("");
+  //SerialBT.begin("EscapeRoom-device");
+  
+  
+  Serial.println("Setup started...");
+ 
+  Serial.println("The device started, now you can pair it with bluetooth!");
+}

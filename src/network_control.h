@@ -40,7 +40,7 @@ bool network_setup()
         blinking(3);
     }
     WiFi.config(WiFi.localIP(), WiFi.gatewayIP(), WiFi.subnetMask(), IPAddress(8,8,8,8));
-    configTime(0, 0, ntpServer);
+    configTime(3600, 3600, ntpServer);
     
   Serial.print(F("Waiting for NTP time sync: "));
   time_t nowSecs = time(nullptr);
@@ -62,9 +62,9 @@ bool network_setup()
     //configTime(_TZOffset * 3600, _DSTOffset * 3600, "pool.ntp.org");
 }
 
-String build_link(String user="", String room="",String device_id="")
+String build_link(String user="", String room="",String device_id="",bool lastonline=false)
 {
-    return "https://escaperoom-b4ae9-default-rtdb.europe-west1.firebasedatabase.app/users/"+user+"/rooms/"+room+"/devices/"+device_id+".json";
+    return "https://escaperoom-b4ae9-default-rtdb.europe-west1.firebasedatabase.app/users/"+user+"/rooms/"+room+"/devices/"+device_id+(lastonline?"/lastonline":"")+".json";
 }
 
 void system_update()
@@ -83,12 +83,12 @@ void system_update()
 
     
         String text=http.getString();
-        char charBuf[text.length() + 1];
-        text.toCharArray(charBuf, text.length());
-        Serial.println(text);
-        deserializeJson(version_tester,charBuf);
+        
+        deserializeJson(version_tester,(char*)text.c_str());
+        double ghversion=version_tester["version"].as<double>();
+        update=ghversion>version;
 
-        update=version_tester["version"].as<double>()>doc["version"].as<double>();
+        Serial.println("Github version: "+String(ghversion)+", Local version: "+String(version)+", Thats why device is: "+(update?"updating":"not updating"));
 
     if(update)
     {
@@ -98,7 +98,7 @@ void system_update()
     }
     else 
     {
-        Serial.printf("[HTTP] GET... failed, error: %s\n", http.errorToString(httpCode).c_str());
+        Serial.printf("[HTTPS] GET... failed, error: %s\n", http.errorToString(httpCode).c_str());
     }
     http.end();
 }
@@ -109,12 +109,15 @@ void network_query()
 
 }
 
-void printLocalTime()
+unsigned long printLocalTime()
 {
+  time_t now;
   struct tm timeinfo;
   if(!getLocalTime(&timeinfo)){
     Serial.println("Failed to obtain time");
-    return;
+    return 0;
   }
   Serial.println(&timeinfo, "%A, %B %d %Y %H:%M:%S");
+  time(&now);
+  return now;
 }

@@ -25,6 +25,9 @@
 #define SCREEN_WIDTH 128 // OLED display width, in pixels
 #define SCREEN_HEIGHT 64 // OLED display height, in pixels
 
+unsigned long epochTime=0; 
+
+
 //#define SERVICE_UUID "6e400001-b5a3-f393-e0a9-e50e24dcca9e" 
 //#define CHARACTERISTIC_UUID "6e400003-b5a3-f393-e0a9-e50e24dcca9e"
 
