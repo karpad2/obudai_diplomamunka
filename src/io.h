@@ -63,6 +63,12 @@ void button_long_pressed()
        
   }
 
+  void relay(bool status)
+  {
+    digitalWrite(relaypin,status);
+    Serial.println("Relay: "+status?"on":"off");
+  }
+
 void a_config_write(String text)
 {
     File file = SPIFFS.open("/config.json", FILE_WRITE);

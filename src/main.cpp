@@ -99,7 +99,12 @@ void loop() {
         timejson["lastonline"]=printLocalTime();
         serializeJson(timejson,httpRequestData);
         httpCode=http.PATCH(httpRequestData);
-        http.end();   
+        http.end();
+        timejson.clear();
+        DynamicJsonDocument device_json(2048);
+
+        deserializeJson(device_json,json_response);
+           
       }
 
       

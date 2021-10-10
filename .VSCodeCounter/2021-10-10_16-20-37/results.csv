@@ -1,0 +1,9 @@
+"filename", "language", "C++", "comment", "blank", "total"
+"c:\Users\karpad2\git\esp32\obudai_diplomamunka\src\config.h", "C++", 55, 3, 18, 76
+"c:\Users\karpad2\git\esp32\obudai_diplomamunka\src\file.h", "C++", 45, 3, 13, 61
+"c:\Users\karpad2\git\esp32\obudai_diplomamunka\src\io.h", "C++", 81, 1, 24, 106
+"c:\Users\karpad2\git\esp32\obudai_diplomamunka\src\main.cpp", "C++", 164, 5, 60, 229
+"c:\Users\karpad2\git\esp32\obudai_diplomamunka\src\network_control.h", "C++", 70, 1, 17, 88
+"c:\Users\karpad2\git\esp32\obudai_diplomamunka\src\rfid.h", "C++", 1, 0, 1, 2
+"c:\Users\karpad2\git\esp32\obudai_diplomamunka\src\serial.h", "C++", 55, 9, 21, 85
+"Total", "-", 471, 22, 154, 647
