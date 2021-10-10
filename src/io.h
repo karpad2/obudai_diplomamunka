@@ -63,10 +63,11 @@ void button_long_pressed()
        
   }
 
-  void relay(bool status)
+  void relay(bool _status)
   {
-    digitalWrite(relaypin,status);
-    Serial.println("Relay: "+status?"on":"off");
+    digitalWrite(relaypin,_status);
+    if(_status) Serial.println("Relay: on");
+    else Serial.println("Relay: off");
   }
 
 void a_config_write(String text)

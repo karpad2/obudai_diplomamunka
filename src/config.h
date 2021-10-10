@@ -34,6 +34,13 @@ unsigned long epochTime=0;
 DynamicJsonDocument doc(2048);
 DynamicJsonDocument configs(2048);
 DynamicJsonDocument version_tester(2048);
+
+String readed_rfid_code="";
+
+
+
+bool inputflag=false;
+
 #define DATABASE_SECRET "DATABASE_SECRET"
 #define DATABASE_URL "URL"
 String ok ="[OK!]";

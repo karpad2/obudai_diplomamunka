@@ -11,11 +11,17 @@
 #include <NTPClient.h>
 
 
+#include <Wire.h>
+#include <Adafruit_GFX.h>
+#include <Adafruit_SSD1306.h>
+
+
 
 void parse_serial(String text);
 void parse_text_tojson(String text);
 void system_update();
 
+Adafruit_SSD1306 display(-1);
 MFRC522 rfid(SS_PIN, RST_PIN);
 MFRC522::MIFARE_Key key;
 byte nuidPICC[4];
@@ -27,7 +33,7 @@ void setup() {
     parse_serial(receiving_data);
   } 
   a_setup_filesystem();
-
+  
   String text=a_config_read();
   firebase_cert=firebasecert_read();
   github_cert=githubcert_read();
@@ -103,8 +109,83 @@ void loop() {
         timejson.clear();
         DynamicJsonDocument device_json(2048);
 
-        deserializeJson(device_json,json_response);
-           
+        deserializeJson(device_json,(char*)json_response.c_str());
+        String  aaa=device_json["mode"].as<String>();
+        if(aaa=="relay")
+        
+        { String a=device_json["status"];  
+          Serial.println(a);
+            bool status=a=="true"?true:false;
+            relay(status);
+        }
+        else if(aaa=="rfid")
+        {
+            if(readed_rfid_code=="")
+            {
+              Serial.println("Not readed card");
+            }
+            else
+            {
+              timejson["status"]=readed_rfid_code;
+
+
+              if(http.begin(client,(char*)link.c_str())) {
+                  httpRequestData ="";
+                  http.addHeader("Content-Type", "application/json");
+
+                  
+                  serializeJson(timejson,httpRequestData);
+                  httpCode=http.PATCH(httpRequestData);
+                  http.end();
+                      }
+
+                      readed_rfid_code="";
+            }
+
+
+
+        }
+        else if(aaa=="input")
+        {
+          if(inputflag)
+          {
+              timejson["status"]=inputflag;
+
+              if(http.begin(client,(char*)link.c_str())) {
+                  httpRequestData ="";
+                  http.addHeader("Content-Type", "application/json");
+
+                  
+                  serializeJson(timejson,httpRequestData);
+                  httpCode=http.PATCH(httpRequestData);
+                  http.end();
+              }
+
+          }
+          inputflag=false;
+
+        }
+        else if(aaa=="oled")
+        {
+            display.begin(SSD1306_SWITCHCAPVCC, 0x3C); 
+            display.clearDisplay();
+
+            // Display Text
+            display.setTextSize(1);
+            display.setTextColor(WHITE);
+            display.setCursor(0,28);
+            String text_oled= device_json["status"].as<String>();
+            display.println((char*)text_oled.c_str());
+            display.display();
+            delay(2000);
+            display.clearDisplay();
+        }
+        else
+        {
+          Serial.println("Fail");
+        }
+
+
       }
 
       
