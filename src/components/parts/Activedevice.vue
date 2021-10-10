@@ -30,7 +30,7 @@ import * as moment from 'moment'
             update_data()
             {
             this.time_string=moment(this.lastonline).startOf('minute').fromNow();
-            this.active=  Date.now()-this.lastonline < 120; // 120 másodperce volt aktív
+            this.active=  ~~(Date.now()/1000)-this.lastonline < 120; // 120 másodperce volt aktív UTC szerint beállítva
             }
         },
 

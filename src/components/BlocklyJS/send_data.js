@@ -58,6 +58,6 @@ Blockly.JavaScript['send_data'] = function(block) {
     var device = Blockly.JavaScript.statementToCode(block, 'device');
     var mode = Blockly.JavaScript.statementToCode(block, 'mode');
     var value = Blockly.JavaScript.statementToCode(block, 'value');
-    var code = `set_data(${device},${mode},${value});`;
+    var code = `set_data(${device},${mode},${value});\n`;
     return  [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
 };

@@ -35,6 +35,6 @@ Blockly.Extensions.register('assExtensions', function(){
 });*/
 Blockly.JavaScript['send_finish'] = function(block) {
    
-    var code = `send_finish();`;
+    var code = `send_finish();\n`;
     return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
 };

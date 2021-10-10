@@ -54,7 +54,7 @@ export default {
       showDialog: false,
       scan:null,
       found_devices:[],
-      devices:[],
+      
       showDDialog:false
      
     }),
@@ -64,7 +64,7 @@ export default {
     beforeMount()
     {        
        const userId = FirebaseAuth.currentUser.uid;
-       this.devices=get_data_from_allroomdb("devices");
+       
         /*
             még nincs implementálva a böngészőkben OwO
             this.scan = navigator.bluetooth.requestLEScan({"acceptAllAdvertisements":true});
@@ -97,6 +97,13 @@ edit(l)
 
 
         },
+        computed:
+        {
+          devices()
+          {
+            return get_data_from_allroomdb("devices");
+          }
+        }
         
     
   }

@@ -56,7 +56,7 @@ Blockly.JavaScript['get_data'] = function(block) {
     var device = Blockly.JavaScript.statementToCode(block, 'device');
     var mode = Blockly.JavaScript.statementToCode(block, 'mode');
     
-    var code = `get_data(${device},${mode});`;
+    var code = `get_data(${device},${mode});\n`;
     return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
 };
 
