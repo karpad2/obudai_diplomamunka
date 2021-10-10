@@ -14,7 +14,7 @@
 
 void parse_serial(String text);
 void parse_text_tojson(String text);
-
+void system_update();
 
 MFRC522 rfid(SS_PIN, RST_PIN);
 MFRC522::MIFARE_Key key;
@@ -29,7 +29,6 @@ void setup() {
   a_setup_filesystem();
 
   String text=a_config_read();
-
   firebase_cert=firebasecert_read();
   github_cert=githubcert_read();
   
@@ -60,6 +59,7 @@ void loop() {
   if (Serial.available() > 0) {
     receiving_data = Serial.readString();
     parse_serial(receiving_data);
+    Serial.println("Received data: "+receiving_data);
   }
   if(digitalRead(boot_pin)==LOW)
   {
@@ -90,7 +90,7 @@ void loop() {
        http.end();
       //time_for_response
      
-      link=build_link(user,room,device,true);
+      link=build_link(user,room,device);
       if(http.begin(client,(char*)link.c_str())) {
         String httpRequestData ="";
         http.addHeader("Content-Type", "application/json");
@@ -130,9 +130,29 @@ void parse_serial(String text)
 
     if(doc["mode"]=="setup")
     {
-        String txt="";
-        //txt=serializeJson(doc["data"]);
-        a_config_write(txt);
+        
+        DynamicJsonDocument parsejson(2048);
+        String _text=a_config_read();
+        deserializeJson(parsejson,_text);
+        String tmp="";
+        tmp=doc["wifi_name"].as<String>();
+        parsejson["wifi_name"]=(tmp=="null"?parsejson["wifi_name"].as<String>() : tmp);
+        tmp=doc["wifi_password"].as<String>();
+        parsejson["wifi_password"]=(tmp=="null"?parsejson["wifi_password"].as<String>() : tmp);
+        tmp=doc["user"].as<String>();
+        parsejson["user"]=(tmp=="null"?parsejson["user"].as<String>() : tmp);
+        tmp=doc["room"].as<String>();
+        parsejson["room"]=(tmp=="null"?parsejson["room"].as<String>() : tmp);
+        tmp=doc["device"].as<String>();
+        parsejson["device"]=(tmp=="null"?parsejson["device"].as<String>() : tmp);
+
+        serializeJson(parsejson,_text);
+
+        Serial.println(_text);
+
+        //a_config_write(_text);
+
+       
     }
 }
 
@@ -160,4 +180,44 @@ void parse_text_tojson(String text)
       }
 
 }
+
+void system_update()
+{
+    HTTPClient http;
+    bool update=true;
+    client.setCACert((char*)github_cert.c_str());
+    http.begin(fw_link);
+
+    httpCode=http.GET();
+    if(httpCode>0)
+    {   String text=http.getString();
+        deserializeJson(version_tester,(char*)text.c_str());
+        double ghversion=version_tester["version"].as<double>();
+        update=ghversion>version;
+        Serial.println("Github version: "+String(ghversion)+", Local version: "+String(version)+", Thats why device is: "+(update?"updating":"not updating"));
+        String txt_json="";
+        String _text=a_config_read();
+        deserializeJson(doc,_text);
+        Serial.println(_text);
+
+    if(update)
+    {
+        doc["version"]=ghversion;
+        serializeJson(doc,_text);
+        a_config_write(_text);
+        
+
+       // a_config_write();
+
+        http.begin(fw_link_bin);
+        httpUpdate.update(http,fw_link_bin);
+    }
+    }
+    else 
+    {
+        Serial.printf("[HTTPS] GET... failed, error: %s\n", http.errorToString(httpCode).c_str());
+    }
+    http.end();
+}
+
 

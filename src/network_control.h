@@ -4,7 +4,7 @@
 #include <ArduinoJSON.h>
 #include <HTTPClient.h>
 #include <WiFiClientSecure.h>
-
+#include <FS.h>
 #include <HTTPUpdate.h>
 
 
@@ -40,7 +40,7 @@ bool network_setup()
         blinking(3);
     }
     WiFi.config(WiFi.localIP(), WiFi.gatewayIP(), WiFi.subnetMask(), IPAddress(8,8,8,8));
-    configTime(3600, 3600, ntpServer);
+    configTime(0, 0, ntpServer); //UTC idő pont
     
   Serial.print(F("Waiting for NTP time sync: "));
   time_t nowSecs = time(nullptr);
@@ -67,41 +67,6 @@ String build_link(String user="", String room="",String device_id="",bool laston
     return "https://escaperoom-b4ae9-default-rtdb.europe-west1.firebasedatabase.app/users/"+user+"/rooms/"+room+"/devices/"+device_id+(lastonline?"/lastonline":"")+".json";
 }
 
-void system_update()
-{
-    HTTPClient http;
-    bool update=true;
-    
-    
-    
-    client.setCACert((char*)github_cert.c_str());
-    http.begin(fw_link);
-
-    httpCode=http.GET();
-    if(httpCode>0)
-    {
-
-    
-        String text=http.getString();
-        
-        deserializeJson(version_tester,(char*)text.c_str());
-        double ghversion=version_tester["version"].as<double>();
-        update=ghversion>version;
-
-        Serial.println("Github version: "+String(ghversion)+", Local version: "+String(version)+", Thats why device is: "+(update?"updating":"not updating"));
-
-    if(update)
-    {
-        http.begin(fw_link_bin);
-        httpUpdate.update(http,fw_link_bin);
-    }
-    }
-    else 
-    {
-        Serial.printf("[HTTPS] GET... failed, error: %s\n", http.errorToString(httpCode).c_str());
-    }
-    http.end();
-}
 
 void network_query()
 {    
