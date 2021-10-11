@@ -37,11 +37,15 @@
         <p>Only supported devices are  <a href="https://en.wikipedia.org/wiki/ESP32">ESP32</a> family.</p>
         Connected device : {{serial.device_name}};
 
+        <div >
+          <p></p>
+        </div>
+
       </md-card-content>
 
       <md-card-actions>
         <md-button class="md-raised md-secondary" :v-if="bluetooth_active" @click="bluetooth_connect">Try to connect with Bluetooth (alpha)</md-button>
-        <md-button class="md-raised md-primary" @click="check_ports">Connect to device through Serial port</md-button>
+        <md-button class="md-raised md-primary" @click="check_ports_usb">Connect to device through Serial port</md-button>
         <md-button class="md-raised md-primary" @click="flash_config">Flash config</md-button>
       </md-card-actions>
     </md-card>
@@ -88,7 +92,13 @@ export default {
       serial:{device_name:"",terminalcontainer:""},
       bluetooth_uuid:"00001101-0000-1000-8000-00805F9B34FB",
       terminal : null,
-      bluetooth_active:false
+      bluetooth_active:false,
+      encoder:null,
+      decoder:null,
+      signals:null,
+      reader: null,
+      writer: null
+
 
     }),
     components:{
@@ -141,7 +151,11 @@ export default {
        {
       let serviveUuid = 0xFFE0, characteristicUuid = 0xFFE1;
       this.terminal=new BluetoothTerminal(serviveUuid,characteristicUuid,'\n','\n');
-    }},
+    }
+    this.encoder = new TextEncoder();
+    this.decoder = new TextDecoder();
+    
+    },
     methods:
     {
         adelete()
@@ -205,6 +219,30 @@ export default {
                       //this.serial_reader=this.serial_device.readable.getReader();
                       this.serial_log();
                     },
+                    async check_ports_usb()
+                    {
+                      let config_for_join={ baudRate: 115200 };
+                      const filters=[
+                        { usbVendorId: 4292, usbProductId: 60000 }
+                      ]
+
+                      this.serial_device = await navigator.serial.requestPort({ filters});
+                      //this.serial_device.open(config_for_join);
+                      console.log( this.serial_device);
+                      console.log(this.serial_device.getInfo());
+
+                      await this.serial_device.open(config_for_join);
+
+                      this.writer = this.serial_device.writable.getWriter();
+                      this.reader = this.serial_device.readable.getReader();
+
+                      //this.serial_reader=this.serial_device.readable.getReader();
+                      this.serial_log();
+
+                      
+
+                    },
+                   
                     flash_config()
                     {
 
@@ -250,8 +288,8 @@ export default {
                       data:this.device,wifiname:get_data_fromroomitemdb(this.$route.params.rid,"wifi_name"),
                       wifipassword:get_data_fromroomitemdb(this.$route.params.rid,"wifi_password"),
                       device_id:this.$route.params.did,
-                      room_id:this.$route.params.rid,
-                      user_id:userId,
+                      room:this.$route.params.rid,
+                      user:userId,
                       user_email:FirebaseAuth.currentUser.user_email,
                       device_mode:this.device.mode,
                       database_url:"https://escaperoom-b4ae9-default-rtdb.europe-west1.firebasedatabase.app",
@@ -290,33 +328,32 @@ export default {
                     async serial_log()
                      {
                        let string="";
-                      /*global TextDecoderStream, a*/
-                      /*eslint no-undef: "error"*/
-
+                      
                       if( !ReadableStream.prototype.pipeTo ) {
                         this.$noty.error( "Your browser doesn't support pipeTo");
                         return;
                       }
-                      const textDecoder = new TextDecoderStream();
+                      
+                     /*global TextDecoderStream, textDecoder*/
+                      /*eslint no-undef: "error"*/
+
+                      /*const textDecoder = new TextDecoderStream();
                       const readableStreamClosed = this.serial_device.readable.pipeTo(textDecoder.writable);
                       const reader = textDecoder.readable.getReader();
 
+                      
+                      const encoder = new TextEncoderStream();
+                      outputDone = encoder.readable.pipeTo(port.writable);
+                      outputStream = encoder.writable;*/
+
+   
+
                       // Listen to data coming from the serial device.
                      /*eslint no-constant-condition: ["error", { "checkLoops": false }]*/
-                      while (true) {
-                        const { value, done } = await reader.read();
-                        if (done) {
-                          // Allow the serial port to be closed later.
-                          reader.releaseLock();
-                          break;
-                        }
-                        // value is a string.
-                        console.log(value);
-                      }
+                   
                         
                     },
-                  write_to_serial(text)
-                  {
+                  write_to_serial(text){
                      if (this.serial_device && this.serial_device.writable) {
                         //const value = parseInt(text);
                         const bytes = new Uint8Array([text]);
@@ -327,12 +364,28 @@ export default {
                      }
 
 
+                  },
+                   async write(data){
+                    const dataArrayBuffer = this.encoder.encode(data);
+                    return await this.writer.write(dataArrayBuffer);
+                  },
+                   async read() {
+                    try {
+                      const readerData = await this.reader.read();
+                      return this.decoder.decode(readerData.value);
+                    } catch (err) {
+                      const errorMessage = `error reading data: ${err}`;
+                      console.error(errorMessage);
+                      return errorMessage;
+                    }
                   }
+                }
+
 
     }
                    
     
-  }
+  
 
 
 

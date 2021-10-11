@@ -5,10 +5,7 @@ Blockly.defineBlocksWithJsonArray([
     {
         "type": "start_room",
         "message0": "Start Progress",
-        "args0": [
-            
-            
-        ],
+       
         "previousStatement": true,
         "nextStatement": true,
         "colour": '#0ddb69',
@@ -39,6 +36,6 @@ Blockly.JavaScript['start_room'] = function(block) {
     
 
     
-    var code = `start_room();`;
+    var code = `start_room();\n`;
     return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
 };
