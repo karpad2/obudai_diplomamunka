@@ -66,12 +66,9 @@ Blockly.JavaScript['send_data'] = function(block) {
 };
 function set_data(device,mode,value)
     {
-        
-        const res = axios.patch(build_link(), { firstName: 'MasteringJS' });
-
+    const res = axios.patch(build_link(device), {mode:mode, status: value });
     }
-
-    function build_link( device_id="")
+function build_link(device_id="")
 {
     let user=localStorage.getItem("user_id");
     let room=localStorage.getItem("room_id");
