@@ -163,6 +163,8 @@ import {encode,decoding} from "@/datas";
         beforeMount()
         {
             this.status=status_run();
+            localStorage.setItem("room_id",this.$route.params.rid);
+            localStorage.setItem("user_id",FirebaseAuth.uid);
         },
         mounted()
         {
