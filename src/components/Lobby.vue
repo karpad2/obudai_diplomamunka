@@ -113,12 +113,13 @@
     import CryptoJS from "crypto-js";
     import * as Blockly from 'blockly/core';
     import * as En from "blockly/msg/en";
-    import "blockly/javascript";
+    import BlocklyJS from  "blockly/javascript";
     import "@/components/BlocklyJS";
     import ElapsedTime from "@/components/ElapsedTime";
+
     import Blocks from "@/components/parts/Blocks";
     import 'blockly/blocks';
-    const Interpreter = require('js-interpreter-npm')
+   
     import {FireDb,FirebaseAuth,userId} from "@/firebase";
     import {ref, set ,onValue,get, child,push,runTransaction } from "firebase/database";
     import {start_run,status_run,stop_run} from "@/mod_data/set_data";
@@ -176,15 +177,13 @@ import {encode,decoding} from "@/datas";
            localStorage.setItem("roomID",room_id);
             this.cameras=get_data_fromroomdb(room_id,"cameras");
             this.devices=get_data_fromroomdb(room_id,"devices");
-            this.Workspace = Blockly.inject("blocklyDiv", {
-                toolbox: document.getElementById("toolbox"),
-                scrollbar: false});
+            this.Workspace = new Blockly.Workspace();
            Blockly.JavaScript.INFINITE_LOOP_TRAP = null;
            this.a_xml=decoding(this.program.program_xml,get_encoding(this.$route.params.rid));
            console.log(this.a_xml);
            let workspace_default = Blockly.Xml.textToDom(this.a_xml);
            Blockly.Xml.appendDomToWorkspace(workspace_default,this.Workspace);
-           this.a_js = Blockly.Javascript.workspaceToCode(this.Workspace);
+           this.a_js = BlocklyJS.workspaceToCode(this.Workspace);
           
                       
         },
@@ -207,30 +206,13 @@ import {encode,decoding} from "@/datas";
             start_runprocess()
             {
 
-                var myInterpreter = new Interpreter(this.a_js, this.initFunc);
-                var stepsAllowed = 10000;
-                while (myInterpreter.step() && stepsAllowed) {
-                  stepsAllowed--;
+                try {
+                  eval(this.a_js);
+                } catch (error) {
+                  console.error(error)
                 }
-                if (!stepsAllowed) {
-                  throw EvalError('Infinite loop.');
-                }
-              
             },
-           initFunc(interpreter, scope) {
-                var alertWrapper = function(text) {
-                  text = text ? text.toString() : '';
-                  return interpreter.createPrimitive(alert(text));
-                };
-                interpreter.setProperty(scope, 'alert',
-                    interpreter.createNativeFunction(alertWrapper));
-                var promptWrapper = function(text) {
-                  text = text ? text.toString() : '';
-                  return interpreter.createPrimitive(prompt(text));
-                };
-                interpreter.setProperty(scope, 'prompt', interpreter.createNativeFunction(promptWrapper)); 
-
-      },
+          
             start()
             {
                 if(this.team_name=="") return;

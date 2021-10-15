@@ -174,8 +174,8 @@ export default {
     data()
     {
         return{
-            programs:[],
-            devices:[],
+            
+            
             room:{},
             rans:[],
             active_program:"",
@@ -188,7 +188,6 @@ export default {
             device_name:"",
             a_program:"",
             camera_name:"",
-            cameras:[]
 
         }
     },
@@ -221,7 +220,7 @@ changeprogram()
 {
       const room_id=this.$route.params.rid;
       const userId = FirebaseAuth.currentUser.uid;
-      let frooms= ref(FireDb, `/users/${userId}/rooms/${room_id}/active_program`);
+      let frooms= ref(FireDb, `/users/${userId}/rooms/${this.$route.params.rid}/active_program`);
       set(frooms,this.room.active_program);
 },
 send_wifi()
@@ -229,9 +228,9 @@ send_wifi()
     if(this.room.wifi_password.length<8 || this.room.wifi_name.length<3 ) return;
       const room_id=this.$route.params.rid;
       const userId = FirebaseAuth.currentUser.uid;
-      let frooms= ref(FireDb, `/users/${userId}/rooms/${room_id}/wifi_name`);
+      let frooms= ref(FireDb, `/users/${userId}/rooms/${this.$route.params.rid}/wifi_name`);
       set(frooms,this.room.wifi_name);
-      frooms= ref(FireDb, `/users/${userId}/rooms/${room_id}/wifi_password`);
+      frooms= ref(FireDb, `/users/${userId}/rooms/${this.$route.params.rid}/wifi_password`);
       set(frooms,this.room.wifi_password);
 },
   get_data()
@@ -240,7 +239,7 @@ send_wifi()
    console.log(this.$route.params);
    console.log(room_id);
    const userId = FirebaseAuth.currentUser.uid;
-     onValue(ref(FireDb, `/users/${userId}/rooms/${room_id}`),(sn)=>
+     onValue(ref(FireDb, `/users/${userId}/rooms/${this.$route.params.rid}`),(sn)=>
      {
        if(sn.exists())
        console.log(sn);
@@ -249,9 +248,8 @@ send_wifi()
        this.activeprogram=sn.val().active_program;
        console.log( this.activeprogram);
     });
-     this.cameras=get_data_fromroomdb(room_id,"cameras");
-     this.devices=get_data_fromroomdb(room_id,"devices");
-     this.programs=get_data_fromroomdb(room_id,"programs");  
+    
+    
      console.log(this.cameras);
      //console.log(this.devices);
   },
@@ -272,6 +270,20 @@ onCancel () {
         //this.value = 'Disagreed'
       }
 },
+computed:{
+  programs()
+  {
+    return get_data_fromroomdb(this.$route.params.rid,"programs");
+  },
+  devices()
+  {
+    return get_data_fromroomdb(this.$route.params.rid,"devices");
+  },
+  cameras()
+  {
+    return get_data_fromroomdb(this.$route.params.rid,"cameras");
+  }
+}
 
 }
 

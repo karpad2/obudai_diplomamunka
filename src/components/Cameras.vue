@@ -47,16 +47,23 @@ export default
   data()
   {
     return{
-      cameras:[]
+     
     }
   },
   beforeMount()
   {
-    this.cameras=get_data_from_allroomdb("cameras");
-
+    
   },
   methods:{
   
+  },
+  computed:
+  {
+    cameras()
+    {
+      return get_data_from_allroomdb("cameras");
+
+    }
   }
 }
 

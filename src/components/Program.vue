@@ -54,7 +54,6 @@ export default {
       a_program_xml: "",
       a_program_javascript: "",
       camera:{},
-      devices:[],
       showDeleteDialog:false,
       Workspace:null,
       prev:"",
@@ -172,11 +171,19 @@ export default {
        }
         });
 
-       onValue(ref(FireDb, `/users/${userId}/rooms/${room_id}/devices`),(sn)=>{
+       
+        this.start();
+  },
+  computed:{
+    devices()
+    {
+      const userId = FirebaseAuth.currentUser.uid;
+      let b=[];
+      onValue(ref(FireDb, `/users/${userId}/rooms/${this.$route.params.rid}/devices`),(sn)=>{
        if(sn.exists()) 
        {
          sn.forEach((a)=>{
-          this.devices.push(
+          b.push(
             {
               devID:a.key,
               data:a.val()
@@ -185,9 +192,11 @@ export default {
          });
          }
          
-         this.start();      
+               
         });
-  },
+      return b;
+    }
+  }
  
   }
 

@@ -51,16 +51,19 @@ export default {
     data () {
       return{
       showDialog: false,
-      programs:[]
+     
       }
     },
     methods:
     {
 
     },
-    beforeMount()
-    {
-      this.programs=get_data_from_allroomdb("programs");
+    
+    computed:{
+      programs()
+      {
+        return get_data_from_allroomdb("programs");
+      }
     }
   }
 </script>
