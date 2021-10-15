@@ -80,7 +80,7 @@
         <md-table-cell md-numeric>{{index+1}}</md-table-cell>
         <md-table-cell>{{row.data.device_name}}</md-table-cell>
         <md-table-cell>{{row.data.mode}}</md-table-cell>
-        <md-table-cell><Activedevice :lastonline="row.data.lastonline"/></md-table-cell>
+        <md-table-cell><activedevice :lastonline="row.data.lastonline"/></md-table-cell>
    </md-table-row>
       
       </md-table>
@@ -95,15 +95,15 @@
     </md-card>
        
        <div id="blocklyDiv"></div>
-        <Blocks />
+        <Blocks :devices="devices" />
        <md-dialog-prompt
       :md-active.sync="showDialog"
-      :v-model="team_name"
+      v-model="team_name"
       md-title="Enter team name:"
       md-input-maxlength="30"
       md-input-placeholder="Team name ..."
       md-confirm-text="Start"
-      @md-confirm="start"
+      @md-confirm="start_runprocess"
       @md-cancel="cancel" />
    </div>
    
@@ -112,14 +112,13 @@
 <script>
     import CryptoJS from "crypto-js";
     import * as Blockly from 'blockly/core';
-    import axios from "axios";
     import * as En from "blockly/msg/en";
-    import BlocklyJS from "blockly/javascript";
-    import {send_data,devices,init,get_data,send_finish,start_room} from "@/components/BlocklyJS";
+    import "blockly/javascript";
+    import "@/components/BlocklyJS";
     import ElapsedTime from "@/components/ElapsedTime";
     import Blocks from "@/components/parts/Blocks";
-    import Activedevice from "@/components/parts/Activedevice";
     import 'blockly/blocks';
+    const Interpreter = require('js-interpreter-npm')
     import {FireDb,FirebaseAuth,userId} from "@/firebase";
     import {ref, set ,onValue,get, child,push,runTransaction } from "firebase/database";
     import {start_run,status_run,stop_run} from "@/mod_data/set_data";
@@ -146,18 +145,19 @@ import {encode,decoding} from "@/datas";
                 camera_id:0,
                 Workspace:null,
                 status:null,
-                active_program:null,
                 started:false,
-                cameras:[{camera_url:"http://192.168.1.160/stream",camera_name:"Test"}],
+                cameras:[{camera_url:"",camera_name:"Test"}],
                 first_date:Date(),
                 last_date:Date(),
                 alarm_url:"https://raw.githubusercontent.com/karpad2/obudai_diplomamunka/soundeffects/",
-                sounds:[],
+                sounds:[
+                  `${this.alarm_url}alarmeffect.mp3`,
+                  `${this.alarm_url}"mexican_theme.mp3`,
+                ]
             }
         },
         components:{
             Blocks,
-            Activedevice,
             ElapsedTime
         },
         beforeMount()
@@ -165,15 +165,10 @@ import {encode,decoding} from "@/datas";
             this.status=status_run();
             localStorage.setItem("room_id",this.$route.params.rid);
             localStorage.setItem("user_id",FirebaseAuth.uid);
-            this.sounds=[
-                  `${this.alarm_url}alarmeffect.mp3`,
-                  `${this.alarm_url}mexican_theme.mp3`,
-                ];
         },
         mounted()
         {
            this.get_data();
-           this.init();
           // console.log(this.room);
             console.log(this.sounds)
            Blockly.setLocale(En);
@@ -181,14 +176,16 @@ import {encode,decoding} from "@/datas";
            localStorage.setItem("roomID",room_id);
             this.cameras=get_data_fromroomdb(room_id,"cameras");
             this.devices=get_data_fromroomdb(room_id,"devices");
-            this.Workspace = new Blockly.Workspace();
-          
-           this.a_xml=decoding(this.program.program_xml,get_encoding(this.$route.params.rid,this.room.active_program));
+            this.Workspace = Blockly.inject("blocklyDiv", {
+                toolbox: document.getElementById("toolbox"),
+                scrollbar: false});
+           Blockly.JavaScript.INFINITE_LOOP_TRAP = null;
+           this.a_xml=decoding(this.program.program_xml,get_encoding(this.$route.params.rid));
            console.log(this.a_xml);
            let workspace_default = Blockly.Xml.textToDom(this.a_xml);
-           Blockly.Xml.domToWorkspace(workspace_default,this.Workspace);
-           this.a_js = BlocklyJS.workspaceToCode(this.Workspace);
-          console.log(this.a_js);
+           Blockly.Xml.appendDomToWorkspace(workspace_default,this.Workspace);
+           this.a_js = Blockly.Javascript.workspaceToCode(this.Workspace);
+          
                       
         },
         computed:{
@@ -198,7 +195,7 @@ import {encode,decoding} from "@/datas";
                 if(this.started) b=this.status.starting_time;
                 else
                 {
-                    b=new Date();
+                    b=Date();
                 }
                 return b;
             },
@@ -209,26 +206,36 @@ import {encode,decoding} from "@/datas";
         {
             start_runprocess()
             {
-                console.log("Start progress");
-                console.log(this.a_js);
-                try {
-                  eval(this.a_js);
-                } catch (error) {
-                  console.error(error);
+
+                var myInterpreter = new Interpreter(this.a_js, this.initFunc);
+                var stepsAllowed = 10000;
+                while (myInterpreter.step() && stepsAllowed) {
+                  stepsAllowed--;
                 }
-                
-                console.log("Stop progress");
+                if (!stepsAllowed) {
+                  throw EvalError('Infinite loop.');
+                }
+              
             },
-          
-      
+           initFunc(interpreter, scope) {
+                var alertWrapper = function(text) {
+                  text = text ? text.toString() : '';
+                  return interpreter.createPrimitive(alert(text));
+                };
+                interpreter.setProperty(scope, 'alert',
+                    interpreter.createNativeFunction(alertWrapper));
+                var promptWrapper = function(text) {
+                  text = text ? text.toString() : '';
+                  return interpreter.createPrimitive(prompt(text));
+                };
+                interpreter.setProperty(scope, 'prompt', interpreter.createNativeFunction(promptWrapper)); 
+
+      },
             start()
             {
-                console.log(this.team_name);
                 if(this.team_name=="") return;
-                //this.team_name="";
-                
+                this.team_name="";
                 this.started=true;
-                this.start_runprocess();
                 //start_run(this.$route.params.rid,this.team_name);
             },
             cancel()
@@ -253,33 +260,13 @@ import {encode,decoding} from "@/datas";
                 this.actual_camera=this.cameras[this.camera_id].camera_url;
 
             },
-            init()
-            {
-    BlocklyJS['send_data'] = function(block) {
-    var device = BlocklyJS.statementToCode(block, 'device');
-    var mode = BlocklyJS.statementToCode(block, 'mode');
-    var value = BlocklyJS.statementToCode(block, 'value');
-    var code = `set_data(${device},${mode},${value});\n`;
-    return  [code, BlocklyJS.ORDER_FUNCTION_CALL];
-};
-
-            },
-    set_data(device,mode,value)
-    {
-    const res = axios.patch(this.build_link(device), {mode:mode, status: value });
-    },
-    build_link(device_id="")
-{
-    let user=localStorage.getItem("user_id");
-    let room=localStorage.getItem("room_id");
-    return "https://escaperoom-b4ae9-default-rtdb.europe-west1.firebasedatabase.app/users/"+user+"/rooms/"+room+"/devices/"+device_id+".json";
-},
             get_data() {  
                         const userId = FirebaseAuth.currentUser.uid; 
                         onValue(ref(FireDb, `/users/${userId}/rooms/${this.$route.params.rid}`),(sn)=>{
                         if(sn.exists()) 
                             {
                             this.room=sn.val();
+                            
                             }
                         });
                         console.log(this.room.active_program);

@@ -54,7 +54,6 @@ export default {
       showDialog: false,
       scan:null,
       found_devices:[],
-      
       showDDialog:false
      
     }),
