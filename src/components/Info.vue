@@ -1,6 +1,6 @@
 <template>
 	<div class="center">
-		<p>Latest version: {{version_number2}}</p>
+		<p>Latest version: {{v}}</p>
 		App made by <a href="https://karpad2.github.io" class="karpad2" target="_blank">karpad2</a>
 		<p><a href="https://karpad2.github.io" target="_blank">GitHub</a></p>
 	</div>
@@ -15,30 +15,26 @@ import axios from "axios";
 		{
 			return {
 			version_number2:"",
-			v:""
+			v:"0.1.0"
 			}
 		},
 		mounted()
 		{
-			this.v=this.get_version();
+			//this.v=String(this.get_version());
 		},
 		methods:
 		{
 			get_version()
 			{
 				let ver="";
-				let res=  axios.get("https://raw.githubusercontent.com/karpad2/obudai_diplomamunka/main/package.json")
-			.then(function (response) {
+				let res= axios.get("https://raw.githubusercontent.com/karpad2/obudai_diplomamunka/main/package.json")
+					.then(function (response) {
     // handle success
-				this.version_number2= response.data.version;
-				console.log(response.data.version);
+				ver= String(response.data.version);
+				console.log(ver);
 			});
-			return this.version_number2;
+			return ver;
 			}
-		},
-		computed:
-		{
-			
 		}
 	}
 </script>

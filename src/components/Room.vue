@@ -160,7 +160,7 @@
 <script>
 
 import Activedevice from "@/components/parts/Activedevice";
-import ElapsedTime from "@/components/ElapsedTime";
+import ElapsedTime from "@/components/parts/ElapsedTime";
 import router from "@/router";
 import {BIconCheck2,BIconPlus} from 'bootstrap-icons-vue'
 import {FireDb,FirebaseAuth,userId} from "@/firebase";
@@ -177,6 +177,7 @@ export default {
             
             
             room:{},
+            run:{},
             rans:[],
             active_program:"",
             showPDialog:false,

@@ -1,19 +1,7 @@
 import * as Blockly from 'blockly/core';
 import "blockly/javascript";
 
-Blockly.defineBlocksWithJsonArray([
-    {
-        "type": "start_room",
-        "message0": "Start Progress",
-       
-        "previousStatement": true,
-        "nextStatement": true,
-        "colour": '#0ddb69',
-        "tooltip": "",
-        "helpUrl": "https://github.com/karpad2/obudai_diplomamunka/wiki/Start-Process",
-        
-    },
-]);//AS-Modifier
+//AS-Modifier
 
 /*
  "output": '',
@@ -31,11 +19,3 @@ Blockly.Extensions.register('assExtensions', function(){
         }
     })
 });*/
-Blockly.JavaScript['start_room'] = function(block) {
-    var device = Blockly.JavaScript.statementToCode(block, 'device');
-    
-
-    
-    var code = `start_room();\n`;
-    return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
-};

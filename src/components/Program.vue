@@ -31,11 +31,11 @@
 <script>
 import * as Blockly from 'blockly/core';
 import * as En from "blockly/msg/en";
-import BJavascript from "blockly/javascript";
+import BlocklyJS from "blockly/javascript";
 
 import 'blockly/blocks';
 import Blocks from "@/components/parts/Blocks";
-import {send_data,devices,init,get_data,send_finish} from "@/components/BlocklyJS";
+
 //import {media} from "blockly/media";
 import {FireDb,FirebaseAuth,userId} from "@/firebase";
 import {ref, set ,onValue,get, child,push,runTransaction } from "firebase/database";
@@ -77,6 +77,139 @@ export default {
       }
         console.log("WELP");
       },
+      init_block()
+      {
+        Blockly.defineBlocksWithJsonArray([
+    {
+        "type": "get_data",
+        "message0": "get device %1 %2, if status is %3",
+        "args0": [
+             {
+                "type": "field_dropdown",
+                "name": "device",
+                "variableTypes": [""],
+                "options": this.get_devices_to_array()
+                
+            },
+            {
+                "type": "field_dropdown",
+                "name": "mode",
+                "variableTypes": [""],
+                "options": [
+                    ["Relay", "relay"],
+                    ["RFID reader", "rfid"],
+                    ["Input", "input"],
+                    ["OLED Display", "oled"],
+                ]
+            },
+            {
+                "type": "input_value",
+                "name": "value",
+                "check": ["String","boolean"]
+            }
+        ],
+        "message1": "Then, do %1",
+        "args1": [
+            {
+                "type": "input_statement",
+                "name": "DO0"
+            },
+        ],
+        "previousStatement":true,
+        "nextStatement": true,
+        "inputsInline": true,
+        
+        
+        "colour": '#0ddb69',
+        "tooltip": "",
+        "helpUrl": "",
+        
+    },
+]);
+Blockly.defineBlocksWithJsonArray([
+    {
+        "type": "send_data",
+        "message0": "set device %1, mode: %2, status: %3",
+        "args0": [
+             {
+                "type": "field_dropdown",
+                "name": "device",
+                "variableTypes": [""],
+                "options": this.get_devices_to_array()
+                
+            },
+            {
+                "type": "field_dropdown",
+                "name": "mode",
+                "variableTypes": [""],
+                "options": [
+                    ["Relay", "relay"],
+                    ["RFID reader", "rfid"],
+                    ["Input", "input"],
+                    ["OLED Display", "oled"],
+                ]
+            },
+            {
+                "type": "input_value",
+                "name": "value",
+                "check": ["String"]
+            }
+        ],
+        "inputsInline": true,
+        "previousStatement": true,
+        "nextStatement": true,
+        "colour": 160,
+        "tooltip": "",
+        "helpUrl": "",
+        
+    },
+]);
+Blockly.defineBlocksWithJsonArray([
+    {
+        "type": "send_finish",
+        "message0": "send finish",
+        
+            
+       
+        
+        "previousStatement": true,
+        "colour": '#0ddb69',
+        "tooltip": "",
+        "helpUrl": "",
+        
+    },
+]);//
+Blockly.defineBlocksWithJsonArray([
+    {
+        "type": "start_room",
+        "message0": "Start Progress",
+       
+        "previousStatement": true,
+        "nextStatement": true,
+        "colour": '#0ddb69',
+        "tooltip": "",
+        "helpUrl": "https://github.com/karpad2/obudai_diplomamunka/wiki/Start-Process",
+        
+    },
+]);
+      },
+       get_devices_to_array(){
+     let b=[];
+      onValue(ref(FireDb, `/users/${FirebaseAuth.currentUser.uid}/rooms/${this.$route.params.rid}/devices`),(sn)=>{
+       if(sn.exists()) 
+       {
+         sn.forEach((a)=>{
+          b.push(
+            [a.val().device_name,a.key]
+          );
+         });
+         }
+         
+               
+        });
+      return b;
+
+  },
       delete_pr()
       {   
                    delete_program(this.$route.params.rid,this.$route.params.pid);
@@ -140,6 +273,7 @@ export default {
     this.$noty.success("Success!");
 			
   },
+  
    get_config()
                     {
                       let filename="program.json";
@@ -152,7 +286,7 @@ export default {
       toolbox: document.getElementById("toolbox"),
       scrollbar: false,
     });
-
+  
      this.Workspace.addChangeListener(() => {
       this.auto_compile(this.Workspace);
     });
@@ -171,7 +305,7 @@ export default {
        }
         });
 
-       
+       this.init_block();
         this.start();
   },
   computed:{
@@ -179,7 +313,7 @@ export default {
     {
       const userId = FirebaseAuth.currentUser.uid;
       let b=[];
-      onValue(ref(FireDb, `/users/${userId}/rooms/${this.$route.params.rid}/devices`),(sn)=>{
+      onValue(ref(FireDb, `/users/${FirebaseAuth.currentUser.uid}/rooms/${this.$route.params.rid}/devices`),(sn)=>{
        if(sn.exists()) 
        {
          sn.forEach((a)=>{

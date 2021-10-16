@@ -150,12 +150,15 @@ function start_run(room_id,team_name)
         if(sn.exists()) active_program=sn.val();
       });
       let frooms= ref(FireDb, `/users/${userId}/rooms/${room_id}/current_run`);
+
+      let d=new Date();          
+             
       //let newroomref = push(frooms);
       let postData={
         team_name:team_name,
-        starting_time:Date(),
+        starting_time:d.getUTCDate(),
         program_id:active_program,
-        finishing_time:"NULL"
+        finishing_time:null
       };
       set(frooms,postData);
     
@@ -166,9 +169,10 @@ function stop_run(room_id)
       let postData=null;
       let frooms= ref(FireDb, `/users/${userId}/rooms/${room_id}/past_runs/`);
       let newroomref = push(frooms);
-      
+      let d=new Date();
+
       postData=status_run(room_id);
-      postData.finishing_time=Date();
+      postData.finishing_time=d.getUTCDate();
       set(newroomref,postData);
       deletep(`rooms/${room_id}/current_run`);
       

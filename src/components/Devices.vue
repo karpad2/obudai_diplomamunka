@@ -40,7 +40,7 @@ and network settings for it.</p>
 </template>
 <script>
 import Activedevice from "@/components/parts/Activedevice";
-import ElapsedTime from "@/components/ElapsedTime";
+import ElapsedTime from "@/components/parts/ElapsedTime";
 import router from "@/router";
 import {FireDb,FirebaseAuth,userId} from "@/firebase";
 import {ref, set ,onValue,get, child,push,runTransaction } from "firebase/database";

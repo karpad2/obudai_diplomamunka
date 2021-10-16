@@ -186,20 +186,20 @@ import logo from "@/assets/logo";
 			
 			try{
 			//localStorage.user= FirebaseAuth._currentUser;
-			const userId = FirebaseAuth.currentUser.uid;
+			
 			this.profile_picture_url=FirebaseAuth.currentUser.photoURL;
 			this.profile_name=FirebaseAuth.displayName;
 			
 			
 			//console.log(FirebaseAuth.currentUser);
-			get(child(FireDb.once, `users/${userId}/user_profile_color`)).then((snapshot) => {
+			get(child(FireDb.once, `users/${FirebaseAuth.currentUser.uid}/user_profile_color`)).then((snapshot) => {
         if (snapshot.exists()) {
             //this.rooms=snapshot;
 			localStorage.userTheme=snapshot.val().user_profile_color;
 		}
 		else 
 		{
-			set(ref(FireDb,`users/${userId}/user_profile_color`),"light");
+			set(ref(FireDb,`users/${FirebaseAuth.currentUser.uid}/user_profile_color`),"light");
 		}});
 
 			console.log("Index");
