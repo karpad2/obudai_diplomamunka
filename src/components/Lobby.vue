@@ -115,7 +115,8 @@
 
 <script>
     import CryptoJS from "crypto-js";
-    import * as Blockly from 'blockly/core';
+   
+    import * as Blockly from 'blockly';
     import * as En from "blockly/msg/en";
     import "blockly/javascript";
     import BlocklyJS from  "blockly/javascript";

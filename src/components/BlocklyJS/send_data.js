@@ -2,42 +2,7 @@ import * as Blockly from 'blockly/core';
 import "blockly/javascript";
 import axios from 'axios';
 
-Blockly.defineBlocksWithJsonArray([
-    {
-        "type": "send_data",
-        "message0": "set device %1, mode: %2, status: %3",
-        "args0": [
-            {
-                "type": "field_variable",
-                "name": "device",
-                "check": ["String"]
-            },
-            {
-                "type": "field_dropdown",
-                "name": "mode",
-                "variableTypes": [""],
-                "options": [
-                    ["Relay", "relay"],
-                    ["RFID reader", "rfid"],
-                    ["Input", "input"],
-                    ["OLED Display", "oled"],
-                ]
-            },
-            {
-                "type": "input_value",
-                "name": "value",
-                "check": ["String"]
-            }
-        ],
-        "inputsInline": true,
-        "previousStatement": true,
-        "nextStatement": true,
-        "colour": 160,
-        "tooltip": "",
-        "helpUrl": "",
-        
-    },
-]);
+
 Blockly.JavaScript['send_data'] = function(block) {
     var device = Blockly.JavaScript.statementToCode(block, 'device');
     var mode = Blockly.JavaScript.statementToCode(block, 'mode');
