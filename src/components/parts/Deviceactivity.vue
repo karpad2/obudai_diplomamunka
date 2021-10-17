@@ -2,19 +2,17 @@
 <div>
 <span v-if="active" > Device is online </span>
 <span v-else> Device was online {{time_string}}</span>
-  <BIconCheck2   v-if="active" />
-   <BIconExclamationTriangle v-else />
+  
 </div>
 </template>
 
 <script>
-import {BIconCheck2,BIconExclamationTriangle} from 'bootstrap-icons-vue'
+
 import * as moment from 'moment'
     export default {
         props:['lastonline'],
         components: {
-          BIconCheck2,
-          BIconExclamationTriangle
+          
         },
         data(){
             return {
@@ -24,8 +22,9 @@ import * as moment from 'moment'
         methods: {
             update_data()
             {
+                let date=new Date();
             this.time_string=moment(this.lastonline).startOf('minute').fromNow();
-            this.active=  Date.now()-this.lastonline < 120; // 120 másodperce volt aktív
+            this.active=date.getUTCSeconds()   - this.lastonline < 120; // 120 másodperce volt aktív
             }
         },
 

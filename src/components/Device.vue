@@ -154,6 +154,9 @@ export default {
     }
     this.encoder = new TextEncoder();
     this.decoder = new TextDecoder();
+
+
+    setInterval(this.get_last_device(),5000);
     
     },
     methods:
@@ -365,6 +368,20 @@ export default {
 
 
                   },
+                  get_last_device()
+                  {
+                     const userId = FirebaseAuth.currentUser.uid;
+                      let b=null;
+                      onValue(ref(FireDb, `/users/${FirebaseAuth.currentUser.uid}/rooms/${this.$route.params.rid}/devices/${this.$route.params.did}/last_online`),(sn)=>
+                      {
+                        if(sn.exists())
+                        console.log(sn);
+                      
+                          this.device.last_online=sn.val();
+                          console.log(this.device.last_online);
+                      });
+                  },
+
                    async write(data){
                     const dataArrayBuffer = this.encoder.encode(data);
                     return await this.writer.write(dataArrayBuffer);

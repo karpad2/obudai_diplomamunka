@@ -138,12 +138,16 @@ function add_program(room_id,l,k=null)
       
        
     }
-function start_run(room_id,team_name)
+function start_run(room_id,team_name="Test Name",solving_time=60)
 {     
       const userId = FirebaseAuth.currentUser.uid;
       let active_program=null;
 
-      if(status_run!=null) return;
+      //if(status_run!=null) return;
+      if(status_run!=null)
+      {
+        console.log("Status run detected lol");
+      }
       
       onValue(ref(FireDb, `/users/${userId}/rooms/${room_id}/active_program`),(sn)=>
       {
@@ -151,39 +155,49 @@ function start_run(room_id,team_name)
       });
       let frooms= ref(FireDb, `/users/${userId}/rooms/${room_id}/current_run`);
 
-      let d=new Date();          
+      let d=new Date();
+      let finishing_time= d.getTime()+solving_time * 60*1000;          
              
       //let newroomref = push(frooms);
       let postData={
         team_name:team_name,
-        starting_time:d.getUTCDate(),
+
+        starting_time:new Date().getTime(),
         program_id:active_program,
-        finishing_time:null
+        active:true,
+        finishing_time:finishing_time
       };
       set(frooms,postData);
     
 }
 function stop_run(room_id)
 {     
-      const userId = FirebaseAuth.currentUser.uid;
+      
       let postData=null;
-      let frooms= ref(FireDb, `/users/${userId}/rooms/${room_id}/past_runs/`);
+      let frooms= ref(FireDb, `/users/${FirebaseAuth.currentUser.uid}/rooms/${room_id}/past_runs/`);
       let newroomref = push(frooms);
+      
       let d=new Date();
 
       postData=status_run(room_id);
-      postData.finishing_time=d.getUTCDate();
+      postData.finishing_time=d.getTime();
+      postData.active=false;
       set(newroomref,postData);
       deletep(`rooms/${room_id}/current_run`);
       
 }
 function status_run(room_id)
 {     
-      const userId = FirebaseAuth.currentUser.uid;
+      
       let postData=null;
-      onValue(ref(FireDb, `/users/${userId}/rooms/${room_id}/current_run`),(sn)=>
+      onValue(ref(FireDb, `/users/${FirebaseAuth.currentUser.uid}/rooms/${room_id}/current_run`),(sn)=>
       {
-        if(sn.exists()) postData=sn.val();
+        if(sn.exists()) 
+        {
+          postData=sn.val();
+          console.log(postData);
+        }
+
       });
       return postData;
   }        

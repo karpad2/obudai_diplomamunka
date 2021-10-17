@@ -7,6 +7,11 @@
       <label>Program name:</label>
       <md-input @change="namechange" v-model="program.program_name"></md-input>
     </md-field>
+
+  <md-field>
+      <label>Solving time (minutes):</label>
+      <md-input @change="minutechange" v-model="program.solving_time"></md-input>
+    </md-field>   
 <div id="blocklyDiv"></div>
 <Blocks :devices="devices" />
 
@@ -232,6 +237,11 @@ Blockly.defineBlocksWithJsonArray([
                         let _ref= ref(FireDb, `/users/${userId}/rooms/${this.$route.params.rid}/programs/${this.$route.params.pid}/program_name`);
                         set(_ref,this.program.program_name);
                     },
+       minutechange(){
+                        const userId = FirebaseAuth.currentUser.uid;
+                        let _ref= ref(FireDb, `/users/${userId}/rooms/${this.$route.params.rid}/programs/${this.$route.params.pid}/solving_time`);
+                        set(_ref,this.program.solving_time);
+                    },               
                     
     
     auto_compile() {
@@ -274,8 +284,7 @@ Blockly.defineBlocksWithJsonArray([
 			
   },
   
-   get_config()
-                    {
+   get_config(){
                       let filename="program.json";
                       let l={data:this.program};
                       saveTextAsFile(JSON.stringify(l),filename);}
