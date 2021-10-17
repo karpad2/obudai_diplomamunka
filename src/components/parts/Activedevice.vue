@@ -25,9 +25,15 @@ import * as moment from 'moment'
         methods: {
             update_data()
             {
+<<<<<<< HEAD
             let date=new Date();
             this.time_string=moment.utc(this.lastonline).startOf('minute').fromNow();
             this.active= (date.getUTCSeconds()-this.lastonline) < 120; // 120 másodperce volt aktív UTC szerint beállítva
+=======
+                let date=new Date();
+            this.time_string=moment(this.lastonline).startOf('minute').fromNow();
+            this.active=  ~~(date.getUTCSeconds())-this.lastonline < 120; // 120 másodperce volt aktív UTC szerint beállítva
+>>>>>>> main
             }
         },
 
