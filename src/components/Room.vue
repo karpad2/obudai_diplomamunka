@@ -11,18 +11,16 @@
       <md-table-row>
         <md-table-head md-numeric>#</md-table-head>
         <md-table-head>Team Name:</md-table-head>
-        <md-table-head>Program Name:</md-table-head>
         <md-table-head>Run time:</md-table-head>
       </md-table-row>
-      <md-table-row v-if="rans">
-          <md-table-cell col-span="4">No previous run</md-table-cell>
-       </md-table-row> 
-      <md-table-row v-else v-for="(row,index) in rans" :key="row.i">
+      
+      <md-table-row :v-if="rans.length>0" v-for="(row,index) in rans" :key="row.key">
         <md-table-cell md-numeric>{{index+1}}</md-table-cell>
-        <md-table-cell>{{row.team_name}}</md-table-cell>
-        <md-table-cell>{{row.program_name}}</md-table-cell>
-        <md-table-cell><ElapsedTime :firstdate="row.firstdate" :lastdate="row.lastdate" /></md-table-cell>
+        <md-table-cell>{{row.data.team_name}}</md-table-cell>
+       
+        <md-table-cell><ElapsedTime :firstdate="row.data.starting_time" :lastdate="row.data.finishing_time" /></md-table-cell>
     </md-table-row>
+    
       
       </md-table>
       </div>
@@ -178,7 +176,6 @@ export default {
             
             room:{},
             run:{},
-            rans:[],
             active_program:"",
             showPDialog:false,
             showDDialog:false,
@@ -283,6 +280,10 @@ computed:{
   cameras()
   {
     return get_data_fromroomdb(this.$route.params.rid,"cameras");
+  },
+  rans()
+  {
+    return get_data_fromroomdb(this.$route.params.rid,"past_runs");
   }
 }
 
