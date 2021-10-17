@@ -15,7 +15,18 @@
         <div class="md-title">Timer</div>
       </md-card-header>
     <md-card-content>
-       <h2><ElapsedTime :first_date="start_date" :last_date="start_date" /></h2>
+   <h2>
+    <countdown :end-time="run.finishing_time">
+  <template
+    v-slot:process="anyYouWantedScopName">
+      <span>{{ `Lefttime: ${anyYouWantedScopName.timeObj.m}:${anyYouWantedScopName.timeObj.s}` }}</span>
+    </template>
+  <template
+    v-slot:finish>
+      <span>Done!</span>
+  </template>
+</countdown>
+  </h2>
        
 
       </md-card-content>
@@ -106,7 +117,7 @@
       md-input-maxlength="30"
       md-input-placeholder="Team name ..."
       md-confirm-text="Start"
-      @md-confirm="start_runprocess"
+      @md-confirm="start"
       @md-cancel="cancel" />
    </div>
 
@@ -121,7 +132,7 @@
     import "blockly/javascript";
     import BlocklyJS from  "blockly/javascript";
     import "@/components/BlocklyJS";
-    import ElapsedTime from "@/components/parts/ElapsedTime";
+    
     import Activedevice from "@/components/parts/Activedevice";
 
     import Blocks from "@/components/parts/Blocks";
@@ -146,6 +157,7 @@
                 activeprogram:"",
                 room:{},
                 program:{},
+                run:{finishing_time:new Date()},
                 
                 a_xml:"",
                 a_js:"",
@@ -158,13 +170,14 @@
                 started:false,
                 first_date:Date(),
                 last_date:Date(),
+                finishing_date:new Date().getTime(),
                 alarm_url:"https://raw.githubusercontent.com/karpad2/obudai_diplomamunka/soundeffects/",
                 sounds:[]
             }
         },
         components:{
             Blocks,
-            ElapsedTime,
+            
             Activedevice
         },
         beforeMount()
@@ -175,7 +188,7 @@
         mounted()
         {
 
-          this.status=status_run();
+          this.status=status_run(this.$route.params.rid);
           this.init_block();
          this.sounds= [`${this.alarm_url}alarmeffect.mp3`,
                        `${this.alarm_url}mexican_theme.mp3`];
@@ -184,41 +197,17 @@
             console.log(this.sounds)
            
            Blockly.setLocale(En);
-           Blockly.JavaScript['send_data'] = function(block) {
-          var device = Blockly.JavaScript.statementToCode(block, 'device');
-          var mode = Blockly.JavaScript.statementToCode(block, 'mode');
-          var value = Blockly.JavaScript.statementToCode(block, 'value');
-          var code = `this.set_data(${device},${mode},${value});\n`;
-          return  [code,Blockly.JavaScript.ORDER_FUNCTION_CALL];
-      };
-      Blockly.JavaScript['send_finish'] = function() {
-          var code = `this.send_finish();\n`;
-          return  [code,Blockly.JavaScript.ORDER_FUNCTION_CALL];
-      };
-      Blockly.JavaScript['get_data'] = function(block) {
-        var device =  Blockly.JavaScript.statementToCode(block, 'device');
-        var mode =   Blockly.JavaScript.statementToCode(block, 'mode');
-        var code = "";
-        code = `this.change_mode(${device},${mode});\n`+
-        `this.get_data(${device},${mode});\n`;
-        return [code,   Blockly.JavaScript.ORDER_FUNCTION_CALL];
-    };
-    Blockly.JavaScript['start_room'] = function(block) {
-    var device =Blockly.JavaScript.statementToCode(block, 'device');
-   var code = `this.start_room();\n`;
-    return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
-};
-Blockly.JavaScript['send_finish'] = function(block) {
-   
-    var code = `send_finish();\n`;
-    return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
-};
- const room_id=this.$route.params.rid;
+           
+          const room_id=this.$route.params.rid;
            localStorage.setItem("roomID",room_id);
           
-          this.run=status_run();
+          this.run=status_run(this.$route.params.rid);
+          console.log(this.run);
           if(this.run==null) this.started=false;
-            if(this.program.program_xml==undefined) this.route;
+          else {
+            this.started=this.run.active;
+          }
+            if(this.program.program_xml==undefined) alert("Missing XML");
           this.Workspace = new Blockly.Workspace();
            Blockly.JavaScript.INFINITE_LOOP_TRAP = null;
            this.a_xml=decoding(this.program.program_xml,get_encoding(this.$route.params.rid));
@@ -257,13 +246,7 @@ Blockly.JavaScript['send_finish'] = function(block) {
         {
           start_date()
             {
-              let b=null;
-                if(this.started) b=this.run.starting_time;
-                else
-                {
-                    b=new Date();
-                }
-                return b;
+              
             },
             start_runprocess()
             {
@@ -284,13 +267,14 @@ Blockly.JavaScript['send_finish'] = function(block) {
             start()
             {
                 if(this.team_name=="") return;
-                this.team_name="";
-                
-                start_run(this.$route.params.rid);
+                //
+                start_run(this.$route.params.rid,this.team_name,this.program.solving_time);
                 this.started=true;
                 this.run=status_run(this.$route.params.rid);
 
+                this.finishing_time=this.run.finishing_time;
                 this.start_runprocess();
+               // this.team_name="";
                 //start_run(this.$route.params.rid,this.team_name);
             },
             cancel()
@@ -299,7 +283,7 @@ Blockly.JavaScript['send_finish'] = function(block) {
                 this.team_name="";
             },
             stop()
-            {
+            {   this.started=false;
                 stop_run(this.$route.params.rid);
             },
             set_data(device,mode,value)
@@ -454,6 +438,36 @@ Blockly.JavaScript['send_finish'] = function(block) {
                 
             },
         ]);
+              Blockly.JavaScript['send_data'] = function(block) {
+          var device = Blockly.JavaScript.statementToCode(block, 'device');
+          var mode = Blockly.JavaScript.statementToCode(block, 'mode');
+          var value = Blockly.JavaScript.statementToCode(block, 'value');
+          var code = `this.set_data(${device},${mode},${value});\n`;
+          return  [code,Blockly.JavaScript.ORDER_FUNCTION_CALL];
+      };
+      Blockly.JavaScript['send_finish'] = function() {
+          var code = `this.send_finish();\n`;
+          return  [code,Blockly.JavaScript.ORDER_FUNCTION_CALL];
+      };
+      Blockly.JavaScript['get_data'] = function(block) {
+        var device =  Blockly.JavaScript.statementToCode(block, 'device');
+        var mode =   Blockly.JavaScript.statementToCode(block, 'mode');
+        var code = "";
+        code = `this.change_mode(${device},${mode});\n`+
+        `this.get_data(${device},${mode});\n`;
+        return [code,   Blockly.JavaScript.ORDER_FUNCTION_CALL];
+    };
+    Blockly.JavaScript['start_room'] = function(block) {
+    var device =Blockly.JavaScript.statementToCode(block, 'device');
+   var code = `this.start_room();\n`;
+    return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
+};
+Blockly.JavaScript['send_finish'] = function(block) {
+   
+    var code = `send_finish();\n`;
+    return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
+};
+              
               },
        get_devices_to_array(){
      let b=[];

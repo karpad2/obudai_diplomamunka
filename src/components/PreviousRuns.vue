@@ -21,8 +21,8 @@
       <md-table-row v-for="(row,index) in pruns" :key="index">
         <md-table-cell md-numeric>{{index+1}}</md-table-cell>
         <md-table-cell>{{row.room_name}}</md-table-cell>
-        <md-table-cell><img :src="row.data.team_name" class="" /></md-table-cell>
-        <md-table-cell><router-link :to="{ path: `/room/${row.room_id}/prun/${row.dev_id}`}">Check</router-link></md-table-cell>
+        <md-table-cell>{{row.data.team_name}}</md-table-cell>
+        <md-table-cell><ElapsedTime :firstdate="row.data.starting_time" :lastdate="row.data.finishing_time" /></md-table-cell>
     </md-table-row>
       
       </md-table>
@@ -37,6 +37,7 @@
 </div>
 </template>
 <script>
+import ElapsedTime from "@/components/parts/ElapsedTime";
 import {FireDb,FirebaseAuth,userId} from "@/firebase";
 import {ref, set ,onValue,get, child,push,runTransaction } from "firebase/database";
 import {get_data_from_allroomdb} from "@/mod_data/get_data";
@@ -45,16 +46,26 @@ export default
   data()
   {
     return{
-      pruns:[]
+     
     }
+  },
+  components:{
+    ElapsedTime
   },
   mounted()
   {
-    this.pruns=get_data_from_allroomdb("pruns");
+    
 
   },
   methods:{
   
+  },
+  computed:
+  {
+    pruns()
+    {
+      return get_data_from_allroomdb("past_runs");
+    }
   }
 }
 /*

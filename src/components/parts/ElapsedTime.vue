@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import {BIconCheck2,BIconExclamationTriangle} from 'bootstrap-icons-vue';
+
 import * as moment from 'moment'
 import 'moment-duration-format'
     export default {
