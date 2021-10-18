@@ -102,8 +102,9 @@ void loop() {
         http.addHeader("Content-Type", "application/json");
 
         DynamicJsonDocument timejson(2048);
-        timejson["lastonline"]=printLocalTime();
+        timejson["lastonline"]=epochString;
         serializeJson(timejson,httpRequestData);
+        epochTime=printLocalTime();
         httpCode=http.PATCH(httpRequestData);
         http.end();
         timejson.clear();

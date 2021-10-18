@@ -84,5 +84,10 @@ unsigned long printLocalTime()
   }
   Serial.println(&timeinfo, "%A, %B %d %Y %H:%M:%S");
   time(&now);
-  return now*1000;
+  epochTime=now;
+  //epochTime=epochTime*1000;
+  epochString=String(now);
+  Serial.print("Epoch time:");Serial.println(epochString);
+  return now;
+  
 }
