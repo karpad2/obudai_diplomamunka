@@ -84,5 +84,5 @@ unsigned long printLocalTime()
   }
   Serial.println(&timeinfo, "%A, %B %d %Y %H:%M:%S");
   time(&now);
-  return now;
+  return now*1000;
 }
