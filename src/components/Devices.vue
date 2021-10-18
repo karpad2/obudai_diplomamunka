@@ -44,7 +44,6 @@ import ElapsedTime from "@/components/parts/ElapsedTime";
 import router from "@/router";
 import {FireDb,FirebaseAuth,userId} from "@/firebase";
 import {ref, set ,onValue,get, child,push,runTransaction } from "firebase/database";
-import {BIconCheck2,BIconPlus} from 'bootstrap-icons-vue'
 import {get_data_from_allroomdb} from "@/mod_data/get_data";
 export default {
     
@@ -54,7 +53,8 @@ export default {
       showDialog: false,
       scan:null,
       found_devices:[],
-      showDDialog:false
+      showDDialog:false,
+     
      
     }),
     components:{
@@ -95,6 +95,10 @@ edit(l)
 },
 
 
+        },
+        mounted()
+        {
+          
         },
         computed:
         {

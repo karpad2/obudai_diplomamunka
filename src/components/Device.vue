@@ -44,8 +44,10 @@
       </md-card-content>
 
       <md-card-actions>
-        <md-button class="md-raised md-secondary" :v-if="bluetooth_active" @click="bluetooth_connect">Try to connect with Bluetooth (alpha)</md-button>
+        <md-button class="md-raised md-secondary" :v-if="false && bluetooth_active" @click="bluetooth_connect">Try to connect with Bluetooth (alpha)</md-button>
         <md-button class="md-raised md-primary" @click="check_ports_usb">Connect to device through Serial port</md-button>
+        
+        
         <md-button class="md-raised md-primary" @click="flash_config">Flash config</md-button>
       </md-card-actions>
     </md-card>
@@ -85,6 +87,7 @@ export default {
       showDDialog:false,
       device_name:"",
       serial_supported:false,
+      consoles:["Test"],
       serial_device:null,
       serial_reader:null,
       connected:false,
@@ -155,7 +158,23 @@ export default {
     this.encoder = new TextEncoder();
     this.decoder = new TextDecoder();
 
+    let l={
+                        mode:"setup",
+                        data:{wifiname:get_data_fromroomitemdb(this.$route.params.rid,"wifi_name"),
+                             wifipassword:get_data_fromroomitemdb(this.$route.params.rid,"wifi_password"),
+                             device_name:this.device.device_name,
+                             user:FirebaseAuth.currentUser.uid,
+                             device:this.$route.params.did,
+                             room:this.$route.params.rid
+                             }
+                      };
 
+    setInterval(()=>{
+      
+      let k=this.serial_read();
+      //this.consoles.push(k);
+      console.log(k);
+      },1000)
     setInterval(this.get_last_device(),5000);
     
     },
@@ -219,12 +238,13 @@ export default {
 
                       await this.serial_device.open(config_for_join);
 
-                      //this.serial_reader=this.serial_device.readable.getReader();
+                      this.reader=this.serial_device.readable.getReader();
+                      this.writer=this.serial_device.writable.write();
                       this.serial_log();
                     },
                     async check_ports_usb()
                     {
-                      let config_for_join={ baudRate: 115200 };
+                      let config_for_join={ baudRate: 9600 };
                       const filters=[
                         { usbVendorId: 4292, usbProductId: 60000 }
                       ]
@@ -233,14 +253,15 @@ export default {
                       //this.serial_device.open(config_for_join);
                       console.log( this.serial_device);
                       console.log(this.serial_device.getInfo());
-
+                      this.serial_device.close();
                       await this.serial_device.open(config_for_join);
 
                       this.writer = this.serial_device.writable.getWriter();
                       this.reader = this.serial_device.readable.getReader();
-
+                      let signals = await this.serial_device.getSignals();
+                      console.log(signals);
                       //this.serial_reader=this.serial_device.readable.getReader();
-                      this.serial_log();
+                      this.serial_log(); 
 
                       
 
@@ -248,6 +269,19 @@ export default {
                    
                     flash_config()
                     {
+                      let l={
+                        mode:"setup",
+                        data:{wifi_name:get_data_fromroomitemdb(this.$route.params.rid,"wifi_name"),
+                             wifi_password:get_data_fromroomitemdb(this.$route.params.rid,"wifi_password"),
+                             device_name:this.device.device_name,
+                             user:FirebaseAuth.currentUser.uid,
+                             device:this.$route.params.did,
+                             room:this.$route.params.rid
+                             }
+                      };
+                      console.log(l);
+                      this.serial_write(JSON.stringify(l));
+
 
                     },
                     achange()
@@ -356,18 +390,6 @@ export default {
                    
                         
                     },
-                  write_to_serial(text){
-                     if (this.serial_device && this.serial_device.writable) {
-                        //const value = parseInt(text);
-                        const bytes = new Uint8Array([text]);
-                        const writer = this.serial_device.writable.getWriter();
-                        writer.write(bytes);
-                        writer.releaseLock();
-                     
-                     }
-
-
-                  },
                   get_last_device()
                   {
                      const userId = FirebaseAuth.currentUser.uid;
@@ -382,14 +404,17 @@ export default {
                       });
                   },
 
-                   async write(data){
-                    const dataArrayBuffer = this.encoder.encode(data);
+                   async serial_write(data){
+                    let dataArrayBuffer = this.encoder.encode(data);
+                    console.log(`Send Data: ${data}`);
                     return await this.writer.write(dataArrayBuffer);
                   },
-                   async read() {
+                   async serial_read() {
                     try {
-                      const readerData = await this.reader.read();
-                      return this.decoder.decode(readerData.value);
+                      let readerData = await this.reader.read();
+                      let k=this.decoder.decode(readerData.value);
+                      console.log(`Readed data: ${k}`);
+                      return k;
                     } catch (err) {
                       const errorMessage = `error reading data: ${err}`;
                       console.error(errorMessage);

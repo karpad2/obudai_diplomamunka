@@ -184,6 +184,7 @@
                 run:{finishing_time:new Date(),active:false},
                 a_xml:"",
                 a_js:"",
+                act_dev:[],
                 actual_camera:"",
                 camera_id:0,
                 camera_name:"",
@@ -343,12 +344,30 @@
             },
             set_data(device,mode,value)
             {
-              const res = axios.patch(this.build_link(device), {mode:mode, status: value });
+              let res=axios.patch(this.build_link(device),{status:value});
+              //res.data.headers['Content-Type'];
               console.log("Setted device");
             },
+              build_link_status(device_id="")
+              {
+                  return `https://escaperoom-b4ae9-default-rtdb.europe-west1.firebasedatabase.app/users/${FirebaseAuth.currentUser.uid}/rooms/${this.$route.params.rid}/devices/${device_id}/status.json`;
+              },
+              build_link_mode(device_id="")
+              {
+                  return `https://escaperoom-b4ae9-default-rtdb.europe-west1.firebasedatabase.app/users/${FirebaseAuth.currentUser.uid}/rooms/${this.$route.params.rid}/devices/${device_id}/mode.json`;
+              },
               build_link(device_id="")
               {
-                  return `https://escaperoom-b4ae9-default-rtdb.europe-west1.firebasedatabase.app/users/${FirebaseAuth.currentUser.uid}+/rooms/${this.$route.params.rid}/devices/${device_id}.json`;
+                  return `https://escaperoom-b4ae9-default-rtdb.europe-west1.firebasedatabase.app/users/${FirebaseAuth.currentUser.uid}/rooms/${this.$route.params.rid}/devices/${device_id}.json`;
+              },
+              get_status(device)
+              {let m;
+               setTimeout(()=>{
+               axios.get(this.build_link_status(`${device}`))
+                .then((k)=>{
+                    m=k;
+                });},3000);
+                return m;
               },
             next_camera()
             {
@@ -534,13 +553,18 @@
         branch = Blockly.JavaScript.addLoopTrap(branch, block);
         var code = "";
         
-        let ref=`/users/${FirebaseAuth.currentUser.uid}/rooms/${this.$route.params.rid}/devices/${device}/mode`;
-        set(ref,mode); 
-        code = `let l="";
-        do{
-         l=this.get_data("${device}");
-        }while(l!="${status}");
-        if(l=="${mode}"){${branch}}\n`;
+        //let ref=`/users/${FirebaseAuth.currentUser.uid}/rooms/${this.$route.params.rid}/devices/${device}/mode`;
+        //set(ref,mode); 
+        let m=null
+        
+
+        code = `
+        let l="";
+        
+        l= this.get_status("${device}");
+
+        
+        if(l=="${status}"){${branch}}\n`;
         console.log(code);
         return code;
        
@@ -572,7 +596,7 @@
         });
       return b;
 
-  },
+  }
 
         }
        

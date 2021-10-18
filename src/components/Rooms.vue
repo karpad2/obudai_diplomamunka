@@ -63,19 +63,18 @@ export default {
     data(){      
       return {
       showDialog: false,
-      rooms:[],
+      
       room_keys:[],
       room_name:"",
       test:"aaa",
       rows:[],
-      devices:[],
+      
       users:[]}
     },
     
     beforeMount()
     {
-      this.rooms=[];
-       this.rooms=get_rooms(); 
+      
         //console.log(this.rooms);
     },
    methods:{
@@ -125,7 +124,12 @@ export default {
     
      
 },
-computed:{}
+computed:{
+  rooms()
+  {
+    return get_rooms();
+  }
+}
  
 
  

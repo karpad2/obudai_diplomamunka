@@ -23,6 +23,8 @@ function get_data_fromdb(k){
   function get_data_fromroomdb(room_id,k){
     const userId = FirebaseAuth.currentUser.uid;
     let b=[];
+    
+    
      onValue(ref(FireDb, `/users/${userId}/rooms/${room_id}/${k}`),(sn)=>
      {
        if(sn.exists())
@@ -34,6 +36,7 @@ function get_data_fromdb(k){
          dev_id:l.key
        });
      })});
+    
     return b;
   }
 
@@ -43,10 +46,11 @@ function get_data_fromdb(k){
      onValue(ref(FireDb, `/users/${userId}/rooms/${room_id}/${k}`),(sn)=>
      {
        if(sn.exists())
-       console.log(sn);
-     
-         b=sn.val();
-           
+       {
+       
+       b=sn.val();
+       console.log(b);
+      }   
     });
     return b;
   }
