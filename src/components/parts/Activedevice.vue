@@ -28,7 +28,7 @@ import * as moment from 'moment'
 
             let date=Date.now();//1970 utc óta elmúlt MS
             let last_online_date=Number(this.lastonline);
-            let calculating=(date - last_online_date); //UTC vel való összehasonlítás
+            let calculating=(date - last_online_date*1000); //UTC vel való összehasonlítás
             console.log(calculating);
             console.log(`Actual UTC time ${date}`);
             console.log(`Last online timestamp: ${this.lastonline}`);
