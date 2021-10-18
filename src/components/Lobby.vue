@@ -107,9 +107,32 @@
           
       </md-card-actions>
     </md-card>
-       
+
+         <div class="section">
+  <md-table  md-card v-if="cameras.length>0">
+      <md-table-toolbar>
+        <h1 class="md-title">Cameras of room:</h1>
+      </md-table-toolbar>
+
+      <md-table-row>
+        <md-table-head md-numeric>#</md-table-head>
+        <md-table-head>Camera Name:</md-table-head>
+        <md-table-head>Camera Live Image</md-table-head>
+        
+      </md-table-row>
+      
+      <md-table-row v-for="(row,index) in cameras" :key="index">
+        <md-table-cell md-numeric>{{index+1}}</md-table-cell>
+        <md-table-cell>{{row.data.camera_name}}</md-table-cell>
+        <md-table-cell><img class="image" @click="open_camera_image(index)" :src="row.data.camera_url"  /></md-table-cell>
+    </md-table-row>
+      
+      </md-table>
+
+      
+      </div>   
        <div id="blocklyDiv"></div>
-        <Blocks :devices="devices" />
+      <Blocks :devices="devices" />
        <md-dialog-prompt
       :md-active.sync="showDialog"
       v-model="team_name"
@@ -119,8 +142,9 @@
       md-confirm-text="Start"
       @md-confirm="start"
       @md-cancel="cancel" />
+   <div id="block_area" style="display:none;width:600px;height:400px"></div>
    </div>
-
+  
   
 </template>
 
@@ -130,8 +154,8 @@
     import * as Blockly from 'blockly';
     import * as En from "blockly/msg/en";
     import "blockly/javascript";
-    import BlocklyJS from  "blockly/javascript";
-    import "@/components/BlocklyJS";
+    
+    
     
     import Activedevice from "@/components/parts/Activedevice";
 
@@ -157,8 +181,7 @@
                 activeprogram:"",
                 room:{},
                 program:{},
-                run:{finishing_time:new Date()},
-                
+                run:{finishing_time:new Date(),active:false},
                 a_xml:"",
                 a_js:"",
                 actual_camera:"",
@@ -180,36 +203,38 @@
             
             Activedevice
         },
-        beforeMount()
-        {
-            
-            
-        },
         mounted()
         {
 
           this.status=status_run(this.$route.params.rid);
+          this.camera_url=this.cameras[this.camera_id].data.camera_url;
+          this.camera_name=this.cameras[this.camera_id].data.camera_name;
           this.init_block();
          this.sounds= [`${this.alarm_url}alarmeffect.mp3`,
                        `${this.alarm_url}mexican_theme.mp3`];
-           this.get_data();
-          // console.log(this.room);
+           this.get_room_data();
+
+           console.log(this.room);
             console.log(this.sounds)
-           
-           Blockly.setLocale(En);
+            Blockly.setLocale(En);
            
           const room_id=this.$route.params.rid;
-           localStorage.setItem("roomID",room_id);
-          
-          this.run=status_run(this.$route.params.rid);
+          localStorage.setItem("roomID",room_id);
+          let testing_status=status_run(this.$route.params.rid);
+          if(testing_status!=null) this.run=status_run(this.$route.params.rid);
           console.log(this.run);
           if(this.run==null) this.started=false;
           else {
             this.started=this.run.active;
+            
           }
+          
             if(this.program.program_xml==undefined) alert("Missing XML");
-          this.Workspace = new Blockly.Workspace();
-           Blockly.JavaScript.INFINITE_LOOP_TRAP = null;
+          this.Workspace = new Blockly.inject('block_area',{media: 'https://unpkg.com/blockly/media/',toolbox: document.getElementById('toolbox')});
+          //Blockly.JavaScript.INFINITE_LOOP_TRAP = 10000;
+          //Blockly.JavaScript.addReservedWords("this.set_data,this.send_finish,this.change_mode,this.get_data,this.start_room");
+          
+      
            this.a_xml=decoding(this.program.program_xml,get_encoding(this.$route.params.rid));
            
            let xml= Blockly.Xml.textToDom(this.a_xml);
@@ -222,12 +247,19 @@
            }
 
            try {
+            
              this.a_js = Blockly.JavaScript.workspaceToCode(this.Workspace);
            } catch (error) {
              console.error(error);
            }
-           
+          
            console.log(this.a_js);
+
+           if(this.run==null) this.started=false;
+          else {
+            this.started=this.run.active;
+            this.start_runprocess();
+          }
  },
         computed:{
           
@@ -244,6 +276,28 @@
 
         methods:
         {
+           get_room_data() {  
+                        const userId = FirebaseAuth.currentUser.uid; 
+                        onValue(ref(FireDb, `/users/${FirebaseAuth.currentUser.uid}/rooms/${this.$route.params.rid}`),(sn)=>{
+                        if(sn.exists()) 
+                            {
+                            this.room=sn.val();
+                            
+                            }
+                        });
+                        console.log(this.room.active_program);
+                        onValue(ref(FireDb, `/users/${userId}/rooms/${this.$route.params.rid}/programs/${this.room.active_program}`),(sn)=>{
+                        if(sn.exists()) 
+                            {
+                            this.program=sn.val();
+                            console.log(this.program);
+                            }
+                        });
+                    },
+          open_camera_image(index)
+          {
+              var window=window.open(this.cameras[index].data.camera_url,this.cameras[index].data.camera_name,"DescriptiveWindowName","resizable,scrollbars,status");
+          },          
           start_date()
             {
               
@@ -270,6 +324,7 @@
                 //
                 start_run(this.$route.params.rid,this.team_name,this.program.solving_time);
                 this.started=true;
+
                 this.run=status_run(this.$route.params.rid);
 
                 this.finishing_time=this.run.finishing_time;
@@ -289,6 +344,7 @@
             set_data(device,mode,value)
             {
               const res = axios.patch(this.build_link(device), {mode:mode, status: value });
+              console.log("Setted device");
             },
               build_link(device_id="")
               {
@@ -297,35 +353,29 @@
             next_camera()
             {
                 this.camera_id++;
-                if(this.camera_id>this.room.cameras.length-1) this.camera_id=0;
-                this.camera_url=this.cameras[this.camera_id].camera_url;
-                this.camera_name=this.cameras[this.camera_id].camera_name;
+                //if(this.camera_id>this.cameras.length-1) this.camera_id=0;
+                this.camera_url=this.cameras[this.camera_id].data.camera_url;
+                this.camera_name=this.cameras[this.camera_id].data.camera_name;
             },
             prev_camera()
             {
                 this.camera_id--;
-                if(this.camera_id<(0-this.room.cameras.length+1)) this.camera_id=0;
+                //if(this.camera_id<(0-this.cameras.length+1)) this.camera_id=0;
                 this.camera_url=this.cameras[this.camera_id].data.camera_url;
                 this.camera_name=this.cameras[this.camera_id].data.camera_name;
 
             },
-            get_data() {  
+            get_data(dev_id) {  
                         const userId = FirebaseAuth.currentUser.uid; 
-                        onValue(ref(FireDb, `/users/${FirebaseAuth.currentUser.uid}/rooms/${this.$route.params.rid}`),(sn)=>{
+                        let value="";
+                        onValue(ref(FireDb, `/users/${FirebaseAuth.currentUser.uid}/rooms/${this.$route.params.rid}/devices/${dev_id}/status`),(sn)=>{
                         if(sn.exists()) 
                             {
-                            this.room=sn.val();
+                            value=sn.val();
                             
                             }
                         });
-                        console.log(this.room.active_program);
-                        onValue(ref(FireDb, `/users/${userId}/rooms/${this.$route.params.rid}/programs/${this.room.active_program}`),(sn)=>{
-                        if(sn.exists()) 
-                            {
-                            this.program=sn.val();
-                            console.log(this.program);
-                            }
-                        });
+                    return value;
                     },
         init_block()
               {
@@ -355,7 +405,7 @@
                     },
                     {
                         "type": "input_value",
-                        "name": "value",
+                        "name": "status",
                         "check": ["String","boolean"]
                     }
                 ],
@@ -417,6 +467,26 @@
         ]);
         Blockly.defineBlocksWithJsonArray([
             {
+                "type": "console_write",
+                "message0": "Debug write %1",
+                "args0": [
+                    {
+                        "type": "input_value",
+                        "name": "value",
+                        "check": ["String"]
+                    }
+                ],
+                "inputsInline": true,
+                "previousStatement": true,
+                "nextStatement": true,
+                "colour": 160,
+                "tooltip": "",
+                "helpUrl": "",
+                
+            },
+        ]);
+        Blockly.defineBlocksWithJsonArray([
+            {
                 "type": "send_finish",
                 "message0": "send finish",
                 "previousStatement": true,
@@ -438,37 +508,54 @@
                 
             },
         ]);
-              Blockly.JavaScript['send_data'] = function(block) {
-          var device = Blockly.JavaScript.statementToCode(block, 'device');
-          var mode = Blockly.JavaScript.statementToCode(block, 'mode');
-          var value = Blockly.JavaScript.statementToCode(block, 'value');
-          var code = `this.set_data(${device},${mode},${value});\n`;
-          return  [code,Blockly.JavaScript.ORDER_FUNCTION_CALL];
-      };
-      Blockly.JavaScript['send_finish'] = function() {
+             
+      Blockly.JavaScript["send_finish"] = function(block) {
           var code = `this.send_finish();\n`;
-          return  [code,Blockly.JavaScript.ORDER_FUNCTION_CALL];
+          return  code;
       };
-      Blockly.JavaScript['get_data'] = function(block) {
-        var device =  Blockly.JavaScript.statementToCode(block, 'device');
-        var mode =   Blockly.JavaScript.statementToCode(block, 'mode');
+       Blockly.JavaScript["send_data"] = function(block) {
+        var device =block.getFieldValue('device');
+        var mode = block.getFieldValue('mode');
+        var value = Blockly.JavaScript.valueToCode(block, 'value',Blockly.JavaScript.ORDER_MEMBER) || '\'\'';
+        var code = `this.set_data("${device}","${mode}",${value});\n`;
+          return  code;
+      };
+       Blockly.JavaScript["console_write"] = function(block) {
+           var value =Blockly.JavaScript.valueToCode(block, 'value',Blockly.JavaScript.ORDER_MEMBER) || '\'\'';
+          var code = `console.log("${value}");\n`;
+          return  code;
+      };
+
+      Blockly.JavaScript["get_data"] = function(block) {
+        var device =block.getFieldValue('device');
+        var mode = block.getFieldValue('mode');
+        var status = Blockly.JavaScript.valueToCode(block, 'status',Blockly.JavaScript.ORDER_MEMBER) || '\'\'';
+        var branch = Blockly.JavaScript.statementToCode(block, 'DO0');
+        branch = Blockly.JavaScript.addLoopTrap(branch, block);
         var code = "";
-        code = `this.change_mode(${device},${mode});\n`+
-        `this.get_data(${device},${mode});\n`;
-        return [code,   Blockly.JavaScript.ORDER_FUNCTION_CALL];
+        
+        let ref=`/users/${FirebaseAuth.currentUser.uid}/rooms/${this.$route.params.rid}/devices/${device}/mode`;
+        set(ref,mode); 
+        code = `let l="";
+        do{
+         l=this.get_data("${device}");
+        }while(l!="${status}");
+        if(l=="${mode}"){${branch}}\n`;
+        console.log(code);
+        return code;
+       
     };
     Blockly.JavaScript['start_room'] = function(block) {
     var device =Blockly.JavaScript.statementToCode(block, 'device');
    var code = `this.start_room();\n`;
     return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
-};
-Blockly.JavaScript['send_finish'] = function(block) {
-   
-    var code = `send_finish();\n`;
-    return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
-};
+    };
+    Blockly.JavaScript["send_finish"] = function(block) {
+    var code = `this.send_finish();\n`;
+    return code;
+    };
               
-              },
+    },
        get_devices_to_array(){
      let b=[];
       onValue(ref(FireDb, `/users/${FirebaseAuth.currentUser.uid}/rooms/${this.$route.params.rid}/devices`),(sn)=>{

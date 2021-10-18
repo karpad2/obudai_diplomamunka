@@ -1,9 +1,12 @@
 <template>
-<div class="center">
-  <h2>Program ~ {{program.program_name}}</h2>
-
-
- <md-field>
+<div>
+   <div class="section">
+     <md-card >
+       <md-card-header>
+          <div class="md-title">Program ~ {{program.program_name}}</div>
+       </md-card-header>
+       <md-card-content>
+         <md-field>
       <label>Program name:</label>
       <md-input @change="namechange" v-model="program.program_name"></md-input>
     </md-field>
@@ -11,17 +14,30 @@
   <md-field>
       <label>Solving time (minutes):</label>
       <md-input @change="minutechange" v-model="program.solving_time"></md-input>
-    </md-field>   
-<div id="blocklyDiv"></div>
-<Blocks :devices="devices" />
+    </md-field>
+    </md-card-content>
+       <md-card-actions>
+           </md-card-actions>
+            </md-card>
+</div>
 
-<md-button class="md-raised md-primary" @click="duplicateprogram()">Duplicate program</md-button>
-<md-button class="md-raised md-secondary" @click="get_config()">Download Program</md-button>
-      
-<md-field>
-<md-button class="md-raised md-secondary" @click="showDeleteDialog = true">Delete Program</md-button>
+ 
+   <md-card >
+              
+       <md-card-content>
+         <div id="blocklyDiv"></div>
+        <Blocks :devices="devices" />
+    </md-card-content>
+       <md-card-actions>
+          <md-button class="md-raised md-primary" @click="duplicateprogram()">Duplicate program</md-button>
+          <md-button class="md-raised md-secondary" @click="get_config()">Download Program</md-button>
+          <md-button class="md-raised md-secondary" @click="showDeleteDialog = true">Delete Program</md-button>
+        </md-card-actions>
+    </md-card>
 
-</md-field>
+
+
+
 <md-dialog-confirm
       :md-active.sync="showDeleteDialog"
       md-title="Delete this program?"
@@ -31,7 +47,9 @@
       @md-cancel="onCancel()"
       @md-confirm="delete_pr()" />
 
+
 </div>
+
 </template>
 <script>
 import * as Blockly from 'blockly/core';
@@ -109,7 +127,7 @@ export default {
             },
             {
                 "type": "input_value",
-                "name": "value",
+                "name": "status",
                 "check": ["String","boolean"]
             }
         ],
@@ -197,6 +215,27 @@ Blockly.defineBlocksWithJsonArray([
         
     },
 ]);
+Blockly.defineBlocksWithJsonArray([
+            {
+                "type": "console_write",
+                "message0": "Debug write %1",
+                "args0": [
+                    {
+                        "type": "input_value",
+                        "name": "value",
+                        "check": ["String"]
+                    }
+                ],
+                "inputsInline": true,
+                "previousStatement": true,
+                "nextStatement": true,
+                "colour": 160,
+                "tooltip": "",
+                "helpUrl": "",
+                "saved":false
+                
+            },
+        ]);
       },
        get_devices_to_array(){
      let b=[];
@@ -230,7 +269,8 @@ Blockly.defineBlocksWithJsonArray([
                         this.program.program_xml=encode(this.a_program_xml,get_encoding(this.$route.params.rid,this.$route.params.pid));
                         set(_ref,this.program.program_xml);
                         this.prev=this.a_program_xml;
-                        this.$noty.success("Saved!");
+                        this.saved=true;
+                        
        },
        namechange(){
                         const userId = FirebaseAuth.currentUser.uid;
@@ -280,7 +320,8 @@ Blockly.defineBlocksWithJsonArray([
    duplicateprogram()
   {
     add_program(this.$route.params.rid,this.program.program_name,this.program);
-    this.$noty.success("Success!");
+    
+    
 			
   },
   
@@ -299,6 +340,10 @@ Blockly.defineBlocksWithJsonArray([
      this.Workspace.addChangeListener(() => {
       this.auto_compile(this.Workspace);
     });
+    setTimeout(()=>{
+                        if(this.saved) this.$noty.success("Saved!");
+                        this.saved=false;
+                      },5000);
     console.log(this.$route.params);
         //localStorage.setItem('device',JSON.stringify(null));
         const userId = FirebaseAuth.currentUser.uid;
@@ -360,5 +405,8 @@ Blockly.defineBlocksWithJsonArray([
 #text_programxml
 {
   display: none;
+}
+.center{
+  padding:50px;
 }
 </style>

@@ -314,6 +314,8 @@
       <block type="send_data"></block>
       <block type="get_data"></block>
       <block type="send_finish"></block>
+      <block type="console_write"></block>
+      
     </category>
     
   

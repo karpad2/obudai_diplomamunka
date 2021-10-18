@@ -197,7 +197,7 @@ export default {
         },
 mounted()
 {
-   this.get_data();
+   this.get_room_data();
 },
 methods:
 {
@@ -231,7 +231,7 @@ send_wifi()
       frooms= ref(FireDb, `/users/${userId}/rooms/${this.$route.params.rid}/wifi_password`);
       set(frooms,this.room.wifi_password);
 },
-  get_data()
+  get_room_data()
   {
   const room_id=this.$route.params.rid;
    console.log(this.$route.params);

@@ -53,7 +53,6 @@
 </template>
 <script>
 import {FireDb,FirebaseAuth,userId} from "@/firebase";
-
 import {ref, set ,onValue,get, child,push,runTransaction } from "firebase/database";
 import {get_data_fromroomdb,get_rooms} from "@/mod_data/get_data";
 import {add_room} from "@/mod_data/set_data";
@@ -95,7 +94,9 @@ export default {
 
       this.devices.forEach(element => {
         console.log(element.data.lastonline);
-        k=Date.now()-Date(element.data.lastonline);
+        let k = new Date();
+
+        k=k.getUTCSeconds()-Date(element.data.lastonline);
         if(k<120)
         {
           active++;
@@ -121,8 +122,10 @@ export default {
         }
       
     },
+    
      
-}
+},
+computed:{}
  
 
  
