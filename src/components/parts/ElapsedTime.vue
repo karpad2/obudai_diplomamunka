@@ -29,9 +29,10 @@ import 'moment-duration-format'
             {
                 let ldate;
                 let sdate=moment(this.firstdate);
+                
             if(this.lastdate=="_NOW")
             {
-                ldate=moment(new Date());
+                ldate=moment(Date.now());
             }
             else{
                 ldate=moment(this.lastdate);
@@ -41,7 +42,7 @@ import 'moment-duration-format'
             }
         },
 
-        created() {
+        mounted() {
             moment.locale(); 
             setInterval(()=>{
             this.update_data();      

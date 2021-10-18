@@ -26,9 +26,15 @@ import * as moment from 'moment'
             update_data()
             {
 
-            let date=new Date();
-            this.time_string=moment.utc(this.lastonline).startOf('minute').fromNow();
-            this.active= (date.getUTCSeconds()-this.lastonline) < 120; // 120 másodperce volt aktív UTC szerint beállítva
+            let date=Date.now();//1970 utc óta elmúlt MS
+            let last_online_date=Number(this.lastonline);
+            let calculating=(date - last_online_date); //UTC vel való összehasonlítás
+            console.log(calculating);
+            console.log(`Actual UTC time ${date}`);
+            console.log(`Last online timestamp: ${this.lastonline}`);
+
+            this.time_string=moment.utc(this.lastonline).startOf('minute').from(date);
+            this.active= calculating < (120*1000); // 120 másodperce volt aktív UTC szerint beállítva
 
             }
         },
