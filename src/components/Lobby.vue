@@ -164,6 +164,7 @@
     import axios from "axios";
     import {FireDb,FirebaseAuth,userId} from "@/firebase";
     import {ref, set ,onValue,get, child,push,runTransaction } from "firebase/database";
+    import {getMessaging } from "firebase/messaging";
     import {start_run,status_run,stop_run} from "@/mod_data/set_data";
     import {get_data_fromdb,get_data_fromroomdb} from "@/mod_data/get_data";
     
@@ -314,6 +315,15 @@
             },
             send_finish()
             {
+              let message = `Run is finished at ${this.room.room_name}`;
+              getMessaging().send(message)
+              .then((response) => {
+                // Response is a message ID string.
+                console.log('Successfully sent message:', response);
+              })
+              .catch((error) => {
+                console.log('Error sending message:', error);
+              });
               stop_run();
 
 

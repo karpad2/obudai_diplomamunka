@@ -127,7 +127,7 @@ function  get_rooms(){
   }
   let encoding="";
   const defaultvalue="base64";
-  reference=ref(FireDb, `/users/${userId}/rooms/${r_id}/programs/${k}/program_encoding`);
+ /* reference=ref(FireDb, `/users/${userId}/rooms/${r_id}/programs/${k}/program_encoding`);
   onValue (reference,(sn)=>{
     if(sn.exists())
     {
@@ -137,7 +137,8 @@ function  get_rooms(){
     set(reference,defaultvalue);
     encoding=defaultvalue;        
       }
-  });
+  });*/
+  encoding=defaultvalue;
   return encoding;
  }
 
