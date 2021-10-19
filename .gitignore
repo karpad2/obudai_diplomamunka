@@ -6,6 +6,8 @@ node_modules
 ./server_part/config.php
 ~$index.docx
 .~$index.docx
+.~lock.diplomamunka_fájl_rev0.docx#
+.~lock.diplomamunka_fájl_rev0.docx
 .~lock.index.docx#
 ./esp32_software/.idea
 package-lock.json
