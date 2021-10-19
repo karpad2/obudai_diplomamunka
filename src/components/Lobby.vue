@@ -7,7 +7,7 @@
        </md-card-header>
        <md-card-actions>
             <md-button class="md-raised md-primary" @click="showDialog = true" v-if="!started">Start</md-button>
-            <md-button class="md-raised md-dense  stop" @click="stop()" v-if="started">Stop</md-button>
+            <md-button class="md-raised md-dense  stop" @click="send_finish()" v-if="started">Stop</md-button>
             </md-card-actions>
             </md-card>
             <md-card  >
@@ -16,7 +16,7 @@
       </md-card-header>
     <md-card-content>
    <h2>
-    <countdown :end-time="run.finishing_time">
+    <countdown :auto-start="false" ref="vac2" :end-time="run.finishing_time">
   <template
     v-slot:process="anyYouWantedScopName">
       <span>{{ `Lefttime: ${anyYouWantedScopName.timeObj.m}:${anyYouWantedScopName.timeObj.s}` }}</span>
@@ -256,12 +256,32 @@
            }
           
            console.log(this.a_js);
-
+           console.log(this.run);
            if(this.run==null) this.started=false;
           else {
             this.started=this.run.active;
-            this.start_runprocess();
+            if (this.started) {
+              setTimeout(()=>{
+              this.startCountdown();
+              this.start_runprocess();
+              },2000);
+              
+            }
           }
+
+          setInterval(()=>{
+            if(this.run.active)
+            {
+              if(this.run.finishing_time<=Date.now())
+              {
+                console.log("Run out of time flag!");
+                this.send_finish();
+              }
+            }
+
+
+          },1000);
+
  },
         computed:{
           
@@ -296,6 +316,16 @@
                             }
                         });
                     },
+            startCountdown() {
+                      const vm = this
+                      vm.$refs.vac2.startCountdown(true);
+                      //console.log(vm);
+                    },
+                    finishCountdown() {
+                      const vm = this
+                      vm.$refs.vac2.finishCountdown();
+                      //console.log(vm);
+                    },
           open_camera_image(index)
           {
               var window=window.open(this.cameras[index].data.camera_url,this.cameras[index].data.camera_name,"DescriptiveWindowName","resizable,scrollbars,status");
@@ -315,6 +345,7 @@
             },
             send_finish()
             {
+              this.finishCountdown();
               let message = `Run is finished at ${this.room.room_name}`;
               getMessaging().send(message)
               .then((response) => {
@@ -329,17 +360,20 @@
 
             },
           
-            start()
+            async start()
             {
                 if(this.team_name=="") return;
                 //
                 start_run(this.$route.params.rid,this.team_name,this.program.solving_time);
                 this.started=true;
 
-                this.run=status_run(this.$route.params.rid);
+                this.run= await status_run(this.$route.params.rid);
 
                 this.finishing_time=this.run.finishing_time;
-                this.start_runprocess();
+                setTimeout(()=>{
+              this.startCountdown();
+              this.start_runprocess();
+              },2000);
                // this.team_name="";
                 //start_run(this.$route.params.rid,this.team_name);
             },
