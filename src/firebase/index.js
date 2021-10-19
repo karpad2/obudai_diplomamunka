@@ -57,6 +57,7 @@ onDisconnect(presenceRef).set("I disconnected!");
 const connectedRef = ref(FireDb, ".info/connected");
 onValue(connectedRef, (snap) => {
   if (snap.val() === true) {
+	
     console.log("connected");
   } else {
     console.log("not connected");
@@ -81,6 +82,7 @@ const change_Theme_Fb= (value)=>{
 	{
 		localStorage.userTheme = "light";
 		set(ref(FireDb,`users/${userId}/user_profile_color`),"light");
+		
 	}
 };
 
