@@ -25,6 +25,7 @@
         <md-table-cell><ElapsedTime :firstdate="row.data.starting_time" :lastdate="row.data.finishing_time" /></md-table-cell>
     </md-table-row>
       
+     <md-button class="md-primary md-raised" @click="">Delete prrevious runs</md-button>
       </md-table>
       
       <md-empty-state v-else
@@ -34,6 +35,14 @@
 			
 		</md-empty-state>
       </div>
+      <md-dialog-confirm
+      :md-active.sync="showDeleteDialog"
+      md-title="Delete this Run?"
+      md-content="Are you delete the lists of run?"
+      md-confirm-text="Agree"
+      md-cancel-text="Disagree"
+      @md-cancel="onCancel()"
+      @md-confirm="delete_runs()" />
 </div>
 </template>
 <script>
@@ -46,7 +55,7 @@ export default
   data()
   {
     return{
-     
+     showDeleteDialog:false
     }
   },
   components:{
@@ -58,7 +67,38 @@ export default
 
   },
   methods:{
-  
+  delete_runs()
+   {
+    const k="past_runs";  
+    let room_id="",room_name="";
+   const userId = FirebaseAuth.currentUser.uid;
+    let b=[];
+onValue(ref(FireDb, `/users/${userId}/rooms`),(sn_out)=>{
+      if(sn_out.exists()){
+        sn_out.forEach((l)=>{
+        room_id=l.key;
+        room_name=l.val().room_name;
+        //console.log(room_id);
+       // console.log(`/users/${userId}/rooms/${room_id}/${k}`);
+       onValue(ref(FireDb, `/users/${userId}/rooms/${room_id}/${k}`),(sna)=>{
+           if(sna.exists())
+              {
+              set(ref(`/users/${userId}/rooms/${room_id}/${k}`),null);
+              }
+            });
+        });
+
+      }
+    });
+
+    
+
+
+   },
+   onCancel()
+    {
+      console.log("Cancelled deletes");
+    }
   },
   computed:
   {
