@@ -347,14 +347,14 @@
             {
               this.finishCountdown();
               let message = `Run is finished at ${this.room.room_name}`;
-              getMessaging().send(message)
+              /*getMessaging().send(message)
               .then((response) => {
                 // Response is a message ID string.
                 console.log('Successfully sent message:', response);
               })
               .catch((error) => {
                 console.log('Error sending message:', error);
-              });
+              });*/
               stop_run();
 
 
