@@ -28,14 +28,14 @@ import 'moment-duration-format'
             time_string()
             {
                 let ldate;
-                let sdate=moment(this.firstdate);
+                let sdate=moment(this.firstdate).utc();
                 
             if(this.lastdate=="_NOW")
             {
-                ldate=moment(Date.now());
+                ldate=moment(Date.now()).utc();
             }
             else{
-                ldate=moment(this.lastdate);
+                ldate=moment(this.lastdate).utc();
             }
                 let duration = moment.duration(ldate.diff(sdate));
                 return duration.format('hh:mm:ss');

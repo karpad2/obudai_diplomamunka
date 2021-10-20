@@ -23,7 +23,7 @@ import * as moment from 'moment'
             update_data()
             {
                 let date=new Date();
-            this.time_string=moment(this.lastonline).startOf('minute').fromNow();
+            this.time_string=moment(this.lastonline).utc().startOf('minute').fromNow();
             this.active=date.getUTCSeconds()   - this.lastonline < 120; // 120 másodperce volt aktív
             }
         },
