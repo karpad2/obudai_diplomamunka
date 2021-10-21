@@ -34,7 +34,7 @@ import * as moment from 'moment'
             //console.log(`Last online timestamp: ${this.lastonline}`);
 
             this.time_string=moment(this.lastonline).utc().startOf('minute').from(date);
-            this.active= calculating < 120; // 60 másodperce volt aktív UTC szerint beállítva
+            //this.active= calculating < 120; // 60 másodperce volt aktív UTC szerint beállítva
 
             }
         },

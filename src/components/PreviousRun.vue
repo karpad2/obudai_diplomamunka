@@ -1,8 +1,6 @@
 <template>
 <div class="center">
     <h2>Previous Run ~ {{prun.team_name}}</h2>
-    
-    
 
     <md-field>
       <label for="time">Time:</label>

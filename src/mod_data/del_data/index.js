@@ -24,6 +24,12 @@ console.log("Delete program");
 //const room_id=this.$route.params.rid;
  deletep(`rooms/${room_id}/programs/${program_id}`);   
 }
+function delete_past_run(room_id,pastrun_id)
+{
+console.log("Delete past runs");
+//const room_id=this.$route.params.rid;
+ deletep(`rooms/${room_id}/past_runs/${pastrun_id}`);   
+}
 function delete_device(room_id,devID)
                 {
                     deletep(`rooms/${room_id}/devices/${devID}`);
@@ -31,6 +37,7 @@ function delete_device(room_id,devID)
 export{
     delete_room,
     delete_device,
+    delete_past_run,
     delete_program,
     deletep
 }

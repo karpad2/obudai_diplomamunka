@@ -16,6 +16,7 @@
         <md-table-head>Room Name:</md-table-head>
         <md-table-head>Team name:</md-table-head>
         <md-table-head>Time:</md-table-head>
+        <md-table-head>Action</md-table-head>
       </md-table-row>
       
       <md-table-row v-for="(row,index) in pruns" :key="index">
@@ -23,9 +24,9 @@
         <md-table-cell>{{row.room_name}}</md-table-cell>
         <md-table-cell>{{row.data.team_name}}</md-table-cell>
         <md-table-cell><ElapsedTime :firstdate="row.data.starting_time" :lastdate="row.data.finishing_time" /></md-table-cell>
+        <md-table-cell><md-button class="md-primary md-raised" @click="flagging_delete(row.dev_id,row.room_id)">Delete</md-button></md-table-cell>
     </md-table-row>
       
-     <md-button class="md-primary md-raised" @click="">Delete prrevious runs</md-button>
       </md-table>
       
       <md-empty-state v-else
@@ -38,7 +39,7 @@
       <md-dialog-confirm
       :md-active.sync="showDeleteDialog"
       md-title="Delete this Run?"
-      md-content="Are you delete the lists of run?"
+      md-content="Are you delete the previous runs?"
       md-confirm-text="Agree"
       md-cancel-text="Disagree"
       @md-cancel="onCancel()"
@@ -50,12 +51,14 @@ import ElapsedTime from "@/components/parts/ElapsedTime";
 import {FireDb,FirebaseAuth,userId} from "@/firebase";
 import {ref, set ,onValue,get, child,push,runTransaction } from "firebase/database";
 import {get_data_from_allroomdb} from "@/mod_data/get_data";
+import {delete_past_run} from "@/mod_data/del_data";
 export default
 {
   data()
   {
     return{
-     showDeleteDialog:false
+     showDeleteDialog:false,
+     past_run:{room_id:"",prun_id:""}
     }
   },
   components:{
@@ -69,35 +72,18 @@ export default
   methods:{
   delete_runs()
    {
-    const k="past_runs";  
-    let room_id="",room_name="";
-   const userId = FirebaseAuth.currentUser.uid;
-    let b=[];
-onValue(ref(FireDb, `/users/${userId}/rooms`),(sn_out)=>{
-      if(sn_out.exists()){
-        sn_out.forEach((l)=>{
-        room_id=l.key;
-        room_name=l.val().room_name;
-        //console.log(room_id);
-       // console.log(`/users/${userId}/rooms/${room_id}/${k}`);
-       onValue(ref(FireDb, `/users/${userId}/rooms/${room_id}/${k}`),(sna)=>{
-           if(sna.exists())
-              {
-              set(ref(`/users/${userId}/rooms/${room_id}/${k}`),null);
-              }
-            });
-        });
-
-      }
-    });
-
-    
-
+    delete_past_run(this.past_run.room_id,this.past_run.prun_id);
 
    },
    onCancel()
     {
       console.log("Cancelled deletes");
+    },
+    flagging_delete(prun_id,room_id)
+    {
+      this.past_run.prun_id=prun_id;
+      this.past_run.room_id=room_id;
+      this.showDeleteDialog=true;
     }
   },
   computed:

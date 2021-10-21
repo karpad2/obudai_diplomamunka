@@ -205,7 +205,7 @@
             
             Activedevice
         },
-        mounted()
+       async mounted()
         {
 
           this.status=status_run(this.$route.params.rid);
@@ -222,7 +222,7 @@
            
           const room_id=this.$route.params.rid;
           localStorage.setItem("roomID",room_id);
-          let testing_status=status_run(this.$route.params.rid);
+          let testing_status=await status_run(this.$route.params.rid);
           if(testing_status!=null) this.run=status_run(this.$route.params.rid);
           console.log(this.run);
           if(this.run==null) this.started=false;
@@ -277,19 +277,16 @@
                 console.log("Run out of time flag!");
                 this.send_finish();
               }
-            }
-
-
-          },1000);
+            }},1000);
 
  },
         computed:{
           
-            devices()
+             devices()
             {
-              return get_data_fromroomdb(this.$route.params.rid,"devices");
+              return  get_data_fromroomdb(this.$route.params.rid,"devices");
             },
-            cameras()
+            async cameras()
             {
               return get_data_fromroomdb(this.$route.params.rid,"cameras");
             }
@@ -386,9 +383,9 @@
             {   this.started=false;
                 stop_run(this.$route.params.rid);
             },
-            set_data(device,mode,value)
+            set_data(device,mode_input,value)
             {
-              let res=axios.patch(this.build_link(device),{status:value});
+              let res=axios.patch(this.build_link(device),{mode:mode_input,status:value});
               //res.data.headers['Content-Type'];
               console.log("Setted device");
             },

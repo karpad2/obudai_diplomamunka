@@ -40,7 +40,7 @@ function get_data_fromdb(k){
     return b;
   }
 
-  function get_data_fromroomitemdb(room_id,k){
+  function  get_data_fromroomitemdb(room_id,k){
     const userId = FirebaseAuth.currentUser.uid;
     let b=null;
      onValue(ref(FireDb, `/users/${userId}/rooms/${room_id}/${k}`),(sn)=>
