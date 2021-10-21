@@ -26,7 +26,6 @@
         <md-table-cell><ElapsedTime :firstdate="row.data.starting_time" :lastdate="row.data.finishing_time" /></md-table-cell>
         <md-table-cell><md-button class="md-primary md-raised" @click="flagging_delete(row.dev_id,row.room_id)">Delete</md-button></md-table-cell>
     </md-table-row>
-      
       </md-table>
       
       <md-empty-state v-else

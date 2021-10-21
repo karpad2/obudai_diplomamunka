@@ -11,7 +11,7 @@
             <label for="name">Device name:</label>
             <md-input id="name" @change="namechange" v-model="device.device_name"></md-input>
           </md-field>
-    <p><Deviceactivity :lastonline="device.last_online" /></p> 
+    <activedevice :device_id="$route.params.did" :room_id="$route.params.rid"/>
 
       <md-field>
       <p >Choose mode:</p>
@@ -71,7 +71,7 @@ import DeviceInput from '@/components/parts/DeviceInput';
 import {check_serial_supported,check_bluetooth_supported,list_coms} from '@/components/flash_device';
 import {devicemodes} from "@/datas";
 import BluetoothTerminal from "@/bluetooth/BluetoothTerminal";
-
+import Activedevice from "@/components/parts/Activedevice";
 import {get_data_fromroomitemdb} from "@/mod_data/get_data";
 import {add_device} from "@/mod_data/set_data";
 import {delete_device} from "@/mod_data/del_data";
@@ -105,8 +105,8 @@ export default {
 
     }),
     components:{
-    Deviceactivity,
-    DeviceInput
+    DeviceInput,
+    Activedevice
     },
     mounted()
     {
