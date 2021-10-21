@@ -1,5 +1,6 @@
 <template>
 	<div id="account-login-container">
+		<div v-if="false">
 		<md-field>
 			<label>Email</label>
 			<md-input id="email" v-model="email"></md-input>
@@ -10,14 +11,16 @@
 			<md-input id="password" v-model="password" type="password"></md-input>
 		</md-field>
 
-		<p>{{errorMessage}}</p>
+		
 
 		<md-button class="md-raised md-primary" @click="login">Login</md-button>
-
+		</div>
 		<md-field>
-			<p>Or sign in with Google</p>
+			<p>Sign in with the Google</p>
 			<md-button class="md-raised md-primary" @click="loginwithgoogle">Login with <glogo/></md-button>
 		</md-field>
+		<p>For security reasons we support Google profile authentication only.</p>
+		<p style="color:red;">{{errorMessage}}</p>
 
 	</div>
 </template>

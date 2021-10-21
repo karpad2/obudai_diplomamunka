@@ -28,7 +28,7 @@ and network settings for it.</p>
     </md-table-row>
       
       </md-table>
-      <md-button class="md-raised md-primary" @click="showDDialog = true">Add Device </md-button>
+      <md-button class="md-raised md-primary" v-if="false" @click="showDDialog = true">Add Device </md-button>
   </div>
      <md-empty-state v-else
 			md-icon="precision_manufacturing"

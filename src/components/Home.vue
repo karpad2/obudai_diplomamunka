@@ -144,7 +144,7 @@ import {  Calendar } from 'v-calendar';
       this.devices.forEach(element => {
         console.log(element.data.lastonline);
         k=Date.now()-Date(element.data.lastonline);
-        if(k<120)
+        if(k<12*1000)
         {
           this.active++;
         }

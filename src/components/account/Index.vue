@@ -12,7 +12,7 @@
 				<div class="middle-center">
 					
 					<logo class="logo" />
-					
+					<div> <h4>Escape Room Management Software</h4></div>
 					<router-view @themeChanged="themeChanged"/>
 				</div>
 			</md-app-content>
