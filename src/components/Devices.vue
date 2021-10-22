@@ -23,7 +23,7 @@ and network settings for it.</p>
         <md-table-cell md-numeric>{{index+1}}</md-table-cell>
         <md-table-cell>{{row.data.device_name}}</md-table-cell>
         <md-table-cell>{{row.data.mode}}</md-table-cell>
-        <md-table-cell><activedevice :lastonline="row.data.lastonline"/></md-table-cell>
+        <md-table-cell><activedevice :device_id="row.dev_id" :room_id="row.room_id"/></md-table-cell>
         <md-table-cell><md-button class="md-raised md-primary" @click="edit(`/room/${row.room_id}/device/${row.dev_id}`)">Edit Device</md-button></md-table-cell>
     </md-table-row>
       
@@ -42,6 +42,7 @@ and network settings for it.</p>
 import Activedevice from "@/components/parts/Activedevice";
 import ElapsedTime from "@/components/parts/ElapsedTime";
 import router from "@/router";
+import axios from "axios";
 import {FireDb,FirebaseAuth,userId} from "@/firebase";
 import {ref, set ,onValue,get, child,push,runTransaction } from "firebase/database";
 import {get_data_from_allroomdb} from "@/mod_data/get_data";
@@ -104,6 +105,7 @@ edit(l)
         {
           devices()
           {
+            
             return get_data_from_allroomdb("devices");
           }
         }

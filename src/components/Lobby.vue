@@ -94,7 +94,7 @@
         <md-table-cell md-numeric>{{index+1}}</md-table-cell>
         <md-table-cell>{{row.data.device_name}}</md-table-cell>
         <md-table-cell>{{row.data.mode}}</md-table-cell>
-        <md-table-cell><activedevice :lastonline="row.data.lastonline"/></md-table-cell>
+        <md-table-cell><activedevice :device_id="row.dev_id" :room_id="$route.params.rid"/></md-table-cell>
    </md-table-row>
       
       </md-table>
@@ -249,8 +249,7 @@
            }
 
            try {
-            
-             this.a_js = Blockly.JavaScript.workspaceToCode(this.Workspace);
+            this.a_js = Blockly.JavaScript.workspaceToCode(this.Workspace);
            } catch (error) {
              console.error(error);
            }
@@ -280,6 +279,7 @@
             }},1000);
 
  },
+ 
         computed:{
           
              devices()
@@ -300,8 +300,7 @@
                         onValue(ref(FireDb, `/users/${FirebaseAuth.currentUser.uid}/rooms/${this.$route.params.rid}`),(sn)=>{
                         if(sn.exists()) 
                             {
-                            this.room=sn.val();
-                            
+                            this.room=sn.val();                
                             }
                         });
                         console.log(this.room.active_program);
