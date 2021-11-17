@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<dynamic_object>
+  <diesel materials="units/world/props/desert/des_prop_con_pipes/des_prop_pipes" orientation_object="rp_des_prop_con_pipe_drainhose" />
+  <bodies>
+    <body name="static_body" enabled="true" template="static">
+      <object name="rp_des_prop_con_pipe_drainhose" />
+      <object name="c_des_prop_con_pipe_drainhose_mesh_mopp" collision_type="mesh_mopp" />
+    </body>
+  </bodies>
+  
+  <decal_surfaces default_material="metal_hollow">
+    <decal_mesh name="g_des_prop_con_pipe_drainhose" enabled="true" material="metal_hollow"/>
+  </decal_surfaces>
+  
+  <graphics>
+    <object name="g_des_prop_con_pipe_drainhose" enabled="true" shadow_caster="true" />
+  </graphics>
+</dynamic_object>

@@ -1,0 +1,6 @@
+<materials version="3">
+	<material name="mat_police_decal_logo" render_template="decal:DIFFUSE_TEXTURE" version="2">
+        <diffuse_texture file="units/pd2_dlc_short/props/gen_prop_police_decal_logo/gen_prop_police_decal_logo_df"/>
+    </material>
+</materials>
+

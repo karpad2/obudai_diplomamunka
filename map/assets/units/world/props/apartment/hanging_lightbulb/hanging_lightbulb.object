@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<dynamic_object>
+  <diesel materials="units/world/props/apartment/hanging_lightbulb/hanging_lightbulb" orientation_object="rp_hanging_lightbulb" />
+  <sequence_manager file="units/world/props/apartment/hanging_lightbulb/hanging_lightbulb" />
+  
+  <animations>
+    <animation_group name="ag_turn_slow" enabled="true">
+      <object name="g_wire_slow_socket" />
+      <object name="g_whole_slow_lamp" />
+      <object name="g_whole_slow_lamp_unlit" />
+      <object name="g_broken_slow_lamp" />
+      <object name="c_lamp_slow_mesh_mopp" />
+    </animation_group>
+	
+    <animation_group name="ag_turn_pendulum" enabled="false">
+      <object name="g_wire_socket" />
+      <object name="g_whole_lamp" />
+      <object name="g_whole_lamp_unlit" />
+      <object name="g_broken_lamp" />
+      <object name="c_lamp_mesh_mopp" />
+    </animation_group>
+  </animations>
+  
+  <decal_surfaces default_material="glass_breakable"/>
+  
+  
+  <bodies>
+    <body name="light_bulb" enabled="true" template="raycoll_static">
+      <object name="rp_hanging_lightbulb" enabled="true" />
+      <object name="c_lamp_mesh_mopp" collision_type="convex" padding="-2"/>
+    </body>
+  </bodies>
+  <graphics>
+    <object name="g_ceiling_contact"		 	enabled="true" instance_struct="world_tm"/>
+    <object name="g_wire_socket_slow" 	enabled="true" instance_struct="world_tm"/>
+    <object name="g_whole_lamp_slow" 	enabled="true" instance_struct="world_tm"/>
+    <object name="g_broken_lamp_slow" 	enabled="false" instance_struct="world_tm"/>
+    <object name="g_wire_socket" 				enabled="false" instance_struct="world_tm"/>
+    <object name="g_whole_lamp" 				enabled="false" instance_struct="world_tm"/>
+    <object name="g_broken_lamp"			enabled="false" instance_struct="world_tm"/>
+    <object name="g_whole_lamp_unlit"			enabled="false" />
+    <object name="g_whole_slow_lamp_unlit"			enabled="false" />
+  </graphics>
+  <lights>
+    <light multiplier="identity" editable="true" projection="true" far_range="400" name="lo_omni" enabled="true" type="cube_projection|omni|specular" texture="units/lights/light_omni_shadow_projection_01/default_df" />
+  </lights>
+</dynamic_object> 

@@ -1,0 +1,6 @@
+<unit type="com" slot="1" >
+    <object file="units/custom/pd2_mod_hardwareStore/com_prop_mall_banner/com_prop_mall_banner" />
+    <extensions>
+        <extension class="ScriptUnitData" name="unit_data" />
+    </extensions>
+</unit>

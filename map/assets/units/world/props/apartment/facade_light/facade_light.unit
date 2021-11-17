@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<unit type="apa" slot="1">
+<network sync="spawn" />
+  <object file="units/world/props/apartment/facade_light/facade_light" />
+  <dependencies>
+  	<depends_on bnk="soundbanks/regular_sfx" />
+  </dependencies>
+  <extensions>
+    <extension name="unit_data" class="ScriptUnitData" />
+	<extension name="damage" class="UnitDamage" />
+	<extension name="sync_unit_data" class="SyncUnitData" />
+  </extensions>
+  <sounds>
+  	<soundsource name="snd_src" source="rp_facade_light" />
+  </sounds>
+</unit>

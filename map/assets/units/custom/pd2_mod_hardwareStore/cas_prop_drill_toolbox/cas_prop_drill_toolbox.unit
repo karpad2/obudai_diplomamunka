@@ -1,0 +1,13 @@
+<unit type="ind" slot="1">
+    <object file="units/custom/pd2_mod_hardwareStore/cas_prop_drill_toolbox/cas_prop_drill_toolbox" />
+    <network sync="spawn"/>
+    <extensions>
+        <extension class="ScriptUnitData" name="unit_data" />
+        <extension name="damage" class="UnitDamage" />
+        <extension name="interaction" class="SpecialEquipmentInteractionExt">
+        	<var name="tweak_data" value="hs_toolbox" />
+        	<var name="_special_equipment" value="hs_tools" />
+        	<var name="_remove_on_interact" value="false"/>
+        </extension>
+    </extensions>
+</unit>

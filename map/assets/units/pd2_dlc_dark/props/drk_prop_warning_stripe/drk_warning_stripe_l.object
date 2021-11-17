@@ -1,0 +1,12 @@
+<dynamic_object>
+	<diesel materials="units/pd2_dlc_dark/props/drk_prop_warning_stripe/drk_warning_stripe_l" orientation_object="rp_drk_warning_stripe_l" />
+	<bodies>
+		<body name="body_static" enabled="true" template="static">
+			<object name="rp_drk_warning_stripe_l" />
+			<object name="c_box" collision_type="box" padding="-2.5" />
+		</body>
+	</bodies>
+	<graphics>
+		<object name="g_g" enabled="true" />
+	</graphics>
+</dynamic_object>

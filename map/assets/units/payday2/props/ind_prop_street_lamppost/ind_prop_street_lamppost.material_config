@@ -1,0 +1,12 @@
+<materials version="3">
+    <material name="mat_lamppost" render_template="generic:DIFFUSE_TEXTURE:NORMALMAP" version="2">
+        <diffuse_texture file="units/payday2/props/ind_prop_street_lamppost/lamppost_df"/>
+        <bump_normal_texture file="units/payday2/props/ind_prop_street_lamppost/lamppost_nm"/>
+    </material>
+    <material name="mat_lamppost_il" render_template="generic:DIFFUSE_TEXTURE:SELF_ILLUMINATION" version="2">
+        <diffuse_texture file="units/payday2/props/ind_prop_street_lamppost/lamppost_df"/>
+        <variable value="searchlight" type="scalar" name="il_multiplier"/>
+        <self_illumination_texture file="units/payday2/props/ind_prop_street_lamppost/lamppost_il"/>
+    </material>
+    <material name="shadow_caster" render_template="shadow_caster_only" version="2"/>
+</materials>

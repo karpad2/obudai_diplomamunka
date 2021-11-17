@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<dynamic_object>
+  <diesel materials="units/payday2/vegetation/com_veg_plant_green/com_veg_plant_green" orientation_object="rp_com_veg_plant_green_potted" />
+  <bodies>
+		<body name="ai_block" enabled="true" add_ray_type="ai_vision" template="nav_walk" editable="true" collides_with_mover="true">
+			<object name="rp_com_veg_plant_green_potted" />
+			<object name="c_box_editor" collision_type="box" />
+		</body>
+		<body name="body0" enabled="true" template="static" editable="true">
+			<object name="c_convex" collision_type="convex" />
+		</body>	
+  </bodies>
+  
+  <decal_surfaces default_material="metal_hollow">
+		<decal_mesh name="dm_sheet_metal" enabled="true" material="metal_hollow"/>
+	</decal_surfaces>
+  <graphics>
+    <object name="g_g" enabled="true" shadow_caster="false"/>
+  </graphics>
+</dynamic_object>

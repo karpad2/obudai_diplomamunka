@@ -1,0 +1,9 @@
+<unit type="mus" slot="1" >
+    <object file="units/pd2_indiana/architecture/mus_int_lab/mus_int_lab_basement_lamp_ceiling_a" />
+	<dependencies>
+		<depends_on effect="effects/payday2/particles/flares/curator_lamp_soda_small" />
+    </dependencies>
+    <extensions>
+        <extension class="ScriptUnitData" name="unit_data" />
+    </extensions>
+</unit>

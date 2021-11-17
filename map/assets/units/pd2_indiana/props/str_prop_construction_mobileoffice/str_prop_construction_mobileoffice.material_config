@@ -1,0 +1,11 @@
+<materials version="3">
+	<material name="mtr_office" render_template="generic:DIFFUSE_TEXTURE:NORMALMAP" version="2" >
+		<diffuse_texture file="units/pd2_indiana/props/str_prop_construction_mobileoffice/str_prop_construction_mobileoffice_df"/>
+		<bump_normal_texture file="units/pd2_indiana/props/str_prop_construction_mobileoffice/str_prop_construction_mobileoffice_nm"/>
+	</material>
+	<material name="mtr_office_lod" render_template="generic:DIFFUSE_TEXTURE:NORMALMAP" version="2" >
+		<diffuse_texture file="units/pd2_indiana/props/str_prop_construction_mobileoffice/str_prop_construction_mobileoffice_df" mip="4"/>
+		<bump_normal_texture file="units/pd2_indiana/props/str_prop_construction_mobileoffice/str_prop_construction_mobileoffice_nm" mip="4"/>
+	</material>
+	    <material name="shadow_caster" render_template="shadow_caster_only" version="2"/>
+</materials>

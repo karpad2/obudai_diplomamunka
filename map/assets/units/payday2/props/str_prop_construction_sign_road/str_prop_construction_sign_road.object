@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<dynamic_object>
+	<diesel materials="units/payday2/props/str_prop_construction_sign_road/str_prop_construction_sign_road" orientation_object="rp_str_prop_construction_sign_road" />
+	<sequence_manager file="units/payday2/props/str_prop_construction_sign_road/str_prop_construction_sign_road"/>
+	<bodies>
+		<body name="static_body" enabled="true" template="static">
+			<object name="rp_str_prop_construction_sign_road" />
+			<object name="c_box_01" collision_type="box" padding="-2.5"/>
+			<object name="c_box_02" collision_type="box" padding="-2.5"/>
+			<object name="c_box_03" collision_type="box" padding="-2.5"/>
+			<object name="c_box_04" collision_type="box" padding="-2.5"/>
+			<object name="c_box_05" collision_type="box" padding="-2.5"/>
+			<object name="c_box_06" collision_type="box" padding="-2.5"/>
+			<object name="c_box_07" collision_type="box" padding="-2.5"/>
+			<object name="c_box_08" collision_type="box" padding="-2.5"/>
+		</body>
+		<body name="dynamic_body" enabled="false" template="dynamic">
+			<object name="rp_str_prop_construction_sign_road" />
+			<object name="c_box_01" collision_type="box" padding="-2.5" mass="1"/>
+			<object name="c_box_02" collision_type="box" padding="-2.5" mass="1"/>
+			<object name="c_box_03" collision_type="box" padding="-2.5" mass="1"/>
+			<object name="c_box_04" collision_type="box" padding="-2.5" mass="1"/>
+			<object name="c_box_05" collision_type="box" padding="-2.5" mass="1"/>
+			<object name="c_box_06" collision_type="box" padding="-2.5" mass="1"/>
+			<object name="c_box_07" collision_type="box" padding="-2.5" mass="1"/>
+			<object name="c_box_08" collision_type="box" padding="-2.5" mass="1"/>
+		</body>
+	</bodies>
+	<decal_surfaces default_material="wood">
+		<decal_mesh name="dm_sign_road" enabled="true" material="wood" />
+	</decal_surfaces>
+	<graphics>
+		<object name="g_sign_road" enabled="true"  />
+		<object name="s_s" shadow_caster="true" enabled="true" />
+	</graphics>
+</dynamic_object>

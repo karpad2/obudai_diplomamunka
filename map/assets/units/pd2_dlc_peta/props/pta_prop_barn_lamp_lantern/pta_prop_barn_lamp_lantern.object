@@ -1,0 +1,19 @@
+<dynamic_object>
+	<diesel materials="units/pd2_dlc_peta/props/pta_prop_barn_lamp_lantern/pta_prop_barn_lamp_lantern" orientation_object="rp_pta_prop_barn_lamp_lantern" />
+	<bodies>
+		<body name="body_static" enabled="true" template="static">
+			<object name="rp_pta_prop_barn_lamp_lantern" />
+			<object name="c_capsule_01" collision_type="capsule" padding="-2.5" />
+		</body>
+	</bodies>
+	
+	<decal_surfaces default_material="metal" />
+	
+	<graphics>
+		<lod_object name="lod_g">
+			<object name="g_lod0" enabled="true" max_distance="1000" />
+			<object name="g_lod1" enabled="true" />
+		</lod_object>
+		<object name="s_s" enabled="true" shadow_caster="true" />
+	</graphics>
+</dynamic_object>

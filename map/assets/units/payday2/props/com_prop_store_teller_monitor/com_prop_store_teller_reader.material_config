@@ -1,0 +1,6 @@
+<materials version="3">
+    <material version="2" render_template="generic:DIFFUSE_TEXTURE:NORMALMAP" name="mat_teller_reader">
+        <diffuse_texture file="units/payday2/props/com_prop_store_teller_monitor/com_prop_store_teller_reader_df"/>
+        <bump_normal_texture file="units/payday2/props/com_prop_store_teller_monitor/com_prop_store_teller_reader_nm"/>
+    </material>
+</materials>

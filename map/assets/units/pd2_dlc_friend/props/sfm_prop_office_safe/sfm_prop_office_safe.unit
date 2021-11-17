@@ -1,0 +1,21 @@
+<unit type="ind" slot="1">
+	<network sync="spawn"/>
+    <object file="units/pd2_dlc_friend/props/sfm_prop_office_safe/sfm_prop_office_safe" />
+	<dependencies>
+		<depends_on bnk="soundbanks/regular_sfx" />
+	</dependencies>
+    <extensions>
+        <extension class="ScriptUnitData" name="unit_data" />
+		<extension class="UnitDamage" name="damage"/>
+    </extensions>
+	<sounds>
+		<default_soundsource source="rp_sfm_prop_office_safe"/>
+		<soundsource name="snd_safe" source="source_safe" />
+		<soundsource name="snd_door_01" source="source_door_01" />
+		<soundsource name="snd_door_02" source="source_door_02" />
+		<soundsource name="snd_door_03" source="source_door_03" />
+		<soundsource name="snd_door_04" source="source_door_04" />
+		<soundsource name="snd_winch_01" source="source_winch_01" />
+		<soundsource name="snd_winch_02" source="source_winch_02" />
+	</sounds>
+</unit>

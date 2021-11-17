@@ -1,0 +1,5 @@
+<materials version="3">
+	<material name="mat_sign" render_template="generic:DIFFUSE_TEXTURE" version="2">
+		<diffuse_texture file="units/pd2_dlc_moon/props/moo_prop_sold_out_sign/moo_prop_sold_out_sign_df" />
+	</material>
+</materials>

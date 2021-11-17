@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<unit type="apa" slot="1">
+  <network sync="spawn" />
+  <object file="units/world/props/apartment/hanging_lightbulb/hanging_lightbulb" />
+  <dependencies>
+  	<depends_on bnk="soundbanks/regular_sfx" />
+  </dependencies>
+  <extensions>
+    <extension name="unit_data" class="ScriptUnitData" />
+    <extension name="damage" class="UnitDamage" />
+    <extension name="sync_unit_data" class="SyncUnitData" />
+  </extensions>
+</unit>

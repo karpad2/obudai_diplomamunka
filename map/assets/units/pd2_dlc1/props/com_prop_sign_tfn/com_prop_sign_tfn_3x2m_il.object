@@ -1,0 +1,12 @@
+<dynamic_object>
+    <diesel orientation_object="rp_com_prop_sign_tfn_3x2m_il" materials="units/pd2_dlc1/props/com_prop_sign_tfn/com_prop_sign_tfn_il" />
+    <bodies>
+        <body enabled="true" template="static" name="static_body" >
+            <object collision_type="box" name="c_box_00" />
+        </body>
+    </bodies>
+    <graphics>
+        <object enabled="true" name="g_g" />
+        <object enabled="true" name="g_add" />
+    </graphics>
+</dynamic_object>

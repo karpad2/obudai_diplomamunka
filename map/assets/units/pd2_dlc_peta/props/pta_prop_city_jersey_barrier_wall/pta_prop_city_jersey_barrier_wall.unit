@@ -1,0 +1,6 @@
+<unit type="pta" slot="1">
+	<object file="units/pd2_dlc_peta/props/pta_prop_city_jersey_barrier_wall/pta_prop_city_jersey_barrier_wall" />
+	<extensions>
+		<extension name="unit_data" class="ScriptUnitData" />
+	</extensions>
+</unit>

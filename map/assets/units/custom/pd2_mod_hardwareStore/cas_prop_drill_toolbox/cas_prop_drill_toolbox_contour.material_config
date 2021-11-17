@@ -1,0 +1,7 @@
+<materials version="3" group="cas_prop_drill_toolbox">
+    <material render_template="generic:CONTOUR:DIFFUSE_TEXTURE" unique="true" version="2" name="mat_toolbox">
+        <diffuse_texture file="units/custom/pd2_mod_hardwareStore/cas_prop_drill_toolbox/textures/toolbox_df"/>
+		<variable value="1.0 0.5 0.0" type="vector3" name="contour_color"/>
+        <variable value="1" type="scalar" name="contour_opacity"/>
+    </material>
+</materials>

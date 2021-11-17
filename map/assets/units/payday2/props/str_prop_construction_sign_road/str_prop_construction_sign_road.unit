@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<unit type="str" slot="1">
+	<object file="units/payday2/props/str_prop_construction_sign_road/str_prop_construction_sign_road" />
+	<network sync="spawn"/>
+	<extensions>
+		<extension name="unit_data" class="ScriptUnitData" />
+		<extension name="damage" class="UnitDamage" />
+	</extensions>
+	<dependencies>
+		<depends_on unit="units/payday2/props/str_prop_construction_sign_road/str_prop_construction_sign_road_debris" />
+		<depends_on physic_effect="core/physic_effects/sequencemanager_push" />
+		<depends_on bnk="soundbanks/regular_car_sfx" />
+	</dependencies>
+</unit>

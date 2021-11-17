@@ -1,0 +1,17 @@
+<materials version="3">
+    <material name="mtr_decals" render_template="decal:DIFFUSE_TEXTURE" version="2">
+        <diffuse_texture file="units/payday2/vehicles/str_vehicle_motorcycle_chopper/chopper_logo_df"/>
+    </material>
+    <material name="mtr_chopper" render_template="generic:DIFFUSE_TEXTURE:NORMALMAP" version="2">
+        <diffuse_texture file="units/payday2/vehicles/str_vehicle_motorcycle_chopper/chopper_df"/>
+        <bump_normal_texture file="units/payday2/vehicles/str_vehicle_motorcycle_chopper/chopper_nm"/>
+    </material>
+    <material version="2" decal_material="glass_breakable" name="mtr_glass" render_template="opacity:CUBE_ENVIRONMENT_MAPPING:CUBE_FRESNEL:DIFFUSE_TEXTURE:OPACITY_FADE">
+        <variable value="0 0.8299999833107 0.87999999523163" type="vector3" name="fresnel_settings"/>
+        <opacity_texture file="units/payday2/glass/glass_clear_vehicle_op"/>
+        <diffuse_texture file="units/payday2/glass/glass_clear_vehicle_df"/>
+        <reflection_texture type="cubemap" global_texture="current_global_texture"/>
+        <variable value="0 6533 0" type="vector3" name="opacity_fade"/>
+    </material>
+    <material name="shadow_caster" render_template="shadow_caster_only" version="2"/>
+</materials>

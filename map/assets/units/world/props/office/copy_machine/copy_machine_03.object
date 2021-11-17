@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<dynamic_object>
+  <diesel materials="units/world/props/office/copy_machine/copy_machine_03" orientation_object="rp_copy_machine_03" />
+  <bodies>
+    <body name="static_body" enabled="true" template="static">
+	<object name="rp_copy_machine_03"/>
+      <object name="c_copy_machine_03" collision_type="mesh_mopp" />
+    </body>
+  </bodies>
+  <decal_surfaces default_material="metal_chassis" static="true">
+    <decal_mesh name="dm_copy_machine_03" enabled="true" material="metal_chassis" />
+  </decal_surfaces>
+  <graphics>
+    <object name="g_copy_machine_03" enabled="true" shadow_caster="false"  />
+  </graphics>
+</dynamic_object>

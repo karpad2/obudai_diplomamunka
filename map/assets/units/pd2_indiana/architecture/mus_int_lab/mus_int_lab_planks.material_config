@@ -1,0 +1,7 @@
+<materials version="3">
+    <material version="2" render_template="shadow_caster_only" name="shadow_caster"/>
+    <material name="mat_mus_int_lab_planks" render_template="generic:DIFFUSE_TEXTURE:NORMALMAP" version="2">
+        <diffuse_texture file="units/pd2_indiana/architecture/mus_int_lab/mus_int_lab_planks_df"/>
+        <bump_normal_texture file="units/pd2_indiana/architecture/mus_int_lab/mus_int_lab_planks_nm"/>
+    </material>
+</materials>

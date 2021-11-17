@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<dynamic_object>
+  <diesel materials="units/world/props/suburbia_newspaper/suburbia_newspaper" orientation_object="rp_suburbia_newspaper" />
+  <bodies>
+    <body name="body0" enabled="false" template="raycoll_static">
+      <object name="rp_suburbia_newspaper" />
+      <object name="c_suburbia_newspaper" collision_type="box" padding="-2"/>
+    </body>
+  </bodies>
+  
+  <decal_surfaces static="true" default_material="thin_layer">
+    <decal_mesh name="c_suburbia_newspaper" enabled="true" material="thin_layer"/>
+  </decal_surfaces>
+  
+  <graphics>
+    <object name="g_suburbia_newspaper" enabled="true" />
+  </graphics>
+</dynamic_object>

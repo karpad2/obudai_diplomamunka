@@ -1,0 +1,5 @@
+<materials version="3" group="paper">
+    <material version="2" decal_material="plastic" name="copy_machine_04" render_template="generic:DIFFUSE_TEXTURE:RL_BIGPROPS:VERTEX_COLOR">
+        <diffuse_texture file="units/world/props/office/copy_machine/copy_machine_03_df"/>
+    </material>
+</materials>

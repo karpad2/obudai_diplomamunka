@@ -1,0 +1,13 @@
+<materials version="3">
+    <material name="Default" render_template="generic" version="2"/>
+    <material render_template="generic:DIFFUSE_TEXTURE:NORMALMAP" decal_material="plastic" version="2" name="mtr_thermal_paste">
+        <diffuse_texture file="units/payday2/equipment/gen_equipment_thermal_paste_crate/thermal_paste_df"/>
+        <bump_normal_texture file="units/payday2/equipment/gen_equipment_thermal_paste_crate/thermal_paste_nm"/>
+    </material>
+    <material render_template="generic:CONTOUR:DIFFUSE_TEXTURE:NORMALMAP" decal_material="plastic" version="2" name="mtr_thermal_paste_contour">
+        <diffuse_texture file="units/payday2/equipment/gen_equipment_thermal_paste_crate/thermal_paste_df"/>
+        <bump_normal_texture file="units/payday2/equipment/gen_equipment_thermal_paste_crate/thermal_paste_nm"/>
+        <variable value="1 1 1" type="vector3" name="contour_color"/>
+        <variable value="0" type="scalar" name="contour_opacity"/>
+    </material>
+</materials>

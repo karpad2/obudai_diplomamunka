@@ -1,0 +1,5 @@
+<materials version="3">
+    <material render_template="generic:DIFFUSE_TEXTURE" version="2" name="suburbia_newspaper">
+        <diffuse_texture file="units/world/props/suburbia_newspaper/newspaper_df"/>
+    </material>
+</materials>

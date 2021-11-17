@@ -1,0 +1,12 @@
+<materials version="3">
+    <material name="mat_pta_hay" render_template="generic:DIFFUSE_TEXTURE:NORMALMAP" version="2">
+        <diffuse_texture file="units/pd2_dlc_peta/props/pta_prop_barn_haybale_square/pta_prop_barn_haybale_square_df"/>
+        <bump_normal_texture file="units/pd2_dlc_peta/props/pta_prop_barn_haybale_square/pta_prop_barn_haybale_square_nm"/>
+    </material>
+    <material name="mat_pta_hay_alpha" render_template="generic:ALPHA_MASKED:DIFFUSE_TEXTURE:DOUBLE_SIDED:EXTERNAL_ALPHA_REF:NORMALMAP" version="2">
+        <diffuse_texture file="units/pd2_dlc_peta/props/pta_prop_barn_haybale_square/pta_prop_barn_haybale_common_df"/>
+        <bump_normal_texture file="units/pd2_dlc_peta/props/pta_prop_barn_haybale_square/pta_prop_barn_haybale_common_nm"/>
+        <variable value="0.021000001579523" type="scalar" name="alpha_ref"/>
+    </material>
+    <material name="shadow_caster" render_template="shadow_caster_only" version="2"/>
+</materials>

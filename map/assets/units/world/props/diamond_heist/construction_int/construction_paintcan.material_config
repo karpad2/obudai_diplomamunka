@@ -1,0 +1,5 @@
+<materials version="3">
+    <material name="paintcan" render_template="generic:DIFFUSE_TEXTURE" version="2">
+        <diffuse_texture file="units/world/props/diamond_heist/construction_int/construction_paintcan_df"/>
+    </material>
+</materials>

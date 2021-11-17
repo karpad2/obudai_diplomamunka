@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<dynamic_object>
+	<diesel materials="units/payday2/props/com_prop_store_teller_monitor/com_prop_store_teller_monitor" orientation_object="rp_teller_monitor" />
+	<sequence_manager file="units/payday2/props/com_prop_store_teller_monitor/com_prop_store_teller_monitor"/>
+	<bodies>
+		<!--static-->
+		<body name="static_body" enabled="true" template="static">
+			<object name="rp_teller_monitor" />
+			<object name="c_box_base" collision_type="box" padding="-2.5"/>
+			<object name="c_convex_base" collision_type="convex" padding="-2.5"/>
+		</body>
+		<body name="static_monitor" enabled="true" template="static">
+			<object name="rp_teller_monitor" />
+			<object name="c_convex_monitor" collision_type="convex" padding="-2.5"/>
+		</body>
+		
+		<!--dynamic-->
+		<body name="dynamic_monitor" enabled="false" template="small_prop">
+			<object name="c_convex_monitor" collision_type="convex" padding="-2.5" mas="20"/>
+			<object name="g_mon_off"/>
+		</body>
+	</bodies>
+	
+	<decal_surfaces default_material="metal" static="true">
+		<decal_mesh name="g_monitor" enabled="true" material="plastic" />
+		<decal_mesh name="g_monitor_base" enabled="true" material="plastic" />
+	</decal_surfaces>
+	
+	<graphics>
+		<object name="g_monitor" 		enabled="true"/>
+		<object name="g_mon_on" 		enabled="true"/>
+		<object name="g_monitor_base" 	enabled="true"/>
+		
+		<object name="g_mon_off" 		enabled="false"/>
+	</graphics>
+</dynamic_object> 

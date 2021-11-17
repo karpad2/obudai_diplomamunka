@@ -1,0 +1,6 @@
+<unit type="csgo" slot="1" >
+    <object file="units/custom/pd2_mod_hardwareStore/sign_donotenter/sign_donotenter" />
+    <extensions>
+        <extension class="ScriptUnitData" name="unit_data" />
+    </extensions>
+</unit>

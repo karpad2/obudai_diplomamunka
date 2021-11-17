@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<unit type="gen" slot="1">
+  <object file="units/pd2_dlc_jolly/equipment/gen_plant_c4/gen_plant_c4"/>
+  <network sync="spawn"/>
+   <dependencies>
+	
+  </dependencies>
+  <extensions>
+    <extension name="unit_data" class="ScriptUnitData" />
+	<extension name="damage" class="UnitDamage" />
+	<extension name="interaction" class="UseInteractionExt">
+      <var name="tweak_data" value="c4_consume" />
+      <var name="drop_in_sync_tweak_data" value="true" />
+	  </extension>
+  </extensions>
+  <sounds>
+	<default_soundsource source="e_sound"/>
+  	<soundsource name="sound" source="e_sound" />
+  </sounds>
+</unit>

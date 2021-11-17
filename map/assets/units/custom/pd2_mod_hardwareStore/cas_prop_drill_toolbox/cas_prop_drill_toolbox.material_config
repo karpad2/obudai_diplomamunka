@@ -1,0 +1,5 @@
+<materials version="3">
+    <material name="mat_toolbox" render_template="generic:DIFFUSE_TEXTURE" version="2">
+        <diffuse_texture file="units/custom/pd2_mod_hardwareStore/cas_prop_drill_toolbox/textures/toolbox_df"/>
+    </material>
+</materials>

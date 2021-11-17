@@ -1,0 +1,6 @@
+<unit type="debris" slot="18" >
+	<object file="units/pd2_dlc2/props/bnk_prop_lobby_plant_dracaenafragrans/spawn_debris_leaves_dracaenafragrans_b" />
+	<extensions>
+		<extension class="ScriptUnitData" name="unit_data" />
+	</extensions>
+</unit>

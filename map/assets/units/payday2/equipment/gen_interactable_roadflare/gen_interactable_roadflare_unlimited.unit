@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<unit type="gen" slot="1">
+	<network sync="spawn"/>
+	<object file="units/payday2/equipment/gen_interactable_roadflare/gen_interactable_roadflare_unlimited" />
+	<extensions>
+		<extension name="unit_data" class="ScriptUnitData" />
+		<extension name="damage" class="UnitDamage" />
+		<extension name="interaction" class="UseInteractionExt">
+			<var name="tweak_data" value="ignite_flare" />
+		</extension>
+	</extensions>
+</unit>

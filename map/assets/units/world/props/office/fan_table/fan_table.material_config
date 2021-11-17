@@ -1,0 +1,7 @@
+<materials version="3">
+    <material render_template="generic:ALPHA_MASKED:DIFFUSE_TEXTURE:EXTERNAL_ALPHA_REF:NORMALMAP:VERTEX_COLOR" decal_material="sheet_metal" version="2" name="fan_table">
+        <bump_normal_texture file="units/world/props/office/fan_table/fan_table_nm"/>
+        <diffuse_texture file="units/world/props/office/fan_table/fan_table_df"/>
+        <variable value="0.068000003695488" type="scalar" name="alpha_ref"/>
+    </material>
+</materials>

@@ -1,0 +1,6 @@
+<unit type="gen" slot="1" >
+    <object file="units/pd2_dlc2/props/gen_prop_security_console/gen_prop_security_console_corner" />
+    <extensions>
+        <extension class="ScriptUnitData" name="unit_data" />
+    </extensions>
+</unit>

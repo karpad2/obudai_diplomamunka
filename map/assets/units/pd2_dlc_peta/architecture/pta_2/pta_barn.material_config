@@ -1,0 +1,264 @@
+<materials version="3">
+	<material name="shadow_caster" render_template="shadow_caster_only" version="2"/>
+	<material name="mat_pta_barn" render_template="generic:DIFFUSE_TEXTURE" version="2">
+		<diffuse_texture file="units/pd2_dlc_peta/architecture/pta_2/pta_barn_df"/>
+	</material>
+	<material name="mat_pta_barn_wood_blend_01" render_template="generic:BLEND_DIFFUSE:BLEND_MASK_SEPERATE:BLEND_NORMAL:BLEND_SMOOTH:DIFFUSE_TEXTURE:NORMALMAP:RL_CORE_ENVIRONMENT:VERTEX_COLOR" version="2">
+		<diffuse_texture file="units/pd2_dlc_peta/architecture/pta_2/pta_barn_wood_01_b_df"/>
+		<diffuse_layer0_texture file="units/pd2_dlc_peta/architecture/pta_2/pta_barn_wood_01_df"/>
+		<diffuse_layer1_texture file="units/pd2_dlc_peta/architecture/pta_2/pta_barn_wood_mask_df"/>
+		<bump_normal_texture file="units/pd2_dlc_peta/architecture/pta_2/pta_barn_wood_01_nm"/>
+		<normal_layer0_texture file="units/pd2_dlc_peta/architecture/pta_2/pta_barn_wood_01_nm"/>
+	</material>
+	<material name="mat_pta_barn_wood_blend_01_lod" render_template="generic:BLEND_DIFFUSE:BLEND_MASK_SEPERATE:BLEND_NORMAL:BLEND_SMOOTH:DIFFUSE_TEXTURE:NORMALMAP:RL_CORE_ENVIRONMENT:VERTEX_COLOR" version="2">
+		<diffuse_texture file="units/pd2_dlc_peta/architecture/pta_2/pta_barn_wood_01_b_df" mip="5"/>
+		<diffuse_layer0_texture file="units/pd2_dlc_peta/architecture/pta_2/pta_barn_wood_01_df" mip="5"/>
+		<diffuse_layer1_texture file="units/pd2_dlc_peta/architecture/pta_2/pta_barn_wood_mask_df" mip="5"/>
+		<bump_normal_texture file="units/pd2_dlc_peta/architecture/pta_2/pta_barn_wood_01_nm" mip="5"/>
+		<normal_layer0_texture file="units/pd2_dlc_peta/architecture/pta_2/pta_barn_wood_01_nm" mip="5"/>
+	</material>
+	<material name="mat_pta_barn_window_frame_01" render_template="generic:DIFFUSE_TEXTURE:NORMALMAP" version="2">
+		<diffuse_texture file="units/pd2_dlc_peta/architecture/pta_2/pta_barn_window_frame_01_df"/>
+		<bump_normal_texture file="units/pd2_dlc_peta/architecture/pta_2/pta_barn_window_frame_01_nm"/>
+	</material>
+	<material name="mat_pta_barn_window_frame_01_lod" render_template="generic:DIFFUSE_TEXTURE:NORMALMAP" version="2">
+		<diffuse_texture file="units/pd2_dlc_peta/architecture/pta_2/pta_barn_window_frame_01_df" mip="5"/>
+		<bump_normal_texture file="units/pd2_dlc_peta/architecture/pta_2/pta_barn_window_frame_01_nm" mip="5"/>
+	</material>
+	<material name="mat_pta_barn_metal_roof_blend" render_template="generic:BLEND_DIFFUSE:BLEND_MASK_SEPERATE:BLEND_NORMAL:BLEND_SMOOTH:DIFFUSE_TEXTURE:NORMALMAP:RL_CORE_ENVIRONMENT:VERTEX_COLOR" version="2">
+		<diffuse_texture file="units/pd2_dlc_peta/architecture/pta_2/pta_barn_metal_roof_01_b_df"/>
+		<diffuse_layer0_texture file="units/pd2_dlc_peta/architecture/pta_2/pta_barn_metal_roof_01_b_df"/>
+		<diffuse_layer1_texture file="units/pd2_dlc_peta/architecture/pta_2/pta_barn_wood_mask_df"/>
+		<bump_normal_texture file="units/pd2_dlc_peta/architecture/pta_2/pta_barn_metal_roof_01_nm"/>
+		<normal_layer0_texture file="units/pd2_dlc_peta/architecture/pta_2/pta_barn_metal_roof_01_nm"/>
+	</material>
+	<material name="mat_pta_barn_metal_roof_blend_lod" render_template="generic:BLEND_DIFFUSE:BLEND_MASK_SEPERATE:BLEND_NORMAL:BLEND_SMOOTH:DIFFUSE_TEXTURE:NORMALMAP:RL_CORE_ENVIRONMENT:VERTEX_COLOR" version="2">
+		<diffuse_texture file="units/pd2_dlc_peta/architecture/pta_2/pta_barn_metal_roof_01_b_df" mip="5"/>
+		<diffuse_layer0_texture file="units/pd2_dlc_peta/architecture/pta_2/pta_barn_metal_roof_01_b_df" mip="5"/>
+		<diffuse_layer1_texture file="units/pd2_dlc_peta/architecture/pta_2/pta_barn_wood_mask_df" mip="5"/>
+		<bump_normal_texture file="units/pd2_dlc_peta/architecture/pta_2/pta_barn_metal_roof_01_nm" mip="5"/>
+		<normal_layer0_texture file="units/pd2_dlc_peta/architecture/pta_2/pta_barn_metal_roof_01_nm" mip="5"/>
+	</material>
+    <material name="mat_pta_barn_metal_roof_blend_2" render_template="generic:BLEND_DIFFUSE:BLEND_MASK_SEPERATE:BLEND_NORMAL:BLEND_SMOOTH:DIFFUSE_TEXTURE:NORMALMAP:RL_CORE_ENVIRONMENT:VERTEX_COLOR" version="2">
+        <diffuse_texture file="units/pd2_dlc_peta/architecture/pta_2/pta_barn_metal_roof_02_b_df"/>
+        <diffuse_layer0_texture file="units/pd2_dlc_peta/architecture/pta_2/pta_barn_metal_roof_02_df"/>
+        <diffuse_layer1_texture file="units/pd2_dlc_peta/architecture/pta_2/pta_barn_ground_mask_02_df"/>
+        <bump_normal_texture file="units/pd2_dlc_peta/architecture/pta_2/pta_barn_metal_roof_02_nm"/>
+        <normal_layer0_texture file="units/pd2_dlc_peta/architecture/pta_2/pta_barn_metal_roof_02_nm"/>
+    </material>
+	<material name="mat_pta_barn_metal_roof_blend_2_lod" render_template="generic:BLEND_DIFFUSE:BLEND_MASK_SEPERATE:BLEND_NORMAL:BLEND_SMOOTH:DIFFUSE_TEXTURE:NORMALMAP:RL_CORE_ENVIRONMENT:VERTEX_COLOR" version="2">
+        <diffuse_texture file="units/pd2_dlc_peta/architecture/pta_2/pta_barn_metal_roof_02_b_df" mip="5"/>
+        <diffuse_layer0_texture file="units/pd2_dlc_peta/architecture/pta_2/pta_barn_metal_roof_02_df" mip="5"/>
+        <diffuse_layer1_texture file="units/pd2_dlc_peta/architecture/pta_2/pta_barn_ground_mask_02_df" mip="5"/>
+        <bump_normal_texture file="units/pd2_dlc_peta/architecture/pta_2/pta_barn_metal_roof_02_nm" mip="5"/>
+        <normal_layer0_texture file="units/pd2_dlc_peta/architecture/pta_2/pta_barn_metal_roof_02_nm" mip="5"/>
+    </material>
+	<material name="mat_pta_barn_planks_floor_01" render_template="generic:DIFFUSE_TEXTURE:NORMALMAP:VERTEX_COLOR" version="2">
+		<diffuse_texture file="units/pd2_dlc_peta/architecture/pta_2/pta_barn_planks_floor_01_df"/>
+		<bump_normal_texture file="units/pd2_dlc_peta/architecture/pta_2/pta_barn_planks_floor_01_nm"/>
+	</material>
+	<material name="mat_pta_barn_planks_floor_01_lod" render_template="generic:DIFFUSE_TEXTURE:NORMALMAP:VERTEX_COLOR" version="2">
+		<diffuse_texture file="units/pd2_dlc_peta/architecture/pta_2/pta_barn_planks_floor_01_df" mip="5"/>
+		<bump_normal_texture file="units/pd2_dlc_peta/architecture/pta_2/pta_barn_planks_floor_01_nm" mip="5"/>
+	</material>
+	<material name="mat_pta_barn_ground_blend" render_template="generic:BLEND_DIFFUSE:BLEND_MASK_SEPERATE:BLEND_NORMAL:BLEND_SMOOTH:DIFFUSE_TEXTURE:NORMALMAP:RL_CORE_ENVIRONMENT:VERTEX_COLOR" version="2">
+		<diffuse_texture file="units/pd2_dlc_peta/architecture/pta_2/pta_barn_ground_01_df"/>
+		<diffuse_layer0_texture file="units/pd2_dlc_peta/architecture/pta_2/pta_barn_planks_floor_01_df"/>
+		<diffuse_layer1_texture file="units/pd2_dlc_peta/architecture/pta_2/pta_barn_ground_mask_df"/>
+		<bump_normal_texture file="units/pd2_dlc_peta/architecture/pta_2/pta_barn_ground_01_nm"/>
+		<normal_layer0_texture file="units/pd2_dlc_peta/architecture/pta_2/pta_barn_planks_floor_01_nm"/>
+	</material>
+	<material name="mat_pta_barn_ground_blend_lod" render_template="generic:BLEND_DIFFUSE:BLEND_MASK_SEPERATE:BLEND_NORMAL:BLEND_SMOOTH:DIFFUSE_TEXTURE:NORMALMAP:RL_CORE_ENVIRONMENT:VERTEX_COLOR" version="2">
+		<diffuse_texture file="units/pd2_dlc_peta/architecture/pta_2/pta_barn_ground_01_df" mip="5"/>
+		<diffuse_layer0_texture file="units/pd2_dlc_peta/architecture/pta_2/pta_barn_planks_floor_01_df" mip="5"/>
+		<diffuse_layer1_texture file="units/pd2_dlc_peta/architecture/pta_2/pta_barn_ground_mask_df" mip="5"/>
+		<bump_normal_texture file="units/pd2_dlc_peta/architecture/pta_2/pta_barn_ground_01_nm" mip="5"/>
+		<normal_layer0_texture file="units/pd2_dlc_peta/architecture/pta_2/pta_barn_planks_floor_01_nm" mip="5"/>
+	</material>
+	<material name="mat_pta_barn_ground_blend_02" render_template="generic:BLEND_DIFFUSE:BLEND_MASK_SEPERATE:BLEND_NORMAL:BLEND_SMOOTH:DIFFUSE_TEXTURE:NORMALMAP:RL_CORE_ENVIRONMENT:VERTEX_COLOR" version="2">
+		<diffuse_texture file="units/pd2_dlc_peta/architecture/pta_2/pta_barn_planks_floor_01_b_df"/>
+		<diffuse_layer0_texture file="units/pd2_dlc_peta/architecture/pta_2/pta_barn_planks_floor_01_df"/>
+		<diffuse_layer1_texture file="units/pd2_dlc_peta/architecture/pta_2/pta_barn_ground_mask_02_df"/>
+		<bump_normal_texture file="units/pd2_dlc_peta/architecture/pta_2/pta_barn_planks_floor_01_nm"/>
+		<normal_layer0_texture file="units/pd2_dlc_peta/architecture/pta_2/pta_barn_planks_floor_01_nm"/>
+	</material>
+	<material name="mat_pta_barn_ground_blend_02_lod" render_template="generic:BLEND_DIFFUSE:BLEND_MASK_SEPERATE:BLEND_NORMAL:BLEND_SMOOTH:DIFFUSE_TEXTURE:NORMALMAP:RL_CORE_ENVIRONMENT:VERTEX_COLOR" version="2">
+		<diffuse_texture file="units/pd2_dlc_peta/architecture/pta_2/pta_barn_planks_floor_01_b_df" mip="5"/>
+		<diffuse_layer0_texture file="units/pd2_dlc_peta/architecture/pta_2/pta_barn_planks_floor_01_df" mip="5"/>
+		<diffuse_layer1_texture file="units/pd2_dlc_peta/architecture/pta_2/pta_barn_ground_mask_02_df" mip="5"/>
+		<bump_normal_texture file="units/pd2_dlc_peta/architecture/pta_2/pta_barn_planks_floor_01_nm" mip="5"/>
+		<normal_layer0_texture file="units/pd2_dlc_peta/architecture/pta_2/pta_barn_planks_floor_01_nm" mip="5"/>
+	</material>
+	<material name="mat_pta_barn_pillar_blend" render_template="generic:BLEND_DIFFUSE:BLEND_MASK_SEPERATE:BLEND_NORMAL:BLEND_SMOOTH:DIFFUSE_TEXTURE:NORMALMAP:RL_CORE_ENVIRONMENT:VERTEX_COLOR" version="2">
+		<diffuse_texture file="units/pd2_dlc_peta/architecture/pta_2/pta_barn_pillar_01_b_df"/>
+		<diffuse_layer0_texture file="units/pd2_dlc_peta/architecture/pta_2/pta_barn_pillar_01_df"/>
+		<diffuse_layer1_texture file="units/pd2_dlc_peta/architecture/pta_2/pta_barn_ground_mask_02_df"/>
+		<bump_normal_texture file="units/pd2_dlc_peta/architecture/pta_2/pta_barn_pillar_01_nm"/>
+		<normal_layer0_texture file="units/pd2_dlc_peta/architecture/pta_2/pta_barn_pillar_01_nm"/>
+	</material>
+	<material name="mat_pta_barn_pillar_blend_lod" render_template="generic:BLEND_DIFFUSE:BLEND_MASK_SEPERATE:BLEND_NORMAL:BLEND_SMOOTH:DIFFUSE_TEXTURE:NORMALMAP:RL_CORE_ENVIRONMENT:VERTEX_COLOR" version="2">
+		<diffuse_texture file="units/pd2_dlc_peta/architecture/pta_2/pta_barn_pillar_01_b_df" mip="5"/>
+		<diffuse_layer0_texture file="units/pd2_dlc_peta/architecture/pta_2/pta_barn_pillar_01_df" mip="5"/>
+		<diffuse_layer1_texture file="units/pd2_dlc_peta/architecture/pta_2/pta_barn_ground_mask_02_df" mip="2"/>
+		<bump_normal_texture file="units/pd2_dlc_peta/architecture/pta_2/pta_barn_pillar_01_nm" mip="5"/>
+		<normal_layer0_texture file="units/pd2_dlc_peta/architecture/pta_2/pta_barn_pillar_01_nm" mip="5"/>
+	</material>
+	<material name="mat_pta_barn_rope" render_template="generic:DIFFUSE_TEXTURE:NORMALMAP" version="2">
+		<diffuse_texture file="units/pd2_dlc_peta/architecture/pta_2/pta_rope_df"/>
+		<bump_normal_texture file="units/pd2_dlc_peta/architecture/pta_2/pta_rope_nm"/>
+	</material>
+	<material name="mat_pta_barn_plastic_01_blend" render_template="generic:BLEND_DIFFUSE:BLEND_MASK_SEPERATE:BLEND_NORMAL:BLEND_SMOOTH:CUBE_ENVIRONMENT_MAPPING:DIFFUSE_TEXTURE:NORMALMAP:RL_CORE_ENVIRONMENT:VERTEX_COLOR" version="2">
+		<diffuse_texture file="units/pd2_dlc_peta/architecture/pta_2/pta_barn_ground_01_df"/>
+		<diffuse_layer0_texture file="units/pd2_dlc_peta/architecture/pta_2/pta_barn_plastic_01_df"/>
+		<diffuse_layer1_texture file="units/pd2_dlc_peta/architecture/pta_2/pta_barn_plastic_mask_df"/>
+		<bump_normal_texture file="units/pd2_dlc_peta/architecture/pta_2/pta_barn_ground_01_nm"/>
+		<normal_layer0_texture file="units/pd2_dlc_peta/architecture/pta_2/pta_barn_plastic_01_nm"/>
+		<reflection_texture file="units/payday2/cubemaps/cubemap_silver_df" type="cubemap"/>
+	</material>
+	<material name="mat_pta_barn_plastic_01_blend_lod" render_template="generic:BLEND_DIFFUSE:BLEND_MASK_SEPERATE:BLEND_NORMAL:BLEND_SMOOTH:CUBE_ENVIRONMENT_MAPPING:DIFFUSE_TEXTURE:NORMALMAP:RL_CORE_ENVIRONMENT:VERTEX_COLOR" version="2">
+		<diffuse_texture file="units/pd2_dlc_peta/architecture/pta_2/pta_barn_ground_01_df" mip="5"/>
+		<diffuse_layer0_texture file="units/pd2_dlc_peta/architecture/pta_2/pta_barn_plastic_01_df" mip="5"/>
+		<diffuse_layer1_texture file="units/pd2_dlc_peta/architecture/pta_2/pta_barn_plastic_mask_df" mip="5"/>
+		<bump_normal_texture file="units/pd2_dlc_peta/architecture/pta_2/pta_barn_ground_01_nm" mip="5"/>
+		<normal_layer0_texture file="units/pd2_dlc_peta/architecture/pta_2/pta_barn_plastic_01_nm" mip="5"/>
+		<reflection_texture file="units/payday2/cubemaps/cubemap_silver_df" type="cubemap"/>
+	</material>
+	<material version="2" render_template="generic:ALPHA_MASKED:DIFFUSE_TEXTURE:EXTERNAL_ALPHA_REF:NORMALMAP" name="mat_pta_barn_plastic_02">
+		<diffuse_texture file="units/pd2_dlc_peta/architecture/pta_2/pta_barn_plastic_02_df"/>
+		<bump_normal_texture file="units/pd2_dlc_peta/architecture/pta_2/pta_barn_plastic_02_nm"/>
+		<variable value="0.035000000149012" type="scalar" name="alpha_ref"/>
+		<variable value="0.30000001192093" type="scalar" name="speed"/>
+		<variable value="16.5 0.27500000596046 0" type="vector3" name="detail_settings"/>
+		<variable value="5 0.050000000745058 0" type="vector3" name="branch_settings"/>
+	</material>
+	<material version="2" render_template="generic:ALPHA_MASKED:DIFFUSE_TEXTURE:EXTERNAL_ALPHA_REF:NORMALMAP" name="mat_pta_barn_plastic_02_lod">
+		<diffuse_texture file="units/pd2_dlc_peta/architecture/pta_2/pta_barn_plastic_02_df" mip="5"/>
+		<bump_normal_texture file="units/pd2_dlc_peta/architecture/pta_2/pta_barn_plastic_02_nm" mip="5"/>
+		<variable value="0.035000000149012" type="scalar" name="alpha_ref"/>
+		<variable value="0.30000001192093" type="scalar" name="speed"/>
+		<variable value="16.5 0.27500000596046 0" type="vector3" name="detail_settings"/>
+		<variable value="5 0.050000000745058 0" type="vector3" name="branch_settings"/>
+	</material>
+	<material name="mat_pta_barn_plastic_03" render_template="generic:ALPHA_MASKED:DIFFUSE_TEXTURE:EXTERNAL_ALPHA_REF:NORMALMAP:VEGETATION_BENDING" version="2">
+		<diffuse_texture file="units/pd2_dlc_peta/architecture/pta_2/pta_barn_plastic_03_df"/>
+		<bump_normal_texture file="units/pd2_dlc_peta/architecture/pta_2/pta_barn_plastic_03_nm"/>
+		<variable value="0.035000000149012" type="scalar" name="alpha_ref"/>
+		<variable value="0.30000001192093" type="scalar" name="speed"/>
+		<variable value="16.5 0.27500000596046 0" type="vector3" name="detail_settings"/>
+		<variable value="5 0.050000000745058 0" type="vector3" name="branch_settings"/>
+	</material>
+	<material name="mat_pta_barn_plastic_03_lod" render_template="generic:ALPHA_MASKED:DIFFUSE_TEXTURE:EXTERNAL_ALPHA_REF:NORMALMAP:VEGETATION_BENDING" version="2">
+		<diffuse_texture file="units/pd2_dlc_peta/architecture/pta_2/pta_barn_plastic_03_df" mip="5"/>
+		<bump_normal_texture file="units/pd2_dlc_peta/architecture/pta_2/pta_barn_plastic_03_nm" mip="5"/>
+		<variable value="0.035000000149012" type="scalar" name="alpha_ref"/>
+		<variable value="0.30000001192093" type="scalar" name="speed"/>
+		<variable value="16.5 0.27500000596046 0" type="vector3" name="detail_settings"/>
+		<variable value="5 0.050000000745058 0" type="vector3" name="branch_settings"/>
+	</material>
+	<material version="2" render_template="generic:CUBE_ENVIRONMENT_MAPPING:DIFFUSE_TEXTURE:NORMALMAP:RL_CORE_ENVIRONMENT" name="mat_pta_barn_plastic_04">
+		<diffuse_texture file="units/pd2_dlc_peta/architecture/pta_2/pta_barn_plastic_04_df"/>
+		<bump_normal_texture file="units/pd2_dlc_peta/architecture/pta_2/pta_barn_plastic_04_nm"/>
+		<reflection_texture type="cubemap" file="units/payday2/cubemaps/cubemap_bathroom"/>
+	</material>
+	<material name="mat_pta_barn_plastic_04_blend" render_template="generic:BLEND_DIFFUSE:BLEND_MASK_SEPERATE:BLEND_NORMAL:BLEND_SMOOTH:CUBE_ENVIRONMENT_MAPPING:DIFFUSE_TEXTURE:NORMALMAP:RL_CORE_ENVIRONMENT:VERTEX_COLOR" version="2">
+		<diffuse_texture file="units/pd2_dlc_peta/architecture/pta_2/pta_barn_ground_01_df"/>
+		<diffuse_layer0_texture file="units/pd2_dlc_peta/architecture/pta_2/pta_barn_plastic_04_df"/>
+		<diffuse_layer1_texture file="units/pd2_dlc_peta/architecture/pta_2/pta_barn_plastic_mask_df"/>
+		<bump_normal_texture file="units/pd2_dlc_peta/architecture/pta_2/pta_barn_ground_01_nm"/>
+		<normal_layer0_texture file="units/pd2_dlc_peta/architecture/pta_2/pta_barn_plastic_04_nm"/>
+		<reflection_texture file="units/payday2/cubemaps/cubemap_silver_df" type="cubemap"/>
+	</material>
+	<material name="mat_pta_barn_plastic_04_blend_lod" render_template="generic:BLEND_DIFFUSE:BLEND_MASK_SEPERATE:BLEND_NORMAL:BLEND_SMOOTH:CUBE_ENVIRONMENT_MAPPING:DIFFUSE_TEXTURE:NORMALMAP:RL_CORE_ENVIRONMENT:VERTEX_COLOR" version="2">
+		<diffuse_texture file="units/pd2_dlc_peta/architecture/pta_2/pta_barn_ground_01_df" mip="5"/>
+		<diffuse_layer0_texture file="units/pd2_dlc_peta/architecture/pta_2/pta_barn_plastic_04_df" mip="5"/>
+		<diffuse_layer1_texture file="units/pd2_dlc_peta/architecture/pta_2/pta_barn_plastic_mask_df" mip="5"/>
+		<bump_normal_texture file="units/pd2_dlc_peta/architecture/pta_2/pta_barn_ground_01_nm" mip="5"/>
+		<normal_layer0_texture file="units/pd2_dlc_peta/architecture/pta_2/pta_barn_plastic_04_nm" mip="5"/>
+		<reflection_texture file="units/payday2/cubemaps/cubemap_silver_df" type="cubemap"/>
+	</material>
+	<material name="mat_pta_barn_debris_01" render_template="decal:DIFFUSE_TEXTURE" version="2">
+		<diffuse_texture file="units/pd2_dlc_peta/architecture/pta_2/pta_barn_debris_01_df"/>
+	</material>
+	<material name="mat_pta_barn_debris_01_lod" render_template="decal:DIFFUSE_TEXTURE" version="2">
+		<diffuse_texture file="units/pd2_dlc_peta/architecture/pta_2/pta_barn_debris_01_df" mip="5"/>
+	</material>
+	<material name="mat_pta_barn_cobweb_01" render_template="decal:DIFFUSE_TEXTURE" version="2">
+		<diffuse_texture file="units/pd2_dlc_peta/architecture/pta_2/pta_barn_cobweb_01_df"/>
+	</material>
+	<material name="mat_pta_barn_cobweb_01_lod" render_template="decal:DIFFUSE_TEXTURE" version="2">
+		<diffuse_texture file="units/pd2_dlc_peta/architecture/pta_2/pta_barn_cobweb_01_df" mip="5"/>
+	</material>
+	<material version="2" render_template="generic:ALPHA_MASKED:DIFFUSE_TEXTURE:EXTERNAL_ALPHA_REF:NORMALMAP" name="mat_pta_barn_hay_01">
+		<diffuse_texture file="units/pd2_dlc_peta/architecture/pta_2/pta_barn_hay_01_df"/>
+		<bump_normal_texture file="units/pd2_dlc_peta/architecture/pta_2/pta_barn_hay_01_nm"/>
+		<variable value="0.075000002980232" type="scalar" name="alpha_ref"/>
+	</material>
+	<material version="2" render_template="generic:ALPHA_MASKED:DIFFUSE_TEXTURE:EXTERNAL_ALPHA_REF:NORMALMAP" name="mat_pta_barn_hay_01_lod">
+		<diffuse_texture file="units/pd2_dlc_peta/architecture/pta_2/pta_barn_hay_01_df" mip="5"/>
+		<bump_normal_texture file="units/pd2_dlc_peta/architecture/pta_2/pta_barn_hay_01_nm" mip="5"/>
+		<variable value="0.075000002980232" type="scalar" name="alpha_ref"/>
+	</material>
+	<material version="2" render_template="generic:ALPHA_MASKED:DIFFUSE_TEXTURE:EXTERNAL_ALPHA_REF:NORMALMAP" name="mat_pta_barn_hay_02">
+		<diffuse_texture file="units/pd2_dlc_peta/architecture/pta_2/pta_barn_hay_02_df"/>
+		<bump_normal_texture file="units/pd2_dlc_peta/architecture/pta_2/pta_barn_hay_01_nm"/>
+		<variable value="0.075000002980232" type="scalar" name="alpha_ref"/>
+	</material>
+	<material version="2" render_template="generic:ALPHA_MASKED:DIFFUSE_TEXTURE:EXTERNAL_ALPHA_REF:NORMALMAP" name="mat_pta_barn_hay_02_lod">
+		<diffuse_texture file="units/pd2_dlc_peta/architecture/pta_2/pta_barn_hay_02_df" mip="5"/>
+		<bump_normal_texture file="units/pd2_dlc_peta/architecture/pta_2/pta_barn_hay_01_nm" mip="5"/>
+		<variable value="0.075000002980232" type="scalar" name="alpha_ref"/>
+	</material>
+	<material name="mat_pta_barn_wood_painted_blend_01" render_template="generic:BLEND_DIFFUSE:BLEND_MASK_SEPERATE:BLEND_NORMAL:BLEND_SMOOTH:DIFFUSE_TEXTURE:NORMALMAP:RL_CORE_ENVIRONMENT:VERTEX_COLOR" version="2">
+		<diffuse_texture file="units/pd2_dlc_peta/architecture/pta_2/pta_barn_planks_floor_01_b_df"/>
+		<diffuse_layer0_texture file="units/pd2_dlc_peta/architecture/pta_2/pta_barn_planks_painted_01_df"/>
+		<diffuse_layer1_texture file="units/pd2_dlc_peta/architecture/pta_2/pta_barn_ground_mask_02_df"/>
+		<bump_normal_texture file="units/pd2_dlc_peta/architecture/pta_2/pta_barn_planks_floor_01_nm"/>
+		<normal_layer0_texture file="units/pd2_dlc_peta/architecture/pta_2/pta_barn_planks_floor_01_nm"/>
+	</material>
+	<material name="mat_pta_barn_sunray" render_template="effect:BLEND_ADD:DIFFUSE0_TEXTURE:DIFFUSE0_UVANIM:DOUBLE_SIDED:INTERSECTION_FADEOUT:VIEW_ANGLE_FALLOFF_OP" version="2">
+		<diffuse_texture file="units/pd2_dlc_peta/architecture/pta_2/pta_barn_sunray_df"/>
+		<variable value="0.0099999997764826 0 0" type="vector3" name="uv0_speed"/>
+		<variable value="searchlight" type="scalar" name="intensity"/>
+		<variable value="2" type="scalar" name="falloff_exp"/>
+		<variable value="216" type="scalar" name="fadeout_distance"/>
+	</material>
+	<material name="mat_stone_wall_01" render_template="generic:BLEND_DIFFUSE:BLEND_MASK_SEPERATE:BLEND_NORMAL:BLEND_SMOOTH:DIFFUSE_TEXTURE:NORMALMAP:VERTEX_COLOR" version="2">
+		<diffuse_texture file="units/pd2_dlc_peta/terrain/pta_terrain_rocky_ground_df"/>
+		<diffuse_layer0_texture file="units/pd2_dlc_peta/architecture/pta_2/pta_stone_wall_01_df"/>
+		<diffuse_layer1_texture file="units/pd2_dlc_peta/architecture/pta_2/pta_stone_wall_01_mask"/>
+		<normal_layer0_texture file="units/pd2_dlc_peta/architecture/pta_2/pta_stone_wall_01_nm"/>
+		<bump_normal_texture file="units/pd2_dlc_peta/terrain/pta_terrain_rocky_ground_nm"/>
+	</material>
+	<material name="mat_stone_wall_01_lod" render_template="generic:BLEND_DIFFUSE:BLEND_MASK_SEPERATE:BLEND_NORMAL:BLEND_SMOOTH:DIFFUSE_TEXTURE:NORMALMAP:VERTEX_COLOR" version="2">
+		<diffuse_texture file="units/pd2_dlc_peta/terrain/pta_terrain_rocky_ground_df" mip="5"/>
+		<diffuse_layer0_texture file="units/pd2_dlc_peta/architecture/pta_2/pta_stone_wall_01_df" mip="5"/>
+		<diffuse_layer1_texture file="units/pd2_dlc_peta/architecture/pta_2/pta_stone_wall_01_mask" mip="5"/>
+		<normal_layer0_texture file="units/pd2_dlc_peta/architecture/pta_2/pta_stone_wall_01_nm" mip="5"/>
+		<bump_normal_texture file="units/pd2_dlc_peta/terrain/pta_terrain_rocky_ground_nm" mip="5"/>
+	</material>
+	<material version="2" render_template="generic:DIFFUSE_TEXTURE:NORMALMAP:RL_CORE_ENVIRONMENT" name="mat_pta_barn_dead_wood">
+		<diffuse_texture file="units/pd2_dlc_peta/architecture/pta_2/pta_barn_metal_roof_02_df"/>
+		<bump_normal_texture file="units/pd2_dlc_peta/architecture/pta_2/pta_barn_metal_roof_02_nm"/>
+	</material>
+	<material version="2" render_template="generic:DIFFUSE_TEXTURE:NORMALMAP:RL_CORE_ENVIRONMENT" name="mat_pta_barn_dead_wood_lod">
+		<diffuse_texture file="units/pd2_dlc_peta/architecture/pta_2/pta_barn_metal_roof_02_df" mip="5"/>
+		<bump_normal_texture file="units/pd2_dlc_peta/architecture/pta_2/pta_barn_metal_roof_02_nm" mip="5"/>
+	</material>
+	<material name="mat_pta_barn_wood_painted_blend_01_door" render_template="generic:BLEND_DIFFUSE:BLEND_MASK_SEPERATE:BLEND_NORMAL:BLEND_SMOOTH:DIFFUSE_TEXTURE:NORMALMAP:RL_CORE_ENVIRONMENT:VERTEX_COLOR" version="2">
+		<diffuse_texture file="units/pd2_dlc_peta/architecture/pta_2/pta_barn_planks_floor_01_b_df"/>
+		<diffuse_layer0_texture file="units/pd2_dlc_peta/architecture/pta_2/pta_barn_planks_painted_01_df"/>
+		<diffuse_layer1_texture file="units/pd2_dlc_peta/architecture/pta_2/pta_barn_ground_mask_02_df"/>
+		<bump_normal_texture file="units/pd2_dlc_peta/architecture/pta_2/pta_barn_planks_floor_01_nm"/>
+		<normal_layer0_texture file="units/pd2_dlc_peta/architecture/pta_2/pta_barn_planks_floor_01_nm"/>
+	</material>
+	<material name="mat_pta_barn_wood_painted_blend_01_door_lod" render_template="generic:BLEND_DIFFUSE:BLEND_MASK_SEPERATE:BLEND_NORMAL:BLEND_SMOOTH:DIFFUSE_TEXTURE:NORMALMAP:RL_CORE_ENVIRONMENT:VERTEX_COLOR" version="2">
+		<diffuse_texture file="units/pd2_dlc_peta/architecture/pta_2/pta_barn_planks_floor_01_b_df" mip="5"/>
+		<diffuse_layer0_texture file="units/pd2_dlc_peta/architecture/pta_2/pta_barn_planks_painted_01_df" mip="5"/>
+		<diffuse_layer1_texture file="units/pd2_dlc_peta/architecture/pta_2/pta_barn_ground_mask_02_df" mip="5"/>
+		<bump_normal_texture file="units/pd2_dlc_peta/architecture/pta_2/pta_barn_planks_floor_01_nm" mip="5"/>
+		<normal_layer0_texture file="units/pd2_dlc_peta/architecture/pta_2/pta_barn_planks_floor_01_nm" mip="5"/>
+	</material>
+</materials>
+
+
+

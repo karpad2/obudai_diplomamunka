@@ -1,0 +1,10 @@
+<materials version="3">
+    <material name="mat_wood_painted" render_template="generic:DIFFUSE_TEXTURE:NORMALMAP:RL_CORE_ENVIRONMENT" version="2">
+        <diffuse_texture file="units/pd2_dlc_jerry/props/jry_prop_fence_wooden/jry_fence_wooden_df"/>
+        <bump_normal_texture file="units/pd2_dlc_jerry/props/jry_prop_fence_wooden/jry_fence_wooden_nm"/>
+    </material>
+    <material name="mat_wood_painted_lod" render_template="generic:DIFFUSE_TEXTURE:NORMALMAP:RL_CORE_ENVIRONMENT:VERTEX_COLOR" version="2">
+        <diffuse_texture mip="5" file="units/pd2_dlc_jerry/props/jry_prop_fence_wooden/jry_fence_wooden_df"/>
+        <bump_normal_texture mip="5" file="units/pd2_dlc_jerry/props/jry_prop_fence_wooden/jry_fence_wooden_nm"/>
+    </material>
+</materials>

@@ -1,0 +1,32 @@
+<dynamic_object>
+	<diesel materials="units/pd2_dlc_peta/vegetation/pta_2/pta_veg_tree_oak_large/pta_veg_tree_oak_large" orientation_object="rp_pta_veg_tree_oak_large_b" />
+	
+	<bodies>
+        <body enabled="true" template="foliage" name="ai_viz_blocker_body" >
+            <object name="rp_pta_veg_tree_oak_large_b" />
+            <object collision_type="capsule" name="c_capsule_02" padding="-2.5"/>
+        </body>			
+        <body enabled="true" template="static" name="static_body" >
+            <object name="rp_pta_veg_tree_oak_large_b" />
+            <object collision_type="capsule" name="c_capsule_01" padding="-2.5"/>
+        </body>
+    </bodies>
+   
+   <decal_surfaces>
+        <decal_mesh enabled="true" name="dm_wood" material="wood" />
+    </decal_surfaces>
+     	
+	<graphics>
+		<lod_object name="lod_g_leaves">
+			<object name="g_leaves_lod0" enabled="true" max_distance="8000" shadow_caster="true"  />
+			<object name="g_leaves_lod1" enabled="true" max_distance="11000" shadow_caster="true"  />
+			<object name="g_leaves_lod2" enabled="true" shadow_caster="false"  />
+		</lod_object>
+		<lod_object name="lod_g_trunk">
+			<object name="g_trunk_lod0" enabled="true" max_distance="4000" />
+			<object name="g_trunk_lod1" enabled="true" max_distance="6500" />
+			<object name="g_trunk_lod2" enabled="true" />
+		</lod_object>
+		<object name="s_s" enabled="true" shadow_caster="true" />
+	</graphics>
+</dynamic_object>

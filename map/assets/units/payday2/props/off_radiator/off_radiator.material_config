@@ -1,0 +1,5 @@
+<materials version="3">
+    <material name="secret_stash_radiator" render_template="generic:DIFFUSE_TEXTURE" version="2">
+        <diffuse_texture file="units/payday2/props/off_radiator/off_radiator_df"/>
+    </material>
+</materials>

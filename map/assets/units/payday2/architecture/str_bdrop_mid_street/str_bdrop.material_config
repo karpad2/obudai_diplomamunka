@@ -1,0 +1,12 @@
+<materials version="3">
+    <material name="mtr_road" render_template="generic:DIFFUSE_TEXTURE:NORMALMAP:RL_BACKDROP" version="2">
+        <diffuse_texture file="units/payday2/architecture/str_bdrop_mid_street/str_bdrop_mid_street_df"/>
+        <bump_normal_texture file="units/payday2/architecture/str_bdrop_mid_street/str_bdrop_mid_street_nm"/>
+    </material>
+    <material name="mtr_trees" render_template="generic:ALPHA_MASKED:DIFFUSE_TEXTURE:EXTERNAL_ALPHA_REF:NORMALMAP:OPACITY_TEXTURE:RL_BACKDROP" version="2">
+        <diffuse_texture file="units/payday2/architecture/str_bdrop_mid_street/str_bdrop_mid_street_treet_df"/>
+        <bump_normal_texture file="units/payday2/architecture/str_bdrop_mid_street/str_bdrop_mid_street_treet_nm"/>
+        <variable value="0.36400002241135" type="scalar" name="alpha_ref"/>
+        <opacity_texture file="units/payday2/architecture/str_bdrop_mid_street/str_bdrop_mid_street_treet_op"/>
+    </material>
+</materials>

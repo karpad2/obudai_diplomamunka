@@ -1,0 +1,8 @@
+<unit type="pta" slot="1">
+	<network sync="spawn"/>
+	<object file="units/pd2_dlc_peta/props/pta_prop_barn_door_small/pta_prop_barn_door_big" />
+	<extensions>
+		<extension name="unit_data" class="ScriptUnitData" />
+		<extension name="damage" class="UnitDamage" />
+	</extensions>
+</unit>

@@ -1,0 +1,6 @@
+<unit type="hsp" slot="1" >
+    <object file="units/custom/pd2_mod_hardwareStore/hs_paper_3/hs_paper_3" />
+    <extensions>
+        <extension class="ScriptUnitData" name="unit_data" />
+    </extensions>
+</unit>

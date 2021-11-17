@@ -1,0 +1,19 @@
+<dynamic_object>
+    <diesel orientation_object="rp_mus_int_lab_planks_03" materials="units/pd2_indiana/architecture/mus_int_lab/mus_int_lab_planks" />
+    <bodies>
+        <body enabled="true" template="static" name="static_body" >
+            <object name="rp_mus_int_lab_planks_03" />
+            <object name="g_g" collision_type="mesh_mopp"/>
+        </body>
+    </bodies>
+	
+    <decal_surfaces default_material="wood">
+        <decal_mesh enabled="true" name="dm_wood" material="wood" />
+    </decal_surfaces>
+	
+    <graphics>
+        <object name="g_g" enabled="true" shadow_caster="false"/>
+        <object name="s_s" enabled="true" shadow_caster="true"/>
+    </graphics>
+	
+</dynamic_object>

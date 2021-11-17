@@ -1,0 +1,5 @@
+<materials version="3">
+    <material name="mat_electric_cables01" render_template="generic:DIFFUSE_TEXTURE" version="2">
+        <diffuse_texture file="units/pd2_dlc2/csgo_models/props/props_utilities/cable_nest01_df"/>
+    </material>
+</materials>

@@ -1,0 +1,11 @@
+<dynamic_object>
+    <diesel orientation_object="rp_trailer_bag" materials="units/pd2_dlc_man/props/man_static_loot_bag/man_static_loot_bag" />
+    <bodies>
+        <body enabled="true" template="static" name="static_body" >
+            <object collision_type="box" name="g_bag" />
+        </body>
+    </bodies>
+	<graphics>
+        <object enabled="true" name="g_bag" />
+    </graphics>
+</dynamic_object>

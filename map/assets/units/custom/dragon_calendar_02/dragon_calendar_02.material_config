@@ -1,0 +1,5 @@
+<materials version="3">
+    <material name="mat_calendar" render_template="generic:DIFFUSE_TEXTURE" version="2">
+        <diffuse_texture file="units/custom/dragon_calendar_02/dragon_calendar_02_df"/>
+    </material>
+</materials>

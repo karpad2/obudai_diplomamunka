@@ -1,0 +1,30 @@
+<dynamic_object>
+	<diesel materials="units/pd2_dlc_jerry/props/jry_prop_garage_workbench/jry_prop_garage_workbench" orientation_object="rp_jry_prop_garage_workbench" />
+	<bodies>
+		<body name="body_static" enabled="true" template="static">
+			<object name="rp_jry_prop_garage_workbench" />
+			<object name="c_convex_01" collision_type="convex" padding="-2.5" />
+			<object name="c_box_01" collision_type="box" padding="-2.5" />
+			<object name="c_box_02" collision_type="box" padding="-2.5" />
+			<object name="c_box_03" collision_type="box" padding="-2.5" />
+			<object name="c_box_04" collision_type="box" padding="-2.5" />
+			<object name="c_box_05" collision_type="box" padding="-2.5" />
+			<object name="c_box_06" collision_type="box" padding="-2.5" />
+			<object name="c_box_07" collision_type="box" padding="-2.5" />
+			<object name="c_box_08" collision_type="box" padding="-2.5" />
+			<object name="c_box_09" collision_type="box" padding="-2.5" />
+			<object name="c_box_10" collision_type="box" padding="-2.5" />
+			<object name="c_box_11" collision_type="box" padding="-2.5" />
+		</body>
+	</bodies>
+	<decal_surfaces default_material="rubber">
+		<decal_mesh name="dm_metal" enabled="true" material="metal" />
+		<decal_mesh name="dm_rubber" enabled="true" material="rubber" />
+	</decal_surfaces>
+	<graphics>
+		<lod_object name="lod_g">
+			<object name="g_lod_0" enabled="true" max_distance="1500" />
+			<object name="g_lod_1" enabled="true" />
+		</lod_object>
+	</graphics>
+</dynamic_object>

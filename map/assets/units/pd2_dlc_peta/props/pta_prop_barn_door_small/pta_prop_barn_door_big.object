@@ -1,0 +1,45 @@
+<dynamic_object>
+	<diesel materials="units/pd2_dlc_peta/props/pta_prop_barn_door_small/pta_prop_barn_door_small" orientation_object="rp_pta_prop_barn_door_big" />
+	<sequence_manager file="units/pd2_dlc_peta/props/pta_prop_barn_door_small/pta_prop_barn_door_big" />
+    <animations>
+        <animation_group name="anim_open_doors" enabled="false">
+            <object name="anim_hinge_1" />
+            <object name="anim_hinge_2" />
+        </animation_group>	
+	</animations>
+	<bodies>
+		<body name="left_door_animated" enabled="true" template="animated">
+			<object name="anim_hinge_1" />
+			<object name="c_box_left" collision_type="box" padding="-2.5" />
+		</body>
+		<body name="right_door_animated" enabled="true" template="animated">
+			<object name="anim_hinge_2" />
+			<object name="c_box_right" collision_type="box" padding="-2.5" />
+		</body>
+	</bodies>
+	<decal_surfaces default_material="metal">
+		<decal_mesh name="dm_wood_left" enabled="true" material="wood" />
+		<decal_mesh name="dm_wood_right" enabled="true" material="wood" />
+	</decal_surfaces>
+	<graphics>
+        <lod_object name="lod_door_big_left">
+            <object enabled="true" name="g_door_big_left" >
+                <material materials="mat_pta_barn_wood_painted_blend_01_door, mat_pta_barn_planks_floor_01_door, mat_pta_barn_ground_blend_02_door" max_distance="6000"/>
+                <material materials="mat_pta_barn_wood_painted_blend_01_door_lod, mat_pta_barn_planks_floor_01_door_lod, mat_pta_barn_ground_blend_02_door_lod" />
+            </object>
+        </lod_object>
+		<lod_object name="lod_door_big_right">
+            <object enabled="true" name="g_door_big_right" >
+                <material materials="mat_pta_barn_wood_painted_blend_01_door, mat_pta_barn_planks_floor_01_door, mat_pta_barn_ground_blend_02_door" max_distance="6000"/>
+                <material materials="mat_pta_barn_wood_painted_blend_01_door_lod, mat_pta_barn_planks_floor_01_door_lod, mat_pta_barn_ground_blend_02_door_lod" />
+            </object>
+        </lod_object>
+		<object name="s_left" enabled="true" shadow_caster="true" />
+		<object name="s_right" enabled="true" shadow_caster="true" />
+	</graphics>
+</dynamic_object>
+
+
+
+
+

@@ -1,0 +1,6 @@
+<materials version="3">
+    <material render_template="generic:DIFFUSE_TEXTURE:VERTEX_COLOR" decal_material="cloth_stuffed" version="2" name="mtr_sofa">
+        <diffuse_texture file="units/world/props/diamond_heist/apartment/apartment_livingroom/sofas/t_sofa_df"/>
+    </material>
+    <material version="2" render_template="shadow_caster_only" name="shadow_caster"/>
+</materials>

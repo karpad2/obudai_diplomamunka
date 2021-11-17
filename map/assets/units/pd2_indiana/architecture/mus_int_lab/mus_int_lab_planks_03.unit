@@ -1,0 +1,6 @@
+<unit type="mus" slot="1" >
+    <object file="units/pd2_indiana/architecture/mus_int_lab/mus_int_lab_planks_03" />
+    <extensions>
+        <extension class="ScriptUnitData" name="unit_data" />
+    </extensions>
+</unit>

@@ -1,0 +1,23 @@
+<dynamic_object>
+    <diesel orientation_object="rp_ind_prop_construction_hardhat" materials="units/payday2/props/ind_prop_construction_hardhat/ind_prop_construction_hardhat" />
+	<sequence_manager file="units/payday2/props/ind_prop_construction_hardhat/ind_prop_construction_hardhat" />
+	
+	<bodies>
+	 <body name="dynamic_body" enabled="false" template="small_prop" ang_damping="0.9">
+			<object name="rp_ind_prop_construction_hardhat" />
+			<object name="c_sphere" collision_type="sphere" mass="1.5" />
+			<object name="c_box" collision_type="box" />
+		</body>	 
+	<body name="static_body" enabled="true" template="static">
+			<object name="c_box" collision_type="box" padding="-2.5" />
+		</body>
+	</bodies>
+	
+	<decal_surfaces default_material="steel_no_decal">
+	</decal_surfaces>
+	
+    <graphics>
+        <object enabled="true" name="g_hat" />
+    </graphics>
+	
+</dynamic_object>

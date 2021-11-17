@@ -1,0 +1,11 @@
+<unit type="gen" slot="1" >
+    <object file="units/payday2/props/gen_prop_security_monitors/gen_prop_security_monitors_four_wall" />
+    <extensions>
+        <extension class="ScriptUnitData" name="unit_data" />
+		<extension name="damage" class="UnitDamage" />
+    </extensions>
+	<sounds>
+		<default_soundsource source="rp_gen_prop_security_monitors_four_wall"/>
+		<soundsource name="snd" source="snd_source" />
+	</sounds>
+</unit>

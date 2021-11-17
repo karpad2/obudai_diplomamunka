@@ -1,0 +1,15 @@
+<dynamic_object>
+	<diesel materials="units/pd2_dlc_chill/props/chl_prop_workshop_wolf_cuttingboard/chl_prop_workshop_wolf_cuttingboard" orientation_object="rp_chl_prop_workshop_wolf_cuttingboard" />
+	<bodies>
+		<body name="body_static" enabled="true" template="static">
+			<object name="rp_chl_prop_workshop_wolf_cuttingboard" />
+			<object name="c_box01" collision_type="box" padding="-2.5" />
+		</body>
+	</bodies>
+	<decal_surfaces default_material="plastic">
+		<decal_mesh name="dm_plastic" enabled="true" material="plastic" />
+	</decal_surfaces>
+	<graphics>
+		<object name="g_g" enabled="true" />
+	</graphics>
+</dynamic_object>

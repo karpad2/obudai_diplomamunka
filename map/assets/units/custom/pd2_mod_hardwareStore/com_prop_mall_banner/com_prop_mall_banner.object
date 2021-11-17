@@ -1,0 +1,12 @@
+<dynamic_object>
+    <diesel orientation_object="rp_com_prop_mall_banner" materials="units/custom/pd2_mod_hardwareStore/com_prop_mall_banner/com_prop_mall_banner" />
+    <bodies>
+        <body enabled="true" template="editor" name="body0" >
+            <object collision_type="box" name="c_box_01" padding="-0.25"/>
+        </body>
+    </bodies>
+    <graphics>
+        <object enabled="true" name="g_g" instance_struct="world_tm" />
+        <object enabled="true" shadow_caster="true" name="s_s" instance_struct="world_tm" />
+    </graphics>
+</dynamic_object>

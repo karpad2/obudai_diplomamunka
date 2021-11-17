@@ -1,0 +1,7 @@
+<materials version="3">
+	<material name="mat_pta_prop_barn_rustpile" render_template="generic:DIFFUSE_TEXTURE:NORMALMAP" version="2">
+		<diffuse_texture file="units/pd2_dlc_peta/props/pta_prop_barn_rustypile/pta_prop_barn_rustypile_df" />
+		<bump_normal_texture file="units/pd2_dlc_peta/props/pta_prop_barn_rustypile/pta_prop_barn_rustypile_nm" />
+	</material>
+	<material name="shadow_caster" render_template="shadow_caster_only" version="2" />
+</materials>

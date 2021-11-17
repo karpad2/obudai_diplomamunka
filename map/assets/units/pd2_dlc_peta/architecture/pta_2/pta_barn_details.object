@@ -1,0 +1,29 @@
+<dynamic_object>
+	<diesel materials="units/pd2_dlc_peta/architecture/pta_2/pta_barn" orientation_object="rp_pta_barn_details" />
+	<bodies>
+		<body name="body_static" enabled="true" template="editor">
+			<object name="rp_pta_barn_details" />
+			<object name="c_box_01" collision_type="box" padding="-2.5"/>
+		</body>
+	</bodies>
+	
+	<graphics>
+        <lod_object name="lod_barn_details">
+            <object enabled="true" name="g_no_collision" >
+                <material materials="mat_pta_barn_ground_blend, mat_pta_barn_debris_01, mat_pta_barn_cobweb_01, mat_pta_barn_hay_01, mat_pta_barn_hay_02, mat_pta_barn_plastic_03, mat_pta_barn_plastic_04_blend, mat_pta_barn_plastic_01_blend, mat_pta_barn_ground_blend" max_distance="3000"/>
+                <material materials="mat_pta_barn_ground_blend_lod, mat_pta_barn_debris_01_lod, mat_pta_barn_cobweb_01_lod, mat_pta_barn_hay_01_lod, mat_pta_barn_hay_02_lod, mat_pta_barn_plastic_03_lod, mat_pta_barn_plastic_04_blend_lod, mat_pta_barn_plastic_01_blend_lod, mat_pta_barn_ground_blend_lod" />
+            </object>
+        </lod_object>
+	</graphics>
+	
+</dynamic_object>
+
+
+
+ 
+
+
+
+
+
+

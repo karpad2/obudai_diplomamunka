@@ -1,0 +1,6 @@
+<dynamic_object>
+	<diesel materials="units/pd2_dlc_short/props/gen_prop_police_decal_logo/gen_prop_police_decal_logo" orientation_object="rp_gen_prop_police_decal_logo" />
+	<graphics>
+		<object name="g_g" enabled="true" />
+	</graphics>
+</dynamic_object>

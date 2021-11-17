@@ -1,0 +1,6 @@
+<unit type="moo" slot="1">
+	<object file="units/pd2_dlc_moon/props/moo_prop_mall_planter_1x4/moo_prop_mall_planter_1x4" />
+	<extensions>
+		<extension name="unit_data" class="ScriptUnitData" />
+	</extensions>
+</unit>

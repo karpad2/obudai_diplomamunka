@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<dynamic_object>
+	<diesel materials="units/payday2/props/gen_prop_car_goal_marker/gen_prop_car_goal_marker" orientation_object="rp_gen_prop_car_goal_marker" />
+	<sequence_manager file="units/payday2/props/gen_prop_car_goal_marker/gen_prop_car_goal_marker" />
+	<bodies>
+		<body name="body_static" enabled="true" template="editor">
+			<object name="rp_gen_prop_car_goal_marker" />
+			<object name="c_cube" collision_type="box" padding="-2.5" />
+		</body>
+	</bodies>
+	<graphics>
+		<object name="g_goal" enabled="true" />
+		<object name="g_icon" enabled="true" />
+	</graphics>
+</dynamic_object>

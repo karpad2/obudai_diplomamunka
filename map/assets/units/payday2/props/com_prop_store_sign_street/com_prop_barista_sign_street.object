@@ -1,0 +1,17 @@
+<dynamic_object>
+    <diesel orientation_object="rp_com_prop_barista_sign_street" materials="units/payday2/props/com_prop_store_sign_street/com_prop_barista_sign_street" />
+    <bodies>
+        <body enabled="true" template="static" name="body0" >
+            <object name="rp_com_prop_barista_sign_street" />
+            <object collision_type="box" name="c_box_01" />
+            <object collision_type="box" name="c_box_02" />
+        </body>
+    </bodies>
+    <decal_surfaces>
+        <decal_mesh enabled="true" name="dm_plastic" material="plastic" />
+    </decal_surfaces>
+    <graphics>
+        <object enabled="true" name="g_g" />
+        <object enabled="true" shadow_caster="true" name="s_s" />
+    </graphics>
+</dynamic_object>

@@ -1,0 +1,5 @@
+<materials version="3">
+    <material name="tools_screwdriver" render_template="generic:DIFFUSE_TEXTURE" version="2">
+        <diffuse_texture file="units/world/props/tools/screwdriver_df"/>
+    </material>
+</materials>

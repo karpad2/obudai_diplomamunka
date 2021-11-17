@@ -1,0 +1,6 @@
+<unit type="lcm" slot="1" >
+    <object file="units/custom/pd2_mod_hardwareStore/lcm_b_ext_vtile1_4x4m_a/lcm_b_ext_vtile1_4x4m_a" />
+    <extensions>
+        <extension class="ScriptUnitData" name="unit_data" />
+    </extensions>
+</unit>

@@ -1,0 +1,17 @@
+<dynamic_object>
+    <diesel orientation_object="rp_ind_ext_warehouse_hedge" materials="units/payday2/architecture/ind/ind_ext_level/ind_ext_warehouse_hedge" />
+    <bodies>
+        <body enabled="true" template="static" name="body0" >
+            <object name="rp_ind_ext_warehouse_hedge" />
+            <object collision_type="convex" name="c_convex_01" padding="-2.5" />
+        </body>
+    </bodies>
+	
+	<decal_surfaces default_material="foliage" static="true" >
+		<decal_mesh enabled="true" name="dm_foliage" material="foliage" />
+	</decal_surfaces>
+  
+    <graphics>
+        <object enabled="true" name="g_g" shadow_caster="false" />
+    </graphics>
+</dynamic_object>

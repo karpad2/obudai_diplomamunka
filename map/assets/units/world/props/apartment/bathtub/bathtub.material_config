@@ -1,0 +1,6 @@
+<materials version="3">
+    <material name="bathtub" render_template="generic:DIFFUSE_TEXTURE:INSTANCED" version="2">
+        <variable value="0" type="scalar" name="specular_power"/>
+        <diffuse_texture file="units/world/props/apartment/bathtub/bathtub_df"/>
+    </material>
+</materials>

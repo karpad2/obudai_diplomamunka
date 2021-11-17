@@ -1,0 +1,7 @@
+<materials version="3">
+    <material name="mat_plant" version="2" render_template="generic:ALPHA_MASKED:DIFFUSE_TEXTURE:EXTERNAL_ALPHA_REF:NORMALMAP">
+        <bump_normal_texture file="units/payday2/vegetation/com_veg_plant_green/com_veg_plant_green_nm"/>
+        <diffuse_texture file="units/payday2/vegetation/com_veg_plant_green/com_veg_plant_green_df"/>
+        <variable value="0.0099999997764826" type="scalar" name="alpha_ref"/>
+    </material>
+</materials>

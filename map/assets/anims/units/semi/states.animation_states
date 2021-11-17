@@ -1,0 +1,44 @@
+<xml>
+	<state name="std" type="template_state" segment="base">
+		<default blend="0"/>
+
+		
+		<to	name="pta_arrive_1" redirect="std/move/pta_arrive_1"/>
+		<to	name="pta_arrive_2" redirect="std/move/pta_arrive_2"/>
+		<to	name="pta_arrive_3" redirect="std/move/pta_arrive_3"/>
+		
+
+	</state>
+
+	<state name="std/empty" type="emptyloop" segment="base">
+		<keys>
+			<key at="9" callback="anim_clbk_empty_full_blend" class_name="base"/>
+			<key at="exit" callback="anim_clbk_empty_exit" class_name="base"/>
+		</keys>
+	</state>
+
+	<state name="std/move" type="template_state" segment="base">
+		<keys>
+			<key at="enter" callback="anim_clbk_animated_driving" class_name="base" param1="true"/>
+			<key at="exit" callback="anim_clbk_animated_driving" class_name="base" param1="false"/>
+		</keys>
+	</state>
+
+	
+	<state name="std/move/pta_arrive_1" type="once" segment="base">
+		<anim name="anim_pta_arrive_1"/>
+		<exit name="std/empty"/>
+	</state>
+
+	<state name="std/move/pta_arrive_2" type="once" segment="base">
+		<anim name="anim_pta_arrive_2"/>
+		<exit name="std/empty"/>
+	</state>
+
+	<state name="std/move/pta_arrive_3" type="once" segment="base">
+		<anim name="anim_pta_arrive_3"/>
+		<exit name="std/empty"/>
+	</state>
+	
+
+</xml>

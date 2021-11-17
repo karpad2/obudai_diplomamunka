@@ -1,0 +1,13 @@
+<dynamic_object>
+    <diesel orientation_object="rp_tools_hammer" materials="units/world/props/tools/tools_hammer" />
+    <bodies>
+        <body enabled="true" template="editor" name="body0" >
+            <object name="rp_tools_hammer" />
+            <object enabled="true" collision_type="box" name="g_tools_hammer" />
+        </body>
+    </bodies>
+	
+    <graphics>
+        <object enabled="true" name="g_tools_hammer"/>
+    </graphics>
+</dynamic_object>

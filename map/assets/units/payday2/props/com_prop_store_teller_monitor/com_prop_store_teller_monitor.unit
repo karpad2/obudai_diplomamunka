@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<unit type="com" slot="1">
+	<object file="units/payday2/props/com_prop_store_teller_monitor/com_prop_store_teller_monitor" />
+    <extensions>
+        <extension class="ScriptUnitData" name="unit_data" />
+		<extension name="damage" class="UnitDamage" />
+    </extensions>
+</unit>

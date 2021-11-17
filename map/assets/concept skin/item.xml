@@ -1,0 +1,140 @@
+<ugcitem>
+	<param key="name" value="Concept"/>
+	<param key="screenshot" value="screenshot1.png"/>
+	<param key="type" value="weapon_skin"/>
+	<node name="data">
+		<param key="name_id" value="bm_wskn_p90_concept"/>
+		<param key="weapon_id" value="p90"/>
+		<node name="types">
+			<node name="sight">
+				<param key="base_gradient_name" value="base_concept_2.tga"/>
+				<param key="pattern_pos" value="Vector3(0.445028, 0.425948, 0)"/>
+				<param key="pattern_tweak" value="Vector3(1.92225, 0, 0)"/>
+				<param key="pattern_name" value="pat_concept.tga"/>
+				<param key="pattern_gradient_name" value="patgra_concept.tga"/>
+			</node>
+			<node name="barrel_ext">
+				<param key="base_gradient_name" value="base_concept_2.tga"/>
+				<param key="pattern_pos" value="Vector3(-0.375387, -0.213212, 0)"/>
+				<param key="pattern_tweak" value="Vector3(1.06368, 0, 0.0269498)"/>
+				<param key="pattern_name" value="pat_concept.tga"/>
+				<param key="pattern_gradient_name" value="patgra_concept.tga"/>
+			</node>
+			<node name="gadget">
+				<param key="base_gradient_name" value="base_concept_2.tga"/>
+				<param key="pattern_pos" value="Vector3(0.740759, 0.072979, 0)"/>
+				<param key="pattern_tweak" value="Vector3(1, 0, 0.0150252)"/>
+				<param key="pattern_name" value="pat_concept.tga"/>
+				<param key="pattern_gradient_name" value="patgra_concept.tga"/>
+			</node>
+		</node>
+		<param key="base_gradient_name" value="base_concept.tga"/>
+		<param key="id" value="skn_p90_concept"/>
+		<param key="reserve_quality" value="true"/>
+		<node name="parts">
+			<node name="wpn_fps_smg_p90_m_strap">
+				<node name="f61bfccbe439c87a">
+					<param key="base_gradient_name" value="base_concept_2.tga"/>
+				</node>
+			</node>
+			<node name="wpn_fps_upg_o_acog">
+				<node name="4144c08a44a4f6bc">
+					<param key="base_gradient_name" value="base_concept_3.tga"/>
+				</node>
+			</node>
+			<node name="wpn_fps_smg_p90_b_civilian">
+				<node name="0b106ab052cccbcf">
+					<param key="base_gradient_name" value="base_concept_2.tga"/>
+					<param key="pattern_pos" value="Vector3(-0.547102, -0.136895, 0)"/>
+					<param key="pattern_tweak" value="Vector3(1, 0, 0.0579538)"/>
+					<param key="pattern_name" value="pat_concept.tga"/>
+					<param key="pattern_gradient_name" value="patgra_concept.tga"/>
+				</node>
+			</node>
+			<node name="wpn_fps_upg_fl_ass_peq15">
+				<node name="444ef1e058f2e44e">
+				</node>
+			</node>
+			<node name="wpn_fps_smg_p90_body_boxy">
+				<node name="6d23a9ee9f2ce5fd">
+					<param key="base_gradient_name" value="base_concept_3.tga"/>
+				</node>
+				<node name="a5837ebaf5525c4b">
+					<param key="pattern_gradient_name" value="patgra_concept.tga"/>
+					<param key="pattern_pos" value="Vector3(0.0252806, 0.04436, 0)"/>
+					<param key="pattern_name" value="pat_concept.tga"/>
+					<param key="pattern_tweak" value="Vector3(2.39924, 0, 0)"/>
+				</node>
+			</node>
+			<node name="wpn_fps_smg_p90_body_p90">
+				<node name="86936584e6c0df39">
+					<param key="pattern_tweak" value="Vector3(2.78083, 0, 0)"/>
+					<param key="pattern_pos" value="Vector3(0.36871, -0.308609, 0)"/>
+					<param key="pattern_name" value="pat_concept.tga"/>
+					<param key="pattern_gradient_name" value="patgra_concept.tga"/>
+				</node>
+			</node>
+			<node name="wpn_fps_upg_o_rx30">
+				<node name="e13ec1b1be415dc6">
+				</node>
+			</node>
+			<node name="wpn_fps_smg_p90_b_ninja">
+				<node name="00c9ae43d25a39ce">
+					<param key="base_gradient_name" value="base_concept_2.tga"/>
+					<param key="pattern_pos" value="Vector3(-0.699737, -0.0605769, 0)"/>
+					<param key="pattern_tweak" value="Vector3(1.11138, 3.12136, 0)"/>
+					<param key="pattern_name" value="pat_concept.tga"/>
+					<param key="pattern_gradient_name" value="patgra_concept.tga"/>
+				</node>
+			</node>
+			<node name="wpn_fps_upg_o_reflex">
+				<node name="ead5aba1025e8edd">
+					<param key="base_gradient_name" value="base_concept_3.tga"/>
+				</node>
+			</node>
+			<node name="wpn_fps_upg_o_spot">
+				<node name="1281bdd104404adc">
+					<param key="pattern_pos" value="Vector3(-0.0319577, -0.089196, 0)"/>
+					<param key="pattern_gradient_name" value="patgra_concept.tga"/>
+					<param key="base_gradient_name" value="base_concept_3.tga"/>
+					<param key="pattern_name" value="pat_concept.tga"/>
+					<param key="pattern_tweak" value="Vector3(4.25948, 0, 0)"/>
+				</node>
+			</node>
+			<node name="wpn_fps_upg_o_t1micro">
+				<node name="bf75b1a84131514f">
+				</node>
+			</node>
+			<node name="wpn_fps_upg_o_aimpoint_2">
+				<node name="e25840e790fcd5fc">
+				</node>
+			</node>
+			<node name="wpn_upg_o_marksmansight_front">
+				<node name="39e7095278782d53">
+				</node>
+			</node>
+			<node name="wpn_fps_upg_o_rx01">
+				<node name="bbf177cf6c3dead2">
+					<param key="pattern_gradient_name" value="patgra_concept.tga"/>
+					<param key="pattern_pos" value="Vector3(-0.327689, -0.318149, 0)"/>
+					<param key="pattern_name" value="pat_concept.tga"/>
+					<param key="pattern_tweak" value="Vector3(1.34987, 0, 0)"/>
+				</node>
+			</node>
+			<node name="wpn_fps_upg_o_eotech">
+				<node name="4f2912710fde9823">
+				</node>
+			</node>
+			<node name="wpn_fps_upg_fl_ass_smg_sho_peqbox">
+				<node name="6f8180a7d543eaf4">
+					<param key="base_gradient_name" value="base_concept_2.tga"/>
+					<param key="pattern_pos" value="Vector3(0.597663, 0.530885, 0)"/>
+					<param key="pattern_tweak" value="Vector3(1, 0, 0)"/>
+					<param key="pattern_name" value="pat_concept.tga"/>
+					<param key="pattern_gradient_name" value="patgra_concept.tga"/>
+				</node>
+			</node>
+		</node>
+	</node>
+	<param key="timestamp" value="2018344010320"/>
+</ugcitem>

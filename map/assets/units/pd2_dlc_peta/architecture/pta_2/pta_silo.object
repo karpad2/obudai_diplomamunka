@@ -1,0 +1,32 @@
+<dynamic_object>
+	<diesel materials="units/pd2_dlc_peta/architecture/pta_2/pta_silo" orientation_object="rp_pta_silo" />
+	<bodies>
+		<body name="body_static" enabled="true" template="static">
+			<object name="rp_pta_silo" />
+			<object name="c_convex_01" collision_type="convex" padding="-2.5"/>
+			<object name="c_meshmopp" collision_type="mesh_mopp" />
+			<object name="c_meshmopp_02" collision_type="mesh_mopp" />
+		</body>
+	</bodies>
+	
+	<decal_surfaces default_material="metal">
+		<decal_mesh name="dm_metal" enabled="true" material="sheet_metal" />
+	</decal_surfaces>
+	
+	<graphics>
+        <lod_object name="lod_silo">
+            <object enabled="true" name="g_g" >
+                <material materials="mat_pta_silo_top, mat_pta_silo_blend_01" max_distance="6000"/>
+                <material materials="mat_pta_silo_top_lod, mat_pta_silo_blend_01_lod" />
+            </object>
+        </lod_object>
+		<object name="s_s" enabled="true" shadow_caster="true" />
+	</graphics>
+	
+</dynamic_object>
+
+
+
+
+
+

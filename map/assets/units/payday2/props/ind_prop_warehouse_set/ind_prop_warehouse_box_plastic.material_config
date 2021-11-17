@@ -1,0 +1,8 @@
+<materials version="3">
+    <material name="ind_prop_warehouse_plastic_box" render_template="generic:DIFFUSE_TEXTURE:NORMALMAP" version="2">
+        <diffuse_texture file="units/payday2/props/ind_prop_warehouse_set/ind_prop_warehouse_plastic_box_df"/>
+        <bump_normal_texture file="units/payday2/props/ind_prop_warehouse_set/ind_prop_warehouse_plastic_box_nm"/>
+    </material>
+</materials>
+
+

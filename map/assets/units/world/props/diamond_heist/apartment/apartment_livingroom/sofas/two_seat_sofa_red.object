@@ -1,0 +1,19 @@
+<dynamic_object>
+    <diesel orientation_object="rp_two_seat_sofa_red" materials="units/world/props/diamond_heist/apartment/apartment_livingroom/sofas/two_seat_sofa_red" />
+    <animations/>
+    <bodies>
+        <body enabled="true" template="static" name="body0" >
+            <object name="rp_two_seat_sofa_red" />
+            <object enabled="true" collision_type="mesh_mopp" name="c_sofa_mesh_mopp" />
+        </body>
+    </bodies>
+	
+	<decal_surfaces default_material="cloth_stuffed" static="true">
+		<decal_mesh name="g_two_seat_sofa_red" enabled="true" material="cloth_stuffed" />
+	</decal_surfaces>
+	
+    <graphics>
+        <object enabled="true" name="g_two_seat_sofa_red" />
+		<object enabled="true" name="s_sofa_mesh_mopp" shadow_caster="true" />
+    </graphics>
+</dynamic_object>

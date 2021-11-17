@@ -1,0 +1,7 @@
+<materials version="3">
+    <material name="mat_gate" render_template="generic:CUBE_ENVIRONMENT_MAPPING:DIFFUSE_TEXTURE:SKINNED_1WEIGHT" version="2">
+        <diffuse_texture file="units/payday2/props/air_prop_runway_gate/air_prop_runway_gate_df"/>
+        <reflection_texture type="cube" global_texture="current_global_texture"/>
+    </material>
+    <material version="2" render_template="shadow_caster_only:SKINNED_1WEIGHT" name="shadow_caster"/>
+</materials>

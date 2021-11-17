@@ -1,0 +1,18 @@
+<dynamic_object>
+    <diesel orientation_object="rp_ficus_b" materials="units/payday2/vegetation/com_veg_plant_benjaminficus_planted/com_veg_plant_benjaminficus_planted" />
+	 <bodies>
+        <body enabled="true" template="static" name="static_body" >
+			<object name="c_box" collision_type="box" padding="-2.5"/>
+        </body>
+        <body enabled="true" template="mover_blocker" name="mover_body" >
+			<object name="c_capsule" collision_type="capsule" padding="-2.5"/>
+        </body>
+    </bodies>
+    <decal_surfaces>
+		<decal_mesh name="dm_plastic" enabled="true" material="plastic"/>
+		<decal_mesh name="dm_dirt" enabled="true" material="dirt"/>
+    </decal_surfaces>
+    <graphics>
+        <object enabled="true" name="g_ficus_b" />
+    </graphics>
+</dynamic_object>

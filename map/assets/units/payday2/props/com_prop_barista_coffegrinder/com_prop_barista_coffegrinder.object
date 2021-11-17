@@ -1,0 +1,14 @@
+<dynamic_object>
+    <diesel orientation_object="rp_com_prop_barista_coffegrinder" materials="units/payday2/props/com_prop_barista_coffegrinder/com_prop_barista_coffegrinder" />
+    <bodies>
+        <body enabled="true" template="static" name="body0" >
+            <object collision_type="box" name="c_box_01" />
+            <object collision_type="box" name="c_box_02" />
+            <object collision_type="box" name="c_convex_01" />
+            <object collision_type="box" name="c_convex_02" />
+        </body>
+    </bodies>
+    <graphics>
+        <object enabled="true" name="g_com_prop_barista_coffegrinder" />
+    </graphics>
+</dynamic_object>

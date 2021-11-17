@@ -1,0 +1,12 @@
+<materials version="3">
+    <material name="mat_acvent04" render_template="generic:DIFFUSE_TEXTURE" version="2">
+        <diffuse_texture file="units/world/architecture/hospital/props/rooftop/acvent/acvent04_df"/>
+    </material>
+    <material name="mat_acvent04_lod_1" render_template="generic:DIFFUSE_TEXTURE" version="2">
+        <diffuse_texture file="units/world/architecture/hospital/props/rooftop/acvent/acvent04_df" mip="2"/>
+    </material>
+    <material name="mat_acvent04_lod_2" render_template="generic:DIFFUSE_TEXTURE" version="2">
+        <diffuse_texture file="units/world/architecture/hospital/props/rooftop/acvent/acvent04_df" mip="4"/>
+    </material>
+    <material name="shadow_caster" render_template="shadow_caster_only" version="2"/>
+</materials>

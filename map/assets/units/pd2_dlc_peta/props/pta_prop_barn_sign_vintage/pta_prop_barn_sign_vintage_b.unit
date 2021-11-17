@@ -1,0 +1,6 @@
+<unit type="pta" slot="1">
+	<object file="units/pd2_dlc_peta/props/pta_prop_barn_sign_vintage/pta_prop_barn_sign_vintage_b" />
+	<extensions>
+		<extension name="unit_data" class="ScriptUnitData" />
+	</extensions>
+</unit>

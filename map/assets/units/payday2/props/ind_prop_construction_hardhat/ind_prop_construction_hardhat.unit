@@ -1,0 +1,10 @@
+<unit type="ind" slot="1" >
+    <object file="units/payday2/props/ind_prop_construction_hardhat/ind_prop_construction_hardhat" />
+    <extensions>
+        <extension class="ScriptUnitData" name="unit_data" />
+		<extension name="damage" class="UnitDamage" />
+    </extensions>
+	<dependencies>
+		<depends_on physic_effect="physic_effects/push_sphere_unit" />
+	</dependencies>
+</unit>

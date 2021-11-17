@@ -1,0 +1,107 @@
+<dynamic_object>
+    <diesel orientation_object="rp_parking_booth" materials="units/payday2/props/str_prop_parking_booth/str_prop_parking_booth" />
+	<sequence_manager file="units/payday2/props/str_prop_parking_booth/str_prop_parking_booth"/>
+	
+    <bodies>
+        <body enabled="true" template="static" name="s_booth" >
+			<object name="c_mesh_mopp" collision_type="mesh_mopp" />
+        </body>
+		
+        <body enabled="true" template="static" name="s_window_01" >
+			<object name="c_box_window_01" collision_type="box" padding="-2.5"/>
+        </body>
+        <body enabled="true" template="static" name="s_window_02" >
+			<object name="c_box_window_02" collision_type="box" padding="-2.5"/>
+        </body>
+        <body enabled="true" template="static" name="s_window_03" >
+			<object name="c_box_window_03" collision_type="box" padding="-2.5"/>
+        </body>
+        <body enabled="true" template="static" name="s_window_04" >
+			<object name="c_box_window_04" collision_type="box" padding="-2.5"/>
+        </body>
+        <body enabled="true" template="static" name="s_window_05" >
+			<object name="c_box_window_05" collision_type="box" padding="-2.5"/>
+        </body>
+        <body enabled="true" template="static" name="s_window_06" >
+			<object name="c_box_window_06" collision_type="box" padding="-2.5"/>
+        </body>
+        <body enabled="true" template="static" name="s_window_07" >
+			<object name="c_box_window_07" collision_type="box" padding="-2.5"/>
+        </body>
+        <body enabled="true" template="static" name="s_window_08" >
+			<object name="c_box_window_08" collision_type="box" padding="-2.5"/>
+        </body>
+    </bodies>
+	
+	<decal_surfaces>
+		<decal_mesh name="dm_concrete" enabled="true" material="concrete"/>
+		<decal_mesh name="dm_glass_lights" enabled="true" material="glass_breakable"/>
+		<decal_mesh name="dm_glass_window_01" enabled="true" material="glass_breakable"/>
+		<decal_mesh name="dm_glass_window_02" enabled="true" material="glass_breakable"/>
+		<decal_mesh name="dm_glass_window_03" enabled="true" material="glass_breakable"/>
+		<decal_mesh name="dm_glass_window_04" enabled="true" material="glass_breakable"/>
+		<decal_mesh name="dm_glass_window_05" enabled="true" material="glass_breakable"/>
+		<decal_mesh name="dm_glass_window_06" enabled="true" material="glass_breakable"/>
+		<decal_mesh name="dm_glass_window_07" enabled="true" material="glass_breakable"/>
+		<decal_mesh name="dm_glass_window_08" enabled="true" material="glass_breakable"/>
+		<decal_mesh name="dm_metal" enabled="true" material="metal"/>
+		<decal_mesh name="dm_plastic" enabled="true" material="plastic"/>
+		<decal_mesh name="dm_sheet_metal" enabled="true" material="sheet_metal"/>
+	</decal_surfaces>
+	
+    <graphics>
+		<lod_object name="charger">
+			<object name="g_g" 			lod="0" enabled="true" max_distance="2000"/>
+			<object name="g_g_lod_1" 	lod="1" enabled="true"/>
+		</lod_object> 
+		
+		<object name="g_glass_01" enabled="true"/>
+		<object name="g_glass_02" enabled="true"/>
+		<object name="g_glass_03" enabled="true"/>
+		<object name="g_glass_04" enabled="true"/>
+		<object name="g_glass_05" enabled="true"/>
+		<object name="g_glass_06" enabled="true"/>
+		<object name="g_glass_07" enabled="true"/>
+		<object name="g_glass_08" enabled="true"/>
+		<object name="g_glass_dmg_01" enabled="false"/>
+		<object name="g_glass_dmg_02" enabled="false"/>
+		<object name="g_glass_dmg_03" enabled="false"/>
+		<object name="g_glass_dmg_04" enabled="false"/>
+		<object name="g_glass_dmg_05" enabled="false"/>
+		<object name="g_glass_dmg_06" enabled="false"/>
+		<object name="g_glass_dmg_07" enabled="false"/>
+		<object name="g_glass_dmg_08" enabled="false"/>
+		
+		<object name="s_s" enabled="true" shadow_caster="true"/>
+    </graphics>
+	
+</dynamic_object>
+
+	<!--
+	<animations>
+		<animation_group name="window_01">
+			<object name="jt_glass_01" />
+		</animation_group>
+		<animation_group name="window_02">
+			<object name="jt_glass_02" />
+		</animation_group>
+		<animation_group name="window_03">
+			<object name="jt_glass_03" />
+		</animation_group>
+		<animation_group name="window_04">
+			<object name="jt_glass_04" />
+		</animation_group>
+		<animation_group name="window_05">
+			<object name="jt_glass_05" />
+		</animation_group>
+		<animation_group name="window_06">
+			<object name="jt_glass_06" />
+		</animation_group>
+		<animation_group name="window_07">
+			<object name="jt_glass_07" />
+		</animation_group>
+		<animation_group name="window_08">
+			<object name="jt_glass_08" />
+		</animation_group>
+	</animations>
+	-->

@@ -1,0 +1,161 @@
+<?xml version="1.0"?>
+<dynamic_object>
+	<diesel materials="units/pd2_dlc_bph/vehicles/bph_turret/bph_turret" orientation_object="rp_bph_turret" />
+	<sequence_manager file="units/pd2_dlc_bph/vehicles/bph_turret/bph_turret" />
+	<animations>
+		<animation_group name="anim">
+			<object name="anim_piston_01"	/>
+			<object name="anim_z_base"		/>
+			<object name="anim_y_gun"		/>
+		</animation_group>
+		<animation_group name="anim_fire" enabled="false" loop="true">
+				<object name="anim_barrel" />
+		</animation_group>
+	</animations>
+	<bodies>
+
+		<!-- Do Not Take Damage -->
+		<body name="body_base" enabled="true" template="animated">
+			<object name="anim_z_base" />
+			<object name="c_convex_gun_holder" collision_type="convex" padding="-2.5" />
+		</body>
+		<body name="body_base_dmg" enabled="false" template="animated">
+			<object name="anim_z_base" />
+			<object name="c_convex_gun_holder" collision_type="convex" padding="-2.5" />
+		</body>
+		<body name="body_shelter" enabled="true" template="animated">
+			<object name="g_piston_bot" collision_type="box" padding="-2.5" />
+		</body>
+		<body name="body_pillar_bot" enabled="true" template="animated">
+			<object name="g_piston_bot" collision_type="box" padding="-2.5" />
+		</body>
+		<body name="body_pillar_top" enabled="true" template="animated">
+			<object name="g_piston_top" collision_type="box" padding="-2.5" />
+		</body>
+
+		<!-- Main Body -->
+		<body name="body" enabled="true" template="animated">
+			<object name="anim_y_gun" />
+			<object name="c_convex_body" collision_type="convex" padding="-2.5" />
+			<object name="g_barrel" collision_type="box" padding="-2.5" />
+		</body>
+
+		<!-- Weak Spot -->
+		<body name="body_weakspot" enabled="true" template="animated">
+			<object name="anim_y_gun" />
+			<object name="c_convex_weakpoint" collision_type="mesh_mopp" padding="-2.5" />
+		</body>
+
+		<!-- Shields to shoot off. -->
+		<body name="body_shields" enabled="true" template="animated">
+			<object name="anim_z_base" />
+			<object name="c_shield" collision_type="mesh_mopp" padding="-2.5" />
+		</body>
+
+		<body name="body_block_detect" enabled="true" template="animated">
+			<object name="rp_bph_turret" />
+			<object name="g_piston_bot" collision_type="convex" padding="-2.5" />
+		</body>
+
+	</bodies>
+	<effects>
+		<effect_spawner
+			name="es_light"
+			enabled="false"
+			object="e_light"
+			assign_parent="true"
+			effect="effects/particles/weapons/flashlight/flashlight"
+		/>
+		<effect_spawner
+			name="es_aftersmoke"
+			enabled="false"
+			object="anim_z_base"
+			assign_parent="true"
+			fade_kill="true"
+			effect="effects/payday2/particles/explosions/sentry_aftersmoke"
+		/>
+		<effect_spawner
+			name="es_small_damage"
+			enabled="false"
+			object="anim_z_base"
+			assign_parent="true"
+			fade_kill="true"
+			effect="effects/payday2/particles/explosions/sentry_damage_smoke"
+		/>
+		<effect_spawner
+			name="es_medium_damage"
+			enabled="false"
+			object="anim_z_base"
+			assign_parent="true"
+			fade_kill="true"
+			effect="effects/payday2/particles/explosions/sentry_damage_smoke_med"
+		/>
+		<effect_spawner
+			name="es_large_damage"
+			enabled="false"
+			object="anim_z_base"
+			assign_parent="true"
+			fade_kill="true"
+			effect="effects/payday2/particles/explosions/sentry_damage_smoke_large"
+		/>
+		<effect_spawner
+			name="es_sparks_loop"
+			enabled="false"
+			object="e_sparks"
+			assign_parent="true"
+			fade_kill="true"
+			effect="effects/payday2/particles/explosions/sparks/sparks_loop"
+		/>
+	</effects>
+	<lights>
+		<light name="li_light" enabled="false" type="spot|specular" multiplier="searchlight" far_range="1500" />
+	</lights>
+	<decal_surfaces default_material="steel">
+		<decal_mesh name="g_shield" enabled="true" material="steel" />
+	</decal_surfaces>
+	<graphics>
+
+        <lod_object name="lod_gun_body">
+            <object enabled="true" name="g_gun_body" >
+                <material materials="mtr_turret, mtr_mag, mtr_handle, mtr_turret_body" max_distance="1000"/>
+                <material materials="mtr_turret_lod, mtr_mag_lod, mtr_handle_lod, mtr_turret_body_lod" />
+            </object>
+        </lod_object>
+
+        <lod_object name="lod_barrel">
+            <object name="g_barrel" enabled="true" >
+                <material materials="mtr_barrel" max_distance="1000"/>
+                <material materials="mtr_barrel_lod" />
+            </object>
+        </lod_object>
+
+		<lod_object name="lod_shield">
+            <object name="g_shield" enabled="true" >
+                <material materials="mtr_turret" max_distance="1000"/>
+                <material materials="mtr_turret_lod" />
+            </object>
+        </lod_object>
+
+        <lod_object name="lod_gun_holder">
+            <object name="g_gun_holder" enabled="true" >
+                <material materials="mtr_turret" max_distance="1000"/>
+                <material materials="mtr_turret_lod" />
+            </object>
+        </lod_object>
+
+        <lod_object name="lod_piston_top">
+            <object name="g_piston_top" enabled="true" >
+                <material materials="mtr_turret" max_distance="1000"/>
+                <material materials="mtr_turret_lod" />
+            </object>
+        </lod_object>
+
+        <lod_object name="lod_piston_bot">
+            <object name="g_piston_bot" enabled="true" >
+                <material materials="mtr_turret" max_distance="1000"/>
+                <material materials="mtr_turret_lod" />
+            </object>
+        </lod_object>
+		
+	</graphics>
+</dynamic_object>

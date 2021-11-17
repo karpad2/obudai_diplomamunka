@@ -1,0 +1,19 @@
+<dynamic_object>
+	<diesel materials="units/pd2_dlc_peta/props/pta_prop_barn_barrel/pta_prop_barn_barrel" orientation_object="rp_pta_prop_barn_barrel" />
+	<bodies>
+		<body name="body_static" enabled="true" template="static">
+			<object name="rp_pta_prop_barn_barrel" />
+			<object name="c_convex_01" collision_type="convex" padding="-2.5" />
+		</body>
+	</bodies>
+	<decal_surfaces default_material="wood">
+		<decal_mesh name="dm_wood" enabled="true" material="wood" />
+	</decal_surfaces>
+	<graphics>
+		<lod_object name="lod_g">
+			<object name="g_lod0" enabled="true" max_distance="2500" />
+			<object name="g_lod1" enabled="true" />
+		</lod_object>
+		<object name="s_s" enabled="true" shadow_caster="true" />
+	</graphics>
+</dynamic_object>

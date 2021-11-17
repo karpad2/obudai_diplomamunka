@@ -1,0 +1,15 @@
+<dynamic_object>
+    <diesel materials="units/payday2/props/com_prop_jewelry_counters/com_prop_jewelry" orientation_object="rp_com_prop_sign_staff" />
+	<bodies>
+		<body name="static_body" enabled="true" template="static">
+			<object name="rp_com_prop_sign_staff" />
+			<object name="c_box_sign" collision_type="box" padding="-2.5"/>
+		</body>
+	</bodies>
+	<decal_surfaces>
+		<decal_mesh name="dm_sheet_metal" enabled="true" material="sheet_metal"/>
+	</decal_surfaces>
+    <graphics>
+        <object name="g_sign" enabled="true"/>
+    </graphics>
+</dynamic_object>

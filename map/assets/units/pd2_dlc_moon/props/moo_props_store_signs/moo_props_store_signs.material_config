@@ -1,0 +1,53 @@
+<materials version="3">
+    <material render_template="generic:DIFFUSE_TEXTURE:NORMALMAP:VERTEX_COLOR" name="mat_toy_store" version="2">
+        <diffuse_texture file="units/pd2_dlc_moon/props/moo_props_store_signs/moo_props_store_signs_toy_store_df"/>
+        <bump_normal_texture file="units/pd2_dlc_moon/props/moo_props_store_signs/moo_props_store_signs_toy_store_nm"/>
+    </material>
+    <material render_template="generic:DIFFUSE_TEXTURE" name="mat_electronic_store" version="2">
+        <diffuse_texture file="units/pd2_dlc_moon/props/moo_props_store_signs/moo_props_store_signs_electronic_store_df"/>
+    </material>
+    <material render_template="generic:DIFFUSE_TEXTURE:SELF_ILLUMINATION:SELF_ILLUMINATION_BLOOM" name="mat_electronic_store_il" version="2">
+        <diffuse_texture file="units/pd2_dlc_moon/props/moo_props_store_signs/moo_props_store_signs_electronic_store_df"/>
+        <self_illumination_texture file="units/pd2_dlc_moon/props/moo_props_store_signs/moo_props_store_signs_electronic_store_df"/>
+        <variable type="scalar" name="il_multiplier" value="match"/>
+        <variable type="scalar" name="il_bloom" value="6.666000316618"/>
+    </material>
+    <material render_template="generic:CUBE_ENVIRONMENT_MAPPING:DIFFUSE_TEXTURE:NORMALMAP" name="mat_shoe_store" version="2">
+        <diffuse_texture file="units/pd2_dlc_moon/props/moo_props_store_signs/moo_props_store_signs_shoe_store_df"/>
+        <bump_normal_texture file="units/pd2_dlc_moon/props/moo_props_store_signs/moo_props_store_signs_shoe_store_nm"/>
+        <reflection_texture file="environments/cubemaps/cubemap_gold" type="cubemap"/>
+    </material>
+    <material render_template="generic:DIFFUSE_TEXTURE:NORMALMAP" name="mat_wine_store" version="2">
+        <diffuse_texture file="units/pd2_dlc_moon/props/moo_props_store_signs/moo_props_store_signs_wine_store_df"/>
+        <bump_normal_texture file="units/pd2_dlc_moon/props/moo_props_store_signs/moo_props_store_signs_wine_store_nm"/>
+    </material>
+    <material render_template="generic:DIFFUSE_TEXTURE:NORMALMAP" name="mat_jewellery_store" version="2">
+        <diffuse_texture file="units/pd2_dlc_moon/props/moo_props_store_signs/moo_props_store_signs_jewellery_store_df"/>
+        <bump_normal_texture file="units/pd2_dlc_moon/props/moo_props_store_signs/moo_props_store_signs_jewellery_store_nm"/>
+    </material>
+    <material render_template="generic:DIFFUSE_TEXTURE:SELF_ILLUMINATION:SELF_ILLUMINATION_BLOOM" name="mat_jewellery_store_il" version="2">
+        <diffuse_texture file="units/pd2_dlc_moon/props/moo_props_store_signs/moo_props_store_signs_jewellery_store_df"/>
+        <self_illumination_texture file="units/pd2_dlc_moon/props/moo_props_store_signs/moo_props_store_signs_jewellery_store_df"/>
+        <variable type="scalar" name="il_multiplier" value="sun"/>
+        <variable type="scalar" name="il_bloom" value="2.2870001086267"/>
+    </material>
+    <material render_template="generic:DIFFUSE_TEXTURE" name="mat_electronix_stand" version="2">
+        <diffuse_texture file="units/pd2_dlc_moon/props/moo_props_store_signs/moo_props_store_sign_stand_electronix_df"/>
+    </material>
+    <material render_template="generic:DIFFUSE_TEXTURE:NORMALMAP" name="mat_standing_signs" version="2">
+        <diffuse_texture file="units/pd2_dlc_moon/props/moo_props_store_signs/moo_props_store_signs_stands_df"/>
+        <bump_normal_texture file="units/pd2_dlc_moon/props/moo_props_store_signs/moo_props_store_signs_stands_nm"/>
+    </material>
+    <material render_template="generic:DIFFUSE_TEXTURE" name="mat_jewellery_stand" version="2">
+        <diffuse_texture file="units/pd2_dlc_moon/props/moo_props_store_signs/moo_props_store_sign_stand_jewellery_df"/>
+    </material>
+    <material render_template="generic:DIFFUSE_TEXTURE" name="mat_shoes_stand" version="2">
+        <diffuse_texture file="units/pd2_dlc_moon/props/moo_props_store_signs/moo_props_store_sign_stand_shoes_df"/>
+    </material>
+    <material render_template="generic:DIFFUSE_TEXTURE" name="mat_toy_stand" version="2">
+        <diffuse_texture file="units/pd2_dlc_moon/props/moo_props_store_signs/moo_props_store_sign_stand_toy_df"/>
+    </material>
+    <material render_template="generic:DIFFUSE_TEXTURE" name="mat_wine_stand" version="2">
+        <diffuse_texture file="units/pd2_dlc_moon/props/moo_props_store_signs/moo_props_store_sign_stand_wine_df"/>
+    </material>
+</materials>

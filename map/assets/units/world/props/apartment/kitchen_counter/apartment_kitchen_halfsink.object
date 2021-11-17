@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<dynamic_object>
+  <diesel materials="units/world/props/apartment/kitchen_counter/apartment_kitchen_counter" orientation_object="rp_halfsink" />
+  <!--<sequence_manager file="units/world/props/apartment/hide_units" />-->
+  <bodies>
+    <body name="static_body" enabled="true" template="static">
+      <object name="rp_halfsink" />
+      <object name="g_counter" collision_type="mesh_mopp" />
+    </body>
+  </bodies>
+  <decal_surfaces default_material="sheet_metal">
+    <decal_mesh name="dm_wood" enabled="true" material="wood" />
+    <decal_mesh name="dm_metal" enabled="true" material="metal" />
+    <decal_mesh name="dm_sheet_metal" enabled="true" material="sheet_metal" />
+  </decal_surfaces>
+  <graphics>
+    <object name="g_counter" enabled="true" instance_struct="world_tm"  />
+  </graphics>
+</dynamic_object> 

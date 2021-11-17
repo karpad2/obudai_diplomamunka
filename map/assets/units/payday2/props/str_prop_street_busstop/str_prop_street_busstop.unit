@@ -1,0 +1,16 @@
+<unit type="str" slot="1" >
+<network sync="spawn"/>
+	<object file="units/payday2/props/str_prop_street_busstop/str_prop_street_busstop" />
+	
+	<dependencies>
+		<depends_on effect="effects/payday2/particles/window/storefront_window_small"/>
+		
+		<depends_on physic_effect="core/physic_effects/sequencemanager_push"/>
+	</dependencies>
+	
+	<extensions>
+		<extension name="unit_data" class="ScriptUnitData"/>
+		<extension name="damage" class="UnitDamage"/>
+	</extensions>
+	
+</unit>

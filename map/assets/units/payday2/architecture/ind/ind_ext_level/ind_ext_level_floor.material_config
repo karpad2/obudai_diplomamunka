@@ -1,0 +1,15 @@
+<materials version="3">
+    <material version="2" render_template="shadow_caster_only" name="shadow_caster"/>
+    <material name="mat_ind_ext_level_floor" render_template="generic:DIFFUSE_TEXTURE:NORMALMAP:RL_ENVIRONMENT" version="2">
+        <diffuse_texture file="units/payday2/architecture/ind/ind_ext_level/ind_ext_level_floor_df"/>
+        <bump_normal_texture file="units/payday2/architecture/ind/ind_ext_level/ind_ext_level_floor_nm"/>
+    </material>
+	    <material name="mat_ind_ext_level_floor_lod1" render_template="generic:DIFFUSE_TEXTURE:NORMALMAP:RL_ENVIRONMENT" version="2">
+        <diffuse_texture file="units/payday2/architecture/ind/ind_ext_level/ind_ext_level_floor_df" mip="5"/>
+        <bump_normal_texture file="units/payday2/architecture/ind/ind_ext_level/ind_ext_level_floor_nm" mip="5"/>
+    </material>
+	<material name="mat_ind_ext_level_0" render_template="generic:DIFFUSE_TEXTURE:NORMALMAP:RL_ENVIRONMENT" version="2">
+        <diffuse_texture file="units/payday2/architecture/ind/ind_ext_level/ind_ext_level_0_df"/>
+        <bump_normal_texture file="units/payday2/architecture/ind/ind_ext_level/ind_ext_level_0_nm"/>
+    </material>
+</materials>

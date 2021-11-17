@@ -1,0 +1,10 @@
+<materials version="3">
+	<material name="mat_toolkit_top" render_template="generic:DIFFUSE_TEXTURE:NORMALMAP" version="2">
+		<diffuse_texture file="units/pd2_dlc_chill/props/chl_prop_workshop_wolf_toolkit/chl_prop_workshop_wolf_toolkit_top_df" />
+		<bump_normal_texture file="units/pd2_dlc_chill/props/chl_prop_workshop_wolf_toolkit/chl_prop_workshop_wolf_toolkit_top_nm" />
+	</material>
+	<material name="mat_toolkit_top_lod" render_template="generic:DIFFUSE_TEXTURE:NORMALMAP" version="2">
+		<diffuse_texture file="units/pd2_dlc_chill/props/chl_prop_workshop_wolf_toolkit/chl_prop_workshop_wolf_toolkit_top_df" mip="4" />
+		<bump_normal_texture file="units/pd2_dlc_chill/props/chl_prop_workshop_wolf_toolkit/chl_prop_workshop_wolf_toolkit_top_nm" mip="4" />
+	</material>
+</materials>

@@ -1,0 +1,19 @@
+<?xml version="1.0" ?>
+<dynamic_object>
+    <diesel materials="units/pd2_dlc2/csgo_models/props_bank/roof_ladder" orientation_object="rp_roof_ladder" />
+    <bodies>
+        <body name="static_body" template="static" enabled="false" >
+            <object name="rp_roof_ladder"/>
+			<object name="c_box_01" collision_type="box" padding="-2.5"/>
+			<object name="c_box_02" collision_type="box" padding="-2.5"/>
+        </body>
+    </bodies>
+    
+    <decal_surfaces default_material="metal" static="true">
+        <decal_mesh name="g_roof_ladder" material="metal" enabled="true"/>
+    </decal_surfaces> 
+    
+    <graphics>
+        <object enabled="true" name="g_roof_ladder" shadow_caster="true"/>
+    </graphics>
+</dynamic_object> 

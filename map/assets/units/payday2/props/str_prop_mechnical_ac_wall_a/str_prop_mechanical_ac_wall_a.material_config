@@ -1,0 +1,9 @@
+<materials version="3">
+    <material name="mat_str_prop_mechanical_ac_wall_a" render_template="generic:ALPHA_MASKED:DIFFUSE_TEXTURE:EXTERNAL_ALPHA_REF:NORMALMAP:OPACITY_TEXTURE" version="2">
+        <diffuse_texture file="units/payday2/props/str_prop_mechnical_ac_wall_a/str_prop_mechanical_ac_wall_a_df"/>
+        <bump_normal_texture file="units/payday2/props/str_prop_mechnical_ac_wall_a/str_prop_mechanical_ac_wall_a_nm"/>
+        <opacity_texture file="units/payday2/props/str_prop_mechnical_ac_wall_a/str_prop_mechanical_ac_wall_a_op"/>
+        <variable value="0.38400000333786" type="scalar" name="alpha_ref"/>
+    </material>
+    <material name="shadow_caster" render_template="shadow_caster_only" version="2"/>
+</materials>

@@ -1,0 +1,31 @@
+<?xml version="1.0" ?>
+<dynamic_object>
+    <diesel materials="units/pd2_dlc2/csgo_models/props_urban/fence002_256" orientation_object="rp_fence002_256" />
+    <bodies>
+        <body name="static_body" template="static" enabled="true" >
+            <object name="rp_fence002_256"/>
+            <object name="c_box_1" collision_type="box" padding="-2.5"/>
+            <object name="c_box_4" collision_type="box" padding="-2.5"/>
+            <object name="c_capsule_1" collision_type="capsule" padding="-2.5"/>
+            <object name="c_capsule_2" collision_type="capsule" padding="-2.5"/>
+            <object name="c_capsule_3" collision_type="capsule" padding="-2.5"/>
+            <object name="c_capsule_4" collision_type="capsule" padding="-2.5"/>
+            <object name="c_capsule_5" collision_type="capsule" padding="-2.5"/>
+            <object name="c_capsule_6" collision_type="capsule" padding="-2.5"/>
+        </body>
+        <body name="body_fence" template="fence" enabled="true" >
+            <object name="rp_fence002_256"/>
+            <object name="c_box_2" collision_type="box" padding="-2.5"/>
+            <object name="c_box_3" collision_type="box" padding="-2.5"/>
+        </body>
+    </bodies>
+    
+    <decal_surfaces default_material="metal" static="true">
+        <decal_mesh name="dm_metal" material="metal" enabled="true"/>
+        <decal_mesh name="dm_concrete" material="concrete" enabled="true"/>
+    </decal_surfaces> 
+    
+    <graphics>
+        <object enabled="true" name="g_fence002_256" shadow_caster="true"/>
+    </graphics>
+</dynamic_object> 

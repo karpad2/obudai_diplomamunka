@@ -1,0 +1,13 @@
+<dynamic_object>
+    <diesel orientation_object="rp_tools_screwdriver" materials="units/world/props/tools/tools_screwdriver" />
+    <animations/>
+    <bodies>
+        <body enabled="true" template="editor" name="body0" >
+            <object name="rp_tools_screwdriver" />
+            <object enabled="true" collision_type="box" name="g_tools_screwdriver" />
+        </body>
+    </bodies>
+    <graphics>
+        <object enabled="true" name="g_tools_screwdriver" />
+    </graphics>
+</dynamic_object>

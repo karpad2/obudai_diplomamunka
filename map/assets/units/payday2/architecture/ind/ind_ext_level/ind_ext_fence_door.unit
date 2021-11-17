@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<unit type="ind" slot="1">
+	<object file="units/payday2/architecture/ind/ind_ext_level/ind_ext_fence_door" />
+	<network sync="spawn"/>
+	<dependencies>
+		<depends_on unit="units/payday2/equipment/item_door_drill_small/item_door_drill_small" />
+		<depends_on effect="effects/payday2/particles/explosions/shapecharger_explosion" />
+		<depends_on bnk="soundbanks/regular_sfx" />
+	</dependencies>
+	<extensions>
+		<extension name="base" class="MissionDoor" >
+			<var name="tweak_data" value="cage_door" />
+		</extension>
+		<extension name="unit_data" class="ScriptUnitData" />
+		<extension name="damage" class="UnitDamage" />
+	</extensions>
+</unit>

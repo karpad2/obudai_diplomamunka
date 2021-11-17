@@ -1,0 +1,6 @@
+<unit type="jry" slot="1">
+	<object file="units/pd2_dlc_jerry/props/jry_prop_garage_workbench/jry_prop_garage_workbench" />
+	<extensions>
+		<extension name="unit_data" class="ScriptUnitData" />
+	</extensions>
+</unit>

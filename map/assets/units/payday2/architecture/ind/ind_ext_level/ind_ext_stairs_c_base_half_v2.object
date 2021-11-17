@@ -1,0 +1,17 @@
+<dynamic_object>
+	<diesel materials="units/payday2/architecture/ind/ind_ext_level/ind_ext_level_railing_v2" orientation_object="rp_ind_ext_stairs_c_base_half_v2" />
+	<bodies>
+		<body name="body_static" enabled="true" template="static">
+			<object name="rp_ind_ext_stairs_c_base_half_v2" />
+			<object name="c_box_01" collision_type="box" padding="-2.5" />
+		</body>
+	</bodies>
+	<decal_surfaces default_material="sheet_metal">
+		<decal_mesh name="dm_sheet_metal" enabled="true" material="sheet_metal" />
+	</decal_surfaces>
+	<graphics>
+		<object name="g_g" enabled="true" />
+		<object name="g_alpha_shadow" enabled="true" />
+		<object name="s_s" enabled="true" shadow_caster="true" />
+	</graphics>
+</dynamic_object>

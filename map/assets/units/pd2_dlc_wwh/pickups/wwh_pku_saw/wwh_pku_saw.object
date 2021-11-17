@@ -1,0 +1,25 @@
+<dynamic_object>
+  <diesel orientation_object="rp_vault_drill" materials="units/pd2_dlc_wwh/pickups/wwh_pku_saw/wwh_pku_saw" />
+  <sequence_manager file="units/pd2_dlc_wwh/pickups/wwh_pku_saw/wwh_pku_saw" />
+  
+  <bodies>
+    <body name="static_body" remove_ray_type="body ai_vision" enabled="true" template="editor" collision_class="bag_blocker" collides_with_mover="false">
+      <object name="rp_vault_drill"/>
+      <object name="c_drill_unit_mesh_mopp" collision_type="mesh_mopp" />
+    </body>
+  </bodies>
+
+  <graphics>
+    <graphic_group name="outline" enabled="false">
+      <lod_object name="lod_outline">
+        <object name="g_drill_base_outline_lod0" enabled="true"  max_distance="500" />
+        <object name="g_drill_base_outline_lod1" enabled="true" />
+      </lod_object>
+    </graphic_group>
+    
+    <object name="g_drill" enabled="false" />
+    <object name="g_screen_complete" enabled="false" />
+    <object name="g_screen_start" enabled="true" />
+  </graphics>
+
+</dynamic_object>

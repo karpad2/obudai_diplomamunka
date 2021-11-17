@@ -1,0 +1,20 @@
+<dynamic_object>
+    <diesel orientation_object="rp_ind_prop_warehouse_pallet_stack_g" materials="units/payday2/props/ind_prop_warehouse_set/ind_prop_warehouse_pallet_stack_g" />
+    <bodies>
+        <body enabled="true" template="fence" name="fence_body" >
+			<object name="rp_ind_prop_warehouse_pallet_stack_g" />			
+            <object collision_type="box" name="c_box_01" padding="-2.5"/>
+        </body>	
+        <body enabled="true" template="static" name="static_body" >
+			<object name="rp_ind_prop_warehouse_pallet_stack_g" />				
+            <object collision_type="box" name="c_box_02" padding="-2.5"/>
+        </body>
+    </bodies>
+    <decal_surfaces>
+        <decal_mesh enabled="true" name="dm_cloth" material="cloth" />
+    </decal_surfaces>
+    <graphics>
+        <object enabled="true" name="g_pallet" />
+        <object enabled="true" name="g_boxes" />
+    </graphics>
+</dynamic_object>

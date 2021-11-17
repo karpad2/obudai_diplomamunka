@@ -1,0 +1,6 @@
+<unit type="str" slot="1" >
+    <object file="units/payday2/architecture/str_bdrop_mid_street/str_bdrop_mid_park" />
+    <extensions>
+        <extension class="ScriptUnitData" name="unit_data" />
+    </extensions>
+</unit>

@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<dynamic_object>
+	<diesel materials="units/payday2/props/air_prop_runway_fence/air_prop_runway_fence_instanced" orientation_object="rp_air_prop_runway_fence_120" />
+	<sequence_manager file="units/payday2/props/air_prop_runway_fence/air_prop_runway_fence_120" />
+	<bodies>
+		<body name="mover_blocker_closed" enabled="true" template="bag" collision_class="bag_blocker">
+			<object name="rp_air_prop_runway_fence_120" />
+			<object name="c_box_player" 	collision_type="box" padding="-2.5"/>
+			<object name="c_box_open_01" 	collision_type="box" padding="-2.5"/>
+		</body>
+		<body name="mover_blocker_open" enabled="false" template="bag" collision_class="bag_blocker">
+			<object name="rp_air_prop_runway_fence_120" />
+			<object name="c_convex_open_01" collision_type="convex" padding="-2.5"/>
+			<object name="c_convex_open_02" collision_type="convex" padding="-2.5"/>
+			<object name="c_box_open_01" 	collision_type="box" 	padding="-2.5"/>
+		</body>
+		<body name="graph_block" enabled="true" template="graph_blocker">
+			<object name="rp_air_prop_runway_fence_120" />
+			<object name="c_box_graph" collision_type="box" padding="-2.5"/>
+		</body>
+		<body name="lock_body" enabled="false" template="lock_only">
+			<object name="rp_air_prop_runway_fence_120" />
+			<object name="c_box_saw" collision_type="box" padding="-2.5"/>
+		</body>
+	</bodies>
+	
+	<graphics>
+		<object name="g_fence"  					enabled="true"  	instance_struct="world_tm" />
+		<object name="g_links_whole"  				enabled="true"  	instance_struct="world_tm" />
+		<object name="g_links_broken" 				enabled="false" 	instance_struct="world_tm" />
+		<object name="s_fence" 						enabled="true" 		instance_struct="world_tm" 	shadow_caster="true" />
+		<object name="g_chainlink_shadow_closed" 	enabled="true" 		instance_struct="world_tm" 	shadow_caster="true" />
+		<object name="g_chainlink_shadow_open" 		enabled="false" 	instance_struct="world_tm" 	shadow_caster="true" />
+
+		<graphic_group name="sawicongroup" 					enabled="false" culling_object="g_icon_saw">
+			<lod_object name="saw_icon">
+					<object name="g_icon_saw" 		enabled="true"  max_distance="450"  max_draw_lod="0" />
+					<object name="g_icon_saw_lod1" 	enabled="true"  lod="1" />
+			</lod_object>
+		</graphic_group>
+		
+	</graphics>
+	
+</dynamic_object> 

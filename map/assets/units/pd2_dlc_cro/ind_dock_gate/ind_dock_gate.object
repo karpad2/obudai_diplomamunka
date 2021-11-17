@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<dynamic_object>
+	<diesel orientation_object="rp_ind_dock_gate" materials="units/pd2_dlc_cro/ind_dock_gate/ind_dock_gate" />
+	<sequence_manager file="units/pd2_dlc_cro/ind_dock_gate/ind_dock_gate" />
+	<animations>
+		<animation_group name="gate" enabled="false">
+			<object name="a_gate_door_l"/>
+			<object name="a_gate_door_r"/>
+		</animation_group>
+	</animations>
+	<bodies>
+		<body enabled="true" template="animated" name="static_body" >
+			<object name="c_box_static_01" collision_type="box" padding="-2.5"/>
+			<object name="c_box_static_02" collision_type="box" padding="-2.5"/>
+			<object name="c_box_static_03" collision_type="box" padding="-2.5"/>
+			<object name="c_box_static_04" collision_type="box" padding="-2.5"/>
+			<object name="c_box_static_05" collision_type="box" padding="-2.5"/>
+			<object name="c_box_static_06" collision_type="box" padding="-2.5"/>
+			<object name="c_box_static_07" collision_type="box" padding="-2.5"/>
+			<!-- <object name="c_box_static_08" collision_type="box" padding="-2.5"/> -->
+			<object name="c_box_static_09" collision_type="box" padding="-2.5"/>
+			<object name="c_box_static_10" collision_type="box" padding="-2.5"/>
+			<object name="c_box_static_11" collision_type="box" padding="-2.5"/>
+			<object name="c_box_static_12" collision_type="box" padding="-2.5"/>
+		
+			
+		</body>
+
+		<!--LEFT GATE-->
+		<body name="left_gate_blocker" enabled="true" template="fence" keyframed="true" >
+			<object name="a_gate_door_l"/>
+			<object name="c_box_blocker_left" collision_type="box" padding="-2.5" />
+			<object collision_type="box" name="c_box_01" padding="-2.5"/>
+			<object collision_type="box" name="c_box_02" padding="-2.5"/>
+			
+		</body>
+
+		<!--RIGHT GATE-->
+		<body name="right_gate_blocker" enabled="true" template="fence" keyframed="true">
+			<object name="a_gate_door_r"/>
+			<object name="c_box_blocker_right" collision_type="box" padding="-2.5" />
+		</body>
+
+	</bodies>
+	<graphics>
+		<graphic_group name="fence" enabled="true" culling_object="co_cull">
+			<object name="g_fence" 					enabled="true" />
+			<object name="s_shadowcaster" 			enabled="true" shadow_caster="true" />
+			<object name="g_fence_shadow_1" 		enabled="true" shadow_caster="true" />
+			<object name="g_fence_shadow_2" 		enabled="true" shadow_caster="true" />
+			<object enabled="true" name="g_sign" shadow_caster="true"/>
+		</graphic_group>
+	</graphics>
+	<decal_surfaces>
+                  <decal_mesh enabled="true" name="dm_sheet_metal" material="sheet_metal" />
+          </decal_surfaces>
+</dynamic_object>

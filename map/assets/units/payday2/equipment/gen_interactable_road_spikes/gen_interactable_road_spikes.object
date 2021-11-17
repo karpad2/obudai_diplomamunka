@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<dynamic_object>
+	<diesel materials="units/payday2/equipment/gen_interactable_road_spikes/gen_interactable_road_spikes" orientation_object="rp_gen_interactable_road_spikes" />
+	<sequence_manager file="units/payday2/equipment/gen_interactable_road_spikes/gen_interactable_road_spikes" />
+	
+	<bodies>
+		<body name="body_expanded" enabled="true" template="editor">
+			<object name="rp_gen_interactable_road_spikes" />
+			<object name="c_box" collision_type="box" padding="-2.5" />
+		</body>
+		<body name="body_contracted" enabled="false" template="editor">
+			<object name="rp_gen_interactable_road_spikes" />
+			<object name="c_box_contracted" collision_type="box" padding="-2.5" />
+		</body>
+		<body name="body_box" enabled="true" template="editor">
+			<object name="rp_gen_interactable_road_spikes" />
+			<object name="c_box_box" collision_type="box" />
+		</body>
+	</bodies>
+	<decal_surfaces default_material="metal">
+	</decal_surfaces>
+	<graphics>
+		<object name="g_g"				enabled="true" />
+		<object name="g_box"			enabled="true" />
+		<object name="g_contracted"		enabled="false" />
+	</graphics>
+</dynamic_object>

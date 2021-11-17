@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<unit type="ind" slot="1">
+	<network sync="spawn"/>
+    <dependencies>
+        <depends_on bnk="soundbanks/regular_sfx" />
+    </dependencies>
+	<object file="units/pd2_dlc_cro/ind_dock_gate/ind_dock_gate" />
+	<extensions>
+		<extension name="unit_data" class="ScriptUnitData" />
+		<extension name="damage" class="UnitDamage" />
+	</extensions>
+</unit>

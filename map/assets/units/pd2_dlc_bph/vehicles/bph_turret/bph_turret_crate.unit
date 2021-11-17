@@ -1,0 +1,16 @@
+<unit type="bph" slot="1">
+	<object file="units/pd2_dlc_bph/vehicles/bph_turret/bph_turret_crate" />
+	<network sync="spawn"/>
+	<dependencies>
+		<depends_on unit="units/pd2_dlc_bph/vehicles/bph_turret/bph_turret" />
+		<depends_on physic_effect="physic_effects/push_sphere"/>
+		<depends_on effect="effects/payday2/particles/smoke_trail/smoke_puff_grey" />
+	</dependencies>
+	<extensions>
+		<extension name="base" class="AnimatedVehicleBase">
+			<var name="_body_name" value="rp_bph_turret_crate"/>
+		</extension>
+		<extension name="unit_data" class="ScriptUnitData" />
+		<extension name="damage" class="UnitDamage" />
+	</extensions>
+</unit>

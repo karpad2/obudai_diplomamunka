@@ -1,0 +1,15 @@
+<dynamic_object>
+    <diesel orientation_object="rp_electricbox_1" materials="units/world/props/prop_electricboxes/prop_electricbox_1" />
+    <bodies>
+        <body enabled="true" template="raycoll_static" name="body0" >
+            <object collision_type="box" name="c_c1" />
+        </body>
+    </bodies>
+	<decal_surfaces default_material="metal">
+        <decal_mesh enabled="true" name="dm_dm1" material="metal" />
+    </decal_surfaces>
+    <graphics>
+        <object enabled="true" name="g_g1" />
+        <object enabled="true" shadow_caster="true" name="s_s1" />
+    </graphics>
+</dynamic_object>

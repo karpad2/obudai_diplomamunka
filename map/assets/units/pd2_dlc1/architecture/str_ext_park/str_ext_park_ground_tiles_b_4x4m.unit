@@ -1,0 +1,6 @@
+<unit type="str" slot="1" >
+    <object file="units/pd2_dlc1/architecture/str_ext_park/str_ext_park_ground_tiles_b_4x4m" />
+    <extensions>
+        <extension class="ScriptUnitData" name="unit_data" />
+    </extensions>
+</unit>

@@ -1,0 +1,10 @@
+<materials version="3">
+    <material name="security_console" render_template="generic:DIFFUSE_TEXTURE:NORMALMAP" version="2">
+        <diffuse_texture file="units/pd2_dlc2/props/gen_prop_security_console/gen_prop_security_console_df"/>
+        <bump_normal_texture file="units/pd2_dlc2/props/gen_prop_security_console/gen_prop_security_console_nm"/>
+    </material>
+    <material name="mat_mull" render_template="effect:BLEND_MUL:DIFFUSE0_TEXTURE" version="2">
+        <diffuse_texture file="units/payday2/props/shadow_mullplan/mullplan_branchbank_df"/>
+        <variable value="sun" type="scalar" name="intensity"/>
+    </material>
+</materials>

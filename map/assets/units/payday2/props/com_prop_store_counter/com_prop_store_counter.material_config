@@ -1,0 +1,6 @@
+<materials version="3">
+	<material name="com_prop_store_counter_M" render_template="generic:DIFFUSE_TEXTURE:NORMALMAP" version="2" >
+		<diffuse_texture file="units/payday2/props/com_prop_store_counter/com_prop_store_counter_df"/>
+        <bump_normal_texture file="units/payday2/props/com_prop_store_counter/com_prop_store_counter_nm"/>
+	</material>
+</materials>

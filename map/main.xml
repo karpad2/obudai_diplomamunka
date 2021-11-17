@@ -1,0 +1,185 @@
+<table image="guis/textures/mods/CustomAchievement/hs_pack" name="Hardware Store">
+	<MaskMaterial global_value="hwsmatpat" id="blueprint" material_amount="0" texture="units/pd2_hws/matcaps/blueprint_df"/>
+	<MaskMaterial global_value="hwsmatpat" id="grill" material_amount="0" texture="units/pd2_hws/matcaps/grill_df"/>
+	<MaskMaterial global_value="hwsmatpat" id="signal" material_amount="1" texture="units/pd2_hws/matcaps/signal_df"/>
+	<MaskMaterial global_value="hwsmatpat" id="hard" material_amount="1" texture="units/pd2_hws/matcaps/hard_df"/>
+	<WeaponSkin id="packrat_hws" name="bm_wskn_packrat_blueprint_pd2c" rarity="uncommon" skin_folder="Assets/blueprint skin" weapon_id="packrat"/>
+	<WeaponSkin id="x_packrat_hws" name="bm_wskn_x_packrat_blueprint_pd2c" rarity="uncommon" skin_folder="Assets/blueprint skin" weapon_id="x_packrat"/>
+	<WeaponSkin id="p90_hws" name="bm_wskn_p90_concept" rarity="uncommon" skin_folder="Assets/concept skin" weapon_id="p90"/>
+	<MaskPattern global_value="hwsmatpat" id="blueprint" texture="units/pd2_hws/patterns/blueprint_df"/>
+	<MaskPattern global_value="hwsmatpat" id="drill" texture="units/pd2_hws/patterns/drill_df"/>
+	<MaskPattern global_value="hwsmatpat" id="exit" texture="units/pd2_hws/patterns/exit_df"/>
+	<MaskPattern global_value="hwsmatpat" id="warning" texture="units/pd2_hws/patterns/warning_df"/>
+	<Achievements icon="guis/textures/mods/CustomAchievement/hs_pack" id="pd2c_hs_achievements">
+		<achievement icon="guis/textures/mods/CustomAchievement/hs_deathSentence" id="hs_deathSentence" rank="4"/>
+		<achievement icon="guis/textures/mods/CustomAchievement/hs_deathWish" id="hs_deathWish" rank="3"/>
+		<achievement icon="guis/textures/mods/CustomAchievement/hs_mayhem" id="hs_mayhem" rank="3"/>
+		<achievement icon="guis/textures/mods/CustomAchievement/hs_overkill" id="hs_overkill" rank="2"/>
+		<achievement icon="guis/textures/mods/CustomAchievement/hs_veryHard" id="hs_veryHard" rank="2"/>
+		<achievement icon="guis/textures/mods/CustomAchievement/hs_hard" id="hs_hard" rank="1"/>
+		<achievement icon="guis/textures/mods/CustomAchievement/hs_normal" id="hs_normal" rank="1"/>
+		<achievement icon="guis/textures/mods/CustomAchievement/hs_clearanceSale" id="hs_clearanceSale" rank="3"/>
+		<achievement icon="guis/textures/mods/CustomAchievement/hs_emptyVault" id="hs_emptyVault" rank="2"/>
+		<achievement icon="guis/textures/mods/CustomAchievement/hs_goingInBlind" id="hs_goingInBlind" rank="3"/>
+		<achievement icon="guis/textures/mods/CustomAchievement/hs_goldenToilet" id="hs_goldenToilet" rank="4"/>
+		<achievement icon="guis/textures/mods/CustomAchievement/hs_hellOnEarth" id="hs_hellOnEarth" rank="2"/>
+		<achievement icon="guis/textures/mods/CustomAchievement/hs_letThemWatch" id="hs_letThemWatch" rank="2"/>
+		<achievement icon="guis/textures/mods/CustomAchievement/hs_mayIHelpYouSir" id="hs_mayIHelpYouSir" rank="2"/>
+		<achievement icon="guis/textures/mods/CustomAchievement/hs_nothingToSeeHere" id="hs_nothingToSeeHere" rank="2"/>
+		<achievement icon="guis/textures/mods/CustomAchievement/hs_racingChallenge" id="hs_racingChallenge" rank="3"/>
+	</Achievements>
+	<AddFiles directory="assets">
+		<texture force="true" path="icons/hs_icon"/>
+		<texture force="true" path="icons/hs_modIcon"/>
+		<texture force="true" path="guis/hs_loadingScreen"/>
+		<png force="true" path="guis/textures/mods/CustomAchievement/hs_clearanceSale"/>
+		<png force="true" path="guis/textures/mods/CustomAchievement/hs_deathSentence"/>
+		<png force="true" path="guis/textures/mods/CustomAchievement/hs_deathWish"/>
+		<png force="true" path="guis/textures/mods/CustomAchievement/hs_emptyVault"/>
+		<png force="true" path="guis/textures/mods/CustomAchievement/hs_goingInBlind"/>
+		<png force="true" path="guis/textures/mods/CustomAchievement/hs_goldenToilet"/>
+		<png force="true" path="guis/textures/mods/CustomAchievement/hs_hard"/>
+		<png force="true" path="guis/textures/mods/CustomAchievement/hs_hellOnEarth"/>
+		<png force="true" path="guis/textures/mods/CustomAchievement/hs_letThemWatch"/>
+		<png force="true" path="guis/textures/mods/CustomAchievement/hs_mayhem"/>
+		<png force="true" path="guis/textures/mods/CustomAchievement/hs_mayIHelpYouSir"/>
+		<png force="true" path="guis/textures/mods/CustomAchievement/hs_normal"/>
+		<png force="true" path="guis/textures/mods/CustomAchievement/hs_nothingToSeeHere"/>
+		<png force="true" path="guis/textures/mods/CustomAchievement/hs_overkill"/>
+		<png force="true" path="guis/textures/mods/CustomAchievement/hs_racingChallenge"/>
+		<png force="true" path="guis/textures/mods/CustomAchievement/hs_veryHard"/>
+		<png force="true" path="guis/textures/mods/CustomAchievement/hs_pack"/>
+		<texture path="units/pd2_hws/matcaps/blueprint_df"/>
+		<texture path="units/pd2_hws/matcaps/grill_df"/>
+		<texture path="units/pd2_hws/matcaps/signal_df"/>
+		<texture path="units/pd2_hws/matcaps/hard_df"/>
+		<texture path="units/pd2_hws/patterns/blueprint_df"/>
+		<texture path="units/pd2_hws/patterns/drill_df"/>
+		<texture path="units/pd2_hws/patterns/exit_df"/>
+		<texture path="units/pd2_hws/patterns/warning_df"/>
+		<texture path="guis/textures/pd2/blackmarket/icons/materials/blueprint"/>
+		<texture path="guis/textures/pd2/blackmarket/icons/materials/grill"/>
+		<texture path="guis/textures/pd2/blackmarket/icons/materials/signal"/>
+		<texture path="guis/textures/pd2/blackmarket/icons/materials/hard"/>
+		<texture path="units/custom/pd2_mod_hardwareStore/mcm_prop_bathroom_toilet/mcm_prop_bathroom_toilet_paper_df"/>
+		<texture path="units/custom/pd2_mod_hardwareStore/mcm_prop_bathroom_toilet/mcm_prop_bathroom_toilet_paper_nm"/>
+		<texture path="guis/dlcs/packrat_hws/weapon_skins/packrat_hws"/>
+		<texture path="guis/dlcs/x_packrat_hws/weapon_skins/x_packrat_hws"/>
+		<texture path="guis/dlcs/p90_hws/weapon_skins/p90_hws"/>
+		<cooked_physics path="units/custom/pd2_mod_hardwareStore/mcm_prop_bathroom_toilet/mcm_prop_bathroom_toilet"/>
+		<material_config path="units/custom/pd2_mod_hardwareStore/mcm_prop_bathroom_toilet/mcm_prop_bathroom_toilet"/>
+		<model path="units/custom/pd2_mod_hardwareStore/mcm_prop_bathroom_toilet/mcm_prop_bathroom_toilet"/>
+		<object path="units/custom/pd2_mod_hardwareStore/mcm_prop_bathroom_toilet/mcm_prop_bathroom_toilet"/>
+		<sequence_manager path="units/custom/pd2_mod_hardwareStore/mcm_prop_bathroom_toilet/mcm_prop_bathroom_toilet"/>
+		<unit path="units/custom/pd2_mod_hardwareStore/mcm_prop_bathroom_toilet/mcm_prop_bathroom_toilet"/>
+	</AddFiles>
+	<AssetUpdates id="tj002hs" is_standalone="false" provider="payday2concepts" use_local_dir="true" version="1.4"/>
+	<GlobalValue color="Color(1, 0.5, 0)" id="hwsmatpat"/>
+	
+	<Hooks directory="hooks">
+		<hook file="guitweakdata.lua" source_file="lib/tweak_data/guitweakdata"/>
+		<hook file="carrytweakdata.lua" source_file="lib/tweak_data/carrytweakdata"/>
+		<hook file="vehicletweakdata.lua" source_file="lib/tweak_data/vehicletweakdata"/>
+		<hook file="interactiontweakdata.lua" source_file="lib/tweak_data/interactiontweakdata"/>
+		<hook file="equipmentstweakdata.lua" source_file="lib/tweak_data/equipmentstweakdata"/>
+		<hook file="preplanningtweakdata.lua" source_file="lib/tweak_data/preplanningtweakdata"/>
+	</Hooks>
+	<Localization default="english.txt" directory="loc"/>
+	<contact assets_gui="guis/mission_briefing/preload_contact_bain" desc_id="heist_contact_pd2concepts_desc" id="pd2concepts" name_id="heist_contact_pd2concepts" package="packages/contact_bain"/>
+	<level ai_group_type="America" briefing_dialog="hardware_store_loadout_intro" ghost_bonus="0.1" id="hardware_store" intro_event="" load_screen="guis/hs_loadingScreen" max_bags="54">
+		<add file="levels/hardware_store/add.xml"/>
+		<assets/>
+		<include directory="levels/hardware_store">
+			<file file="world.world" type="binary"/>
+			<file file="continents.continents" type="binary"/>
+			<file file="mission.mission" type="binary"/>
+			<file file="nav_manager_data.nav_data" type="binary"/>
+			<file file="world_sounds.world_sounds" type="binary"/>
+			<file file="world_cameras.world_cameras" type="binary"/>
+			<file file="occluders/occluders.continent" type="binary"/>
+			<file file="occluders/occluders.mission" type="binary"/>
+			<file file="world/world.continent" type="binary"/>
+			<file file="world/world.mission" type="binary"/>
+			<file file="carpark/carpark.continent" type="binary"/>
+			<file file="carpark/carpark.mission" type="binary"/>
+			<file file="editor_only/editor_only.continent" type="binary"/>
+			<file file="editor_only/editor_only.mission" type="binary"/>
+			<file file="cover_data.cover_data" type="binary"/>
+			<file file="environments/glace_inside.environment" type="custom_xml"/>
+			<file file="environments/glace_outside.environment" type="custom_xml"/>
+		</include>
+		<outro_event>
+			<value_node value=""/>
+		</outro_event>
+		<packages>
+			<value_node value="packages/narr_election2"/>
+			<value_node value="levels/instances/unique/moon/santa/world/world"/>
+			<value_node value="levels/narratives/dentist/mia/stage1/world_sounds"/>
+			<value_node value="levels/narratives/classics/glace/world"/>
+		</packages>
+		<script_data_mods directory="scriptdata">
+			<mod replacement="objectives.objective" replacement_type="custom_xml" target_ext="objective" target_path="gamedata/objectives">
+				<options merge_mode="add" mode="add"/>
+			</mod>
+		</script_data_mods>
+	</level>
+	<narrative briefing_event="" contact="pd2concepts" icon="icons/hs_icon" id="hardware_store_wrapper">
+		<chain>
+			<table level_id="hardware_store" type="d" type_id="heist_type_assault"/>
+		</chain>
+		<contract_cost>
+			<value_node value="50000"/>
+			<value_node value="190000"/>
+			<value_node value="230000"/>
+			<value_node value="320000"/>
+			<value_node value="470000"/>
+			<value_node value="470000"/>
+			<value_node value="470000"/>
+		</contract_cost>
+		<crimenet_callouts>
+			<value_node value="nothing"/>
+		</crimenet_callouts>
+		<crimenet_videos>
+			<value_node value="cn_branchbank2"/>
+		</crimenet_videos>
+		<debrief_event>
+			<value_node value=""/>
+		</debrief_event>
+		<experience_mul>
+			<value_node value="1"/>
+			<value_node value="1"/>
+			<value_node value="1"/>
+			<value_node value="1"/>
+			<value_node value="3"/>
+			<value_node value="3"/>
+			<value_node value="3"/>
+		</experience_mul>
+		<max_mission_xp>
+			<value_node value="18000"/>
+			<value_node value="18000"/>
+			<value_node value="18000"/>
+			<value_node value="18000"/>
+			<value_node value="18000"/>
+			<value_node value="18000"/>
+			<value_node value="18000"/>
+		</max_mission_xp>
+		<min_mission_xp>
+			<value_node value="12000"/>
+			<value_node value="12000"/>
+			<value_node value="12000"/>
+			<value_node value="12000"/>
+			<value_node value="12000"/>
+			<value_node value="12000"/>
+			<value_node value="12000"/>
+		</min_mission_xp>
+		<payout>
+			<value_node value="80000"/>
+			<value_node value="100000"/>
+			<value_node value="140000"/>
+			<value_node value="400000"/>
+			<value_node value="500000"/>
+			<value_node value="500000"/>
+			<value_node value="500000"/>
+		</payout>
+	</narrative>
+</table>

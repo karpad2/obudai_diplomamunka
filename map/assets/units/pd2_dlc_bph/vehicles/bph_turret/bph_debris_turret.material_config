@@ -1,0 +1,131 @@
+<materials version="3">
+	
+	<material name="mtr_turret_body" render_template="generic:DIFFUSE_TEXTURE:NORMALMAP" unique="true" version="2">
+		<diffuse_texture file="units/pd2_dlc_overkill_pack/weapons/wpn_fps_lmg_m134_pts/body_df" />
+		<bump_normal_texture file="units/pd2_dlc_overkill_pack/weapons/wpn_fps_lmg_m134_pts/body_nm" />
+		<variable value="1 1 1" type="vector3" name="contour_color"/>
+		<variable value="0" type="scalar" name="contour_opacity"/>
+	</material>
+	<material name="mtr_turret_body_lod" render_template="generic:DIFFUSE_TEXTURE:NORMALMAP" unique="true" version="2">
+		<diffuse_texture file="units/pd2_dlc_overkill_pack/weapons/wpn_fps_lmg_m134_pts/body_df" mip="4"/>
+		<bump_normal_texture file="units/pd2_dlc_overkill_pack/weapons/wpn_fps_lmg_m134_pts/body_nm" mip="4"/>
+		<variable value="1 1 1" type="vector3" name="contour_color"/>
+		<variable value="0" type="scalar" name="contour_opacity"/>
+	</material>
+	
+	<!-- 
+	<material name="mtr_turret_body_no_contour" render_template="generic:DIFFUSE_TEXTURE:NORMALMAP" version="2">
+		<diffuse_texture file="units/pd2_dlc_bph/vehicles/bph_turret/bph_vehicle_turret_df" />
+		<bump_normal_texture file="units/pd2_dlc_bph/vehicles/bph_turret/bph_vehicle_turret_nm" />
+	</material> 
+	-->
+
+	<material name="mtr_turret_base" render_template="generic:DIFFUSE_TEXTURE:NORMALMAP" unique="true" version="2">
+		<diffuse_texture file="units/pd2_dlc_bph/vehicles/bph_turret/bph_vehicle_turret_df" />
+		<bump_normal_texture file="units/pd2_dlc_bph/vehicles/bph_turret/bph_vehicle_turret_nm" />
+		<variable value="1 1 1" type="vector3" name="contour_color"/>
+		<variable value="0" type="scalar" name="contour_opacity"/>
+	</material>
+
+	<material name="mtr_turret" render_template="generic:DIFFUSE_TEXTURE:NORMALMAP" unique="true" version="2">
+		<diffuse_texture file="units/pd2_dlc_bph/vehicles/bph_turret/bph_vehicle_turret_df" />
+		<bump_normal_texture file="units/pd2_dlc_bph/vehicles/bph_turret/bph_vehicle_turret_nm" />
+		<variable value="1 1 1" type="vector3" name="contour_color"/>
+		<variable value="0" type="scalar" name="contour_opacity"/>
+	</material>
+	<material name="mtr_turret_lod" render_template="generic:DIFFUSE_TEXTURE:NORMALMAP" unique="true" version="2">
+		<diffuse_texture file="units/pd2_dlc_bph/vehicles/bph_turret/bph_vehicle_turret_df" mip="4" />
+		<bump_normal_texture file="units/pd2_dlc_bph/vehicles/bph_turret/bph_vehicle_turret_nm" mip="4"/>
+		<variable value="1 1 1" type="vector3" name="contour_color"/>
+		<variable value="0" type="scalar" name="contour_opacity"/>
+	</material>
+
+
+    <material name="mtr_glass" decal_material="glass_breakable" version="2" render_template="opacity:CUBE_ENVIRONMENT_MAPPING:CUBE_FRESNEL:DIFFUSE_TEXTURE">
+        <variable value="0 1 0.59999996423721" type="vector3" name="fresnel_settings"/>
+        <opacity_texture file="units/glass/vehicle_glass_op"/>
+        <diffuse_texture file="units/glass/vehicle_glass_df"/>
+        <reflection_texture type="cubemap" global_texture="current_global_texture"/>
+    </material>
+
+
+    <material name="mtr_handle" render_template="generic:DIFFUSE_TEXTURE:NORMALMAP" version="2">
+		<diffuse_texture file="units/pd2_dlc_overkill_pack/weapons/wpn_fps_lmg_m134_pts/body_handle_df" />
+		<bump_normal_texture file="units/pd2_dlc_overkill_pack/weapons/wpn_fps_lmg_m134_pts/body_handle_nm" />
+		<variable value="1 1 1" type="vector3" name="contour_color"/>
+		<variable value="0" type="scalar" name="contour_opacity"/>
+	</material>
+	<material name="mtr_handle_lod" render_template="generic:DIFFUSE_TEXTURE:NORMALMAP" version="2">
+		<diffuse_texture file="units/pd2_dlc_overkill_pack/weapons/wpn_fps_lmg_m134_pts/body_handle_df" mip="4"/>
+		<bump_normal_texture file="units/pd2_dlc_overkill_pack/weapons/wpn_fps_lmg_m134_pts/body_handle_nm" mip="4" />
+		<variable value="1 1 1" type="vector3" name="contour_color"/>
+		<variable value="0" type="scalar" name="contour_opacity"/>
+	</material>
+
+
+	<material name="mtr_barrel" render_template="generic:DIFFUSE_TEXTURE:NORMALMAP" version="2">
+		<diffuse_texture file="units/pd2_dlc_overkill_pack/weapons/wpn_fps_lmg_m134_pts/barrel_df" />
+		<bump_normal_texture file="units/pd2_dlc_overkill_pack/weapons/wpn_fps_lmg_m134_pts/barrel_nm" />
+		<variable value="1 1 1" type="vector3" name="contour_color"/>
+		<variable value="0" type="scalar" name="contour_opacity"/>
+	</material>
+	<material name="mtr_barrel_lod" render_template="generic:DIFFUSE_TEXTURE:NORMALMAP" version="2">
+		<diffuse_texture file="units/pd2_dlc_overkill_pack/weapons/wpn_fps_lmg_m134_pts/barrel_df" mip="4"/>
+		<bump_normal_texture file="units/pd2_dlc_overkill_pack/weapons/wpn_fps_lmg_m134_pts/barrel_nm" mip="4"/>
+		<variable value="1 1 1" type="vector3" name="contour_color"/>
+		<variable value="0" type="scalar" name="contour_opacity"/>
+	</material>
+
+
+	<material name="mtr_body" render_template="generic:DIFFUSE_TEXTURE:NORMALMAP" version="2">
+		<diffuse_texture file="units/pd2_dlc_overkill_pack/weapons/wpn_fps_lmg_m134_pts/body_df" />
+		<bump_normal_texture file="units/pd2_dlc_overkill_pack/weapons/wpn_fps_lmg_m134_pts/body_nm" />
+		<variable value="1 1 1" type="vector3" name="contour_color"/>
+		<variable value="0" type="scalar" name="contour_opacity"/>
+	</material>
+	<material name="mtr_body_lod" render_template="generic:DIFFUSE_TEXTURE:NORMALMAP" version="2">
+		<diffuse_texture file="units/pd2_dlc_overkill_pack/weapons/wpn_fps_lmg_m134_pts/body_df" mip="4"/>
+		<bump_normal_texture file="units/pd2_dlc_overkill_pack/weapons/wpn_fps_lmg_m134_pts/body_nm" mip="4"/>
+		<variable value="1 1 1" type="vector3" name="contour_color"/>
+		<variable value="0" type="scalar" name="contour_opacity"/>
+	</material>
+
+
+	<material name="mtr_mag" render_template="generic:DIFFUSE_TEXTURE:NORMALMAP" version="2">
+		<diffuse_texture file="units/pd2_dlc_overkill_pack/weapons/wpn_fps_lmg_m134_pts/mag_df" />
+		<bump_normal_texture file="units/pd2_dlc_overkill_pack/weapons/wpn_fps_lmg_m134_pts/mag_nm" />
+		<variable value="1 1 1" type="vector3" name="contour_color"/>
+		<variable value="0" type="scalar" name="contour_opacity"/>
+	</material>
+	<material name="mtr_mag_lod" render_template="generic:DIFFUSE_TEXTURE:NORMALMAP" version="2">
+		<diffuse_texture file="units/pd2_dlc_overkill_pack/weapons/wpn_fps_lmg_m134_pts/mag_df" mip="4"/>
+		<bump_normal_texture file="units/pd2_dlc_overkill_pack/weapons/wpn_fps_lmg_m134_pts/mag_nm" mip="4"/>
+		<variable value="1 1 1" type="vector3" name="contour_color"/>
+		<variable value="0" type="scalar" name="contour_opacity"/>
+	</material>
+
+	<material name="mat_crate" render_template="generic:DIFFUSE_TEXTURE:NORMALMAP" version="2">
+		<diffuse_texture file="units/pd2_dlc_bph/vehicles/bph_turret/bph_turret_crate_df" />
+		<bump_normal_texture file="units/pd2_dlc_bph/vehicles/bph_turret/bph_turret_crate_nm" />
+		<variable value="1 1 1" type="vector3" name="contour_color"/>
+		<variable value="0" type="scalar" name="contour_opacity"/>
+	</material>
+	<material name="mat_crate_lod" render_template="generic:DIFFUSE_TEXTURE:NORMALMAP" version="2">
+		<diffuse_texture file="units/pd2_dlc_bph/vehicles/bph_turret/bph_turret_crate_df" mip="4"/>
+		<bump_normal_texture file="units/pd2_dlc_bph/vehicles/bph_turret/bph_turret_crate_nm" mip="4"/>
+		<variable value="1 1 1" type="vector3" name="contour_color"/>
+		<variable value="0" type="scalar" name="contour_opacity"/>
+	</material>
+
+
+	<material name="mtr_crate_inside" render_template="generic:DIFFUSE_TEXTURE:NORMALMAP" version="2">
+		<diffuse_texture file="units/pd2_dlc_bph/vehicles/bph_turret/bph_turret_crate_inside_df" />
+		<bump_normal_texture file="units/pd2_dlc_bph/vehicles/bph_turret/bph_turret_crate_inside_nm" />
+	</material>
+	<material name="mtr_crate_inside_lod" render_template="generic:DIFFUSE_TEXTURE:NORMALMAP" version="2">
+		<diffuse_texture file="units/pd2_dlc_bph/vehicles/bph_turret/bph_turret_crate_inside_df" mip="4"/>
+		<bump_normal_texture file="units/pd2_dlc_bph/vehicles/bph_turret/bph_turret_crate_inside_nm" mip="4"/>
+	</material>
+
+
+</materials>

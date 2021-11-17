@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<unit type="gen" slot="1">
+	<object file="units/pd2_dlc1/pickups/gen_pku_c4_explosives/gen_pku_c4_explosives_dyn" />
+	<network sync="bodies" remote_unit=""/>
+	<extensions>
+		<extension name="unit_data" class="ScriptUnitData" />
+		<extension name="damage" class="UnitDamage" />
+		<extension name="interaction" class="SpecialEquipmentInteractionExt" >
+			<var name="_special_equipment" value="c4" />
+			<var name="tweak_data" value="c4_bag_dynamic" />
+			<!-- <var name="_global_event" value="pku_c4" /> -->
+			<var name="_ray_object_names" type="table" >
+				<var value="a_ray_object_1"/>
+				<var value="a_ray_object_2"/>
+			</var>
+		</extension>
+		<extension name="attention" class="AIAttentionObject" />
+	</extensions>
+	<sounds>
+	<default_soundsource source="sound"/>
+		<soundsource name="sound" source="sound" />
+	</sounds>
+</unit>

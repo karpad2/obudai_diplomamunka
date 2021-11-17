@@ -1,0 +1,20 @@
+<dynamic_object>
+	<metadata material_config_group="matgroup_alarm"/>
+    <diesel materials="units/payday2/props/com_prop_store_alarm/com_prop_store_alarm_off" orientation_object="rp_com_prop_store_alarm"/>
+	<sequence_manager file="units/payday2/props/com_prop_store_alarm/com_prop_store_alarm" />	
+	<bodies>
+		<body name="static_body" enabled="true" template="static">
+			<object name="c_box_01" collision_type="box" padding="-2.5"/>
+			<object name="c_box_02" collision_type="box" padding="-2.5"/>
+			<object name="c_box_03" collision_type="box" padding="-2.5"/>
+			<object name="c_box_04" collision_type="box" padding="-2.5"/>
+			<object name="c_capsule_01" collision_type="capsule" padding="-2.5"/>
+			<object name="c_capsule_02" collision_type="capsule" padding="-2.5"/>
+		</body>
+	</bodies>
+	
+    <graphics>
+        <object enabled="true" name="g_alarm" />
+    </graphics>
+	
+</dynamic_object>

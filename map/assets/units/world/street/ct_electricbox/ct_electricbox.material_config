@@ -1,0 +1,7 @@
+<materials version="3">
+    <material render_template="generic:DIFFUSE_TEXTURE:NORMALMAP" decal_material="none" version="2" name="mtr_electricbox">
+        <variable value="0" type="scalar" name="specular_power"/>
+        <diffuse_texture file="units/world/street/ct_electricbox/ct_electricbox_df"/>
+        <bump_normal_texture file="units/world/street/ct_electricbox/ct_electricbox_nm"/>
+    </material>
+</materials>

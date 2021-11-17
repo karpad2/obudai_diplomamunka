@@ -1,0 +1,8 @@
+<unit type="csgo" slot="1" >
+    <object file="units/pd2_dlc2/csgo_models/props_equipment/metalladder002" />
+	<network sync="spawn"/>	
+    <extensions>
+        <extension class="ScriptUnitData" name="unit_data" />
+		<extension class="UnitDamage" name="damage" />		
+    </extensions>
+</unit>

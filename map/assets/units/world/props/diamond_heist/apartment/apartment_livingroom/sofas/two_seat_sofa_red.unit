@@ -1,0 +1,8 @@
+<unit type="apa" slot="1" >
+    <object file="units/world/props/diamond_heist/apartment/apartment_livingroom/sofas/two_seat_sofa_red" />
+    <sounds/>
+    <extensions>
+        <extension class="ScriptUnitData" name="unit_data" />
+    </extensions>
+    <dependencies/>
+</unit>

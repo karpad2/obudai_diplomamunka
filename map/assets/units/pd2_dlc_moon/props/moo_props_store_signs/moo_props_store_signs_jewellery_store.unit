@@ -1,0 +1,6 @@
+<unit type="moo" slot="1">
+	<object file="units/pd2_dlc_moon/props/moo_props_store_signs/moo_props_store_signs_jewellery_store" />
+	<extensions>
+		<extension name="unit_data" class="ScriptUnitData" />
+	</extensions>
+</unit>

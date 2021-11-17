@@ -1,0 +1,19 @@
+<dynamic_object>
+    <diesel orientation_object="rp_bnk_prop_street_windmaster" materials="units/custom/pd2_mod_hardwareStore/bnk_prop_street_windmaster/com_bnk_prop_street_windmaster" />
+    <bodies>
+        <body enabled="true" template="static" name="static_body" >
+			<object name="c_box" collision_type="box" padding="-2.5"/>
+			<object name="c_capsule_spring_1" collision_type="capsule" padding="-2.5"/>
+			<object name="c_capsule_spring_2" collision_type="capsule" padding="-2.5"/>
+			<object name="c_convex" collision_type="convex" padding="-2.5"/>
+        </body>
+    </bodies>
+    <decal_surfaces default_material="metal">
+        <decal_mesh enabled="true" name="dm_sheet_metal" material="sheet_metal" />
+		<decal_mesh name="dm_plastic" enabled="true" material="plastic"/>
+    </decal_surfaces>
+    <graphics>
+		<object name="g_g" enabled="true"/>
+		<object name="s_s" enabled="true" shadow_caster="true"/>
+    </graphics>
+</dynamic_object>

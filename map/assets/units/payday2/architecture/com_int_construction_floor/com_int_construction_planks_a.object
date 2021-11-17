@@ -1,0 +1,17 @@
+<dynamic_object>
+    <diesel orientation_object="rp_com_int_construction_planks_a" materials="units/payday2/architecture/com_int_construction_floor/com_int_construction_walls" />
+    <bodies>
+        <body enabled="true" template="static" name="body0" >
+            <object name="rp_com_int_construction_planks_a" />
+            <object collision_type="box" name="c_box_000" padding="-2.5" />
+        </body>
+    </bodies>
+	
+	<decal_surfaces default_material="wood" static="true">
+		<decal_mesh name="g_g" enabled="true" material="wood"/>
+	</decal_surfaces>
+	
+    <graphics>
+        <object enabled="true" name="g_g" />
+    </graphics>
+</dynamic_object>

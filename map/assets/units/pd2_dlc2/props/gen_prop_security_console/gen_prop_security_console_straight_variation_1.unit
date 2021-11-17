@@ -1,0 +1,20 @@
+<unit type="gen" slot="11" >
+	<network sync="spawn"/>
+    <object file="units/pd2_dlc2/props/gen_prop_security_console/gen_prop_security_console_straight_variation_1" />
+  	<dependencies>
+		  <depends_on bnk="soundbanks/regular_sfx" />
+		  <depends_on effect="effects/particles/dest/sparks_lamp_dest" />
+		  <depends_on effect="effects/particles/dest/veil_tube" />
+	</dependencies>
+    <extensions>
+        <extension class="ScriptUnitData" name="unit_data" />
+        <extension name="damage" class="UnitDamage" />
+    </extensions>
+	<sounds>
+		<default_soundsource source="rp_gen_prop_security_console_straight_variation_1"/>
+		<soundsource name="snd_01" source="snd_source_01" />
+		<soundsource name="snd_02" source="snd_source_02" />
+		<soundsource name="snd_03" source="snd_source_03" />
+		<soundsource name="snd_04" source="snd_source_04" />
+	</sounds>
+</unit>

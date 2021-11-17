@@ -1,0 +1,9 @@
+<xml>
+
+	
+	<anim	name="anim_pta_arrive_1"			file="anims/semi/pta_arrive_1"				blend_set="all"/>
+	<anim	name="anim_pta_arrive_2"			file="anims/semi/pta_arrive_2"				blend_set="all"/>
+	<anim	name="anim_pta_arrive_3"			file="anims/semi/pta_arrive_3"				blend_set="all"/>
+	
+
+</xml>

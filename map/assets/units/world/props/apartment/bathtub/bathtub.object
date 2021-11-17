@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<dynamic_object>
+  <diesel materials="units/world/props/apartment/bathtub/bathtub" orientation_object="rp_bathtub" />
+  <bodies>
+    <body name="static_body" enabled="true" template="static">
+      <object name="rp_bathtub"/>
+      <object name="c_metal_mesh_mopp" collision_type="mesh_mopp" />
+      <object name="c_bathtub" collision_type="mesh_mopp" />
+    </body>
+  </bodies>
+  
+  <decal_surfaces default_material="tile" static="true">
+    <decal_mesh name="c_metal_mesh_mopp" enabled="true" material="metal" />
+    <decal_mesh name="c_bathtub" enabled="true" material="tile" />
+  </decal_surfaces>
+  
+  <graphics>
+    <object name="g_bathtub" enabled="true" instance_struct="world_tm" />
+  </graphics>
+</dynamic_object>

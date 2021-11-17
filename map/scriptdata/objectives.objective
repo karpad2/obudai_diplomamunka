@@ -1,0 +1,29 @@
+<table>
+	<objective description="pd2c_hs_obj_001_enterStore_desc" id="pd2c_hs_obj_001_enterStore" prio="1" text="pd2c_hs_obj_001_enterStore" xp_weight="1"/>
+	<objective description="pd2c_hs_obj_002_manOffice_desc" id="pd2c_hs_obj_002_manOffice" prio="1" text="pd2c_hs_obj_002_manOffice" xp_weight="1"/>
+	<objective description="pdc2_hs_obj_003_findCab_desc" id="pdc2_hs_obj_003_findCab" prio="1" text="pdc2_hs_obj_003_findCab" xp_weight="1"/>
+	<objective description="pd2c_hs_obj_004_openCab_desc" id="pd2c_hs_obj_004_openCab" prio="1" text="pd2c_hs_obj_004_openCab" xp_weight="1"/>
+	<objective description="pd2c_hs_obj_004_1a_hackPC_desc" id="pd2c_hs_obj_004_1a_hackPC" prio="1" text="pd2c_hs_obj_004_1a_hackPC" xp_weight="1"/>
+	<objective description="pd2c_hs_obj_004_1b_pwordCab_desc" id="pd2c_hs_obj_004_1b_pwordCab" prio="1" text="pd2c_hs_obj_004_1b_pwordCab" xp_weight="1"/>
+	<objective description="pd2c_hs_obj_004_2a_findUsb_desc" id="pd2c_hs_obj_004_2a_findUsb" prio="1" text="pd2c_hs_obj_004_2a_findUsb" xp_weight="1"/>
+	<objective description="pd2c_hs_obj_004_2b_usbCab_desc" id="pd2c_hs_obj_004_2b_usbCab" prio="1" text="pd2c_hs_obj_004_2b_usbCab" xp_weight="1"/>
+	<objective description="pd2c_hs_obj_004_3a_findSaw_desc" id="pd2c_hs_obj_004_3a_findSaw" prio="1" text="pd2c_hs_obj_004_3a_findSaw" xp_weight="1"/>
+	<objective description="pd2c_hs_obj_004_3b_sawCab_desc" id="pd2c_hs_obj_004_3b_sawCab" prio="1" text="pd2c_hs_obj_004_3b_sawCab" xp_weight="1"/>
+	<objective description="pd2c_hs_obj_004_4a_findThermalPaste_desc" id="pd2c_hs_obj_004_4a_findThermalPaste" prio="1" text="pd2c_hs_obj_004_4a_findThermalPaste" xp_weight="1"/>
+	<objective description="pd2c_hs_obj_004_4b_thermalPasteCab_desc" id="pd2c_hs_obj_004_4b_thermalPasteCab" prio="1" text="pd2c_hs_obj_004_4b_thermalPasteCab" xp_weight="1"/>
+	<objective description="pd2c_hs_obj_005_takeBlueprints_desc" id="pd2c_hs_obj_005_takeBlueprints" prio="1" text="pd2c_hs_obj_005_takeBlueprints" xp_weight="1"/>
+	<objective description="pd2c_hs_obj_006_printer_desc" id="pd2c_hs_obj_006_printer" prio="1" text="pd2c_hs_obj_006_printer" xp_weight="1"/>
+	<objective description="pd2c_hs_obj_007_uncover_desc" id="pd2c_hs_obj_007_uncover" prio="1" text="pd2c_hs_obj_007_uncover" xp_weight="1"/>
+	<objective description="pd2c_hs_obj_008_electricBoxes_desc" id="pd2c_hs_obj_008_electricBoxes" prio="1" text="pd2c_hs_obj_008_electricBoxes" xp_weight="1"/>
+	<objective description="pd2c_hs_obj_008_a_flare_desc" id="pd2c_hs_obj_008_a_flare" prio="1" text="pd2c_hs_obj_008_a_flare" xp_weight="1"/>
+	<objective description="pd2c_hs_obj_008_b_waitHeli_desc" id="pd2c_hs_obj_008_b_waitHeli" prio="1" text="pd2c_hs_obj_008_b_waitHeli" xp_weight="1"/>
+	<objective description="pd2c_hs_obj_008_c_getC4_desc" id="pd2c_hs_obj_008_c_getC4" prio="1" text="pd2c_hs_obj_008_c_getC4" xp_weight="1"/>
+	<objective description="pd2c_hs_obj_008_d_useC4_desc" id="pd2c_hs_obj_008_d_useC4" prio="1" text="pd2c_hs_obj_008_d_useC4" xp_weight="1"/>
+	<objective description="pd2c_hs_obj_009_loot_desc" id="pd2c_hs_obj_009_loot" prio="1" text="pd2c_hs_obj_009_loot" xp_weight="1"/>
+	<objective description="pd2c_hs_obj_010_secure_desc" id="pd2c_hs_obj_010_secure" prio="1" text="pd2c_hs_obj_010_secure" xp_weight="1"/>
+	<objective description="pd2c_hs_obj_010_a_waitEscape_desc" id="pd2c_hs_obj_010_a_waitEscape" prio="1" text="pd2c_hs_obj_010_a_waitEscape" xp_weight="1"/>
+	<objective description="pd2c_hs_obj_011_escape_desc" id="pd2c_hs_obj_011_escape" prio="1" text="pd2c_hs_obj_011_escape" xp_weight="1"/>
+	<objective description="pd2c_hs_obj_001_a_backStore_desc" id="pd2c_hs_obj_001_a_backStore" prio="1" text="pd2c_hs_obj_001_a_backStore" xp_weight="1"/>
+	<objective description="pd2c_hs_obj_FAILED_desc" id="pd2c_hs_obj_FAILED" prio="1" text="pd2c_hs_obj_FAILED" xp_weight="1"/>
+	<objective description="pd2c_hs_obj_006_a_waitResponse_desc" id="pd2c_hs_obj_006_a_waitResponse" prio="1" text="pd2c_hs_obj_006_a_waitResponse" xp_weight="1"/>
+</table>

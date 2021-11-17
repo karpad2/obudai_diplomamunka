@@ -1,0 +1,6 @@
+<unit type="com" slot="1" >
+    <object file="units/pd2_dlc1/props/com_prop_sign_avalon/com_prop_sign_avalon_7x2m_il_smaller" />
+    <extensions>
+        <extension class="ScriptUnitData" name="unit_data" />
+    </extensions>
+</unit>

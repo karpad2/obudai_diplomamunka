@@ -1,0 +1,29 @@
+<dynamic_object>
+    <diesel orientation_object="rp_ind_prop_warehouse_pallet_group_6a" materials="units/payday2/props/ind_prop_warehouse_set/ind_prop_warehouse_pallet_group_6a" />
+    <bodies>
+        <body enabled="true" template="fence" name="fence_body" >
+			<object name="rp_ind_prop_warehouse_pallet_group_6a" />			
+            <object collision_type="box" name="c_box_01" padding="-2.5"/>
+            <object collision_type="box" name="c_box_02" padding="-2.5"/>
+            <object collision_type="box" name="c_box_03" padding="-2.5"/>
+            <object collision_type="box" name="c_box_04" padding="-2.5"/>
+            <object collision_type="box" name="c_box_05" padding="-2.5"/>
+            <object collision_type="box" name="c_box_06" padding="-2.5"/>
+        </body>	
+        <body enabled="true" template="static" name="static_body" >
+			<object name="rp_ind_prop_warehouse_pallet_group_6a" />				
+            <object collision_type="mesh_mopp" name="c_mesh_mopp_01" padding="-2.5"/>
+        </body>
+    </bodies>
+    <decal_surfaces>
+        <decal_mesh enabled="true" name="dm_cloth" material="cloth" />
+    </decal_surfaces>
+    <graphics>
+        <object enabled="true" name="g_boxes_small_b" />
+        <object enabled="true" name="g_boxes_med_a" />
+        <object enabled="true" name="g_boxes_med_b" />
+        <object enabled="true" name="g_boxes_med_c" />
+        <object enabled="true" name="g_pallets" />
+        <object enabled="true" name="g_pallets_blue" />
+    </graphics>
+</dynamic_object>

@@ -1,0 +1,7 @@
+<materials version="3">
+    <material name="glowing" render_template="generic:DIFFUSE_TEXTURE:INSTANCED:SELF_ILLUMINATION" version="2">
+        <variable value="sun" type="scalar" name="il_multiplier"/>
+        <diffuse_texture file="units/world/props/apartment/facade_light/facade_light_df"/>
+        <self_illumination_texture file="units/world/props/apartment/facade_light/facade_light_il"/>
+    </material>
+</materials>

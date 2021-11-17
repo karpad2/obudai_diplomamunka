@@ -1,0 +1,15 @@
+<dynamic_object>
+	<diesel materials="units/pd2_dlc_moon/props/moo_props_store_signs/moo_props_store_signs" orientation_object="rp_moo_props_store_signs_jewellery_store" />
+	<bodies>
+		<body name="body_static" enabled="true" template="static">
+			<object name="rp_moo_props_store_signs_jewellery_store" />
+			<object name="c_box_01" collision_type="box" padding="-2.5" />
+		</body>
+	</bodies>
+	<decal_surfaces default_material="wood">
+		<decal_mesh name="dm_wood" enabled="true" material="wood" />
+	</decal_surfaces>
+	<graphics>
+		<object name="g_g" enabled="true" />
+	</graphics>
+</dynamic_object>

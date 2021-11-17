@@ -1,0 +1,32 @@
+<unit type="vhc" slot="1"> <!-- changed to 1 so that ai walks on the trailer -->
+	<object file="units/pd2_dlc_peta/vehicles/anim_vehicle_truck_semi/anim_vehicle_truck_semi" />
+	<network sync="spawn"/>
+	<anim_state_machine name="anims/units/semi/machine" />
+	<dependencies>
+		<depends_on animation_def="anims/units/semi/def"/>
+		<depends_on animation_state_machine="anims/units/semi/machine"/>
+		<depends_on bnk="soundbanks/regular_sfx" />
+	</dependencies>
+	<extensions>
+		<extension name="base" class="AnimatedVehicleBase">
+			<var name="_body_name" value="anim_body"/>
+			<var name="_sync_objects" type="table">
+				<var value="anim_hook_trailer" />
+				<var value="anim_body_trailer" />
+				<var value="anim_tire_trailer_left" />
+				<var value="anim_tire_trailer_right" />
+				<var value="anim_tire_trailer_left2" />
+				<var value="anim_tire_trailer_right2" />
+			</var>
+		</extension>
+		<extension name="unit_data" class="ScriptUnitData" />
+		<extension name="damage" class="UnitDamage" />
+		<extension name="sync_unit_data" class="SyncUnitData" />
+	</extensions>
+
+	<sounds>
+		<default_soundsource source="anim_body"/>
+		<soundsource name="snd" source="anim_body" />
+	</sounds>
+
+</unit>

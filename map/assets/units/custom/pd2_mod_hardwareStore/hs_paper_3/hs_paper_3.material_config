@@ -1,0 +1,5 @@
+<materials version="3">
+    <material name="clipboard" render_template="generic:DIFFUSE_TEXTURE" version="2">
+        <diffuse_texture file="units/custom/pd2_mod_hardwareStore/hs_paper_3/hs_paper_3_df"/>
+    </material>
+</materials>

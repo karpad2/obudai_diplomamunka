@@ -1,0 +1,22 @@
+<dynamic_object>
+	<diesel materials="units/custom/pd2_mod_hardwareStore/mcm_prop_bathroom_toilet/mcm_prop_bathroom_toilet" orientation_object="rp_mcm_prop_bathroom_toilet" />
+	<sequence_manager file="units/custom/pd2_mod_hardwareStore/mcm_prop_bathroom_toilet/mcm_prop_bathroom_toilet" />
+	<bodies>
+		<body name="body_static" enabled="true" template="static">
+			<object name="rp_mcm_prop_bathroom_toilet" />
+			<object name="c_box_01" collision_type="box" padding="-2.5" />
+			<object name="c_box_02" collision_type="box" padding="-2.5" />
+			<object name="c_convex" collision_type="convex" padding="-2.5" />
+		</body>
+	</bodies>
+	<decal_surfaces default_material="thin_layer">
+		<decal_mesh name="dm_plastic" enabled="true" material="plastic" />
+		<decal_mesh name="dm_tile" enabled="true" material="marble" />
+	</decal_surfaces>
+	<graphics>
+		<lod_object name="grp_lod_g_toilet">
+			<object name="g_toilet_lod0" enabled="true" max_distance="1500" />
+			<object name="g_toilet_lod1" enabled="true" />		
+		</lod_object>
+	</graphics>
+</dynamic_object>

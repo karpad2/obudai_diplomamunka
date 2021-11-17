@@ -1,0 +1,28 @@
+<dynamic_object>
+	<diesel materials="units/pd2_dlc_cage/props/ind_prop_cardealership_glass_set/ind_prop_cardealership_glass_wall" orientation_object="rp_ind_prop_cardealership_glass_window"/>
+	 <sequence_manager file="units/pd2_dlc_cage/props/ind_prop_cardealership_glass_set/ind_prop_cardealership_glass_window"/>
+	<bodies>
+		<body remove_ray_type="vis_graph ai_vision" name="window1" enabled="true" template="static">
+			<object name="rp_ind_prop_cardealership_glass_window"/>
+			<object name="c_box_glass_02" collision_type="box" padding="-2.5"/>
+			<object name="c_box_glass_01" collision_type="box" padding="-2.5"/>
+		</body>
+		<body name="body_static" enabled="true" template="static">
+			<object name="rp_ind_prop_cardealership_glass_window"/>
+			<object name="c_box_01" collision_type="box" padding="-2.5"/>
+			<object name="c_box_02" collision_type="box" padding="-2.5"/>
+			<object name="c_box_03" collision_type="box" padding="-2.5"/>
+			<object name="c_box_04" collision_type="box" padding="-2.5"/>
+		</body>
+	</bodies>
+	<decal_surfaces default_material="metal">
+		<decal_mesh name="dm_glass" enabled="true" material="glass_breakable"/>
+		<decal_mesh name="dm_metal" enabled="true" material="metal"/>
+	</decal_surfaces>
+	<graphics>
+		<object name="g_glass_shattered" enabled="false"/>
+		<object name="g_glass_dmg" enabled="false"/>
+		<object name="g_boarder" enabled="true"/>
+		<object name="g_glass" enabled="true"/>
+	</graphics>
+</dynamic_object>

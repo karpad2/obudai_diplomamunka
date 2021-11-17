@@ -1,0 +1,6 @@
+<unit type="com" slot="1" >
+    <object file="units/custom/dragon_calendar_02/dragon_calendar_02" />
+    <extensions>
+        <extension class="ScriptUnitData" name="unit_data" />
+    </extensions>
+</unit>

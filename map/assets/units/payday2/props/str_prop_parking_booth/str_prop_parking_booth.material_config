@@ -1,0 +1,20 @@
+<materials version="3">
+    <material name="shadow_caster" render_template="shadow_caster_only" version="2"/>
+    <material version="2" render_template="generic:DIFFUSE_TEXTURE:RL_BIGPROPS" name="mat_parking_booth">
+        <diffuse_texture file="units/payday2/props/str_prop_parking_booth/str_prop_parking_booth_df"/>
+    </material>
+    <material render_template="opacity:CUBE_ENVIRONMENT_MAPPING:CUBE_FRESNEL:DIFFUSE_TEXTURE:OPACITY_FADE" decal_material="glass_breakable" version="2" name="mat_glass">
+        <variable value="0 1 0.59999996423721" type="vector3" name="fresnel_settings"/>
+        <opacity_texture file="units/payday2/glass/glass_clear_vehicle_op"/>
+        <diffuse_texture file="units/payday2/glass/glass_clear_vehicle_df"/>
+        <reflection_texture type="cubemap" global_texture="current_global_texture"/>
+        <variable value="10 4000 0" type="vector3" name="opacity_fade"/>
+    </material>
+    <material render_template="opacity:CUBE_ENVIRONMENT_MAPPING:CUBE_FRESNEL:DIFFUSE_TEXTURE:OPACITY_FADE" decal_material="glass_breakable" version="2" name="mat_glass_broken">
+        <variable value="0 1 0.59999996423721" type="vector3" name="fresnel_settings"/>
+        <opacity_texture file="units/payday2/props/str_prop_parking_booth/lcm_int_window_glass_shattered_op"/>
+        <diffuse_texture file="units/payday2/props/str_prop_parking_booth/lcm_int_window_glass_shattered_df"/>
+        <reflection_texture type="cubemap" global_texture="current_global_texture"/>
+        <variable value="10 4000 0" type="vector3" name="opacity_fade"/>
+    </material>
+</materials>

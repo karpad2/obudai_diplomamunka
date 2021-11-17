@@ -1,0 +1,219 @@
+<dynamic_object>
+    <diesel orientation_object="rp_sfm_prop_office_safe" materials="units/pd2_dlc_friend/props/sfm_prop_office_safe/sfm_prop_office_safe" />
+	<sequence_manager file="units/pd2_dlc_friend/props/sfm_prop_office_safe/sfm_prop_office_safe"/>
+    
+	<animations>
+		<animation_group name="anim_safe" enabled="false">
+            <object name="anim_rod_1"/>
+            <object name="anim_rod_2"/>
+            <object name="anim_rod_3"/>
+            <object name="anim_rod_4"/>
+            <object name="anim_safe"/>
+		</animation_group>
+
+        <animation_group name="anim_doors" enabled="false">
+            <object name="anim_panel_top_d1"/>
+            <object name="anim_panel_bottom_d1"/>
+            <object name="anim_panel_bottom_02_d1"/>
+            <object name="anim_panel_top_02_d1"/>
+
+            <object name="anim_panel_top_d2"/>
+            <object name="anim_panel_bottom_d2"/>
+            <object name="anim_panel_bottom_02_d2"/>
+            <object name="anim_panel_top_02_d2"/>
+
+            <object name="anim_panel_top_d3"/>
+            <object name="anim_panel_bottom_d3"/>
+            <object name="anim_panel_bottom_02_d3"/>
+            <object name="anim_panel_top_02_d3"/>
+
+            <object name="anim_panel_top_d4"/>
+            <object name="anim_panel_bottom_d4"/>
+            <object name="anim_panel_bottom_02_d4"/>
+            <object name="anim_panel_top_02_d4"/>
+        </animation_group>      
+        <animation_group name="anim_winch" enabled="false">
+                <object name="anim_line_01" />
+                <object name="anim_line_02" />
+                <object name="anim_hook_01" />
+                <object name="anim_hook_02" />
+                <object name="anim_roll_01" />
+                <object name="anim_roll_02" />
+        </animation_group>
+	</animations>
+	
+	<bodies>
+        <body name="body_safe" enabled="true" template="animated" >
+            <object name="c_box_08" collision_type="box" />
+            <object name="c_box_07" collision_type="box" />
+            <object name="c_box_06" collision_type="box" />
+            <object name="c_box_05" collision_type="box" />
+            <object name="c_box_04" collision_type="box" />
+            <object name="c_box_03" collision_type="box" />
+            <object name="c_box_02" collision_type="box" />
+            <object name="c_box_01" collision_type="box" />
+        </body>
+       <body name="body_winch_01" enabled="false" template="static">
+            <object     name="c_box_winch_01"         collision_type="box" />
+        </body>
+       <body name="body_winch_02" enabled="false" template="static">
+            <object     name="c_box_winch_02"         collision_type="box" />
+        </body>
+        <body name="body_door_01_1" enabled="true" template="animated">
+            <object     name="c_panel_top_d1"         collision_type="box" />
+        </body>
+        <body name="body_door_01_2" enabled="true" template="animated">
+            <object     name="c_panel_bottom_d1"      collision_type="box" />
+        </body>
+        <body name="body_door_01_3" enabled="true" template="animated">
+            <object     name="c_panel_bottom_02_d1"   collision_type="box" />
+        </body>
+        <body name="body_door_01_4" enabled="true" template="animated">
+            <object     name="c_panel_top_02_d1"      collision_type="box" />
+        </body>
+
+        <body name="body_door_02_1" enabled="true" template="animated">
+            <object     name="c_panel_top_d2"         collision_type="box" />
+        </body>
+        <body name="body_door_02_2" enabled="true" template="animated">
+            <object     name="c_panel_bottom_d2"      collision_type="box" />
+        </body>
+        <body name="body_door_02_3" enabled="true" template="animated">
+            <object     name="c_panel_bottom_02_d2"   collision_type="box" />
+        </body>
+        <body name="body_door_02_4" enabled="true" template="animated">
+            <object     name="c_panel_top_02_d2"      collision_type="box" />
+        </body>
+
+        <body name="body_door_03_1" enabled="true" template="animated">
+            <object     name="c_panel_top_d3"         collision_type="box" />
+        </body>
+        <body name="body_door_03_2" enabled="true" template="animated">
+            <object     name="c_panel_bottom_d3"      collision_type="box" />
+        </body>
+        <body name="body_door_03_3" enabled="true" template="animated">
+            <object     name="c_panel_bottom_02_d3"   collision_type="box" />
+        </body>
+        <body name="body_door_03_4" enabled="true" template="animated">
+            <object     name="c_panel_top_02_d3"      collision_type="box" />
+        </body>
+
+        <body name="body_door_04_1" enabled="true" template="animated">
+            <object     name="c_panel_top_d4"         collision_type="box" />
+        </body>
+        <body name="body_door_04_2" enabled="true" template="animated">
+            <object     name="c_panel_bottom_d4"      collision_type="box" />
+        </body>
+        <body name="body_door_04_3" enabled="true" template="animated">
+            <object     name="c_panel_bottom_02_d4"   collision_type="box" />
+        </body>
+        <body name="body_door_04_4" enabled="true" template="animated">
+            <object     name="c_panel_top_02_d4"      collision_type="box" />
+        </body>
+    </bodies>
+    <decal_surfaces default_material="metal">
+        <decal_mesh name="dm_metal_base" enabled="true" material="metal" />
+        <decal_mesh name="dm_metal_safe" enabled="true" material="metal" />
+        <decal_mesh name="dm_metal_rod_1" enabled="true" material="metal" />
+        <decal_mesh name="dm_metal_rod_4" enabled="true" material="metal" />
+        <decal_mesh name="dm_metal_rod_3" enabled="true" material="metal" />
+        <decal_mesh name="dm_metal_rod_2" enabled="true" material="metal" />
+
+        <decal_mesh name="dm_panel_top_d1" enabled="true" material="metal" />
+        <decal_mesh name="dm_panel_bottom_d1" enabled="true" material="metal" />
+        <decal_mesh name="dm_panel_bottom_02_d1" enabled="true" material="metal" />
+    	<decal_mesh name="dm_panel_top_02_d1" enabled="true" material="metal" />
+
+         <decal_mesh name="dm_panel_top_d2" enabled="true" material="metal" />
+        <decal_mesh name="dm_panel_bottom_d2" enabled="true" material="metal" />
+        <decal_mesh name="dm_panel_bottom_02_d2" enabled="true" material="metal" />
+        <decal_mesh name="dm_panel_top_02_d2" enabled="true" material="metal" />
+
+        <decal_mesh name="dm_panel_top_d3" enabled="true" material="metal" />
+        <decal_mesh name="dm_panel_bottom_d3" enabled="true" material="metal" />
+        <decal_mesh name="dm_panel_bottom_02_d3" enabled="true" material="metal" />
+        <decal_mesh name="dm_panel_top_02_d3" enabled="true" material="metal" />
+
+        <decal_mesh name="dm_panel_top_d4" enabled="true" material="metal" />
+        <decal_mesh name="dm_panel_bottom_d4" enabled="true" material="metal" />
+        <decal_mesh name="dm_panel_bottom_02_d4" enabled="true" material="metal" />
+        <decal_mesh name="dm_panel_top_02_d4" enabled="true" material="metal" />       
+    </decal_surfaces>
+
+    <graphics>
+        <graphic_group name="rods" enabled="true" >
+            <object name="g_rod_1" enabled="true" />
+            <object name="g_rod_2" enabled="true" />
+            <object name="g_rod_2" enabled="true" />
+            <object name="g_rod_3" enabled="true" />
+            <object name="g_rod_4" enabled="true" />
+        </graphic_group>
+	    <graphic_group name="g_safe" enabled="true"  >
+            <object name="g_base" enabled="true" />
+            <object name="g_safe" enabled="true" />
+            <object name="g_decal" enabled="true" />
+            <object name="g_light_01" enabled="true" />
+            <object name="g_light_02" enabled="true" />
+
+            <object name="g_panel_top_d1" enabled="true" />
+            <object name="g_panel_bottom_d1" enabled="true" />
+            <object name="g_panel_bottom_02_d1" enabled="true" />
+	   		<object name="g_panel_top_02_d1" enabled="true" />
+
+            <object name="g_panel_top_d2" enabled="true" />
+            <object name="g_panel_bottom_d2" enabled="true" />
+            <object name="g_panel_bottom_02_d2" enabled="true" />
+            <object name="g_panel_top_02_d2" enabled="true" />
+
+            <object name="g_panel_top_d3" enabled="true" />
+            <object name="g_panel_bottom_d3" enabled="true" />
+            <object name="g_panel_bottom_02_d3" enabled="true" />
+            <object name="g_panel_top_02_d3" enabled="true" />
+
+            <object name="g_panel_top_d4" enabled="true" />
+            <object name="g_panel_bottom_d4" enabled="true" />
+            <object name="g_panel_bottom_02_d4" enabled="true" />
+            <object name="g_panel_top_02_d4" enabled="true" />
+	    </graphic_group>
+        <graphic_group name="winch_01" enabled="false" culling_object="co_box_01">
+            <object name="g_roll_01"                enabled="true" />
+            <object name="g_winch_01"               enabled="true" />
+            <object name="g_hook_01"                enabled="true" />
+            <object name="g_hooks_ext_01"           enabled="true" />
+        </graphic_group>
+        <graphic_group name="winch_02" enabled="false" culling_object="co_box_02">
+            <object name="g_roll_02"                enabled="true" />
+            <object name="g_winch_02"               enabled="true" />
+            <object name="g_hook_02"                enabled="true" />
+            <object name="g_hooks_ext_00"           enabled="true" />
+        </graphic_group>
+        <graphic_group name="g_outline_1" enabled="false" >
+            <object name="g_outline_01"          enabled="true" />
+        </graphic_group>
+        <graphic_group name="g_outline_2" enabled="false" >
+            <object name="g_outline_02"          enabled="true" />
+        </graphic_group>
+    </graphics>
+
+    	<lights>
+		<light name="spot_01"
+									enabled="true"
+									editable="true"
+									type="spot|specular"
+									multiplier="neonsign"
+									far_range="600"
+									falloff="10"
+									projection="true"
+		/>
+		<light name="spot_02"
+									enabled="true"
+									editable="true"
+									type="spot|specular"
+									multiplier="neonsign"
+									far_range="600"
+									falloff="10"
+									projection="true"
+		/>
+	</lights>
+
+</dynamic_object>

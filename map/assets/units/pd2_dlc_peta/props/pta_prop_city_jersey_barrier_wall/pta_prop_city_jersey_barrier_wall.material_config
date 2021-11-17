@@ -1,0 +1,11 @@
+<materials version="3">
+    <material name="shadow_caster" render_template="shadow_caster_only" version="2"/>
+    <material name="mat_plywood_painted" render_template="generic:DIFFUSE_TEXTURE:NORMALMAP:VERTEX_COLOR" version="2">
+        <diffuse_texture file="units/pd2_dlc_peta/props/pta_prop_city_jersey_barrier_wall/pta_prop_city_barrier_wall_df"/>
+        <bump_normal_texture file="units/payday2/textures/blank_nm"/>
+    </material>
+    <material name="mat_str_prop_street_concrete_barrier" render_template="generic:DIFFUSE_TEXTURE:NORMALMAP:VERTEX_COLOR" version="2">
+        <diffuse_texture file="units/pd2_dlc_peta/props/pta_prop_city_jersey_barrier_wall/pta_prop_city_concrete_barrier_df"/>
+        <bump_normal_texture file="units/pd2_dlc_peta/props/pta_prop_city_jersey_barrier_wall/str_prop_street_concrete_barrier_nm"/>
+    </material>
+</materials>

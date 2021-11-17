@@ -1,0 +1,6 @@
+<unit type="str" slot="1" >
+    <object file="units/payday2/vehicles/str_vehicle_motorcycle_chopper/str_vehicle_motorcycle_chopper" />
+    <extensions>
+        <extension class="ScriptUnitData" name="unit_data" />
+    </extensions>
+</unit>

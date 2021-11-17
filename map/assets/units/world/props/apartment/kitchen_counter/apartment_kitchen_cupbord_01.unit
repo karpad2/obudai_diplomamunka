@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<unit type="apa" slot="1">
+	 <!--<network sync="spawn" />-->
+  <object file="units/world/props/apartment/kitchen_counter/apartment_kitchen_cupbord_01" />
+  <extensions>
+    <extension name="unit_data" class="ScriptUnitData" />
+    <!--<extension name="damage" class="UnitDamage" />-->
+  </extensions>
+</unit>

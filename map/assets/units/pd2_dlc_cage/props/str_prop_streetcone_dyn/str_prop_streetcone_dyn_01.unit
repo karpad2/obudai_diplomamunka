@@ -1,0 +1,11 @@
+<unit type="str" slot="1">
+	<object file="units/pd2_dlc_cage/props/str_prop_streetcone_dyn/str_prop_streetcone_dyn_01" />
+	<dependencies>
+		<depends_on physic_effect="physic_effects/push_sphere" />
+		<depends_on bnk="soundbanks/regular_car_sfx" />
+	</dependencies>	
+	<extensions>
+		<extension name="unit_data" class="ScriptUnitData" />
+		<extension name="damage" class="UnitDamage" />
+	</extensions>
+</unit>

@@ -1,0 +1,8 @@
+<unit type="bri" slot="1" >
+    <object file="units/world/props/tools/tools_hammer" />
+    <sounds/>
+    <extensions>
+        <extension class="ScriptUnitData" name="unit_data" />
+    </extensions>
+    <dependencies/>
+</unit>

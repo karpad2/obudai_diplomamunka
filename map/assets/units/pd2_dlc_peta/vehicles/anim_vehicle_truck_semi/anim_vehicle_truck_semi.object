@@ -1,0 +1,225 @@
+<dynamic_object>
+	<diesel materials="units/pd2_dlc_peta/vehicles/anim_vehicle_truck_semi/anim_vehicle_truck_semi" orientation_object="rp_anim_car" />
+	<sequence_manager file="units/pd2_dlc_peta/vehicles/anim_vehicle_truck_semi/anim_vehicle_truck_semi" />
+	<animation_def name="anims/units/semi/def" />
+	<animations>
+		<animation_group name="anim_grp_door" enabled="false">
+			<object name="anim_ramp" />
+			<object name="anim_small" />
+			<object name="anim_ramp_pusher" />
+		</animation_group>
+	</animations>
+	<bodies>
+		
+		<body name="body_truck" enabled="true" template="animated">
+			<object name="anim_body" />
+			<object name="c_box_01"		collision_type="box"		padding="-2.5"/>
+			<object name="c_box_02"		collision_type="box"		padding="-2.5"/>
+			<object name="c_box_03"		collision_type="box"		padding="-2.5"/>
+			<object name="c_box_04"		collision_type="box"		padding="-2.5"/>
+			<object name="c_box_05"		collision_type="box"		padding="-2.5"/>
+			<object name="c_box_06"		collision_type="box"		padding="-2.5"/>
+			<object name="c_mesh_mopp"	collision_type="mesh_mopp"  />
+		</body>
+		<body name="body_character_blocker" enabled="true" template="fence" keyframed="true">
+			<object name="anim_body" />
+			<object name="c_box_character_blocker_01"		collision_type="box"		padding="-2.5"/>
+			<object name="c_box_character_blocker_02"		collision_type="box"		padding="-2.5"/>
+		</body>
+
+		<body name="body_trailer" enabled="true" template="animated">
+			<object name="anim_body_trailer" />
+			<object name="c_box_trailer01" collision_type="box" padding="-2.5"/>
+			<object name="c_box_trailer02" collision_type="box" padding="-2.5"/>
+			<object name="c_box_trailer03" collision_type="box" padding="-2.5"/>
+			<object name="c_box_trailer04" collision_type="box" padding="-2.5"/>
+			<object name="c_box_trailer05" collision_type="box" padding="-2.5"/>
+			<object name="c_box_trailer06" collision_type="box" padding="-2.5"/>
+			<object name="c_box_trailer07" collision_type="box" padding="-2.5"/>
+		</body>
+
+		<body name="body_tire_front_left" enabled="true" template="animated">
+			<object name="anim_tire_front_left" />
+			<object name="c_convex_08" collision_type="convex" padding="-2.5"/>
+			<object name="c_convex_09" collision_type="convex" padding="-2.5"/>
+		</body>
+		<body name="body_tire_front_right" enabled="true" template="animated">
+			<object name="anim_tire_front_right" />
+			<object name="c_convex_10" collision_type="convex" padding="-2.5"/>
+			<object name="c_convex_11" collision_type="convex" padding="-2.5"/>
+		</body>
+		<body name="body_tire_rear_right" enabled="true" template="animated">
+			<object name="anim_tire_rear_right" />
+			<object name="c_convex_01" collision_type="convex" padding="-2.5"/>
+			<object name="c_convex_12" collision_type="convex" padding="-2.5"/>
+		</body>
+		<body name="body_tire_rear_left" enabled="true" template="animated">
+			<object name="anim_tire_rear_left" />
+			<object name="c_convex_06" collision_type="convex" padding="-2.5"/>
+			<object name="c_convex_07" collision_type="convex" padding="-2.5"/>
+		</body>
+		<body name="body_tire_rear_right2" enabled="true" template="animated">
+			<object name="anim_tire_rear_right2" />
+			<object name="c_convex_02" collision_type="convex" padding="-2.5"/>
+			<object name="c_convex_03" collision_type="convex" padding="-2.5"/>
+		</body>
+		<body name="body_tire_rear_left2" enabled="true" template="animated">
+			<object name="anim_tire_rear_left2" />
+			<object name="c_convex_04" collision_type="convex" padding="-2.5"/>
+			<object name="c_convex_05" collision_type="convex" padding="-2.5"/>
+		</body>
+		<body name="body_tire_trailer_left" enabled="true" template="animated">
+			<object name="anim_tire_trailer_left" />
+			<object name="c_convex_tire_trailer_left" collision_type="convex" padding="-2.5"/>
+		</body>
+		<body name="body_tire_trailer_left2" enabled="true" template="animated">
+			<object name="anim_tire_trailer_left2" />
+			<object name="c_convex_tire_trailer_left2" collision_type="convex" padding="-2.5"/>
+		</body>
+		<body name="body_tire_trailer_right" enabled="true" template="animated">
+			<object name="anim_tire_trailer_right" />
+			<object name="c_convex_tire_trailer_right" collision_type="convex" padding="-2.5"/>
+		</body>
+		<body name="body_tire_trailer_right2" enabled="true" template="animated">
+			<object name="anim_tire_trailer_right2" />
+			<object name="c_convex_tire_trailer_right2" collision_type="convex" padding="-2.5"/>
+		</body>
+
+		<body name="body_bag_blocker" enabled="true" template="fence" keyframed="true" collision_class="bag_blocker" collides_with_mover="true">
+			<object name="c_box_bag_blocker" collision_type="box" padding="5"/>
+		</body>
+
+		<body name="body_anim_ramp" enabled="true" template="animated">
+			<object name="anim_ramp" />
+			<object name="c_box_ramp" collision_type="box"  />
+		</body>
+
+		<body name="body_anim_ramp_pusher" enabled="true" template="animated">
+			<object name="anim_ramp_pusher" />
+			<object name="c_box_ramp_pusher" collision_type="box"  />
+		</body>
+
+	</bodies>
+
+	<decal_surfaces default_material="metal_chassis">
+		<decal_mesh	name="dm_glass_breakable"				enabled="true" material="glass_breakable" />
+
+		<decal_mesh	name="dm_sheet_metal"					enabled="true" material="sheet_metal" />
+
+		<decal_mesh	name="dm_metal"							enabled="true" material="metal" />
+		<decal_mesh	name="dm_metal_ramp"					enabled="true" material="metal" />
+		<decal_mesh	name="dm_tire_front_left_metal"			enabled="true" material="metal" />
+		<decal_mesh	name="dm_tire_front_right_metal"		enabled="true" material="metal" />
+		<decal_mesh	name="dm_tire_rear_left2_metal"			enabled="true" material="metal" />
+		<decal_mesh	name="dm_tire_rear_left_metal"			enabled="true" material="metal" />
+		<decal_mesh	name="dm_tire_rear_right2_metal"		enabled="true" material="metal" />
+		<decal_mesh	name="dm_tire_rear_right_metal"			enabled="true" material="metal" />
+		<decal_mesh	name="dm_tire_trailer_left2_metal"		enabled="true" material="metal" />
+		<decal_mesh	name="dm_tire_trailer_left_metal"		enabled="true" material="metal" />
+		<decal_mesh	name="dm_tire_trailer_right2_metal"		enabled="true" material="metal" />
+		<decal_mesh	name="dm_tire_trailer_right_metal"		enabled="true" material="metal" />
+
+		<decal_mesh	name="dm_tire_front_left_rubber"		enabled="true" material="rubber" />
+		<decal_mesh	name="dm_tire_front_right_rubber"		enabled="true" material="rubber" />
+		<decal_mesh	name="dm_tire_rear_left2_rubber"		enabled="true" material="rubber" />
+		<decal_mesh	name="dm_tire_rear_left_rubber"			enabled="true" material="rubber" />
+		<decal_mesh	name="dm_tire_rear_right2_rubber"		enabled="true" material="rubber" />
+		<decal_mesh	name="dm_tire_rear_right_rubber"		enabled="true" material="rubber" />
+		<decal_mesh	name="dm_tire_trailer_left2_rubber"		enabled="true" material="rubber" />
+		<decal_mesh	name="dm_tire_trailer_left_rubber"		enabled="true" material="rubber" />
+		<decal_mesh	name="dm_tire_trailer_right2_rubber"	enabled="true" material="rubber" />
+		<decal_mesh	name="dm_tire_trailer_right_rubber"		enabled="true" material="rubber" />
+	</decal_surfaces>
+	
+	<graphics>
+
+		<graphic_group name="grp_trailer" enabled="true" >
+			<lod_object name="lod_g_trailer">
+				<object name="g_trailer_lod0"	enabled="true" max_distance="3000" />
+				<object name="g_trailer_lod1"	enabled="true" />
+			</lod_object>
+
+			<lod_object name="lod_tire_trailer_left">
+				<object name="g_tire_trailer_left_lod_0"		enabled="true" max_distance="3000" />
+				<object name="g_tire_trailer_left_lod_1"		enabled="true" />
+			</lod_object>
+
+			<lod_object name="lod_tire_trailer_right">
+				<object name="g_tire_trailer_right_lod_0"		enabled="true" max_distance="3000" />
+				<object name="g_tire_trailer_right_lod_1"		enabled="true" />
+			</lod_object>
+
+			<lod_object name="lod_tire_trailer_left2">
+				<object name="g_tire_trailer_left2_lod_0"		enabled="true" max_distance="3000" />
+				<object name="g_tire_trailer_left2_lod_1"		enabled="true" />
+			</lod_object>
+
+			<lod_object name="lod_tire_trailer_right2">
+				<object name="g_tire_trailer_right2_lod_0"		enabled="true" max_distance="3000" />
+				<object name="g_tire_trailer_right2_lod_1"		enabled="true" />
+			</lod_object>
+
+			<object name="g_ramp"						enabled="true" />
+			<object name="g_ramp_small"					enabled="true" />
+			<object name="s_ramp"						enabled="true" shadow_caster="true" />
+			<object name="s_ramp_small"					enabled="true" shadow_caster="true" />
+
+			<object name="s_trailer"					enabled="true" shadow_caster="true" />
+			<object name="s_tire_trailer_left"			enabled="true" shadow_caster="true" />
+			<object name="s_tire_trailer_right"			enabled="true" shadow_caster="true" />
+			<object name="s_tire_trailer_left2"			enabled="true" shadow_caster="true" />
+			<object name="s_tire_trailer_right2"		enabled="true" shadow_caster="true" />
+		</graphic_group>
+
+		<graphic_group name="grp_truck" enabled="true" >
+			<lod_object name="lod_chassis">
+				<object name="g_chassis_lod_0"		enabled="true" max_distance="3000" />
+				<object name="g_chassis_lod_1"		enabled="true" />
+			</lod_object>
+
+			<lod_object name="lod_tire_front_left">
+				<object name="g_tire_front_left_lod_0"		enabled="true" max_distance="3000" />
+				<object name="g_tire_front_left_lod_1"		enabled="true" />
+			</lod_object>
+
+			<lod_object name="lod_tire_front_right">
+				<object name="g_tire_front_right_lod_0"		enabled="true" max_distance="3000" />
+				<object name="g_tire_front_right_lod_1"		enabled="true" />
+			</lod_object>
+
+			<lod_object name="lod_tire_rear_right">
+				<object name="g_tire_rear_right_lod_0"		enabled="true" max_distance="3000" />
+				<object name="g_tire_rear_right_lod_1"		enabled="true" />
+			</lod_object>
+
+			<lod_object name="lod_tire_rear_right2">
+				<object name="g_tire_rear_right2_lod_0"		enabled="true" max_distance="3000" />
+				<object name="g_tire_rear_right2_lod_1"		enabled="true" />
+			</lod_object>
+
+			<lod_object name="lod_tire_rear_left">
+				<object name="g_tire_rear_left_lod_0"		enabled="true" max_distance="3000" />
+				<object name="g_tire_rear_left_lod_1"		enabled="true" />
+			</lod_object>
+
+			<lod_object name="lod_tire_rear_left2">
+				<object name="g_tire_rear_left2_lod_0"		enabled="true" max_distance="3000" />
+				<object name="g_tire_rear_left2_lod_1"		enabled="true" />
+			</lod_object>
+
+			<object name="g_glass_front"		enabled="true"/>
+			<object name="g_glass_left"			enabled="true"/>
+			<object name="g_glass_right"		enabled="true"/>
+
+			<object name="s_chassis" enabled="true" shadow_caster="true"/>
+			<object name="s_tire_front_left" enabled="true" shadow_caster="true"/>
+			<object name="s_tire_front_right" enabled="true" shadow_caster="true"/>
+			<object name="s_tire_rear_left" enabled="true" shadow_caster="true"/>
+			<object name="s_tire_rear_left2" enabled="true" shadow_caster="true"/>
+			<object name="s_tire_rear_right2" enabled="true" shadow_caster="true"/>
+			<object name="s_tire_rear_right" enabled="true" shadow_caster="true"/>
+		</graphic_group>
+
+	</graphics>
+
+</dynamic_object>

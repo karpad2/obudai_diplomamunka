@@ -1,0 +1,6 @@
+<unit type="mus" slot="1" >
+    <object file="units/custom/pd2_mod_hardwareStore/mus_int_lab/mus_banner_01" />
+    <extensions>
+        <extension class="ScriptUnitData" name="unit_data" />
+    </extensions>
+</unit>

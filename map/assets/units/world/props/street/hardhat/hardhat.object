@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<dynamic_object>
+  <diesel materials="units/world/props/street/hardhat/hardhat" orientation_object="rp_hardhat_01" />
+  <sequence_manager file="units/world/props/street/hardhat/hardhat" />
+    <bodies>
+    <body name="static_body" enabled="true" template="static">
+		<object name="rp_hardhat_01"/>
+		<object material="plastic" name="c_hardhat_2" enabled="true" collision_type="sphere" />
+    </body>
+  <body pushed_by_mover="false" name="hardhat_dynamic" template="small_prop">
+      <object name="rp_hardhat_01" />
+      <object material="wood" name="c_hardhat_1" enabled="true" collision_type="box" />
+      <object material="plastic" name="c_hardhat_2" enabled="true" collision_type="sphere" />
+      <object name="g_hardhat" />
+    </body>
+  </bodies>2
+  
+  <decal_surfaces default_material="plastic" static="true">
+  </decal_surfaces>
+  <graphics>
+    <object name="g_hardhat" enabled="true" instance_struct="world_tm"/>
+    <object name="s_hardhat" enabled="true" shadow_caster="true"/>
+  </graphics>
+  
+  
+</dynamic_object>

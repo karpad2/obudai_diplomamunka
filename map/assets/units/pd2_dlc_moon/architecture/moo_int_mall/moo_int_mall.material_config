@@ -1,0 +1,76 @@
+<materials version="3">
+<!-- Walls -->
+    <material name="mat_wall_a" render_template="generic:DIFFUSE_TEXTURE:NORMALMAP:VERTEX_COLOR" version="2">
+        <diffuse_texture file="units/pd2_dlc_moon/architecture/moo_int_mall/moo_int_wall_a_df"/>
+        <bump_normal_texture file="units/pd2_dlc_moon/architecture/moo_int_mall/moo_int_wall_a_nm"/>
+    </material>
+    <material name="mat_brick" render_template="generic:CUBE_ENVIRONMENT_MAPPING:DIFFUSE_TEXTURE:NORMALMAP" version="2">
+        <diffuse_texture file="units/pd2_dlc_moon/architecture/moo_int_mall/moo_int_wall_brick_a_blend_df"/>
+        <bump_normal_texture file="units/pd2_dlc_moon/architecture/moo_int_mall/moo_int_wall_brick_a_nm"/>
+        <reflection_texture type="cubemap" file="environments/cubemaps/cubemap_int_bigbank"/>
+        <variable value="1 0 2" type="vector3" name="environment_settings"/>
+    </material>
+    <material name="mat_concrete" render_template="generic:DIFFUSE_TEXTURE:NORMALMAP:VERTEX_COLOR" version="2">
+        <diffuse_texture file="units/pd2_dlc_moon/architecture/moo_int_mall/moo_int_concrete_df"/>
+        <bump_normal_texture file="units/pd2_dlc_moon/architecture/moo_int_mall/moo_int_concrete_nm"/>
+    </material>
+    <material name="mat_wood_panel_a" render_template="generic:DIFFUSE_TEXTURE:NORMALMAP" version="2">
+        <diffuse_texture file="units/pd2_dlc_moon/architecture/moo_int_mall/moo_int_wood_panel_a_df"/>
+        <bump_normal_texture file="units/pd2_dlc_moon/architecture/moo_int_mall/moo_int_wood_panel_a_nm"/>
+    </material>
+
+<!-- Floors -->
+    <material name="mat_floor_linolium" render_template="generic:DIFFUSE_TEXTURE:NORMALMAP:VERTEX_COLOR" version="2">
+        <diffuse_texture file="units/pd2_dlc_moon/architecture/moo_int_mall/moo_int_floor_linolium_a_df"/>
+        <bump_normal_texture file="units/pd2_dlc_moon/architecture/moo_int_mall/moo_int_floor_linolium_a_nm"/>
+    </material>
+    <material name="mat_floor_carpet" render_template="generic:CUBE_ENVIRONMENT_MAPPING:DIFFUSE_TEXTURE:NORMALMAP:VERTEX_COLOR" version="2">
+        <diffuse_texture file="units/pd2_dlc_moon/architecture/moo_int_mall/moo_int_floor_tile_a_df"/>
+        <bump_normal_texture file="units/pd2_dlc_moon/architecture/moo_int_mall/moo_int_floor_tile_a_nm"/>
+        <reflection_texture type="cubemap" file="environments/cubemaps/cubemap_int_bigbank"/>
+        <variable value="1 0 2" type="vector3" name="environment_settings"/>
+    </material>
+
+<!-- Ceilings -->
+    <material name="mat_ceiling_concrete" render_template="generic:DIFFUSE_TEXTURE:NORMALMAP" version="2">
+        <diffuse_texture file="units/pd2_dlc_moon/architecture/moo_int_mall/moo_int_ceiling_concrete_df"/>
+        <bump_normal_texture file="units/pd2_dlc_moon/architecture/moo_int_mall/moo_int_ceiling_concrete_nm"/>
+    </material>
+    <material name="mat_ceiling_office" render_template="generic:DIFFUSE_TEXTURE:NORMALMAP" version="2">
+        <diffuse_texture file="units/pd2_dlc_moon/architecture/moo_int_mall/moo_int_ceiling_tile_a_df"/>
+        <bump_normal_texture file="units/pd2_dlc_moon/architecture/moo_int_mall/moo_int_ceiling_tile_a_nm"/>
+    </material>
+
+<!-- Glass -->
+    <material name="mat_glass_a" decal_material="glass_breakable" version="2" render_template="opacity:CUBE_ENVIRONMENT_MAPPING:CUBE_FRESNEL:DIFFUSE_TEXTURE">
+        <variable value="0 1 0.59999996423721" type="vector3" name="fresnel_settings"/>
+        <opacity_texture file="units/pd2_dlc2/architecture/gov_d_int/gov_d_int_door_glass_op"/>
+        <diffuse_texture file="units/pd2_dlc2/architecture/gov_d_int/gov_d_int_door_glass_df"/>
+        <reflection_texture type="cubemap" file="environments/cubemaps/cubemap_electionday_df"/>
+    </material>
+
+<!-- Details -->
+    <material name="mat_details" render_template="generic:CUBE_ENVIRONMENT_MAPPING:DIFFUSE_TEXTURE:NORMALMAP" version="2">
+        <diffuse_texture file="units/pd2_dlc_moon/architecture/moo_int_mall/moo_int_details_df"/>
+        <bump_normal_texture file="units/pd2_dlc_moon/architecture/moo_int_mall/moo_int_details_nm"/>
+        <reflection_texture type="cubemap" file="environments/cubemaps/cubemap_steel"/>
+        <variable value="1 0 2" type="vector3" name="environment_settings"/>
+    </material>
+    <material name="mat_stairs" render_template="generic:DIFFUSE_TEXTURE:NORMALMAP" version="2">
+        <diffuse_texture file="units/pd2_dlc_moon/architecture/moo_int_mall/moo_int_stair_df"/>
+    </material>
+
+<!-- Roof -->
+    <material name="mat_roof_gravel" render_template="generic:BLEND_DIFFUSE:BLEND_MASK_SEPERATE:BLEND_NORMAL:DIFFUSE_TEXTURE:NORMALMAP:VERTEX_COLOR" version="2">
+        <diffuse_texture file="units/pd2_dlc_moon/architecture/moo_int_mall/moo_ext_roof_gravel_b_df"/>
+        <bump_normal_texture file="units/pd2_dlc_moon/architecture/moo_int_mall/moo_ext_roof_gravel_b_nm"/>
+        <diffuse_layer0_texture file="units/pd2_dlc_moon/architecture/moo_int_mall/moo_ext_roof_gravel_a_df"/>
+        <normal_layer0_texture file="units/pd2_dlc_moon/architecture/moo_int_mall/moo_ext_roof_gravel_a_nm"/>
+        <diffuse_layer1_texture file="units/pd2_dlc_moon/architecture/moo_int_mall/moo_ext_roof_gravel_mask_df"/>
+    </material>
+    <material name="mat_roof_wall" render_template="generic:DIFFUSE_TEXTURE:NORMALMAP:VERTEX_COLOR" version="2">
+        <diffuse_texture file="units/pd2_dlc_moon/architecture/moo_int_mall/moo_ext_roof_wall_df"/>
+        <bump_normal_texture file="units/pd2_dlc_moon/architecture/moo_int_mall/moo_ext_roof_wall_nm"/>
+    </material>
+
+</materials>

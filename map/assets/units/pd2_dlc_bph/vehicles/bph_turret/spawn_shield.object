@@ -1,0 +1,11 @@
+<dynamic_object>
+	<diesel materials="units/pd2_dlc_bph/vehicles/bph_turret/bph_debris_turret" orientation_object="rp_spawn_shield" />
+	<bodies>
+		<body name="body_collision_01" enabled="true" template="debris">
+			<object name="c_shield" collision_type="box" padding="-2.5" />
+		</body>
+	</bodies>
+	<graphics>
+		<object name="g_shield" enabled="true" />
+	</graphics>
+</dynamic_object>

@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<unit type="gen" slot="1">
+	<object file="units/payday2/equipment/gen_interactable_road_spikes/gen_interactable_road_spikes" />
+	<network sync="spawn"/>
+	<extensions>
+		<extension name="unit_data" class="ScriptUnitData" />
+		<extension name="damage" class="UnitDamage" />
+		<extension name="interaction" class="UseInteractionExt">
+			<var name="tweak_data" value="road_spikes" />
+			<var name="_interact_object" value="interaction"/>
+		</extension>
+	</extensions>
+</unit>

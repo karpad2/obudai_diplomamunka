@@ -1,0 +1,23 @@
+<dynamic_object>
+	<diesel materials="units/pd2_dlc_cage/props/str_prop_streetcone_dyn/str_prop_streetcone_dyn_01" orientation_object="rp_str_prop_streetcone_dyn_01" />
+	<sequence_manager file="units/pd2_dlc_cage/props/str_prop_streetcone_dyn/str_prop_streetcone_dyn_01" />
+	<bodies>
+		<body name="static_body" enabled="true" template="static">
+			<object name="rp_str_prop_streetcone_dyn_01" />
+			<object name="c_box" collision_type="box" padding="-2.5"/>
+			<object name="c_capsule" collision_type="capsule" padding="-2.5"/>
+		</body>
+		<body name="dynamic_body" enabled="false" template="dynamic" pushed_by_mover="false" collides_with_mover="true" ang_damping="1" lin_damping="1" collides_with_wheels="false">
+			<object name="rp_str_prop_streetcone_dyn_01" />
+			<object name="c_box" collision_type="box" padding="-2.5" mass="1"/>
+			<object name="c_capsule" collision_type="capsule" padding="-2.5" mass="1"/>
+		</body>
+	</bodies>
+	<decal_surfaces default_material="plastic">
+		<decal_mesh name="dm_plastic" enabled="true" material="plastic" />
+	</decal_surfaces>
+	<graphics>
+		<object name="g_streetcone_01" enabled="true" />
+		<object name="s_streetcone_01" enabled="true" shadow_caster="true" />
+	</graphics>
+</dynamic_object>

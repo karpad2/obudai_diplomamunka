@@ -1,0 +1,17 @@
+<dynamic_object>
+    <diesel orientation_object="rp_tools_saw" materials="units/world/props/tools/tools_saw" />
+    <animations/>
+    <bodies>
+        <body enabled="true" template="static" name="body0" >
+            <object name="rp_tools_saw" />
+            <object enabled="true" collision_type="mesh_mopp" name="c_tools_saw" />
+        </body>
+    </bodies>
+	<decal_surfaces default_material="metal" static="true">
+		<decal_mesh name="g_tools_saw" enabled="true" material="metal" />
+	</decal_surfaces>
+  
+    <graphics>
+        <object enabled="true" name="g_tools_saw" />
+    </graphics>
+</dynamic_object>

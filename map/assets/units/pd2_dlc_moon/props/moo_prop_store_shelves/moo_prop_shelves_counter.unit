@@ -1,0 +1,6 @@
+<unit type="moo" slot="1">
+	<object file="units/pd2_dlc_moon/props/moo_prop_store_shelves/moo_prop_shelves_counter" />
+	<extensions>
+		<extension name="unit_data" class="ScriptUnitData" />
+	</extensions>
+</unit>

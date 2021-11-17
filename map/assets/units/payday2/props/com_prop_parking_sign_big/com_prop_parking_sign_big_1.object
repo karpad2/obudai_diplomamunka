@@ -1,0 +1,15 @@
+<dynamic_object>
+    <diesel orientation_object="rp_com_prop_parking_sign_big" materials="units/payday2/props/com_prop_parking_sign_big/com_prop_parking_sign_big_1" />
+    <bodies>
+        <body enabled="true" template="static" name="body0" >
+            <object collision_type="box" name="c_box_01" />
+        </body>
+    </bodies>
+    <decal_surfaces>
+        <decal_mesh enabled="true" name="dm_plastic" material="plastic" />
+        <decal_mesh enabled="true" name="dm_sheet_metal" material="sheet_metal" />
+    </decal_surfaces>
+    <graphics>
+        <object enabled="true" name="g_g" />
+    </graphics>
+</dynamic_object>

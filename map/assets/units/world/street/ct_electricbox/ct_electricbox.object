@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<dynamic_object>
+  <diesel materials="units/world/street/ct_electricbox/ct_electricbox" orientation_object="rp_ct_electricbox" />
+  <bodies>
+    <body name="static_body" enabled="true" template="static">
+      <object name="rp_ct_electricbox" />
+      <object name="c_ct_electricbox" collision_type="mesh_mopp" />
+    </body>
+  </bodies>
+  
+  <decal_surfaces default_material="metal_chassis">
+	<decal_mesh name="g_ct_electricbox" enabled="true" material="metal_chassis"/>
+  </decal_surfaces>
+  
+  <graphics>
+    <object name="g_ct_electricbox" enabled="true"  />
+  </graphics>
+</dynamic_object>

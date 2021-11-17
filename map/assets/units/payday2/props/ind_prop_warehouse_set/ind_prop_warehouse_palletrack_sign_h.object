@@ -1,0 +1,16 @@
+<dynamic_object>
+    <diesel orientation_object="rp_ind_prop_warehouse_palletrack_sign_h" materials="units/payday2/props/ind_prop_warehouse_set/ind_prop_warehouse_palletrack_sign" />
+    <bodies>
+        <body enabled="true" template="static" name="static_body" >
+			<object name="rp_ind_prop_warehouse_palletrack_sign_h" />
+            <object collision_type="box" name="c_box_01" padding="-2.5"/>
+        </body>
+    </bodies>
+    <decal_surfaces>
+        <decal_mesh enabled="true" name="dm_sheet_metal" material="sheet_metal" />
+    </decal_surfaces>
+    <graphics>
+        <object enabled="true" name="g_g" />
+        <object enabled="true" name="g_h" />
+    </graphics>
+</dynamic_object>

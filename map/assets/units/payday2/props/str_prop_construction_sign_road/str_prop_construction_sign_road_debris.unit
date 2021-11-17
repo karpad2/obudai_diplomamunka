@@ -1,0 +1,6 @@
+<unit type="str" slot="18">
+	<object file="units/payday2/props/str_prop_construction_sign_road/str_prop_construction_sign_road_debris" />
+	<extensions>
+		<extension name="unit_data" class="ScriptUnitData" />
+	</extensions>
+</unit> 

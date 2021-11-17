@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<dynamic_object>
+	<diesel materials="units/payday2/props/air_prop_hangar_toolbox/air_prop_hangar_toolbox" orientation_object="rp_air_prop_hangar_toolbox" />
+	<bodies>
+		<body name="static_body" enabled="true" template="static">
+			<object name="rp_air_prop_hangar_toolbox" />
+			<object name="c_box_01" collision_type="box" padding="-2.5"/>
+		</body>
+	</bodies>
+	<graphics>
+		<object name="g_toolbox" enabled="true"/>
+		<object name="s_toolbox" enabled="true" shadow_caster="true"/>
+	</graphics>
+</dynamic_object> 

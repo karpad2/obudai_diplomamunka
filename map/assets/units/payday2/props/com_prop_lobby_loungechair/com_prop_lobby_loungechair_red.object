@@ -1,0 +1,25 @@
+<dynamic_object>
+    <diesel materials="units/payday2/props/com_prop_lobby_loungechair/com_prop_lobby_loungechair_red" orientation_object="rp_chair"/>
+    <bodies>
+        <body name="lampbody_static" enabled="true" template="static">
+            <object name="rp_chair"/>
+			<object name="c_convex_01" collision_type="convex" padding="-2.5"/>
+			<object name="c_convex_02" collision_type="convex" padding="-2.5"/>
+			<object name="c_convex_03" collision_type="convex" padding="-2.5"/>
+			<object name="c_convex_04" collision_type="convex" padding="-2.5"/>
+			<object name="c_convex_05" collision_type="convex" padding="-2.5"/>
+			<object name="c_box_01" collision_type="box" padding="-2.5"/>
+			<object name="c_box_02" collision_type="box" padding="-2.5"/>
+			<object name="c_box_03" collision_type="box" padding="-2.5"/>
+			<object name="c_box_04" collision_type="box" padding="-2.5"/>
+			<object name="c_box_05" collision_type="box" padding="-2.5"/>
+        </body>
+    </bodies>
+    <decal_surfaces>
+        <decal_mesh enabled="true" name="g_chair" material="cloth" />
+    </decal_surfaces>
+    <graphics>
+        <object name="g_chair" enabled="true"/>
+		<object name="s_chair" enabled="true" shadow_caster="true"/>
+    </graphics>
+</dynamic_object>

@@ -1,0 +1,26 @@
+<dynamic_object>
+    <diesel orientation_object="rp_ind_ext_level_0_window_small" materials="units/payday2/architecture/ind/ind_ext_level/ind_ext_level" />
+	<sequence_manager file="units/payday2/architecture/ind/ind_ext_level/ind_ext_level_0_window_small" />
+	
+    <bodies>
+		<body name="glass_body" template="static" enabled="true" >
+			<object name="c_box_glass" collision_type="box" padding="-2.5"/>
+	    </body>
+		<body name="frame_body" template="static" enabled="true" >
+			<object name="c_meshmopp" collision_type="mesh_mopp" />
+	    </body>
+    </bodies>
+
+	<decal_surfaces default_material="plastic" static="true">
+		<decal_mesh name="dm_glass_breakable" material="glass_breakable" enabled="true"/>
+	</decal_surfaces> 
+	
+    <graphics>
+        <object enabled="true" name="g_g" />
+        <object enabled="false" name="g_g_dmg" />
+		<object enabled="true" name="g_glass" />
+        <object enabled="false" name="g_glass_dmg" />
+		<object enabled="true" name="s_s" shadow_caster="true"/>
+		<object enabled="false" name="s_s_dmg" shadow_caster="true"/>
+    </graphics>
+</dynamic_object>

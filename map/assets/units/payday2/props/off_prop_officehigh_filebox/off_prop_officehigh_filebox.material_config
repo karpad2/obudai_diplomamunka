@@ -1,0 +1,6 @@
+<materials version="3">
+    <material name="mat_file_box" render_template="generic:DIFFUSE_TEXTURE:NORMALMAP" version="2">
+        <diffuse_texture file="units/payday2/props/off_prop_officehigh_filebox/off_prop_officehigh_filebox_df"/>
+        <bump_normal_texture file="units/payday2/props/off_prop_officehigh_filebox/off_prop_officehigh_filebox_nm"/>
+    </material>
+</materials>

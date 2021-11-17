@@ -1,0 +1,28 @@
+<dynamic_object>
+    <diesel materials="units/payday2/props/gen_prop_security_monitors/gen_prop_security_monitors" orientation_object="rp_gen_prop_security_monitors_four_wall" />
+	<sequence_manager file="units/payday2/props/gen_prop_security_monitors/gen_prop_security_monitors_four" />
+    <animations>
+        <animation_group name="anim_upper" enabled="true">
+                <object name="anim_screen_01" />
+                <object name="anim_screen_02" />
+                <object name="anim_screen_05" />
+                <object name="anim_screen_06" />
+        </animation_group>
+        <animation_group name="anim_upper" enabled="true">
+                <object name="anim_screen_03" />
+                <object name="anim_screen_04" />
+                <object name="anim_screen_07" />
+                <object name="anim_screen_08" />
+        </animation_group>
+	</animations>
+    <bodies>
+        <body enabled="true" template="static" name="static_body" >
+            <object collision_type="mesh_mopp" name="c_c" />
+        </body>
+    </bodies>
+    <graphics>
+        <object enabled="true" name="g_sticky_notes_four" />
+        <object enabled="true" name="g_monitors_four" />
+        <object enabled="true" name="g_screens" />
+    </graphics>
+</dynamic_object>

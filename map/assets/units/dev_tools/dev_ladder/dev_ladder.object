@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<dynamic_object>
+	<diesel materials="units/dev_tools/dev_ladder/dev_ladder" orientation_object="rp_ladder" />
+	<sequence_manager file="units/dev_tools/dev_ladder/dev_ladder" />
+	<bodies>
+		<body name="editor_body" enabled="true" template="editor">
+			<object name="rp_ladder" />
+			<object name="c_box_ladder" collision_type="box" />
+		</body>
+	</bodies>
+
+	<graphics>
+		<object name="g_ladder" enabled="true"  />
+	</graphics>
+</dynamic_object>

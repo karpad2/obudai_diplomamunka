@@ -1,0 +1,32 @@
+<dynamic_object>
+    <diesel orientation_object="rp_str_prop_street_electric_box_hackable" materials="units/payday2/props/str_prop_street_electric_box/str_prop_street_electric_box_hackable" />
+    <sequence_manager file="units/payday2/props/str_prop_street_electric_box/str_prop_street_electric_box_hackable" />
+    <animations>
+        <animation_group name="anim_open_door" enabled="false">
+            <object name="anim_hinge" />
+        </animation_group>
+    </animations>
+
+	<bodies>
+        <body enabled="true" template="static" name="static_body" >
+            <object name="rp_str_prop_street_electric_box_hackable" />         
+            <object collision_type="box" name="c_box_000" padding="-2"/>
+        </body>
+    </bodies>
+	
+	<decal_surfaces default_material="sheet_metal">
+        <decal_mesh enabled="true" name="dm_sheet_metal" material="sheet_metal" />
+        <decal_mesh enabled="true" name="dm_metal" material="metal" />
+        <decal_mesh enabled="true" name="dm_concrete" material="concrete" />
+    </decal_surfaces>
+	
+	<graphics>
+        <graphic_group name="grp_box" enabled="true" culling_object="co_box">
+            <object enabled="true" name="g_g" />
+            <object enabled="true" name="g_door" />
+            <object enabled="true" name="s_s" shadow_caster="true" />
+            <object enabled="true" name="s_door" shadow_caster="true" />
+        </graphic_group>
+
+    </graphics>
+</dynamic_object>

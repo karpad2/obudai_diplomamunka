@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<unit type="dev" slot="1">
+	<network sync="spawn"/>
+	<object file="units/dev_tools/dev_ladder/dev_ladder" />
+	<extensions>
+		<extension name="unit_data" class="ScriptUnitData">
+			<var name="only_visible_in_editor" value="true" />
+		</extension>
+		<extension name="damage" 	class="UnitDamage" />
+			<extension class="Ladder" name="ladder" >
+					<var name="_ladder_orientation_obj_name" value="rp_ladder" />
+					<var name="_height" value="190" />
+					<var name="_width" value="80" />
+					<!-- <var name="_offset" value="-220" /> -->
+					<var name="normal_axis" value="y" />
+					<var name="invert_normal_axis" value="true" />
+					<var name="up_axis" value="z" />
+				</extension>
+	</extensions>
+</unit>

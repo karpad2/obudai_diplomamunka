@@ -1,0 +1,17 @@
+<materials version="3">
+    <material render_template="generic:DIFFUSE_TEXTURE:INSTANCED" material="glass_breakable" name="hanging_lightbulb" version="2">
+        <diffuse_texture file="units/world/props/apartment/hanging_lightbulb/hanging_lightbulb_df"/>
+    </material>
+    <material render_template="generic:DIFFUSE_TEXTURE:INSTANCED:SELF_ILLUMINATION" material="glass_breakable" name="hanging_glowing" version="2">
+        <variable value="sun" type="scalar" name="il_multiplier"/>
+        <diffuse_texture file="units/world/props/apartment/hanging_lightbulb/hanging_lightbulb_df"/>
+        <self_illumination_texture file="units/world/props/apartment/hanging_lightbulb/hanging_lightbulb_il"/>
+    </material>
+    <material name="glass" render_template="opacity:CUBE_ENVIRONMENT_MAPPING:CUBE_FRESNEL:DIFFUSE_TEXTURE:DOUBLE_SIDED:OPACITY_FADE" version="2">
+        <variable value="2 0.22999998927116 0.94999998807907" type="vector3" name="fresnel_settings"/>
+        <opacity_texture file="units/payday2/glass/glass_clear_vehicle_op"/>
+        <diffuse_texture file="units/payday2/glass/glass_clear_vehicle_df"/>
+        <reflection_texture type="cubemap" global_texture="current_global_texture"/>
+        <variable value="10 4000 0" type="vector3" name="opacity_fade"/>
+    </material>
+</materials>

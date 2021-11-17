@@ -1,0 +1,8 @@
+<materials version="3">
+    <material name="com_prop_mall_banner_mat" render_template="generic:DIFFUSE_TEXTURE:INSTANCED:NORMALMAP" version="2">
+        <diffuse_texture file="units/custom/pd2_mod_hardwareStore/com_prop_mall_banner/com_prop_mall_banner_df"/>
+        <bump_normal_texture file="units/custom/pd2_mod_hardwareStore/com_prop_mall_banner/com_prop_mall_banner_nm"/>
+    </material>
+    <material name="shadow_caster" render_template="shadow_caster_only:INSTANCED" version="2"/>
+</materials>
+

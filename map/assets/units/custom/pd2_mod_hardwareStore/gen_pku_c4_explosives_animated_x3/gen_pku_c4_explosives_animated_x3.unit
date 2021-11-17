@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<unit type="gen" slot="1">
+	<object file="units/custom/pd2_mod_hardwareStore/gen_pku_c4_explosives_animated/gen_pku_c4_explosives_animated" />
+	<network sync="spawn"/>
+	<extensions>
+		<extension name="unit_data" class="ScriptUnitData" />
+		<extension name="damage" class="UnitDamage" />
+		<extension name="interaction" class="SpecialEquipmentInteractionExt" >
+			<var name="_special_equipment" value="c4" />
+			<var name="tweak_data" value="c4_bag" />
+		</extension>
+	</extensions>
+</unit>

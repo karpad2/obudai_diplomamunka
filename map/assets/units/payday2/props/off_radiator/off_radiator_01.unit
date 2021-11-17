@@ -1,0 +1,6 @@
+<unit type="off" slot="1" >
+    <object file="units/payday2/props/off_radiator/off_radiator_01" />
+    <extensions>
+        <extension class="ScriptUnitData" name="unit_data" />
+    </extensions>
+</unit>

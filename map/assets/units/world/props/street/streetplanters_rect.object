@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<dynamic_object>
+  <diesel materials="units/world/props/street/streetplanters" orientation_object="rp_streetplanters_rect" />
+  <bodies>
+    <body name="static_body" enabled="true" template="static">
+      <object name="rp_streetplanters_rect" />
+      <object name="c_c" enabled="true" collision_type="mesh_mopp" />
+    </body>
+  </bodies>
+  <decal_surfaces default_material="concrete" static="true">	
+    <decal_mesh name="dm_concrete" enabled="true" material="concrete" />
+    <decal_mesh name="dm_dirt" enabled="true" material="grass" />
+  </decal_surfaces>
+  <graphics>
+    <object name="g_g" enabled="true" shadow_caster="false"  instance_struct="world_tm"/>
+    <object name="s_s" enabled="true" shadow_caster="true"  instance_struct="world_tm"/>
+  </graphics>
+</dynamic_object>

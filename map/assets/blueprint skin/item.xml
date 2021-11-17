@@ -1,0 +1,114 @@
+<ugcitem>
+	<param key="type" value="weapon_skin"/>
+	<param key="name" value="Blueprint PD2C"/>
+	<node name="data">
+		<param key="id" value="packrat_blueprint_pd2c"/>
+		<param key="weapon_id" value="packrat"/>
+		<param key="pattern_gradient_name" value="patgra_hws_packrat_1.tga"/>
+		<node name="types">
+			<node name="sight">
+				<param key="base_gradient_name" value="base_hws_packrat_2.tga"/>
+			</node>
+			<node name="barrel_ext">
+				<param key="pattern_tweak" value="Vector3(1, 0, 0.203434)"/>
+				<param key="base_gradient_name" value="base_hws_packrat_2.tga"/>
+				<param key="pattern_name" value="pat_hws_packrat_full.tga"/>
+			</node>
+			<node name="gadget">
+				<param key="pattern_name" value="pat_hws_packrat_full.tga"/>
+				<param key="pattern_tweak" value="Vector3(1, 0, 0.0937278)"/>
+			</node>
+		</node>
+		<param key="base_gradient_name" value="base_hws_packrat_1.tga"/>
+		<param key="name_id" value="bm_wskn_packrat_blueprint_pd2c"/>
+		<param key="reserve_quality" value="true"/>
+		<node name="parts">
+			<node name="wpn_fps_pis_packrat_bolt_standard">
+				<node name="6322f3f14f773679">
+					<param key="pattern_name" value="pat_hws_packrat_full.tga"/>
+					<param key="pattern_tweak" value="Vector3(1, 0, 0.217744)"/>
+				</node>
+			</node>
+			<node name="wpn_fps_pis_packrat_b_standard">
+				<node name="6cda568470fcfad3">
+					<param key="pattern_tweak" value="Vector3(1, 0, 0.0674936)"/>
+					<param key="base_gradient_name" value="base_hws_packrat_2.tga"/>
+					<param key="pattern_name" value="pat_hws_packrat_full.tga"/>
+				</node>
+			</node>
+			<node name="wpn_fps_pis_packrat_sl_standard">
+				<node name="ce1c9153c9e3f737">
+					<param key="pattern_name" value="pat_hws_packrat_sl_standard.tga"/>
+					<param key="pattern_tweak" value="Vector3(1, 0, 0.348915)"/>
+				</node>
+			</node>
+			<node name="wpn_fps_upg_fl_pis_laser">
+				<node name="4806cfaee28ccc45">
+					<param key="pattern_name" value="pat_hws_packrat_full.tga"/>
+					<param key="pattern_tweak" value="Vector3(1, 0, 0)"/>
+				</node>
+			</node>
+			<node name="wpn_fps_pis_packrat_m_extended">
+				<node name="81950169490d2cc6">
+					<param key="pattern_name" value="pat_hws_packrat_full.tga"/>
+				</node>
+			</node>
+			<node name="wpn_fps_upg_ns_pis_medium_slim">
+				<node name="d06cdaa70857c393">
+					<param key="pattern_name" value="pat_hws_packrat_full.tga"/>
+					<param key="pattern_tweak" value="Vector3(1, 0, 0)"/>
+				</node>
+			</node>
+			<node name="wpn_fps_pis_packrat_ns_wick">
+				<node name="26b483d40c67ba62">
+					<param key="pattern_tweak" value="Vector3(1, 0, 0)"/>
+					<param key="base_gradient_name" value="base_hws_packrat_1.tga"/>
+					<param key="pattern_name" value="pat_hws_packrat_full.tga"/>
+				</node>
+			</node>
+			<node name="wpn_fps_upg_o_rmr">
+				<node name="9a33af1f56b83b07">
+					<param key="pattern_tweak" value="Vector3(1, 0, 0.398998)"/>
+					<param key="base_gradient_name" value="base_hws_packrat_2.tga"/>
+					<param key="pattern_name" value="pat_hws_packrat_full.tga"/>
+				</node>
+			</node>
+			<node name="wpn_fps_pis_packrat_m_standard">
+				<node name="14bca223d66257d6">
+					<param key="pattern_name" value="pat_hws_packrat_full.tga"/>
+				</node>
+			</node>
+			<node name="wpn_fps_pis_packrat_o_expert">
+				<node name="89c45d216d06530b">
+					<param key="pattern_name" value="pat_hws_packrat_full.tga"/>
+					<param key="pattern_tweak" value="Vector3(1, 0, 0.267827)"/>
+				</node>
+			</node>
+			<node name="wpn_fps_upg_fl_pis_m3x">
+				<node name="0e9cc6cb29d35c92">
+					<param key="pattern_name" value="pat_hws_packrat_body_standard.tga"/>
+					<param key="pattern_tweak" value="Vector3(1, 0, 0.274982)"/>
+				</node>
+			</node>
+			<node name="wpn_fps_upg_fl_pis_x400v">
+				<node name="002af6eb9050b6dc">
+					<param key="pattern_name" value="pat_hws_packrat_full.tga"/>
+					<param key="pattern_tweak" value="Vector3(1, 0, 0)"/>
+				</node>
+			</node>
+			<node name="wpn_fps_pis_packrat_body_standard">
+				<node name="6322f3f14f773679">
+					<param key="pattern_name" value="pat_hws_packrat_body_standard.tga"/>
+					<param key="pattern_tweak" value="Vector3(1, 0, 0.243978)"/>
+				</node>
+			</node>
+			<node name="wpn_fps_pis_packrat_o_standard">
+				<node name="4e73e3cdb0f97bc4">
+					<param key="pattern_name" value="pat_hws_packrat_full.tga"/>
+					<param key="pattern_tweak" value="Vector3(1, 0, 0.246363)"/>
+				</node>
+			</node>
+		</node>
+	</node>
+	<param key="timestamp" value="2018337082250"/>
+</ugcitem>

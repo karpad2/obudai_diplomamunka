@@ -1,0 +1,17 @@
+<materials version="3">
+	<material name="anim" render_template="effect:DIFFUSE0_TEXTURE:DIFFUSE0_UVANIM" version="2">
+		<diffuse_texture file="units/payday2/props/shared_textures/goal_df" />
+		<variable value="sun" type="scalar" name="intensity"/>
+        <variable value="1 0 0" type="vector3" name="uv0_speed"/>
+	</material>
+	<material name="area" render_template="effect:DIFFUSE0_TEXTURE" version="2">
+		<diffuse_texture file="units/gui/area_indicator_df" />
+		<variable value="identity" type="scalar" name="intensity"/>
+	</material>
+	<material name="mtr_icon" render_template="effect:DIFFUSE0_TEXTURE" version="2">
+		<diffuse_texture file="units/payday2/props/gen_prop_car_goal_marker/gen_prop_car_goal_marker_df" />
+		<variable value="identity" type="scalar" name="intensity"/>
+	</material>
+	
+</materials>
+

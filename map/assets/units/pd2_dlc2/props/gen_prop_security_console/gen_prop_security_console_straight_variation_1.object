@@ -1,0 +1,86 @@
+<dynamic_object>
+    <diesel orientation_object="rp_gen_prop_security_console_straight_variation_1" materials="units/pd2_dlc2/props/gen_prop_security_console/gen_prop_security_console_props" />
+    <sequence_manager file="units/pd2_dlc2/props/gen_prop_security_console/gen_prop_security_console_straight_variation_1" />
+    <bodies>
+       <body name="body_static_01" enabled="true" template="static">
+            <object name="c_box_01" collision_type="box" padding="-2.5"/>
+        </body>
+
+        <body name="body_keyboard_static_01" enabled="true" template="static">
+            <object name="c_convex_03" collision_type="convex" padding="-2.5"/>
+        </body>
+        <body name="body_keyboard_dynamic_01" enabled="false" template="dynamic" collides_with_mover="false">
+            <object name="c_convex_03" collision_type="convex" padding="-2.5"/>
+        </body>
+
+        <body name="body_monitor_static_01" enabled="true" template="static">
+            <object name="c_convex_01" collision_type="convex" padding="-2.5"/>
+        </body>
+        <body name="body_monitor_dynamic_01" enabled="false" template="dynamic" collides_with_mover="false">
+            <object name="c_convex_01" collision_type="convex" padding="-2.5" mass="1"/>
+        </body>
+
+        <body name="body_monitor_static_02" enabled="true" template="static">
+            <object name="c_convex_02" collision_type="convex" padding="-2.5"/>
+        </body>
+        <body name="body_monitor_dynamic_02" enabled="false" template="dynamic" collides_with_mover="false">
+            <object name="c_convex_02" collision_type="convex" padding="-2.5" mass="1"/>
+        </body>
+
+        <body name="body_monitor_static_03" enabled="true" template="static">
+            <object name="c_box_01" collision_type="box" padding="-2.5"/>
+        </body>
+        <body name="body_monitor_dynamic_03" enabled="false" template="dynamic" collides_with_mover="false">
+            <object name="c_box_01" collision_type="box" padding="-2.5" mass="1"/>
+        </body>
+
+        <body name="body_chair_static" enabled="true" template="static">
+            <object name="c_convex_04" collision_type="convex" padding="-2.5"/>
+        </body>
+        <body name="body_chair_dynamic" enabled="false" template="dynamic" collides_with_mover="false">
+            <object name="c_convex_04" collision_type="convex" padding="-2.5" mass="1"/>
+        </body>
+    </bodies>
+    <decal_surfaces default_material="plastic">
+        <decal_mesh enabled="true" name="dm_cloth" material="plastic" />
+
+        <decal_mesh enabled="true" name="dm_glass_01" material="glass_breakable" />
+        <decal_mesh enabled="true" name="dm_glass_02" material="glass_breakable" />
+
+        <decal_mesh enabled="true" name="dm_plastic_01" material="plastic" />
+        <decal_mesh enabled="true" name="dm_plastic_02" material="plastic" />
+        <decal_mesh enabled="true" name="dm_plastic_03" material="plastic" />
+        <decal_mesh enabled="true" name="dm_plastic_04" material="plastic" />
+        <decal_mesh enabled="true" name="dm_plastic_05" material="plastic" />
+
+        <decal_mesh enabled="true" name="dm_metal" material="metal" />
+    </decal_surfaces>
+    <effects>
+        <effect_spawner name="spark_01" enabled="false" object="e_effect_01" effect="effects/particles/dest/sparks_lamp_dest" />
+        <effect_spawner name="glass_01" enabled="false" object="e_effect_01" effect="effects/particles/dest/veil_tube"/>
+
+        <effect_spawner name="spark_02" enabled="false" object="e_effect_02" effect="effects/particles/dest/sparks_lamp_dest" />
+        <effect_spawner name="glass_02" enabled="false" object="e_effect_02" effect="effects/particles/dest/veil_tube"/>
+    </effects>
+    <graphics>
+        <object enabled="true" name="g_mesh" />
+        <object enabled="true" name="g_monitor_01" />
+        <object enabled="true" name="g_monitor_02" />
+        <object enabled="true" name="g_computer_laptop" />
+        <object enabled="true" name="g_keyboard_01" />
+
+<!-- screens start -->
+        <object enabled="true" name="g_screen_01" />
+        <object enabled="true" name="g_screen_02" />
+        <object enabled="false" name="g_screen_cracked_01" />
+        <object enabled="false" name="g_screen_cracked_02" />
+        <object enabled="false" name="g_screen_broken_01" />
+        <object enabled="false" name="g_screen_broken_02" />
+        <object enabled="false" name="g_screen_off_01" />
+        <object enabled="false" name="g_screen_off_02" />
+
+        <object enabled="true" name="g_server" />
+        <object enabled="true" name="g_glow" />
+<!-- screens end -->
+    </graphics>
+</dynamic_object>

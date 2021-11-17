@@ -1,0 +1,13 @@
+<unit type="bry" slot="1">
+	<object file="units/pd2_dlc_berry/pickups/bry_pku_blowtorch/bry_pku_blowtorch" />
+	<network sync="spawn" />
+	<extensions>
+		<extension class="ScriptUnitData" name="unit_data" />
+		<extension name="interaction" class="SpecialEquipmentInteractionExt" >
+			<var name="_special_equipment" value="blow_torch" />
+			<var name="_remove_on_interact" value="true" />
+			<var name="tweak_data" value="gen_pku_blow_torch" />
+		</extension>
+		<extension name="damage" class="UnitDamage" />
+	</extensions>
+</unit>

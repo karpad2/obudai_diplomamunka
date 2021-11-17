@@ -1,0 +1,93 @@
+<dynamic_object>
+	<diesel materials="units/pd2_dlc_bph/vehicles/bph_turret/bph_turret" orientation_object="rp_bph_turret_crate" />
+	<sequence_manager file="units/pd2_dlc_bph/vehicles/bph_turret/bph_turret_crate" />
+	<animations>
+		<animation_group name="anim" enabled="false">
+			<object name="anim_lid_01" />
+			<object name="anim_lid_02" />
+		</animation_group>
+	</animations>
+	<bodies>
+		<body name="body_static" enabled="true" template="static">
+			<object name="rp_bph_turret_crate" />
+			<object name="c_convex_box" collision_type="mesh_mopp" padding="-2.5" />
+			<object name="c_box_03" collision_type="box" padding="-2.5" />
+			<object name="c_box_04" collision_type="box" padding="-2.5" />
+		</body>
+		<body name="body_lid_01" enabled="true" template="animated">
+			<object name="anim_lid_01" />
+			<object name="c_box_01" collision_type="box" padding="-2.5" />
+		</body>
+		<body name="body_lid_dyn_01" enabled="false" template="debris">
+			<object name="c_box_01" collision_type="box" padding="-2.5"/>
+		</body>
+		<body name="body_lid_02" enabled="true" template="animated">
+			<object name="anim_lid_02" />
+			<object name="c_box_02" collision_type="box" padding="-2.5" />
+		</body>
+		<body name="body_lid_dyn_02" enabled="false" template="debris">
+			<object name="c_box_02" collision_type="box" padding="-2.5"/>
+		</body>
+	</bodies>
+	<decal_surfaces>
+		<decal_mesh name="dm_steel_01" enabled="true" material="steel" />
+		<decal_mesh name="dm_steel_02" enabled="true" material="steel" />
+		<decal_mesh name="dm_steel_03" enabled="true" material="steel" />
+
+		<decal_mesh name="dm_steel_04" enabled="true" material="steel" />
+		<decal_mesh name="dm_steel_05" enabled="true" material="steel" />
+		<decal_mesh name="dm_foam_01" enabled="true" material="cloth" />
+		<decal_mesh name="dm_foam_02" enabled="true" material="cloth" />
+		<decal_mesh name="dm_foam_03" enabled="true" material="cloth" />
+
+	</decal_surfaces>
+	<effects>
+		<effect_spawner name="smoke" enabled="false" object="e_effect" effect="effects/payday2/particles/smoke_trail/smoke_puff_grey" />
+	</effects>
+	<graphics>
+		<graphic_group name="grp_lid_02" enabled="true" >
+			<lod_object name="lod_g_lid_02_low">
+				<object name="g_lid_02_low_lod0" enabled="true" max_distance="1500" />
+				<object name="g_lid_02_low_lod1" enabled="true" />
+			</lod_object>
+		
+			<lod_object name="lod_lock_lid_02">
+				<object name="g_lock_lid_02_lod0" enabled="true" max_distance="1500" />
+				<object name="g_lock_lid_02_lod1" enabled="true" />
+			</lod_object>
+		
+			<lod_object name="lod_lock_flap">
+				<object name="g_lock_flap_lod0" enabled="true" max_distance="1500" />
+				<object name="g_lock_flap_lod1" enabled="true" />
+			</lod_object>
+			
+			<lod_object name="lod_lid_02_foam">
+				<object name="g_lid_02_foam_lod0" enabled="true" max_distance="1500" />
+				<object name="g_lid_02_foam_lod1" enabled="true" />
+			</lod_object>
+		</graphic_group>
+		<graphic_group name="grp_lid_01" enabled="true" >
+			<lod_object name="lod_lock_lid_01">
+				<object name="g_lock_lid_01_lod0" enabled="true" max_distance="1500" />
+				<object name="g_lock_lid_01_lod1" enabled="true" />
+			</lod_object>
+		
+			<lod_object name="lod_lid_01_foam">
+				<object name="g_lid_01_foam_lod0" enabled="true" max_distance="1500" />
+				<object name="g_lid_01_foam_lod1" enabled="true" />
+			</lod_object>
+		
+			<lod_object name="lod_g_lid_01_low">
+				<object name="g_lid_01_low_lod0" enabled="true" max_distance="1500" />
+				<object name="g_lid_01_low_lod1" enabled="true" />
+			</lod_object>
+		</graphic_group>
+		<graphic_group name="grp_body" enabled="true" culling_object="CullingObjectName">
+			<lod_object name="lod_box_body">
+				<object name="g_box_body_lod0" enabled="true" max_distance="1500" />
+				<object name="g_box_body_lod1" enabled="true" />
+			</lod_object>
+		</graphic_group>
+		
+	</graphics>
+</dynamic_object>

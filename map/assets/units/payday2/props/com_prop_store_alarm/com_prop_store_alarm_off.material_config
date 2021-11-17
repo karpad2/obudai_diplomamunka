@@ -1,0 +1,8 @@
+<materials version="3" group="matgroup_alarm">
+    <material name="mat_store_alarm" render_template="generic:DIFFUSE_TEXTURE" version="2">
+        <diffuse_texture file="units/payday2/props/com_prop_store_alarm/com_prop_store_alarm_df"/>
+    </material>
+    <material name="mat_store_alarm_il" render_template="generic:DIFFUSE_TEXTURE" version="2">
+        <diffuse_texture file="units/payday2/props/com_prop_store_alarm/com_prop_store_alarm_df"/>
+    </material>
+</materials>

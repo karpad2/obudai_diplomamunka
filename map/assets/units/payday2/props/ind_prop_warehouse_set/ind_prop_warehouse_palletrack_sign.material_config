@@ -1,0 +1,14 @@
+<materials version="3">
+	<material name="mat_ind_prop_warehouse_sign" render_template="generic:DIFFUSE_TEXTURE:NORMALMAP" version="2">
+        <diffuse_texture file="units/payday2/props/ind_prop_warehouse_set/ind_prop_warehouse_sign_df"/>
+        <bump_normal_texture file="units/payday2/props/ind_prop_warehouse_set/ind_prop_warehouse_sign_nm"/>
+    </material>
+    <material name="mat_ind_prop_warehouse_sign_text" render_template="decal:DIFFUSE_TEXTURE:OPACITY_TEXTURE" version="2">
+        <diffuse_texture file="units/payday2/props/ind_prop_warehouse_set/ind_prop_warehouse_sign_df"/>
+        <opacity_texture file="units/payday2/props/ind_prop_warehouse_set/ind_prop_warehouse_sign_op"/>
+    </material>
+	    <material name="mat_ind_prop_warehouse_sign_text_lod1" render_template="decal:DIFFUSE_TEXTURE:OPACITY_TEXTURE" version="2">
+        <diffuse_texture file="units/payday2/props/ind_prop_warehouse_set/ind_prop_warehouse_sign_df" mip="4"/>
+        <opacity_texture file="units/payday2/props/ind_prop_warehouse_set/ind_prop_warehouse_sign_op" mip="4"//>
+    </material>
+</materials>

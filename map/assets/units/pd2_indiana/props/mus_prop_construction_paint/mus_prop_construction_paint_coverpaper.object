@@ -1,0 +1,15 @@
+<dynamic_object>
+    <diesel orientation_object="rp_mus_prop_construction_paint_coverpaper" materials="units/pd2_indiana/props/mus_prop_construction_paint/mus_prop_construction_paint" />
+    <bodies>
+        <body enabled="true" template="static" name="static_body" >
+            <object name="rp_mus_prop_construction_paint_coverpaper" />
+            <object collision_type="box" name="c_box_01" padding="-2.5"/>
+        </body>
+    </bodies>
+    <decal_surfaces default_material="plastic">
+        <decal_mesh enabled="true" name="dm_paper" material="plastic" />
+    </decal_surfaces>
+    <graphics>
+        <object enabled="true" name="g_g" />
+    </graphics>
+</dynamic_object>

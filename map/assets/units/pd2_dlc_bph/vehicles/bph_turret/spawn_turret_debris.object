@@ -1,0 +1,19 @@
+<dynamic_object>
+	<diesel materials="units/pd2_dlc_bph/vehicles/bph_turret/bph_debris_turret" orientation_object="rp_spawn_turret_debris" />
+	<bodies>
+		<body name="body_debris" enabled="true" template="dynamic" collides_with_mover="false">
+			<object name="c_box_01" collision_type="convex" mass="250"/>
+		</body>
+		<body name="base_left_debris" enabled="true" template="dynamic" collides_with_mover="false">
+			<object name="c_box_02" collision_type="convex" mass="250"/>
+		</body>
+		<body name="base_right_debris" enabled="true" template="dynamic" collides_with_mover="false">
+			<object name="c_box_03" collision_type="convex" mass="250"/>
+		</body>
+	</bodies>
+	<graphics>
+		<object name="g_barrel" enabled="true" />
+		<object name="g_gun_body" enabled="true" />
+		<object name="g_gun_holder" enabled="true" />
+	</graphics>
+</dynamic_object>

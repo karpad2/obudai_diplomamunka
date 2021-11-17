@@ -1,0 +1,11 @@
+<materials version="3">
+	<material name="mat_saw" render_template="generic:DIFFUSE_TEXTURE:NORMALMAP" version="2">
+		<diffuse_texture file="units/pd2_dlc_glace/props/glc_prop_construction_tool/glc_prop_construction_tool_saw_df" />
+		<bump_normal_texture file="units/pd2_dlc_glace/props/glc_prop_construction_tool/glc_prop_construction_tool_saw_nm" />
+	</material>
+	<material name="mat_saw_lod" render_template="generic:DIFFUSE_TEXTURE:NORMALMAP" version="2">
+		<diffuse_texture file="units/pd2_dlc_glace/props/glc_prop_construction_tool/glc_prop_construction_tool_saw_df" mip="4" />
+		<bump_normal_texture file="units/pd2_dlc_glace/props/glc_prop_construction_tool/glc_prop_construction_tool_saw_nm" mip="4" />
+	</material>
+	<material name="shadow_caster" render_template="shadow_caster_only" version="2" />
+</materials>

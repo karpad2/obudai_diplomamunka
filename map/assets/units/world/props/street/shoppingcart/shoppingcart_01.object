@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<dynamic_object>
+	<diesel materials="units/world/props/street/shoppingcart/shoppingcart_01" orientation_object="rp_shoppingcart" />
+		<bodies>
+			<body name="static_body" enabled="true" template="nav_walk">
+				<object name="rp_shoppingcart"/>
+				<object name="c_c" collision_type="box" padding="-2"/>
+			</body>
+		</bodies>
+
+	<graphics>
+		<lod_object name="shopping_cart_lod">
+			<object enabled="true" name="g_g" >
+				<material materials="shoppingcart" max_distance="3000"/>
+				<material materials="shoppingcart_lod" />
+			</object>
+		</lod_object>
+	</graphics>
+</dynamic_object>

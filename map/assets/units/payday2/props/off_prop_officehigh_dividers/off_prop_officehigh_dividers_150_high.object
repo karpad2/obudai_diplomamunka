@@ -1,0 +1,15 @@
+<dynamic_object>
+    <diesel orientation_object="rp_divider_150_high" materials="units/payday2/props/off_prop_officehigh_dividers/off_prop_officehigh_dividers" />
+    <bodies>
+        <body enabled="true" template="static" name="body0" >
+            <object name="rp_divider_150_high" />
+            <object collision_type="box" name="c_box_01" padding="-2.5"/>
+        </body>
+    </bodies>
+    <decal_surfaces>
+        <decal_mesh enabled="true" name="dm_plastic" material="thin_layer" />
+    </decal_surfaces>
+    <graphics>
+        <object enabled="true" name="g_g" instance_struct="world_tm" />
+    </graphics>
+</dynamic_object>

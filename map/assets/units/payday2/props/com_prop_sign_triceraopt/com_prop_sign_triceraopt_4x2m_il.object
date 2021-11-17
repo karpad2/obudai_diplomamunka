@@ -1,0 +1,11 @@
+<dynamic_object>
+    <diesel orientation_object="rp_com_prop_sign_triceraopt_4x2m_il" materials="units/payday2/props/com_prop_sign_triceraopt/com_prop_sign_triceraopt_4x2m_il" />
+    <bodies>
+        <body enabled="true" template="static" name="static_body" >
+            <object collision_type="box" name="c_box_00" />
+        </body>
+    </bodies>
+    <graphics>
+        <object enabled="true" name="g_g" />
+    </graphics>
+</dynamic_object>

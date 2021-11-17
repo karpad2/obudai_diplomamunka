@@ -1,0 +1,21 @@
+<dynamic_object>
+    <diesel orientation_object="rp_mailbox" materials="units/world/props/suburbia_mailbox/suburbia_mailbox" />
+    <bodies>
+        <body enabled="true" template="static" name="static_body" >
+            <object name="rp_mailbox" />
+			<object collision_type="capsule" name="c_5" padding="-2" />
+			<object collision_type="box" name="c_4" padding="-2"/>
+            <object collision_type="box" name="c_3" padding="-2"/>
+            <object collision_type="box" name="c_2" padding="-2"/>
+            <object collision_type="box" name="c_1" padding="-2"/>
+        </body>
+    </bodies>
+	<decal_surfaces default_material="sheet_metal">
+		<decal_mesh name="dm_sheet" enabled="true" material="sheet_metal" />
+		<decal_mesh name="dm_wood" enabled="true" material="wood" />
+	</decal_surfaces>
+    <graphics>
+        <object enabled="true" name="g_mailbox" />
+		<object name="s_mailbox" enabled="true" shadow_caster="true" />
+    </graphics>
+</dynamic_object>

@@ -1,0 +1,6 @@
+<unit type="mus" slot="1" >
+    <object file="units/pd2_indiana/props/mus_prop_hallway_planter/mus_prop_hallway_planter" />
+    <extensions>
+        <extension class="ScriptUnitData" name="unit_data" />
+    </extensions>
+</unit>

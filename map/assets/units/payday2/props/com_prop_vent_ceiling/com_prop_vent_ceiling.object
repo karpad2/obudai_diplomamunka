@@ -1,0 +1,28 @@
+<dynamic_object>
+    <diesel orientation_object="rp_com_prop_vent_ceiling" materials="units/payday2/props/com_prop_vent_ceiling/com_prop_vent_ceiling" />
+    <sequence_manager file="units/payday2/props/com_prop_vent_ceiling/com_prop_vent_ceiling" />
+    <bodies>
+        <body enabled="true" template="static" name="static_frame" remove_ray_type="equipment_placement">
+			<object name="rp_com_prop_vent_ceiling" />
+			<object name="c_mesh_frame" collision_type="mesh_mopp" />
+        </body>
+        <body enabled="true" template="static" name="static_cover">
+			<object name="c_box_cover" collision_type="box" padding="-2.5"/>
+        </body>
+        <body enabled="false" template="fence" name="fence_cover" remove_ray_type="equipment_placement">
+			<object name="c_box_fence" collision_type="box" padding="-2.5"/>
+        </body>
+        <body enabled="false" template="dynamic" name="dynamic_cover" ray="ignore" collides_with_mover="false">
+			<object name="c_box_cover" collision_type="box" padding="-2.5"/>
+        </body>
+    </bodies>
+    <decal_surfaces>
+		<decal_mesh name="dm_plastic_cover" enabled="true" material="plastic"/>
+		<decal_mesh name="dm_plastic_frame" enabled="true" material="plastic"/>
+    </decal_surfaces>
+    <graphics>
+		<object name="g_vent_cover" enabled="true"/>
+		<object name="g_vent_frame" enabled="true"/>
+		<object name="g_shaft_full" enabled="true"/>
+    </graphics>
+</dynamic_object>

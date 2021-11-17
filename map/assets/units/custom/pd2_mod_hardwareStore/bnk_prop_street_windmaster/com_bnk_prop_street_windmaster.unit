@@ -1,0 +1,6 @@
+<unit type="bnk" slot="1" >
+    <object file="units/custom/pd2_mod_hardwareStore/bnk_prop_street_windmaster/com_bnk_prop_street_windmaster" />
+    <extensions>
+        <extension class="ScriptUnitData" name="unit_data" />
+    </extensions>
+</unit>

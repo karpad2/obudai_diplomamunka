@@ -1,0 +1,6 @@
+<unit type="str" slot="1" >
+    <object file="units/pd2_indiana/props/str_prop_construction_mobileoffice/str_prop_construction_mobileoffice" />
+    <extensions>
+        <extension class="ScriptUnitData" name="unit_data" />
+    </extensions>
+</unit>

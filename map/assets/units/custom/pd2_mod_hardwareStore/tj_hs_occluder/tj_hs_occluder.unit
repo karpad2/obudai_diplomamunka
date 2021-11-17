@@ -1,0 +1,9 @@
+<unit type="gen" slot="1">
+	<object file="units/custom/pd2_mod_hardwareStore/tj_hs_occluder/tj_hs_occluder" />
+	<extensions>
+		<extension name="unit_data" class="ScriptUnitData">
+			<var name="only_visible_in_editor" value="true" />
+			<var name="helper_type" value="occluder" />
+		</extension>
+	</extensions>
+</unit>

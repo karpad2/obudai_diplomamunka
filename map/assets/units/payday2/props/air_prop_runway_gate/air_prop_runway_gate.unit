@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<unit type="air" slot="1">
+<network sync="spawn"/>
+	<object file="units/payday2/props/air_prop_runway_gate/air_prop_runway_gate" />
+	<extensions>
+		<extension name="unit_data" class="ScriptUnitData" />
+        <extension name="damage" class="UnitDamage" />
+	</extensions>
+</unit> 

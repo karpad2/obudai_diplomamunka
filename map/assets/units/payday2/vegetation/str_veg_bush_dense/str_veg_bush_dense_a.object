@@ -1,0 +1,16 @@
+<dynamic_object>
+    <diesel orientation_object="rp_str_veg_bush_dense_a" materials="units/payday2/vegetation/str_veg_bush_dense/str_veg_bush_dense" />
+    <bodies>
+        <body name="vision_blocker" enabled="true" add_ray_type="ai_vision" template="static" editable="true" collides_with_mover="false" remove_ray_type="body walk">
+			<object name="rp_str_veg_bush_dense_a" />
+            <object name="c_box_01" collision_type="box" />
+			<object name="c_box_02" collision_type="box" />
+		</body>	
+		<body enabled="true" template="editor" name="static_body" >
+            <object collision_type="capsule" name="c_capsule_01" />
+        </body>
+    </bodies>
+    <graphics>
+        <object enabled="true" name="g_g" instance_struct="world_tm" shadow_caster="true"/>
+    </graphics>
+</dynamic_object>

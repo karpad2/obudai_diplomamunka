@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<unit type="dev" slot="1">
+	<object file="units/dev_tools/interaction_use_files/interaction_use_files" />
+	 <network sync="spawn"/>
+	<extensions>
+		<extension name="unit_data" class="ScriptUnitData"/>
+		<extension name="damage" class="UnitDamage" />
+
+		<extension name="interaction" class="UseInteractionExt">
+			<var name="tweak_data" value="use_files" />
+			<var name="_interact_object" value="rp_invisible_interaction_searching"/>
+		</extension>
+
+	</extensions>
+</unit>

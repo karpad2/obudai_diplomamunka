@@ -1,0 +1,22 @@
+<dynamic_object>
+    <diesel orientation_object="rp_off_prop_generic_shelf_wire_a" materials="units/payday2/props/off_prop_generic_shelf_wire/off_prop_generic_shelf_wire" />
+    <bodies>
+        <body enabled="true" template="static" name="static_body" >
+			<object name="rp_off_prop_generic_shelf_wire_a" />
+            <object collision_type="box" name="c_capsule_01" padding="-2.5"/>
+            <object collision_type="box" name="c_capsule_02" padding="-2.5" />
+            <object collision_type="box" name="c_capsule_03" padding="-2.5" />
+            <object collision_type="box" name="c_capsule_04" padding="-2.5" />
+	    </body>	
+        <body enabled="true" template="fence" name="fence_body" >
+			<object name="rp_off_prop_generic_shelf_wire_a" />		
+            <object collision_type="box" name="c_box_01" padding="-2.5" />
+            <object collision_type="box" name="c_box_02" padding="-2.5" />
+            <object collision_type="box" name="c_box_03" padding="-2.5" />
+            <object collision_type="box" name="c_box_04" padding="-2.5" />
+        </body>
+    </bodies>
+    <graphics>
+        <object enabled="true" name="g_g" />
+    </graphics>
+</dynamic_object>

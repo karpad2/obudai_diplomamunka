@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<dynamic_object>
+  <diesel materials="units/world/props/street/plywood_fence/plywood_fence" orientation_object="rp_plywood_03x02m" />
+  <bodies>
+    <body name="static_body" enabled="true" template="raycoll_static">
+      <object name="rp_plywood_03x02m" />
+      <object name="c_box_plywood_03x02m" collision_type="box" />
+    </body>
+    <body add_ray_type="walk" name="static_body1" add_ray_type="ai_vision" enabled="true" template="bag">
+      <object name="c_box_plywood_03x02m" collision_type="box" />
+    </body>
+  </bodies>
+  <decal_surfaces default_material="wood" static="true">
+    <decal_mesh name="dm_plywood_03x02m" enabled="true" material="wood" />
+  </decal_surfaces>
+  <graphics>
+    <object name="g_plywood_03x02m" enabled="true" instance_struct="world_tm"/>
+    <object name="s_plywood_03x02m" enabled="true"  shadow_caster="true" instance_struct="world_tm"/>
+  </graphics>
+</dynamic_object>

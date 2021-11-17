@@ -1,0 +1,14 @@
+<unit type="drk" slot="1">
+    <object file="units/pd2_dlc_dark/pickups/drk_prop_thermal_paste/drk_prop_thermal_paste" />
+    <network sync="spawn"/>
+    <extensions>
+        <extension class="ScriptUnitData" name="unit_data" />
+        <extension name="damage" class="UnitDamage" />
+        <extension name="interaction" class="SpecialEquipmentInteractionExt" >
+			<var name="_special_equipment" value="thermite_paste" />
+			<var name="_remove_on_interact" value="true" />
+			<var name="tweak_data" value="gen_pku_thermite_paste_z_axis" />
+            <var name="_interact_object" value="interact"/>
+		</extension>
+    </extensions>
+</unit>

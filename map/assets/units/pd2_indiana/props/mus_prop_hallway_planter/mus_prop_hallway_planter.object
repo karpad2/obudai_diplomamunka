@@ -1,0 +1,20 @@
+ <dynamic_object>
+    <diesel orientation_object="rp_mus_prop_hallway_planter" materials="units/pd2_indiana/props/mus_prop_hallway_planter/mus_prop_hallway_planter" />
+    <bodies>
+        <body enabled="true" template="static" name="static_body" >
+            <object name="rp_mus_prop_hallway_planter" />
+            <object collision_type="box" name="c_box_01" />
+        </body>
+        <body enabled="true" template="mover_blocker" name="mover_blocker_body" >
+            <object name="rp_mus_prop_hallway_planter" />
+            <object collision_type="box" name="c_box_02" />
+        </body>
+    </bodies>
+    <decal_surfaces>
+        <decal_mesh enabled="true" name="dm_ceramic" material="ceramic" />
+    </decal_surfaces>
+    <graphics>
+        <object enabled="true" name="g_g" />
+        <object enabled="true" name="g_leaf" />
+    </graphics>
+</dynamic_object>

@@ -1,0 +1,12 @@
+<dynamic_object>
+    <diesel orientation_object="rp_com_int_basement_garage_parkingline_c_6m" materials="units/payday2/architecture/com_int_basement/com_int_basement_garage_parkingline" />
+    <bodies>
+        <body enabled="true" template="editor" name="body0" >
+			<object name="rp_com_int_basement_garage_parkingline_c_6m"/>
+            <object collision_type="box" name="c_box_editor" padding="-2.5" />
+        </body>
+    </bodies>
+    <graphics>
+        <object enabled="true" name="g_g" instance_struct="world_tm"/>
+    </graphics>
+</dynamic_object>
