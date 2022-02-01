@@ -298,6 +298,7 @@ void system_update()
 
         http.begin(fw_link_bin);
         httpUpdate.update(http,fw_link_bin);
+        Serial.println("Update finished");
     }
     }
     else 
