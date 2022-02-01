@@ -24,7 +24,7 @@
 #define update_rate 10000
 #define SCREEN_WIDTH 128 // OLED display width, in pixels
 #define SCREEN_HEIGHT 64 // OLED display height, in pixels
-double version= 0.56;
+double version= 0.57;
 unsigned long epochTime=0; 
 String epochString="";
 
