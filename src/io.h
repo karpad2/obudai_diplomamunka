@@ -72,7 +72,7 @@ void button_long_pressed()
 
 void a_config_write(String text)
 {
-    SPIFFS.remove("/test.txt");
+    SPIFFS.remove("/config.json");
     File file = SPIFFS.open("/config.json", FILE_WRITE);
         if(!file){
             Serial.println("There was an error opening the file for writing");
@@ -91,7 +91,7 @@ void get_config_data()
   user=doc["user"].as<String>();
   room=doc["room"].as<String>();
   device=doc["device"].as<String>();
-  version=doc["version"].as<double>();
+ // version=doc["version"].as<double>();
 }
 
   void setup_serial()

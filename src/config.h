@@ -24,7 +24,7 @@
 #define update_rate 10000
 #define SCREEN_WIDTH 128 // OLED display width, in pixels
 #define SCREEN_HEIGHT 64 // OLED display height, in pixels
-
+double version= 0.53;
 unsigned long epochTime=0; 
 String epochString="";
 
@@ -37,10 +37,12 @@ DynamicJsonDocument configs(2048);
 DynamicJsonDocument version_tester(2048);
 
 String readed_rfid_code="";
+String defaultjsstring="{}";
 
 
 
 bool inputflag=false;
+
 
 #define DATABASE_SECRET "DATABASE_SECRET"
 #define DATABASE_URL "URL"
@@ -52,6 +54,7 @@ String user="";
 String room="";
 String device="";
 String basepath = "";
+
 String path="";
 String firebase_cert="",github_cert="";
 IPAddress dns(8, 8, 8, 8); 

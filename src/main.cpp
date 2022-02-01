@@ -45,7 +45,7 @@ void setup() {
   text=""; 
   get_config_data();
   delay(500);
-  version=doc["version"].as<double>();
+ 
   Serial.println("Version: "+String(version));
   Serial.println("Network setup");
   while(!network_setup())
@@ -284,6 +284,7 @@ void system_update()
         Serial.println("Github version: "+String(ghversion)+", Local version: "+String(version)+", Thats why device is: "+(update?"updating":"not updating"));
         String txt_json="";
         String _text=a_config_read();
+        
         deserializeJson(doc,_text);
         Serial.println(_text);
 
@@ -291,7 +292,7 @@ void system_update()
     {
         doc["version"]=ghversion;
         serializeJson(doc,_text);
-        a_config_write(_text);
+        //a_config_write(_text);
         
 
        // a_config_write();
