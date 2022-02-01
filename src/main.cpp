@@ -278,7 +278,7 @@ void system_update()
     httpCode=http.GET();
     if(httpCode>0)
     {   String text=http.getString();
-        Serial.println("---------\nGithub version config: "+http.getString()+"\n---------------\n");
+        Serial.println("---------\nGithub version config: "+text+"\n---------------\n");
         deserializeJson(version_tester,(char*)text.c_str());
         double ghversion=version_tester["version"].as<double>();
         update=ghversion>version;
