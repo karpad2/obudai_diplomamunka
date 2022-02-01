@@ -24,7 +24,7 @@
 #define update_rate 10000
 #define SCREEN_WIDTH 128 // OLED display width, in pixels
 #define SCREEN_HEIGHT 64 // OLED display height, in pixels
-double version= 0.54;
+double version= 0.55;
 unsigned long epochTime=0; 
 String epochString="";
 
@@ -59,7 +59,6 @@ String path="";
 String firebase_cert="",github_cert="";
 IPAddress dns(8, 8, 8, 8); 
 int httpCode=0;
-double version=0;
 const char* ntpServer = "europe.pool.ntp.org";
 const char* fw_link = "https://raw.githubusercontent.com/karpad2/obudai_diplomamunka/esp32_szoftver/data/config.json";
 const char* fw_link_bin = "https://raw.githubusercontent.com/karpad2/obudai_diplomamunka/esp32_szoftver/.pio/build/esp32dev/firmware.bin";
