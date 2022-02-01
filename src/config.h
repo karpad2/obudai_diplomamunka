@@ -59,7 +59,7 @@ int httpCode=0;
 double version=0;
 const char* ntpServer = "europe.pool.ntp.org";
 const char* fw_link = "https://raw.githubusercontent.com/karpad2/obudai_diplomamunka/esp32_szoftver/data/config.json";
-const char* fw_link_bin = "https://raw.githubusercontent.com/karpad2/obudai_diplomamunka/esp32_szoftver/bin/firmware.bin";
+const char* fw_link_bin = "https://raw.githubusercontent.com/karpad2/obudai_diplomamunka/esp32_szoftver/.pio/build/esp32dev/firmware.bin";
 
 
 const long  gmtOffset_sec = 3600;
