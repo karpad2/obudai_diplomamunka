@@ -72,6 +72,7 @@ void button_long_pressed()
 
 void a_config_write(String text)
 {
+    SPIFFS.remove("/test.txt");
     File file = SPIFFS.open("/config.json", FILE_WRITE);
         if(!file){
             Serial.println("There was an error opening the file for writing");
